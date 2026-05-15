@@ -214,131 +214,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Cada uno de estos componentes presenta características particulares en términos de interpretación, sensibilidad a errores de cobertura y comportamiento territorial.</p>
 <div id="conteos-poblacionales" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Conteos poblacionales<a href="indicadores-de-interés.html#conteos-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los conteos poblacionales representan el insumo demográfico fundamental de los sistemas estadísticos nacionales. Su objetivo principal consiste en cuantificar el número de personas presentes o residentes dentro de un territorio determinado bajo criterios conceptuales y operativos definidos por el censo.</p>
-<p>Los conteos pueden producirse para distintos niveles geográficos y demográficos:</p>
-<ul>
-<li>país;</li>
-<li>departamento o provincia;</li>
-<li>municipio;</li>
-<li>área urbana y rural;</li>
-<li>sector censal;</li>
-<li>segmento;</li>
-<li>sexo;</li>
-<li>y grupos de edad.</li>
-</ul>
-<p>La producción de estos conteos constituye la base para prácticamente todos los procesos posteriores de análisis demográfico y estadística oficial. Las proyecciones de población, las estimaciones intercensales, los marcos muestrales y múltiples indicadores sociales dependen directamente de la calidad de los conteos iniciales.</p>
-<p>Sea:</p>
+<p>Los conteos poblacionales constituyen el núcleo de la producción estadística demográfica. A través de ellos, los países cuantifican la población presente o residente dentro de un territorio y construyen la base sobre la cual se desarrollan posteriormente las proyecciones demográficas, los marcos muestrales, los indicadores sociales y gran parte de las estadísticas oficiales utilizadas en procesos de planificación pública.</p>
+<p>Estos conteos son producidos para múltiples niveles de desagregación territorial y demográfica. En términos generales, la información censal se organiza para el nivel nacional, departamentos o provincias, municipios, áreas urbanas y rurales, así como para distintos grupos de edad y sexo. Esta estructura jerárquica permite caracterizar la distribución espacial de la población y construir estadísticas coherentes entre distintos niveles administrativos.</p>
+<p>Sea <span class="math inline">\(N_{ise}\)</span> el número de personas observadas en el dominio geográfico <span class="math inline">\(i\)</span>, sexo <span class="math inline">\(s\)</span> y grupo de edad <span class="math inline">\(e\)</span>. El conteo total de población para un área geográfica puede representarse como:</p>
 <p><span class="math display">\[
-N_{i,s,e}
+N_i = \sum_s \sum_e N_{ise}
 \]</span></p>
-<p>el número de personas observadas en el dominio geográfico (i), sexo (s) y grupo de edad (e).</p>
-<p>El conteo total para un dominio geográfico puede expresarse como:</p>
-<p><span class="math display">\[
-N_i = \sum_s \sum_e N_{i,s,e}
-\]</span></p>
-<p>mientras que la población total nacional corresponde a:</p>
+<p>mientras que la población nacional corresponde a la agregación de todos los dominios territoriales:</p>
 <p><span class="math display">\[
 N = \sum_i N_i
 \]</span></p>
-<p>En estructuras territoriales jerárquicas, los conteos deben mantener coherencia entre niveles administrativos. Por ejemplo, el total departamental puede representarse como la suma de sus municipios:</p>
+<p>La lógica de agregación constituye uno de los principios fundamentales de la producción censal. Los conteos observados en niveles territoriales inferiores deben mantener consistencia con los totales publicados en niveles superiores. Por ejemplo, el total poblacional de un departamento debe corresponder a la suma de los municipios que lo componen:</p>
 <p><span class="math display">\[
 N_d = \sum_m N_{dm}
 \]</span></p>
-<p>y el total municipal como la suma de segmentos censales:</p>
+<p>y, de manera equivalente, el total municipal puede expresarse como la suma de los segmentos censales:</p>
 <p><span class="math display">\[
 N_m = \sum_g N_{mg}
 \]</span></p>
-<p>En términos generales, los conteos poblacionales pueden clasificarse en:</p>
-<ul>
-<li>conteos observados;</li>
-<li>conteos ajustados;</li>
-<li>y conteos estimados.</li>
-</ul>
-<p>Los conteos observados corresponden a la enumeración directa realizada durante el operativo censal. Los conteos ajustados incorporan correcciones asociadas a cobertura, conciliación o validación demográfica. Finalmente, los conteos estimados suelen derivarse de modelos estadísticos o procesos de integración de múltiples fuentes de información.</p>
-<p>Uno de los principales desafíos asociados a los conteos poblacionales es su sensibilidad a errores de cobertura territorial. A medida que aumenta la desagregación geográfica, pequeños errores absolutos pueden traducirse en distorsiones importantes sobre indicadores derivados.</p>
-<p>Por ejemplo, la omisión de algunos hogares en municipios pequeños puede alterar significativamente:</p>
-<ul>
-<li>estructuras etarias;</li>
-<li>tasas de dependencia;</li>
-<li>indicadores de pobreza;</li>
-<li>y necesidades estimadas de infraestructura social.</li>
-</ul>
-<p>En América Latina y el Caribe, estas dificultades son particularmente relevantes debido a:</p>
-<ul>
-<li>expansión urbana acelerada;</li>
-<li>crecimiento de asentamientos informales;</li>
-<li>movilidad territorial;</li>
-<li>dispersión rural;</li>
-<li>y heterogeneidad operativa entre países.</li>
-</ul>
-<p>Adicionalmente, la actualización cartográfica desigual entre regiones genera diferencias importantes en calidad de cobertura y precisión espacial de los conteos observados.</p>
-<p>Desde la perspectiva del modelamiento estadístico, los conteos poblacionales deben interpretarse como observaciones imperfectas de una población subyacente cuya magnitud real no es completamente observable. Esta interpretación constituye uno de los fundamentos conceptuales de los modelos bayesianos de población desarrollados en capítulos posteriores.</p>
+<p>Esta coherencia jerárquica es esencial para garantizar la comparabilidad y consistencia de las estadísticas oficiales.</p>
+<p>En la práctica, los conteos poblacionales pueden entenderse en distintos niveles. Los conteos observados corresponden directamente a la enumeración realizada durante el operativo censal. Posteriormente, algunos países incorporan procesos de conciliación y ajuste orientados a corregir problemas de cobertura o inconsistencias demográficas. Finalmente, en contextos donde existen limitaciones operativas o necesidad de actualización intercensal, los conteos pueden complementarse mediante procedimientos de estimación estadística e integración de múltiples fuentes de información.</p>
+<p>Uno de los principales desafíos asociados a los conteos poblacionales corresponde a su sensibilidad frente a errores de cobertura territorial. A medida que aumenta el nivel de desagregación geográfica, incluso pequeñas omisiones pueden generar distorsiones importantes sobre indicadores derivados. Este problema es particularmente visible en municipios pequeños, áreas rurales dispersas o segmentos censales con baja densidad poblacional, donde la omisión de algunos hogares puede modificar significativamente estructuras etarias, tasas de dependencia o indicadores sociales.</p>
+<p>En América Latina y el Caribe, estas dificultades adquieren una relevancia especial debido a la heterogeneidad territorial de la región. La expansión urbana acelerada, el crecimiento de asentamientos informales, la movilidad poblacional y las diferencias en capacidad operativa entre países generan importantes desafíos para la actualización cartográfica y la cobertura completa del operativo censal. Como consecuencia, la precisión espacial de los conteos puede variar considerablemente entre territorios.</p>
+<p>Desde una perspectiva estadística, los conteos poblacionales no deben interpretarse como valores exactos libres de error, sino como observaciones sujetas a incertidumbre y condicionadas por las limitaciones propias del operativo censal. Esta interpretación resulta fundamental para el desarrollo posterior de modelos probabilísticos de población, donde los conteos observados se entienden como aproximaciones de una población subyacente no completamente observable.</p>
 </div>
 <div id="tasas-derivadas" class="section level3 hasAnchor" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Tasas derivadas<a href="indicadores-de-interés.html#tasas-derivadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A partir de los conteos poblacionales es posible construir un amplio conjunto de tasas e indicadores demográficos utilizados para describir dinámicas poblacionales y condiciones territoriales.</p>
-<p>Las tasas derivadas permiten transformar conteos absolutos en medidas comparables entre áreas geográficas con tamaños poblacionales diferentes. Esto facilita el análisis espacial y temporal de fenómenos demográficos y sociales.</p>
-<p>Entre los indicadores más utilizados se encuentran:</p>
-<ul>
-<li>tasas de crecimiento poblacional;</li>
-<li>densidad poblacional;</li>
-<li>tasas de dependencia;</li>
-<li>razones de masculinidad;</li>
-<li>índices de envejecimiento;</li>
-<li>y tasas específicas por grupo de edad.</li>
-</ul>
-<p>La densidad poblacional para un territorio (i) puede expresarse como:</p>
+<p>A partir de los conteos poblacionales es posible construir un amplio conjunto de tasas e indicadores utilizados para describir dinámicas demográficas, caracterizar condiciones territoriales y apoyar procesos de planificación pública. Mientras los conteos absolutos permiten cuantificar el tamaño de la población, las tasas derivadas facilitan la comparación entre territorios con estructuras y magnitudes poblacionales diferentes.</p>
+<p>Este tipo de indicadores resulta fundamental para el análisis territorial, ya que permite transformar los conteos censales en medidas comparables entre regiones, municipios o áreas urbanas y rurales. De esta manera, es posible evaluar fenómenos asociados a concentración poblacional, envejecimiento, dependencia demográfica o composición por sexo bajo una escala relativa más adecuada para el análisis estadístico.</p>
+<p>Entre los indicadores más utilizados se encuentran la densidad poblacional, las tasas de dependencia, las razones de masculinidad y los índices de envejecimiento. Cada uno de ellos resume distintas dimensiones de la estructura demográfica y constituye un insumo importante para la toma de decisiones institucionales.</p>
+<p>La densidad poblacional permite medir la relación entre población y superficie territorial. Para un territorio (i), esta puede expresarse como:</p>
 <p><span class="math display">\[
 D_i = \frac{N_i}{A_i}
 \]</span></p>
-<p>donde:</p>
-<ul>
-<li>(N_i): población del territorio;</li>
-<li>(A_i): área geográfica.</li>
-</ul>
-<p>Por su parte, la razón de masculinidad puede definirse como:</p>
+<p>donde <span class="math inline">\(N_i\)</span> representa la población observada y <span class="math inline">\(A_i\)</span> el área geográfica correspondiente. Este indicador es ampliamente utilizado en procesos de planificación urbana, expansión de infraestructura, análisis ambiental y organización de servicios públicos.</p>
+<p>Por su parte, la razón de masculinidad describe la relación entre población masculina y femenina dentro de un territorio determinado:</p>
 <p><span class="math display">\[
-RM_i = \frac{N_{i,h}}{N_{i,m}} \times 100
+RM_i = \frac{N_{ih}}{N_{im}} \times 100
 \]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(N_{i,h}\)</span>: población masculina;</li>
-<li><span class="math inline">\(N_{i,m}\)</span>: población femenina.</li>
-</ul>
-<p>La tasa de dependencia demográfica se calcula generalmente como:</p>
+<p>donde <span class="math inline">\(N_{ih}\)</span> corresponde a la población masculina y <span class="math inline">\(N_{im}\)</span> a la población femenina. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.</p>
+<p>Otro indicador ampliamente utilizado corresponde a la tasa de dependencia demográfica, la cual relaciona la población potencialmente dependiente con la población en edades productivas:</p>
 <p><span class="math display">\[
-TD_i = \frac{N_{i,0-14} + N_{i,65+}}{N_{i,15-64}} \times 100
+TD_i = \frac{N_{i,(0-14)} + N_{i,(65+)}}{N_{i,(15-64)}} \times 100
 \]</span></p>
-<p>mientras que el índice de envejecimiento corresponde a:</p>
+<p>De manera complementaria, el índice de envejecimiento permite evaluar el peso relativo de la población adulta mayor frente a la población joven:</p>
 <p><span class="math display">\[
-IE_i = \frac{N_{i,65+}}{N_{i,0-14}} \times 100
+IE_i = \frac{N_{i,(65+)}}{N_{i,(0-14)}} \times 100
 \]</span></p>
-<p>En términos operativos, estas tasas cumplen un papel central en:</p>
-<ul>
-<li>planificación territorial;</li>
-<li>asignación de recursos;</li>
-<li>evaluación de necesidades sociales;</li>
-<li>diseño de infraestructura;</li>
-<li>y focalización de programas públicos.</li>
-</ul>
-<p>Sin embargo, las tasas derivadas presentan una sensibilidad particularmente alta a errores de cobertura censal. Dado que muchas de ellas se calculan como razones entre subgrupos poblacionales relativamente pequeños, incluso omisiones moderadas pueden producir fluctuaciones importantes.</p>
-<p>Este problema se intensifica en dominios geográficos pequeños. En municipios con baja población o segmentos censales reducidos, pequeñas diferencias en los conteos observados pueden generar tasas extremadamente inestables o inconsistentes.</p>
-<p>En América Latina y el Caribe, estas dificultades se ven amplificadas por:</p>
-<ul>
-<li>heterogeneidad territorial;</li>
-<li>desigualdad regional;</li>
-<li>migración interna;</li>
-<li>expansión metropolitana;</li>
-<li>y diferencias en calidad operativa del levantamiento censal.</li>
-</ul>
-<p>Como consecuencia, la producción de tasas subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad y coherencia territorial.</p>
-<p>Desde el punto de vista estadístico, muchas tasas derivadas pueden beneficiarse de enfoques de modelamiento probabilístico que permitan:</p>
-<ul>
-<li>estabilizar estimaciones;</li>
-<li>incorporar dependencia espacial;</li>
-<li>integrar información auxiliar;</li>
-<li>y representar explícitamente la incertidumbre asociada a los conteos base.</li>
-</ul>
+<p>Estos indicadores desempeñan un papel central en la planificación territorial y sectorial. Su utilización es frecuente en procesos de asignación presupuestaria, focalización de programas sociales, evaluación de necesidades de infraestructura y análisis de demanda potencial de servicios públicos.</p>
+<p>Sin embargo, las tasas derivadas presentan una sensibilidad considerable frente a errores de cobertura censal. Debido a que muchas de ellas se construyen como razones entre subgrupos poblacionales específicos, pequeñas omisiones o inconsistencias pueden generar fluctuaciones importantes en los resultados observados. Este fenómeno se vuelve particularmente evidente en dominios geográficos pequeños, donde diferencias reducidas en los conteos absolutos producen variaciones relativamente grandes en los indicadores derivados.</p>
+<p>En municipios con baja población o segmentos censales reducidos, las tasas pueden presentar comportamientos altamente inestables, especialmente cuando existen problemas de omisión diferencial por edad, sexo o localización territorial. En América Latina y el Caribe, estas dificultades suelen amplificarse debido a la heterogeneidad territorial, la expansión metropolitana acelerada, los procesos migratorios y las diferencias operativas observadas entre países y regiones.</p>
+<p>Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento probabilístico permiten complementar los métodos tradicionales mediante estrategias que incorporan dependencia espacial, integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.</p>
 </div>
 <div id="estructuras-etarias" class="section level3 hasAnchor" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> Estructuras etarias<a href="indicadores-de-interés.html#estructuras-etarias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
