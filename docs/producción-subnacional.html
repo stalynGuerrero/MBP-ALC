@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Footnotes and citations | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
+  <title>1.2 Producción subnacional | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
   <meta name="description" content="Este es el repositorio del libro Análisis de encuestas con R." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 3 Footnotes and citations | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta property="og:title" content="1.2 Producción subnacional | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
   <meta name="github-repo" content="psirusteam/2021ASDA" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Footnotes and citations | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta name="twitter:title" content="1.2 Producción subnacional | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
   
   <meta name="twitter:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="parts.html"/>
-<link rel="next" href="footnotes.html"/>
+<link rel="prev" href="producción-de-conteos-censales.html"/>
+<link rel="next" href="desagregación-por-sexo-y-edad.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -190,16 +190,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="footnotes-and-citations" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Footnotes and citations<a href="footnotes-and-citations.html#footnotes-and-citations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="producción-subnacional" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Producción subnacional<a href="producción-subnacional.html#producci%C3%B3n-subnacional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aunque los censos generan un conteo nacional de población, gran parte de su utilidad práctica se concentra en la producción de información subnacional. Los gobiernos requieren estadísticas desagregadas para departamentos, provincias, municipios, áreas urbanas y rurales, sectores censales y segmentos operativos. Es en estas escalas territoriales donde se ejecutan la mayoría de políticas públicas y procesos administrativos.</p>
+<p>La producción subnacional implica construir conteos consistentes entre distintos niveles geográficos. Los totales municipales deben coincidir con los agregados departamentales, y estos, a su vez, con los conteos nacionales. Esta coherencia territorial constituye uno de los principios fundamentales de la estadística oficial.</p>
+<p>Sin embargo, garantizar dicha consistencia no es un proceso trivial. A medida que disminuye el tamaño poblacional de las unidades geográficas, aumentan proporcionalmente los efectos de los errores de cobertura. En áreas pequeñas, la omisión de algunos hogares o viviendas puede alterar significativamente indicadores derivados como tasas de dependencia, razones de masculinidad o estructuras etarias.</p>
+<p>La calidad de los conteos subnacionales depende críticamente de la cartografía censal y de los procesos de segmentación territorial. Antes del levantamiento censal, los países deben actualizar mapas, identificar viviendas, definir rutas operativas y dividir el territorio en unidades de trabajo relativamente homogéneas. Estas unidades, conocidas generalmente como segmentos censales, constituyen la base operativa del operativo de campo.</p>
+<p>En América Latina y el Caribe, la definición de segmentos presenta importantes diferencias metodológicas entre países. Algunos sistemas censales utilizan criterios asociados al número esperado de viviendas, mientras que otros priorizan continuidad espacial, accesibilidad geográfica o carga operativa del censista. Como resultado, las unidades territoriales utilizadas en los censos no siempre son comparables entre países.</p>
+<p>Otro aspecto relevante corresponde a la diferencia entre censos de hecho y censos de derecho. En países como Bolivia, Paraguay y Colombia, los operativos censales han sido implementados bajo esquemas de censo de hecho, donde las personas son contabilizadas en el lugar donde se encuentran durante el momento censal. En contraste, los censos de derecho buscan registrar a las personas según su residencia habitual.</p>
+<p>Esta diferencia conceptual tiene implicaciones importantes sobre movilidad territorial, cobertura diferencial y consistencia espacial. En contextos con alta movilidad poblacional, los censos de hecho pueden generar concentraciones temporales de población en determinadas áreas, mientras que los censos de derecho requieren procedimientos más complejos para validar residencia habitual y evitar duplicaciones.</p>
+<p>La producción subnacional también enfrenta desafíos asociados al crecimiento urbano acelerado y a la expansión de asentamientos informales. En muchas ciudades de la región, los procesos de urbanización ocurren más rápidamente que la actualización cartográfica oficial, generando sectores con viviendas no registradas o límites territoriales desactualizados. Esto afecta directamente la cobertura del operativo y la calidad de los conteos resultantes.</p>
+<p>Desde la perspectiva estadística, los conteos subnacionales deben entenderse como observaciones imperfectas de una población subyacente cuya magnitud real no es completamente observable. Esta situación motiva el uso de modelos probabilísticos capaces de integrar múltiples fuentes de información, representar explícitamente la incertidumbre y garantizar coherencia entre niveles territoriales.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="parts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="footnotes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="producción-de-conteos-censales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="desagregación-por-sexo-y-edad.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -230,7 +239,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/psirusteam/2021ASDA/04-citations.Rmd",
+    "link": "https://github.com/psirusteam/2021ASDA/02-Modelos_poblacion.Rmd",
     "text": "Edit"
   },
   "history": {

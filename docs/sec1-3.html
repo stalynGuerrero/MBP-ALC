@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.3 Formulación del problema de cobertura, no respuesta y omisión | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
+  <meta name="description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.3 Formulación del problema de cobertura, no respuesta y omisión | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="github-repo" content="psirusteam/2021ASDA" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.3 Formulación del problema de cobertura, no respuesta y omisión | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  
+
+<meta name="author" content="Andrés Gutiérrez,Stalyn Guerrero" />
+
+
+<meta name="date" content="2026-05-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sec1-2.html"/>
+<link rel="next" href="resumen-del-capítulo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="cap1.html"><a href="cap1.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="sec1-1.html"><a href="sec1-1.html"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-1"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-2"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-3"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-4"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios: la jerarquía territorial</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="sec1-2.html"><a href="sec1-2.html"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="sec1-2.html"><a href="sec1-2.html#sec1-2-1"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="sec1-2.html"><a href="sec1-2.html#sec1-2-2"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="sec1-2.html"><a href="sec1-2.html#sec1-2-3"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="sec1-3.html"><a href="sec1-3.html"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de cobertura, no respuesta y omisión</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="sec1-3.html"><a href="sec1-3.html#el-conteo-observado-como-variable-aleatoria"><i class="fa fa-check"></i><b>1.3.1</b> El conteo observado como variable aleatoria</a></li>
+<li class="chapter" data-level="1.3.2" data-path="sec1-3.html"><a href="sec1-3.html#heterogeneidad-espacial-de-la-cobertura"><i class="fa fa-check"></i><b>1.3.2</b> Heterogeneidad espacial de la cobertura</a></li>
+<li class="chapter" data-level="1.3.3" data-path="sec1-3.html"><a href="sec1-3.html#modelos-para-la-tasa-de-cobertura"><i class="fa fa-check"></i><b>1.3.3</b> Modelos para la tasa de cobertura</a></li>
+<li class="chapter" data-level="1.3.4" data-path="sec1-3.html"><a href="sec1-3.html#no-respuesta-y-omisi%C3%B3n-estructural"><i class="fa fa-check"></i><b>1.3.4</b> No respuesta y omisión estructural</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="resumen-del-capítulo.html"><a href="resumen-del-capítulo.html"><i class="fa fa-check"></i><b>1.4</b> Resumen del capítulo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>2</b> Parts</a></li>
+<li class="chapter" data-level="3" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>3</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>3.1</b> Footnotes</a></li>
+<li class="chapter" data-level="3.2" data-path="citations.html"><a href="citations.html"><i class="fa fa-check"></i><b>3.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>4</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="equations.html"><a href="equations.html"><i class="fa fa-check"></i><b>4.1</b> Equations</a></li>
+<li class="chapter" data-level="4.2" data-path="theorems-and-proofs.html"><a href="theorems-and-proofs.html"><i class="fa fa-check"></i><b>4.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="4.3" data-path="callout-blocks.html"><a href="callout-blocks.html"><i class="fa fa-check"></i><b>4.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>5</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>5.1</b> Publishing</a></li>
+<li class="chapter" data-level="5.2" data-path="pages.html"><a href="pages.html"><i class="fa fa-check"></i><b>5.2</b> 404 pages</a></li>
+<li class="chapter" data-level="5.3" data-path="metadata-for-sharing.html"><a href="metadata-for-sharing.html"><i class="fa fa-check"></i><b>5.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sec1-3" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Formulación del problema de cobertura, no respuesta y omisión<a href="sec1-3.html#sec1-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="el-conteo-observado-como-variable-aleatoria" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> El conteo observado como variable aleatoria<a href="sec1-3.html#el-conteo-observado-como-variable-aleatoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ningún operativo censal produce el conteo verdadero <span class="math inline">\(N_{i,s,e}\)</span>. Lo que el censo produce
+es un conteo observado <span class="math inline">\(Y_{i,s,e}\)</span> que difiere del verdadero por efecto de múltiples
+mecanismos de error. La distinción conceptual entre el conteo verdadero —una cantidad
+fija desconocida— y el conteo observado —una variable aleatoria realizada durante el
+operativo— es el punto de partida de toda la modelización estadística desarrollada en
+este libro.</p>
+<p>El error total del conteo censal puede descomponerse en tres componentes:</p>
+<p><span class="math display">\[Y_{i,s,e} = N_{i,s,e} - O_{i,s,e} + D_{i,s,e} + C_{i,s,e}, \tag{1.12}\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(O_{i,s,e} \geq 0\)</span> es la omisión: personas presentes en la unidad <span class="math inline">\(i\)</span> con características
+<span class="math inline">\((s, e)\)</span> que no fueron enumeradas durante el operativo.</li>
+<li><span class="math inline">\(D_{i,s,e} \geq 0\)</span> es la duplicación: personas que fueron contadas más de una vez en
+la unidad <span class="math inline">\(i\)</span> (incluyendo imputaciones incorrectas).</li>
+<li><span class="math inline">\(C_{i,s,e}\)</span> es el error de clasificación geográfica: cantidad neta de personas asignadas
+erróneamente a la unidad <span class="math inline">\(i\)</span> desde otras unidades (puede ser positiva o negativa).</li>
+</ul>
+<p>El error neto de cobertura en la unidad <span class="math inline">\(i\)</span> es</p>
+<p><span class="math display">\[\varepsilon_i = Y_i - N_i = -O_i + D_i + C_i, \tag{1.13}\]</span></p>
+<p>donde <span class="math inline">\(O_i = \sum_{s,e} O_{i,s,e}\)</span>, análogamente para <span class="math inline">\(D_i\)</span> y <span class="math inline">\(C_i\)</span>. La tasa neta de
+cobertura es</p>
+<p><span class="math display">\[\phi_i = \frac{Y_i}{N_i} = 1 + \frac{-O_i + D_i + C_i}{N_i}. \tag{1.14}\]</span></p>
+<p>En la práctica estadística, la omisión es el componente dominante del error de cobertura:
+en los censos de la región, las tasas de omisión estimadas mediante encuestas
+postcensales de cobertura oscilan típicamente entre 2% y 8% a nivel nacional, con
+valores que pueden superar el 15% en unidades geográficas con condiciones de alta
+dispersión, informalidad habitacional o difícil acceso.</p>
+</div>
+<div id="heterogeneidad-espacial-de-la-cobertura" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Heterogeneidad espacial de la cobertura<a href="sec1-3.html#heterogeneidad-espacial-de-la-cobertura" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un supuesto crítico que subyace a muchos análisis que utilizan datos censales directamente
+es que la tasa de cobertura es homogénea entre unidades geográficas: <span class="math inline">\(\phi_i = \phi\)</span> para
+todo <span class="math inline">\(i\)</span>. Bajo este supuesto, las comparaciones relativas entre unidades —tasas, proporciones,
+razones— son válidas incluso cuando el censo subenumera a la población, porque los
+errores se cancelan al dividir numerador y denominador con el mismo factor. Este supuesto
+es sistemáticamente falso.</p>
+<p>La evidencia empírica de las encuestas postcensales de cobertura disponibles para países
+de la región muestra que la tasa de cobertura <span class="math inline">\(\phi_i\)</span> está correlacionada con características
+observables de las unidades geográficas: las áreas rurales presentan, en promedio, tasas
+de cobertura menores que las urbanas; los segmentos en asentamientos informales presentan
+tasas menores que los segmentos en áreas formales; las unidades con alta concentración de
+población indígena presentan tasas menores que las de población no indígena; los segmentos
+de alta densidad urbana pueden presentar tasas menores debido a problemas operativos de
+listado de viviendas en edificios multipiso.</p>
+<p>Esta heterogeneidad espacial de <span class="math inline">\(\phi_i\)</span> implica que los conteos observados <span class="math inline">\(Y_i\)</span> son una
+imagen distorsionada de los conteos verdaderos <span class="math inline">\(N_i\)</span>, y que la distorsión es sistemática y
+predecible a partir de covariables. Esta observación es la motivación central para el uso de
+modelos estadísticos que incorporen esas covariables en la estimación de <span class="math inline">\(N_i\)</span> a partir de
+<span class="math inline">\(Y_i\)</span>: si <span class="math inline">\(\phi_i = f(\mathbf{x}_i)\)</span> para alguna función <span class="math inline">\(f\)</span> y algún vector de covariables
+<span class="math inline">\(\mathbf{x}_i\)</span>, entonces la información contenida en <span class="math inline">\(\mathbf{x}_i\)</span> permite recuperar
+estimaciones de <span class="math inline">\(N_i\)</span> con mejor calidad que el conteo censal directo.</p>
+</div>
+<div id="modelos-para-la-tasa-de-cobertura" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Modelos para la tasa de cobertura<a href="sec1-3.html#modelos-para-la-tasa-de-cobertura" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Formalmente, el modelo de observación censal puede escribirse como</p>
+<p><span class="math display">\[Y_i \mid N_i, \phi_i \sim \text{Binomial}(N_i, \phi_i), \tag{1.15}\]</span></p>
+<p>donde <span class="math inline">\(\phi_i \in (0, 1]\)</span> es la probabilidad de que una persona presente en la unidad <span class="math inline">\(i\)</span>
+sea enumerada en el censo. Este modelo trata la enumeración de cada persona como un
+ensayo de Bernoulli independiente con probabilidad de éxito <span class="math inline">\(\phi_i\)</span>, lo que equivale a
+suponer que los errores de cobertura son independientes entre personas dentro de la
+misma unidad geográfica.</p>
+<p>El modelo binomial es una simplificación: en la práctica, la probabilidad de ser enumerado
+no es idéntica para todas las personas de una misma unidad geográfica. Depende de las
+características del hogar (tipo de vivienda, número de personas, presencia en la fecha
+censal), del entrevistador asignado, de las condiciones del operativo y de factores
+estructurales del entorno. No obstante, la parametrización binomial proporciona un punto
+de partida útil porque:</p>
+<ol style="list-style-type: decimal">
+<li>La tasa de cobertura <span class="math inline">\(\phi_i\)</span> agrega la heterogeneidad intraunitaria en un único
+parámetro estimable;</li>
+<li>Bajo independencia entre personas, la distribución binomial es exacta para el conteo
+de enumerados;</li>
+<li>Para <span class="math inline">\(N_i\)</span> grande y <span class="math inline">\(\phi_i\)</span> cercano a 1, la distribución binomial puede aproximarse
+por una Poisson con media <span class="math inline">\(N_i \phi_i\)</span>, conectando el modelo de cobertura con el
+modelo de conteo desarrollado en el Capítulo 5.</li>
+</ol>
+<p>La extensión al array tridimensional es inmediata: condicionado a <span class="math inline">\((N_{i,s,e}, \phi_{i,s,e})\)</span>,</p>
+<p><span class="math display">\[Y_{i,s,e} \mid N_{i,s,e}, \phi_{i,s,e} \sim \text{Binomial}(N_{i,s,e}, \phi_{i,s,e}), \tag{1.16}\]</span></p>
+<p>donde <span class="math inline">\(\phi_{i,s,e}\)</span> es la tasa de cobertura específica para el grupo <span class="math inline">\((s, e)\)</span> en la unidad
+<span class="math inline">\(i\)</span>. En la práctica, la estimación simultánea de <span class="math inline">\(N_{i,s,e}\)</span> y <span class="math inline">\(\phi_{i,s,e}\)</span> está
+sujeta a un problema de identificación: sin información adicional sobre alguno de los dos
+parámetros, el modelo es no identificado. La resolución de este problema de identificación
+—mediante la incorporación de información auxiliar que funcione como variable instrumental
+o como restricción de forma funcional sobre <span class="math inline">\(\phi_{i,s,e}\)</span>— es uno de los problemas
+centrales de la inferencia bayesiana que se desarrolla en los capítulos siguientes.</p>
+</div>
+<div id="no-respuesta-y-omisión-estructural" class="section level3 hasAnchor" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> No respuesta y omisión estructural<a href="sec1-3.html#no-respuesta-y-omisi%C3%B3n-estructural" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La omisión censal puede originarse en dos mecanismos cualitativamente distintos que
+tienen implicaciones diferentes para la modelización. El primero es la <strong>no respuesta de
+unidad</strong>: la vivienda es listada en la cartografía censal, el entrevistador visita la dirección,
+pero no logra completar la entrevista por ausencia del hogar, rechazo del informante o
+inaccesibilidad física del inmueble. En este caso, la persona existe en el marco cartográfico
+del censo pero no es enumerada.</p>
+<p>El segundo es la <strong>omisión estructural</strong>: la vivienda no aparece en la cartografía censal
+porque no fue incluida en la etapa de precenso o porque fue construida con posterioridad
+a la actualización cartográfica. En este caso, la persona no existe en el marco operativo
+del censo y, por tanto, no puede ser contactada en ninguna circunstancia. La omisión
+estructural es sistemáticamente más alta en asentamientos informales de rápida expansión,
+en zonas rurales con dispersión extrema y en áreas con viviendas no convencionales
+(campamentos, refugios temporales, embarcaciones).</p>
+<p>Ambos mecanismos generan omisión censal, pero su tratamiento estadístico es diferente.
+La no respuesta de unidad puede modelarse como un proceso de selección condicional a
+las características observadas de la vivienda, análogamente a los modelos de datos
+faltantes bajo ignorabilidad. La omisión estructural requiere, en cambio, el uso de
+fuentes de información externas al marco cartográfico —imágenes satelitales de alta
+resolución, registros administrativos de construcción, modelos de distribución espacial
+de la población— que permitan identificar y cuantificar la población en viviendas no
+listadas.</p>
+<p>La distinción entre ambos mecanismos tiene consecuencias directas para el diseño del
+modelo estadístico de estimación subnacional. Cuando la omisión estructural es
+preponderante —situación frecuente en países con alta informalidad habitacional—, los
+modelos de corrección basados únicamente en características del marco cartográfico
+existente producen estimaciones sesgadas porque la covariable más relevante (la
+existencia de la vivienda) no está disponible para las unidades omitidas. En este contexto,
+las imágenes satelitales de alta resolución que identifican estructuras construidas
+independientemente de los registros administrativos adquieren un valor informativo de
+primer orden, como se desarrolla en el Capítulo 3.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sec1-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resumen-del-capítulo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/2021ASDA/02-Modelos_poblacion.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Análisis de encuestas con R.pdf", "Análisis de encuestas con R.epub", "Análisis de encuestas con R.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "tconfig": null
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

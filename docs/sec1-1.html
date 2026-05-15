@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.1 Producción de conteos censales | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
+  <meta name="description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.1 Producción de conteos censales | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="github-repo" content="psirusteam/2021ASDA" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.1 Producción de conteos censales | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  
+
+<meta name="author" content="Andrés Gutiérrez,Stalyn Guerrero" />
+
+
+<meta name="date" content="2026-05-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cap1.html"/>
+<link rel="next" href="sec1-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="cap1.html"><a href="cap1.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="sec1-1.html"><a href="sec1-1.html"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-1"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-2"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-3"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="sec1-1.html"><a href="sec1-1.html#sec1-1-4"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios: la jerarquía territorial</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="sec1-2.html"><a href="sec1-2.html"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="sec1-2.html"><a href="sec1-2.html#sec1-2-1"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="sec1-2.html"><a href="sec1-2.html#sec1-2-2"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="sec1-2.html"><a href="sec1-2.html#sec1-2-3"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="sec1-3.html"><a href="sec1-3.html"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de cobertura, no respuesta y omisión</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="sec1-3.html"><a href="sec1-3.html#el-conteo-observado-como-variable-aleatoria"><i class="fa fa-check"></i><b>1.3.1</b> El conteo observado como variable aleatoria</a></li>
+<li class="chapter" data-level="1.3.2" data-path="sec1-3.html"><a href="sec1-3.html#heterogeneidad-espacial-de-la-cobertura"><i class="fa fa-check"></i><b>1.3.2</b> Heterogeneidad espacial de la cobertura</a></li>
+<li class="chapter" data-level="1.3.3" data-path="sec1-3.html"><a href="sec1-3.html#modelos-para-la-tasa-de-cobertura"><i class="fa fa-check"></i><b>1.3.3</b> Modelos para la tasa de cobertura</a></li>
+<li class="chapter" data-level="1.3.4" data-path="sec1-3.html"><a href="sec1-3.html#no-respuesta-y-omisi%C3%B3n-estructural"><i class="fa fa-check"></i><b>1.3.4</b> No respuesta y omisión estructural</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="resumen-del-capítulo.html"><a href="resumen-del-capítulo.html"><i class="fa fa-check"></i><b>1.4</b> Resumen del capítulo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>2</b> Parts</a></li>
+<li class="chapter" data-level="3" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>3</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>3.1</b> Footnotes</a></li>
+<li class="chapter" data-level="3.2" data-path="citations.html"><a href="citations.html"><i class="fa fa-check"></i><b>3.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>4</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="equations.html"><a href="equations.html"><i class="fa fa-check"></i><b>4.1</b> Equations</a></li>
+<li class="chapter" data-level="4.2" data-path="theorems-and-proofs.html"><a href="theorems-and-proofs.html"><i class="fa fa-check"></i><b>4.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="4.3" data-path="callout-blocks.html"><a href="callout-blocks.html"><i class="fa fa-check"></i><b>4.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>5</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>5.1</b> Publishing</a></li>
+<li class="chapter" data-level="5.2" data-path="pages.html"><a href="pages.html"><i class="fa fa-check"></i><b>5.2</b> 404 pages</a></li>
+<li class="chapter" data-level="5.3" data-path="metadata-for-sharing.html"><a href="metadata-for-sharing.html"><i class="fa fa-check"></i><b>5.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sec1-1" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Producción de conteos censales<a href="sec1-1.html#sec1-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sec1-1-1" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Producción subnacional<a href="sec1-1.html#sec1-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El objetivo primario de un censo de población y vivienda es producir un conteo exhaustivo
+de personas y unidades habitacionales en un territorio y momento determinados. En términos
+formales, sea <span class="math inline">\(\mathcal{U}\)</span> el universo de personas presentes en el territorio nacional en la
+fecha de referencia censal. El conteo censal aspira a determinar <span class="math inline">\(N = |\mathcal{U}|\)</span>, el
+cardinal de ese universo, así como su distribución sobre una partición territorial
+<span class="math inline">\(\{A_1, A_2, \ldots, A_I\}\)</span> tal que <span class="math inline">\(\bigcup_{i=1}^{I} A_i = \mathcal{A}\)</span> y
+<span class="math inline">\(A_i \cap A_j = \emptyset\)</span> para <span class="math inline">\(i \neq j\)</span>, donde <span class="math inline">\(\mathcal{A}\)</span> denota el territorio nacional.
+El conteo verdadero en cada unidad geográfica <span class="math inline">\(A_i\)</span> es</p>
+<p><span class="math display">\[N_i = |\{u \in \mathcal{U} : u \in A_i\}|, \quad i = 1, \ldots, I, \tag{1.1}\]</span></p>
+<p>de manera que <span class="math inline">\(\sum_{i=1}^{I} N_i = N\)</span>.</p>
+<p>La producción subnacional de conteos no es una derivación trivial de la operación censal
+nacional. Implica resolver, para cada persona enumerada, su asignación inequívoca a una
+unidad geográfica dentro de la jerarquía territorial oficial, proceso que está sujeto a errores
+de clasificación geográfica cuando los límites político-administrativos son difusos, cuando
+los sistemas de georreferenciación de viviendas son imprecisos o cuando la cartografía
+censal presenta inconsistencias con los registros catastrales vigentes.</p>
+<p>Desde el punto de vista operativo, el conteo subnacional requiere que la cartografía censal
+previa al operativo sea suficientemente precisa para asegurar que cada segmento censal
+quede contenido inequívocamente dentro de la unidad geográfica de nivel superior a la que
+pertenece. Las inconsistencias cartográficas —frecuentes en áreas limítrofes entre municipios,
+en zonas de expansión urbana reciente y en territorios donde los límites administrativos han
+sido modificados entre rondas censales— introducen errores sistemáticos de clasificación
+que afectan los conteos a nivel subnacional incluso cuando la cobertura nacional es aceptable.</p>
+</div>
+<div id="sec1-1-2" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Desagregación por sexo y edad<a href="sec1-1.html#sec1-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conteos que se requieren en la práctica estadística no son únicamente marginales sobre
+la dimensión geográfica. La mayoría de los usos institucionales de los datos censales
+demandan conteos cruzados por sexo y edad, que son los dos atributos demográficos
+fundamentales para la construcción de estructuras de población, tasas vitales y proyecciones.</p>
+<p>Sea <span class="math inline">\(\mathcal{S} = \{M, F\}\)</span> el conjunto de categorías de sexo (masculino y femenino) y
+<span class="math inline">\(\mathcal{E} = \{e_1, e_2, \ldots, e_E\}\)</span> una partición del continuo etario en <span class="math inline">\(E\)</span> grupos de
+edad. El conteo tridimensional verdadero se denota</p>
+<p><span class="math display">\[N_{i,s,e} = |\{u \in \mathcal{U} : u \in A_i,\; \text{sexo}(u) = s,\; \text{edad}(u) \in e\}|, \tag{1.2}\]</span></p>
+<p>con <span class="math inline">\(i = 1, \ldots, I\)</span>, <span class="math inline">\(s \in \mathcal{S}\)</span>, <span class="math inline">\(e \in \mathcal{E}\)</span>. Los conteos marginales se
+recuperan por agregación:</p>
+<p><span class="math display">\[N_{i,s} = \sum_{e \in \mathcal{E}} N_{i,s,e}, \quad N_{i,e} = \sum_{s \in \mathcal{S}} N_{i,s,e}, \quad N_i = \sum_{s \in \mathcal{S}} \sum_{e \in \mathcal{E}} N_{i,s,e}. \tag{1.3}\]</span></p>
+<p>La granularidad de la partición etaria <span class="math inline">\(\mathcal{E}\)</span> varía según el uso previsto. Para la
+construcción de marcos muestrales, los grupos quinquenales estándar (<span class="math inline">\([0,4]\)</span>, <span class="math inline">\([5,9]\)</span>, <span class="math inline">\(\ldots\)</span>,
+<span class="math inline">\([80,84]\)</span>, <span class="math inline">\([85+]\)</span>) son suficientes. Para proyecciones demográficas mediante el método de
+componentes de cohorte, se requieren grupos anuales de edad para las cohortes en edad
+reproductiva. Para la asignación de prestaciones sociales vinculadas a umbrales etarios, los
+cortes relevantes son los definidos normativamente (p.ej., <span class="math inline">\([0,5]\)</span>, <span class="math inline">\([6,14]\)</span>, <span class="math inline">\([15,17]\)</span>,
+<span class="math inline">\([18,64]\)</span>, <span class="math inline">\([65+]\)</span>).</p>
+<p>Un problema frecuente en la producción subnacional de conteos por edad es la acumulación
+de declaraciones sobre dígitos terminales preferidos —el fenómeno conocido como
+<em>age heaping</em>— y la subdeclaración sistemática de la edad de ciertos grupos. En censos de
+la región, los niños menores de cinco años presentan tasas de subenumeración consistentemente
+superiores al promedio, mientras que en poblaciones rurales con baja escolarización persisten
+errores sistemáticos de declaración etaria que sesgan la estructura de edad observada
+respecto de la real.</p>
+</div>
+<div id="sec1-1-3" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Uso en marcos muestrales<a href="sec1-1.html#sec1-1-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una de las funciones estratégicas menos visibles pero más determinantes de los conteos
+censales subnacionales es su papel como insumo para la construcción y actualización de
+marcos muestrales. Un marco muestral es la representación operativa de la población de
+referencia que permite la selección probabilística de unidades de observación para encuestas
+por muestreo. En el contexto de las encuestas de hogares nacionales, el marco muestral
+estándar en América Latina es de tipo áreas o cartográfico, articulado en dos etapas: una
+primera selección de segmentos censales y una segunda selección de viviendas dentro de
+los segmentos seleccionados.</p>
+<p>Para que este diseño sea probabilístico y permita inferencia válida sobre la población, es
+necesario que el marco muestral de primera etapa contenga, para cada segmento censal
+<span class="math inline">\(i\)</span>, una medida de tamaño <span class="math inline">\(M_i\)</span> proporcional al número de viviendas o personas presentes.
+Esta medida de tamaño es, precisamente, el conteo censal <span class="math inline">\(N_i\)</span> —o una función de él—.
+Cuando los conteos censales presentan errores sistemáticos de cobertura concentrados en
+ciertos tipos de segmentos (rurales dispersos, asentamientos informales, zonas de riesgo),
+la medida de tamaño del marco muestral queda sesgada, y las estimaciones de las encuestas
+posteriores heredan ese sesgo a través del diseño muestral.</p>
+<p>El mecanismo de transmisión del error censal hacia las estimaciones de encuesta puede
+formalizarse del siguiente modo. Sea <span class="math inline">\(\pi_i \propto M_i\)</span> la probabilidad de selección del
+segmento <span class="math inline">\(i\)</span> en un diseño <span class="math inline">\(\pi\)</span>ps (probabilidad proporcional al tamaño). Si el marco contiene
+el conteo observado <span class="math inline">\(y_i = N_i \cdot \phi_i\)</span> en lugar del conteo verdadero <span class="math inline">\(N_i\)</span>, donde
+<span class="math inline">\(\phi_i\)</span> es la tasa de cobertura del segmento, entonces</p>
+<p><span class="math display">\[\pi_i^{\text{obs}} = \frac{y_i}{\sum_j y_j} = \frac{N_i \phi_i}{\sum_j N_j \phi_j} \neq \frac{N_i}{\sum_j N_j} = \pi_i^{\text{true}}, \tag{1.4}\]</span></p>
+<p>lo que implica que los segmentos con baja cobertura (<span class="math inline">\(\phi_i &lt; 1\)</span>) quedan subrepresentados
+en el marco y, consecuentemente, en las muestras extraídas de él. Los estimadores de
+Horvitz-Thompson construidos con los pesos de diseño derivados de <span class="math inline">\(\pi_i^{\text{obs}}\)</span>
+son inconsistentes para los totales poblacionales cuando <span class="math inline">\(\phi_i\)</span> es heterogéneo entre
+segmentos.</p>
+<p>La actualización del marco muestral es, en consecuencia, un proceso que no puede basarse
+exclusivamente en el conteo censal publicado cuando se tiene razón para creer que la
+cobertura es diferencial por tipo de segmento. Los modelos estadísticos desarrollados en
+este libro producen estimaciones corregidas de <span class="math inline">\(N_i\)</span> que, al incorporar información auxiliar
+sobre las características de los segmentos, pueden mitigar este problema de manera
+sistemática.</p>
+</div>
+<div id="sec1-1-4" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Definición de dominios: la jerarquía territorial<a href="sec1-1.html#sec1-1-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conteos y estimaciones de población se requieren en distintos niveles de la jerarquía
+territorial administrativa. A efectos de este libro, se considera una jerarquía de cuatro
+niveles que refleja la estructura político-administrativa típica de los países de América
+Latina:</p>
+<ul>
+<li><strong>Nivel 1 (<span class="math inline">\(\mathcal{D}_1\)</span>):</strong> dominio nacional, que corresponde al total del país.</li>
+<li><strong>Nivel 2 (<span class="math inline">\(\mathcal{D}_2\)</span>):</strong> primer nivel subnacional, denominado según el país
+departamento, provincia o estado.</li>
+<li><strong>Nivel 3 (<span class="math inline">\(\mathcal{D}_3\)</span>):</strong> segundo nivel subnacional, denominado municipio, cantón,
+distrito o similar.</li>
+<li><strong>Nivel 4 (<span class="math inline">\(\mathcal{D}_4\)</span>):</strong> unidad censal básica, denominada segmento, sección o
+sector censal.</li>
+</ul>
+<p>Esta jerarquía define una partición anidada del territorio: cada unidad de nivel <span class="math inline">\(k+1\)</span> está
+contenida en exactamente una unidad de nivel <span class="math inline">\(k\)</span>. Sea <span class="math inline">\(\mathcal{P}(i, k)\)</span> la unidad de
+nivel <span class="math inline">\(k\)</span> que contiene a la unidad <span class="math inline">\(i\)</span> de nivel 4. Entonces, la consistencia jerárquica de
+los conteos exige que</p>
+<p><span class="math display">\[N^{(k)}_j = \sum_{i \,:\, \mathcal{P}(i,k) = j} N^{(4)}_i \quad \text{para todo } j \text{ en nivel } k, \tag{1.5}\]</span></p>
+<p>donde <span class="math inline">\(N^{(k)}_j\)</span> denota la población verdadera de la unidad <span class="math inline">\(j\)</span> en el nivel <span class="math inline">\(k\)</span>.
+Esta propiedad, que es trivialmente satisfecha por los conteos verdaderos, puede ser
+violada por las estimaciones cuando se aplican modelos independientes en cada nivel
+sin imponer restricciones de agregación. La consistencia jerárquica es un requisito de
+coherencia interna indispensable para la utilidad institucional de las estimaciones y
+constituye uno de los problemas que aborda explícitamente el Capítulo 8.</p>
+<p>La Tabla <a href="sec1-1.html#tab:tab-jerarquia">1.1</a> resume la estructura territorial de tres países de la región
+con diferencias relevantes en términos de densidad de dominios, historia censal reciente
+y disponibilidad de fuentes auxiliares.</p>
+<table>
+<caption><span id="tab:tab-jerarquia">Tabla 1.1: </span>Estructura territorial y contexto censal en tres países de referencia</caption>
+<colgroup>
+<col width="10%" />
+<col width="19%" />
+<col width="19%" />
+<col width="21%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">País</th>
+<th align="left">Nivel 2</th>
+<th align="left">Nivel 3</th>
+<th align="left">Nivel 4 (aprox.)</th>
+<th align="left">Último censo</th>
+<th align="center">INE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Bolivia</td>
+<td align="left">9 departamentos</td>
+<td align="left">339 municipios</td>
+<td align="left">~70.000 segmentos</td>
+<td align="left">2024</td>
+<td align="center">INE Bolivia</td>
+</tr>
+<tr class="even">
+<td align="left">Colombia</td>
+<td align="left">33 departamentos</td>
+<td align="left">1.103 municipios</td>
+<td align="left">~250.000 segmentos</td>
+<td align="left">2018</td>
+<td align="center">DANE</td>
+</tr>
+<tr class="odd">
+<td align="left">Paraguay</td>
+<td align="left">17 departamentos</td>
+<td align="left">254 distritos</td>
+<td align="left">~22.000 segmentos</td>
+<td align="left">2022</td>
+<td align="center">DGEEC</td>
+</tr>
+</tbody>
+</table>
+<p>Las diferencias en la densidad de dominios tienen implicaciones directas sobre el tamaño
+medio de los segmentos censales y, por tanto, sobre la variabilidad estadística de los
+conteos a nivel de segmento. Un segmento censal en Colombia tiene, en promedio, alrededor
+de 170 a 200 viviendas particulares en zonas urbanas y significativamente menos en zonas
+rurales dispersas. En Bolivia y Paraguay, los segmentos rurales pueden contener tan solo
+20 a 30 viviendas, situación que genera conteos de muy baja magnitud con alta variabilidad
+relativa y escasa capacidad para sustentar estimaciones directas precisas.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cap1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec1-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/2021ASDA/02-Modelos_poblacion.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Análisis de encuestas con R.pdf", "Análisis de encuestas con R.epub", "Análisis de encuestas con R.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "tconfig": null
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

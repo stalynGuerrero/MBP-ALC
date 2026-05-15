@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Footnotes and citations | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
+  <title>1.1 Producción de conteos censales | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
   <meta name="description" content="Este es el repositorio del libro Análisis de encuestas con R." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 3 Footnotes and citations | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta property="og:title" content="1.1 Producción de conteos censales | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
   <meta name="github-repo" content="psirusteam/2021ASDA" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Footnotes and citations | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta name="twitter:title" content="1.1 Producción de conteos censales | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
   
   <meta name="twitter:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="parts.html"/>
-<link rel="next" href="footnotes.html"/>
+<link rel="prev" href="enfoque-general-de-los-modelos-de-población.html"/>
+<link rel="next" href="producción-subnacional.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -190,16 +190,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="footnotes-and-citations" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Footnotes and citations<a href="footnotes-and-citations.html#footnotes-and-citations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="producción-de-conteos-censales" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Producción de conteos censales<a href="producción-de-conteos-censales.html#producci%C3%B3n-de-conteos-censales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La producción de conteos poblacionales constituye uno de los procesos más relevantes dentro de los sistemas estadísticos nacionales. A través de los censos de población y vivienda, los países construyen la base demográfica utilizada para la planificación pública, la elaboración de indicadores sociales, la construcción de marcos muestrales y la formulación de políticas territoriales. En términos operativos y metodológicos, el censo representa la única operación estadística diseñada para enumerar exhaustivamente la población residente dentro de un territorio nacional bajo un mismo marco conceptual, temporal y geográfico.</p>
+<p>Los conteos censales no solo permiten conocer cuántas personas habitan un país, sino también cómo se distribuyen territorialmente y cómo se estructuran según características demográficas básicas como sexo y edad. Esta información es utilizada posteriormente en una gran variedad de procesos institucionales: proyecciones demográficas, encuestas de hogares, sistemas de focalización social, distribución presupuestaria, delimitación administrativa y producción de estadísticas subnacionales.</p>
+<p>En la práctica, la producción censal implica mucho más que el levantamiento de información en campo. Detrás de los conteos publicados existe una estructura compleja de actualización cartográfica, segmentación territorial, logística operativa, capacitación, validación y conciliación estadística. Cada una de estas etapas introduce potenciales fuentes de error que afectan la calidad final de las estimaciones poblacionales.</p>
+<p>Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura. La enumeración de la población nunca es perfecta. Existen personas que no son censadas, viviendas que no son visitadas, individuos registrados más de una vez o registros asignados incorrectamente a un territorio distinto. Estos problemas tienden a concentrarse en determinados contextos territoriales y sociales: áreas rurales dispersas, asentamientos informales, territorios indígenas, zonas fronterizas o áreas urbanas con alta movilidad poblacional.</p>
+<p>En América Latina y el Caribe, estas dificultades adquieren una dimensión particularmente importante debido a la elevada heterogeneidad territorial de la región. Los países presentan diferencias sustanciales en capacidad operativa, actualización cartográfica, infraestructura estadística y disponibilidad de registros administrativos. Adicionalmente, muchos territorios enfrentan condiciones geográficas complejas que dificultan las labores de enumeración y supervisión censal.</p>
+<p>La ronda censal de 2020 evidenció nuevamente estas limitaciones. Diversos países experimentaron retrasos operativos asociados a restricciones presupuestarias, conflictos sociales y efectos derivados de la pandemia de COVID-19. Como resultado, varios sistemas estadísticos enfrentaron dificultades para mantener continuidad temporal y coherencia territorial en sus conteos poblacionales.</p>
+<p>A medida que aumenta el nivel de desagregación geográfica, los problemas de cobertura se vuelven más visibles. Mientras que a nivel nacional algunos errores pueden compensarse parcialmente entre regiones, en niveles territoriales pequeños las omisiones o duplicaciones generan distorsiones importantes sobre indicadores demográficos y sociales. Esto afecta directamente la capacidad de los gobiernos para asignar recursos, diseñar programas y producir estadísticas territoriales consistentes.</p>
+<p>En este contexto, la producción moderna de conteos poblacionales requiere complementar el operativo censal tradicional con mecanismos de validación, integración de fuentes auxiliares y modelamiento estadístico. Los modelos bayesianos de población surgen precisamente como una respuesta metodológica a este problema, permitiendo integrar información proveniente de distintas fuentes y representar explícitamente la incertidumbre asociada a los conteos observados.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="parts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="footnotes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="enfoque-general-de-los-modelos-de-población.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="producción-subnacional.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -230,7 +238,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/psirusteam/2021ASDA/04-citations.Rmd",
+    "link": "https://github.com/psirusteam/2021ASDA/02-Modelos_poblacion.Rmd",
     "text": "Edit"
   },
   "history": {

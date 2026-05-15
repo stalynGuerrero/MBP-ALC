@@ -8,7 +8,6 @@ Libro completo sobre implementación, validación y aplicación subnacional de m
 **Audiencia:** Estadísticos, demógrafos, profesionales de institutos nacionales de estadística  
 **Formato final:** PDF con capítulos, ecuaciones, código y apéndices
 
----
 
 ## Estructura del Libro
 

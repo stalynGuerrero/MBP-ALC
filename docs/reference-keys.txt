@@ -1,10 +1,11 @@
-fig:nice-fig
-tab:nice-tab
 eq:binom
 thm:tri
-cross
-chapters-and-sub-chapters
-captioned-figures-and-tables
+enfoque-general-de-los-modelos-de-población
+producción-de-conteos-censales
+producción-subnacional
+desagregación-por-sexo-y-edad
+uso-en-marcos-muestrales
+definición-de-dominios
 parts
 footnotes-and-citations
 footnotes
