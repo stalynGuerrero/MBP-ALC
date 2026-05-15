@@ -1,4 +1,4 @@
-Introducción {-}
+# Introducción {-}
 
 La producción de conteos poblacionales constituye uno de los procesos estadísticos más complejos y estratégicos desarrollados por los institutos nacionales de estadística. Los censos de población y vivienda no solo permiten cuantificar el tamaño de la población, sino también establecer la estructura demográfica, definir marcos de referencia territoriales y generar la base operativa para una gran parte de las estadísticas oficiales producidas posteriormente por los países.
 
