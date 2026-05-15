@@ -1,11 +1,13 @@
-# Hello bookdown 
+Introducción {-}
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (`#`) per .Rmd file.
+La producción de conteos poblacionales constituye uno de los procesos estadísticos más complejos y estratégicos desarrollados por los institutos nacionales de estadística. Los censos de población y vivienda no solo permiten cuantificar el tamaño de la población, sino también establecer la estructura demográfica, definir marcos de referencia territoriales y generar la base operativa para una gran parte de las estadísticas oficiales producidas posteriormente por los países.
 
-## A section
+A nivel subnacional, los conteos censales son utilizados en procesos de planificación territorial, asignación presupuestal, focalización de programas sociales, construcción de marcos muestrales, producción de indicadores sociales y elaboración de proyecciones demográficas. La calidad de estas aplicaciones depende directamente de la precisión y coherencia de los conteos poblacionales observados en cada unidad geográfica.
 
-All chapter sections start with a second-level (`##`) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+Sin embargo, la producción censal enfrenta limitaciones estructurales asociadas a errores de cobertura, omisión, duplicación y clasificación territorial. Estos problemas no se distribuyen homogéneamente en el territorio. Por el contrario, suelen concentrarse en áreas con alta dispersión poblacional, asentamientos informales, zonas rurales de difícil acceso, territorios indígenas y contextos urbanos con elevada movilidad poblacional.
 
-### An unnumbered section {-}
+Como consecuencia, los conteos observados durante el operativo censal no necesariamente representan la población verdadera presente en cada unidad geográfica. Esta situación se vuelve particularmente crítica en niveles territoriales pequeños, donde errores relativamente reducidos en términos absolutos pueden generar distorsiones importantes en tasas, indicadores derivados y procesos de asignación institucional.
 
-Chapters and sections are numbered by default. To un-number a heading, add a `{.unnumbered}` or the shorter `{-}` at the end of the heading, like in this section.
+Frente a este problema, los sistemas estadísticos modernos han comenzado a incorporar metodologías de integración de múltiples fuentes de información orientadas a fortalecer, ajustar y validar los conteos censales. Entre estas fuentes se incluyen preconteos operativos, registros administrativos, cartografía censal, imágenes satelitales y modelos espaciales derivados de información georreferenciada.
+
+En este contexto, los modelos bayesianos jerárquicos ofrecen un marco probabilístico flexible para representar explícitamente la incertidumbre asociada al proceso de enumeración poblacional y combinar información procedente de distintas fuentes bajo un esquema coherente de inferencia estadística.
