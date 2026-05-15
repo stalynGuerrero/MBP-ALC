@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.2 Indicadores de interés | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
+  <meta name="description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.2 Indicadores de interés | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="github-repo" content="psirusteam/2021ASDA" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.2 Indicadores de interés | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  
+
+<meta name="author" content="Andrés Gutiérrez,Stalyn Guerrero" />
+
+
+<meta name="date" content="2026-05-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="producción-de-conteos-censales.html"/>
+<link rel="next" href="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal.html"><a href="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal.html"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>2</b> Parts</a></li>
+<li class="chapter" data-level="3" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>3</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>3.1</b> Footnotes</a></li>
+<li class="chapter" data-level="3.2" data-path="citations.html"><a href="citations.html"><i class="fa fa-check"></i><b>3.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>4</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="equations.html"><a href="equations.html"><i class="fa fa-check"></i><b>4.1</b> Equations</a></li>
+<li class="chapter" data-level="4.2" data-path="theorems-and-proofs.html"><a href="theorems-and-proofs.html"><i class="fa fa-check"></i><b>4.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="4.3" data-path="callout-blocks.html"><a href="callout-blocks.html"><i class="fa fa-check"></i><b>4.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>5</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>5.1</b> Publishing</a></li>
+<li class="chapter" data-level="5.2" data-path="pages.html"><a href="pages.html"><i class="fa fa-check"></i><b>5.2</b> 404 pages</a></li>
+<li class="chapter" data-level="5.3" data-path="metadata-for-sharing.html"><a href="metadata-for-sharing.html"><i class="fa fa-check"></i><b>5.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="indicadores-de-interés" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Indicadores de interés<a href="indicadores-de-interés.html#indicadores-de-inter%C3%A9s" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La producción de conteos censales tiene como propósito central generar información estadística que permita caracterizar la dinámica demográfica y territorial de la población. A partir de los datos censales es posible construir un amplio conjunto de indicadores utilizados en procesos de planificación, evaluación de políticas públicas, asignación presupuestaria y análisis socioeconómico.</p>
+<p>Los indicadores derivados de los censos no solo describen el tamaño de la población, sino también su distribución espacial, estructura etaria, composición por sexo y condiciones territoriales. Estos indicadores constituyen además el punto de partida para procesos posteriores de estimación, proyección demográfica y construcción de estadísticas oficiales.</p>
+<p>En América Latina y el Caribe, la creciente demanda de información subnacional ha incrementado la necesidad de producir indicadores con alta desagregación territorial. Los gobiernos requieren estadísticas consistentes para departamentos, municipios, áreas urbanas y rurales, e incluso niveles operativos más pequeños como sectores y segmentos censales.</p>
+<p>Sin embargo, la producción de indicadores en dominios pequeños enfrenta limitaciones importantes asociadas a errores de cobertura, omisión censal y variabilidad espacial de los conteos. En consecuencia, muchos indicadores derivados presentan altos niveles de inestabilidad cuando se calculan directamente a partir de los conteos observados.</p>
+<p>En este contexto, resulta fundamental distinguir entre:</p>
+<ul>
+<li>conteos poblacionales básicos;</li>
+<li>tasas derivadas;</li>
+<li>y estructuras demográficas.</li>
+</ul>
+<p>Cada uno de estos componentes presenta características particulares en términos de interpretación, sensibilidad a errores de cobertura y comportamiento territorial.</p>
+<div id="conteos-poblacionales" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Conteos poblacionales<a href="indicadores-de-interés.html#conteos-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conteos poblacionales representan el insumo demográfico fundamental de los sistemas estadísticos nacionales. Su objetivo principal consiste en cuantificar el número de personas presentes o residentes dentro de un territorio determinado bajo criterios conceptuales y operativos definidos por el censo.</p>
+<p>Los conteos pueden producirse para distintos niveles geográficos y demográficos:</p>
+<ul>
+<li>país;</li>
+<li>departamento o provincia;</li>
+<li>municipio;</li>
+<li>área urbana y rural;</li>
+<li>sector censal;</li>
+<li>segmento;</li>
+<li>sexo;</li>
+<li>y grupos de edad.</li>
+</ul>
+<p>La producción de estos conteos constituye la base para prácticamente todos los procesos posteriores de análisis demográfico y estadística oficial. Las proyecciones de población, las estimaciones intercensales, los marcos muestrales y múltiples indicadores sociales dependen directamente de la calidad de los conteos iniciales.</p>
+<p>Sea:</p>
+<p><span class="math display">\[
+N_{i,s,e}
+\]</span></p>
+<p>el número de personas observadas en el dominio geográfico (i), sexo (s) y grupo de edad (e).</p>
+<p>El conteo total para un dominio geográfico puede expresarse como:</p>
+<p><span class="math display">\[
+N_i = \sum_s \sum_e N_{i,s,e}
+\]</span></p>
+<p>mientras que la población total nacional corresponde a:</p>
+<p><span class="math display">\[
+N = \sum_i N_i
+\]</span></p>
+<p>En estructuras territoriales jerárquicas, los conteos deben mantener coherencia entre niveles administrativos. Por ejemplo, el total departamental puede representarse como la suma de sus municipios:</p>
+<p><span class="math display">\[
+N_d = \sum_m N_{dm}
+\]</span></p>
+<p>y el total municipal como la suma de segmentos censales:</p>
+<p><span class="math display">\[
+N_m = \sum_g N_{mg}
+\]</span></p>
+<p>En términos generales, los conteos poblacionales pueden clasificarse en:</p>
+<ul>
+<li>conteos observados;</li>
+<li>conteos ajustados;</li>
+<li>y conteos estimados.</li>
+</ul>
+<p>Los conteos observados corresponden a la enumeración directa realizada durante el operativo censal. Los conteos ajustados incorporan correcciones asociadas a cobertura, conciliación o validación demográfica. Finalmente, los conteos estimados suelen derivarse de modelos estadísticos o procesos de integración de múltiples fuentes de información.</p>
+<p>Uno de los principales desafíos asociados a los conteos poblacionales es su sensibilidad a errores de cobertura territorial. A medida que aumenta la desagregación geográfica, pequeños errores absolutos pueden traducirse en distorsiones importantes sobre indicadores derivados.</p>
+<p>Por ejemplo, la omisión de algunos hogares en municipios pequeños puede alterar significativamente:</p>
+<ul>
+<li>estructuras etarias;</li>
+<li>tasas de dependencia;</li>
+<li>indicadores de pobreza;</li>
+<li>y necesidades estimadas de infraestructura social.</li>
+</ul>
+<p>En América Latina y el Caribe, estas dificultades son particularmente relevantes debido a:</p>
+<ul>
+<li>expansión urbana acelerada;</li>
+<li>crecimiento de asentamientos informales;</li>
+<li>movilidad territorial;</li>
+<li>dispersión rural;</li>
+<li>y heterogeneidad operativa entre países.</li>
+</ul>
+<p>Adicionalmente, la actualización cartográfica desigual entre regiones genera diferencias importantes en calidad de cobertura y precisión espacial de los conteos observados.</p>
+<p>Desde la perspectiva del modelamiento estadístico, los conteos poblacionales deben interpretarse como observaciones imperfectas de una población subyacente cuya magnitud real no es completamente observable. Esta interpretación constituye uno de los fundamentos conceptuales de los modelos bayesianos de población desarrollados en capítulos posteriores.</p>
+</div>
+<div id="tasas-derivadas" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Tasas derivadas<a href="indicadores-de-interés.html#tasas-derivadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A partir de los conteos poblacionales es posible construir un amplio conjunto de tasas e indicadores demográficos utilizados para describir dinámicas poblacionales y condiciones territoriales.</p>
+<p>Las tasas derivadas permiten transformar conteos absolutos en medidas comparables entre áreas geográficas con tamaños poblacionales diferentes. Esto facilita el análisis espacial y temporal de fenómenos demográficos y sociales.</p>
+<p>Entre los indicadores más utilizados se encuentran:</p>
+<ul>
+<li>tasas de crecimiento poblacional;</li>
+<li>densidad poblacional;</li>
+<li>tasas de dependencia;</li>
+<li>razones de masculinidad;</li>
+<li>índices de envejecimiento;</li>
+<li>y tasas específicas por grupo de edad.</li>
+</ul>
+<p>La densidad poblacional para un territorio (i) puede expresarse como:</p>
+<p><span class="math display">\[
+D_i = \frac{N_i}{A_i}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li>(N_i): población del territorio;</li>
+<li>(A_i): área geográfica.</li>
+</ul>
+<p>Por su parte, la razón de masculinidad puede definirse como:</p>
+<p><span class="math display">\[
+RM_i = \frac{N_{i,h}}{N_{i,m}} \times 100
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(N_{i,h}\)</span>: población masculina;</li>
+<li><span class="math inline">\(N_{i,m}\)</span>: población femenina.</li>
+</ul>
+<p>La tasa de dependencia demográfica se calcula generalmente como:</p>
+<p><span class="math display">\[
+TD_i = \frac{N_{i,0-14} + N_{i,65+}}{N_{i,15-64}} \times 100
+\]</span></p>
+<p>mientras que el índice de envejecimiento corresponde a:</p>
+<p><span class="math display">\[
+IE_i = \frac{N_{i,65+}}{N_{i,0-14}} \times 100
+\]</span></p>
+<p>En términos operativos, estas tasas cumplen un papel central en:</p>
+<ul>
+<li>planificación territorial;</li>
+<li>asignación de recursos;</li>
+<li>evaluación de necesidades sociales;</li>
+<li>diseño de infraestructura;</li>
+<li>y focalización de programas públicos.</li>
+</ul>
+<p>Sin embargo, las tasas derivadas presentan una sensibilidad particularmente alta a errores de cobertura censal. Dado que muchas de ellas se calculan como razones entre subgrupos poblacionales relativamente pequeños, incluso omisiones moderadas pueden producir fluctuaciones importantes.</p>
+<p>Este problema se intensifica en dominios geográficos pequeños. En municipios con baja población o segmentos censales reducidos, pequeñas diferencias en los conteos observados pueden generar tasas extremadamente inestables o inconsistentes.</p>
+<p>En América Latina y el Caribe, estas dificultades se ven amplificadas por:</p>
+<ul>
+<li>heterogeneidad territorial;</li>
+<li>desigualdad regional;</li>
+<li>migración interna;</li>
+<li>expansión metropolitana;</li>
+<li>y diferencias en calidad operativa del levantamiento censal.</li>
+</ul>
+<p>Como consecuencia, la producción de tasas subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad y coherencia territorial.</p>
+<p>Desde el punto de vista estadístico, muchas tasas derivadas pueden beneficiarse de enfoques de modelamiento probabilístico que permitan:</p>
+<ul>
+<li>estabilizar estimaciones;</li>
+<li>incorporar dependencia espacial;</li>
+<li>integrar información auxiliar;</li>
+<li>y representar explícitamente la incertidumbre asociada a los conteos base.</li>
+</ul>
+</div>
+<div id="estructuras-etarias" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Estructuras etarias<a href="indicadores-de-interés.html#estructuras-etarias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender dinámicas asociadas a fecundidad, mortalidad, migración, envejecimiento y transición demográfica.</p>
+<p>Los censos de población representan la principal fuente de información para caracterizar estructuras etarias con alta desagregación territorial. A partir de esta información es posible construir:</p>
+<ul>
+<li>pirámides poblacionales;</li>
+<li>grupos quinquenales de edad;</li>
+<li>relaciones de dependencia;</li>
+<li>índices de envejecimiento;</li>
+<li>y proyecciones demográficas.</li>
+</ul>
+<p>Sea:</p>
+<p><span class="math display">\[
+P_{i,e}
+\]</span></p>
+<p>la población del área geográfica (i) perteneciente al grupo de edad (e).</p>
+<p>La proporción poblacional correspondiente a un grupo etario específico puede expresarse como:</p>
+<p><span class="math display">\[
+PE_{i,e} = \frac{P_{i,e}}{P_i}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(P_i\)</span>: población total del área.</li>
+</ul>
+<p>La estructura etaria suele organizarse en grupos quinquenales:</p>
+<p><span class="math display">\[
+0-4,\ 5-9,\ 10-14,\ \ldots,\ 80+
+\]</span></p>
+<p>debido a su estabilidad demográfica y compatibilidad con modelos de proyección poblacional.</p>
+<p>Uno de los indicadores más utilizados corresponde al índice de envejecimiento:</p>
+<p><span class="math display">\[
+IE_i = \frac{P_{i,65+}}{P_{i,0-14}} \times 100
+\]</span></p>
+<p>mientras que la relación de dependencia demográfica puede escribirse como:</p>
+<p><span class="math display">\[
+RD_i = \frac{P_{i,0-14} + P_{i,65+}}{P_{i,15-64}} \times 100
+\]</span></p>
+<p>En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes entre países y territorios. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional, otras regiones mantienen estructuras jóvenes asociadas a mayores niveles de fecundidad y menor transición demográfica.</p>
+<p>Estas diferencias tienen implicaciones directas sobre:</p>
+<ul>
+<li>demanda de servicios públicos;</li>
+<li>sistemas de salud;</li>
+<li>infraestructura educativa;</li>
+<li>mercados laborales;</li>
+<li>y sostenibilidad de sistemas de protección social.</li>
+</ul>
+<p>La producción de estructuras etarias subnacionales enfrenta importantes desafíos operativos y estadísticos. Los errores de cobertura no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la omisión censal tiende a concentrarse en:</p>
+<ul>
+<li>niños pequeños;</li>
+<li>hombres jóvenes;</li>
+<li>migrantes;</li>
+<li>población indígena;</li>
+<li>y habitantes de zonas rurales dispersas.</li>
+</ul>
+<p>Como resultado, la distribución observada por edad puede diferir significativamente de la estructura demográfica verdadera.</p>
+<p>En áreas pequeñas, este problema se vuelve aún más crítico debido al reducido tamaño poblacional de algunos grupos etarios. En segmentos censales o municipios pequeños, ligeras variaciones en los conteos pueden alterar considerablemente la forma de la estructura poblacional observada.</p>
+<p>Adicionalmente, las estructuras etarias cumplen un papel fundamental en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de países dependen directamente de la calidad de la distribución inicial por edad y sexo.</p>
+<p>En el contexto de los modelos bayesianos de población, las estructuras etarias pueden incorporarse mediante esquemas jerárquicos que permiten compartir información entre grupos relacionados y estabilizar estimaciones en áreas con información limitada. Este enfoque resulta particularmente útil para dominios pequeños donde la variabilidad observada puede ser considerablemente alta.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="producción-de-conteos-censales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/2021ASDA/02-Modelos_poblacion.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Análisis de encuestas con R.pdf", "Análisis de encuestas con R.epub", "Análisis de encuestas con R.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "tconfig": null
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
