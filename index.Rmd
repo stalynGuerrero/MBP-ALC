@@ -1,50 +1,74 @@
---- 
-title: "Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional"
-author: "Andrés Gutiérrez^[Experto Regional en Estadísticas Sociales - Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org],Stalyn Guerrero^[Consultor - Comisión Económica para América Latina y el Caribe (CEPAL), guerrerostalyn@gmail.com]"
-date: "`r Sys.Date()`"
+---
+title: "Modelos Bayesianos de Población para América Latina y el Caribe"
+subtitle: "Implementación, Validación y Aplicación Subnacional"
+author: |
+  Andrés Gutiérrez^[Experto Regional en Estadísticas Sociales, CEPAL. andres.gutierrez@cepal.org]
+  Stalyn Guerrero^[Consultor, CEPAL. guerrerostalyn@gmail.com]
+date: "`r format(Sys.Date(), '%B de %Y')`"
 lang: es
 documentclass: book
-# bibliography: [CEPAL.bib]
+bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
 lot: yes
 lof: yes
-fontsize: 12pt
-geometry: margin = 3cm
-header-includes:
-  - \usepackage{amsmath}
-  - \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-  - \usepackage{hyperref}
-github-repo: psirusteam/2021ASDA
-description: "Este es el repositorio del libro *Análisis de encuestas con R*."
-knit: "bookdown::render_book"
-linkcolor: blue
-output:
-  pdf_document:
-    toc: true
-    toc_depth: 3
-    keep_tex: true
-    latex_engine: xelatex
-  gitbook:
-    df_print: kable
-    css: "style.css"
-# Compilar así:
-# bookdown::render_book("index.Rmd", "bookdown::pdf_book")
-# bookdown::render_book("index.Rmd", "bookdown::epub_book")
-# bookdown::render_book("index.Rmd", "bookdown::word_document2")
-# bookdown::preview_chapter("01.Rmd", "bookdown::word_document2")
+site: bookdown::bookdown_site
+github-repo: psirusteam/MBP-ALC
+description: >
+  Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional
+  de población en América Latina y el Caribe, con énfasis en integración de múltiples
+  fuentes de información y aplicación en institutos nacionales de estadística.
 ---
+
 # Prefacio {-}
 
+Este libro expone el marco metodológico y computacional para la producción de estimaciones
+de población subnacional mediante modelos bayesianos jerárquicos. Surge de la experiencia
+acumulada en proyectos de asistencia técnica a institutos nacionales de estadística de
+América Latina y el Caribe, en el marco de las actividades de cooperación estadística de la
+Comisión Económica para América Latina y el Caribe (CEPAL).
 
-La versión online de este libro está licenciada bajo una [Licencia Internacional de Creative Commons para compartir con atribución no comercial 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
+La motivación central es práctica: los censos de población proporcionan conteos que, en
+unidades geográficas pequeñas, presentan errores de cobertura sistemáticos y difíciles de
+cuantificar con los métodos de conciliación demográfica tradicionales. La integración de
+fuentes modernas de información —preconteos operativos, registros administrativos e
+imágenes satelitales— en un marco probabilístico coherente ofrece una respuesta
+metodológica rigurosa a este problema.
 
-Este libro es el resultado de un compendio de las experiencias internacionales prácticas adquiridas por el autor como Experto Regional en Estadísticas Sociales de la CEPAL.
+El libro combina fundamentos estadísticos formales con implementación computacional
+reproducible en R y Stan, y está dirigido a estadísticos y demógrafos de organismos
+nacionales e internacionales con formación cuantitativa de nivel avanzado.
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
+**Cómo compilar este libro**
+
+```r
+# HTML interactivo
+bookdown::render_book("index.Rmd", "bookdown::gitbook")
+
+# PDF
+bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+
+# Word (.docx)
+bookdown::render_book("index.Rmd", "bookdown::word_document2")
+```
+
+**Licencia**
+
+La versión en línea de este libro está licenciada bajo
+[Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo      = TRUE,
+  message   = FALSE,
+  warning   = FALSE,
+  fig.align = "center",
+  fig.width = 7,
+  fig.height = 4.5,
+  out.width = "90%",
+  cache     = FALSE
+)
+
+knitr::write_bib(c(.packages(), "bookdown", "knitr", "rmarkdown"), "packages.bib")
 ```

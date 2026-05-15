@@ -1,6 +1,447 @@
-# Enfoque General de los Modelos de Población
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  spanish,
+]{book}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off]{babel}
+\else
+\usepackage[bidi=default,shorthands=off]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+% ================================================================
+% MBP-ALC — Preámbulo LaTeX (XeLaTeX)
+% Estilo moderno y académico para libro técnico CEPAL
+% ================================================================
 
-## Producción de conteos censales
+% --- Fuentes via fontspec (XeLaTeX) — fonts del sistema Windows --
+% Cambria / Calibri / Consolas son fonts nativas de Windows;
+% no requieren instalación adicional en TinyTeX.
+% Para usar TeX Gyre (calidad superior), instalar primero:
+%   tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
+% y reemplazar los tres \set*font por los bloques comentados abajo.
+\usepackage{fontspec}
+
+\setmainfont{Cambria}[
+  BoldFont       = {Cambria Bold},
+  ItalicFont     = {Cambria Italic},
+  BoldItalicFont = {Cambria Bold Italic}
+]
+% Alternativa de mayor calidad (requiere instalación):
+% \setmainfont{TeX Gyre Pagella}[...]
+
+\setsansfont{Calibri}[
+  Scale          = MatchLowercase,
+  BoldFont       = {Calibri Bold},
+  ItalicFont     = {Calibri Italic},
+  BoldItalicFont = {Calibri Bold Italic}
+]
+% \setsansfont{TeX Gyre Heros}[...]
+
+\setmonofont{Consolas}[Scale=0.88]
+% \setmonofont{Inconsolata}[Scale=0.88]
+
+% --- Matemáticas ------------------------------------------------
+% Cambria Math es el motor matemático nativo de Windows y está
+% siempre disponible; empareja visualmente con Cambria.
+\usepackage{unicode-math}
+\setmathfont{Cambria Math}
+% \setmathfont{TeX Gyre Pagella Math}   % alternativa tras instalar tex-gyre-math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% --- Idioma -----------------------------------------------------
+% polyglossia/babel son cargados automáticamente por bookdown
+% a partir de lang: es en el YAML de index.Rmd.
+% No redefinir aquí para evitar el conflicto "\textspanish already defined".
+
+% --- Colores del libro ------------------------------------------
+\usepackage{xcolor}
+\definecolor{cepalnavy}{RGB}{27,  42,  74}   % azul marino CEPAL
+\definecolor{cepalblue}{RGB}{37,  99, 235}   % azul acento
+\definecolor{cepalgray}{RGB}{74,  85, 104}   % gris texto secundario
+\definecolor{cepalltbg}{RGB}{248,250,252}    % fondo código/tabla
+\definecolor{cepalborder}{RGB}{226,232,240}  % borde suave
+
+% --- Geometría de página ----------------------------------------
+\usepackage[
+  top      = 2.5cm,
+  bottom   = 3.0cm,
+  inner    = 3.0cm,
+  outer    = 2.2cm,
+  headheight = 14pt,
+  headsep    = 0.6cm
+]{geometry}
+
+% --- Interlineado -----------------------------------------------
+\usepackage{setspace}
+\setstretch{1.15}
+
+% --- Estilo de capítulos y secciones ----------------------------
+\usepackage{titlesec}
+
+% Capítulo: número grande a la derecha, título con línea inferior
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\huge\bfseries\color{cepalnavy}}
+  {%
+    \raggedleft
+    \textcolor{cepalborder}{\fontsize{72}{72}\selectfont\thechapter}%
+  }
+  {-1.2ex}
+  {%
+    \vspace{0.8ex}%
+    \textcolor{cepalblue}{\rule{\textwidth}{1.5pt}}%
+    \vspace{0.6ex}%
+  }
+  [\vspace{0.3ex}\textcolor{cepalborder}{\rule{\textwidth}{0.4pt}}]
+
+\titleformat{\section}
+  {\normalfont\sffamily\Large\bfseries\color{cepalnavy}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\sffamily\large\bfseries\color{cepalgray}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\sffamily\normalsize\bfseries\color{cepalgray}}
+  {\thesubsubsection}{1em}{}
+
+% Espaciado de secciones
+\titlespacing*{\chapter}    {0pt}{0pt}{2.8em}
+\titlespacing*{\section}    {0pt}{2.0em}{0.6em}
+\titlespacing*{\subsection} {0pt}{1.5em}{0.4em}
+
+% --- Encabezados y pies de página -------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{\color{cepalborder}\hrule width\headwidth height\headrulewidth}
+
+\fancyhead[LE]{\small\sffamily\color{cepalgray}\leftmark}
+\fancyhead[RO]{\small\sffamily\color{cepalgray}\rightmark}
+\fancyfoot[C]{\small\sffamily\color{cepalgray}\thepage}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[C]{\small\sffamily\color{cepalgray}\thepage}
+}
+
+% --- Tablas -----------------------------------------------------
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{makecell}
+
+% Encabezado de tabla con color CEPAL
+\newcommand{\tablehead}[1]{%
+  \rowcolor{cepalnavy}\color{white}\bfseries\sffamily #1%
+}
+
+% --- Código / bloques de sintaxis -------------------------------
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars = \\\{\},
+  fontsize     = \small,
+  breaklines,
+  breakanywhere,
+  frame        = leftline,
+  framerule    = 3pt,
+  rulecolor    = \color{cepalblue},
+  framesep     = 10pt,
+  fillcolor    = \color{cepalltbg},
+  numbers      = none
+}
+
+% --- Cajas especiales (notas, definiciones, etc.) ---------------
+\usepackage[most, breakable]{tcolorbox}
+
+\tcbset{
+  base style/.style={
+    enhanced, breakable,
+    fonttitle = \sffamily\bfseries\small,
+    coltitle  = white,
+    arc       = 4pt,
+    boxrule   = 0.4pt,
+    left      = 8pt,
+    right     = 8pt,
+    top       = 6pt,
+    bottom    = 6pt,
+  }
+}
+
+\newtcolorbox{nota}[1][Nota]{
+  base style,
+  title       = #1,
+  colback     = cepalltbg,
+  colframe    = cepalblue,
+  colbacktitle= cepalblue
+}
+
+\newtcolorbox{definicion}[1][Definición]{
+  base style,
+  title        = #1,
+  colback      = cepalltbg,
+  colframe     = cepalnavy,
+  colbacktitle = cepalnavy
+}
+
+\newtcolorbox{advertencia}[1][Advertencia]{
+  base style,
+  title        = #1,
+  colback      = {yellow!8!white},
+  colframe     = {orange!70!black},
+  colbacktitle = {orange!80!black}
+}
+
+% --- Figuras y leyendas -----------------------------------------
+\usepackage{caption}
+\captionsetup{
+  font        = {small, sf},
+  labelfont   = {bf, color=cepalnavy},
+  labelsep    = period,
+  justification = centering,
+  skip        = 6pt
+}
+
+% --- Hiperenlaces -----------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks  = true,
+  linkcolor   = cepalnavy,
+  citecolor   = cepalblue,
+  urlcolor    = cepalblue,
+  pdftitle    = {Modelos Bayesianos de Población para ALC},
+  pdfauthor   = {Andrés Gutiérrez y Stalyn Guerrero},
+  pdfsubject  = {Estadística demográfica bayesiana},
+  pdfkeywords = {modelos bayesianos, población, América Latina, estimación subnacional}
+}
+
+% --- Listas -----------------------------------------------------
+\usepackage{enumitem}
+\setlist{itemsep = 0.25em, parsep = 0.15em, topsep = 0.4em}
+\setlist[itemize]{leftmargin = 1.5em}
+\setlist[enumerate]{leftmargin = 1.8em}
+
+% --- Algoritmos -------------------------------------------------
+\usepackage[ruled, vlined, linesnumbered, spanish]{algorithm2e}
+
+% --- Índice y listas de figuras/tablas --------------------------
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\sffamily\bfseries\color{cepalnavy}}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily\small}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries\color{cepalnavy}}
+\setlength{\cftbeforechapskip}{0.6em}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Modelos Bayesianos de Población para América Latina y el Caribe},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Modelos Bayesianos de Población para América Latina y el Caribe}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Implementación, Validación y Aplicación Subnacional}
+\author{Andrés Gutiérrez\footnote{Experto Regional en Estadísticas Sociales, CEPAL. \href{mailto:andres.gutierrez@cepal.org}{\nolinkurl{andres.gutierrez@cepal.org}}}
+Stalyn Guerrero\footnote{Consultor, CEPAL. \href{mailto:guerrerostalyn@gmail.com}{\nolinkurl{guerrerostalyn@gmail.com}}}}
+\date{mayo de 2026}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\listoffigures
+\listoftables
+\chapter*{Prefacio}\label{prefacio}
+\addcontentsline{toc}{chapter}{Prefacio}
+
+Este libro expone el marco metodológico y computacional para la producción de estimaciones
+de población subnacional mediante modelos bayesianos jerárquicos. Surge de la experiencia
+acumulada en proyectos de asistencia técnica a institutos nacionales de estadística de
+América Latina y el Caribe, en el marco de las actividades de cooperación estadística de la
+Comisión Económica para América Latina y el Caribe (CEPAL).
+
+La motivación central es práctica: los censos de población proporcionan conteos que, en
+unidades geográficas pequeñas, presentan errores de cobertura sistemáticos y difíciles de
+cuantificar con los métodos de conciliación demográfica tradicionales. La integración de
+fuentes modernas de información ---preconteos operativos, registros administrativos e
+imágenes satelitales--- en un marco probabilístico coherente ofrece una respuesta
+metodológica rigurosa a este problema.
+
+El libro combina fundamentos estadísticos formales con implementación computacional
+reproducible en R y Stan, y está dirigido a estadísticos y demógrafos de organismos
+nacionales e internacionales con formación cuantitativa de nivel avanzado.
+
+\textbf{Cómo compilar este libro}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# HTML interactivo}
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{(}\StringTok{"index.Rmd"}\NormalTok{, }\StringTok{"bookdown::gitbook"}\NormalTok{)}
+
+\CommentTok{\# PDF}
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{(}\StringTok{"index.Rmd"}\NormalTok{, }\StringTok{"bookdown::pdf\_book"}\NormalTok{)}
+
+\CommentTok{\# Word (.docx)}
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{(}\StringTok{"index.Rmd"}\NormalTok{, }\StringTok{"bookdown::word\_document2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Licencia}
+
+La versión en línea de este libro está licenciada bajo
+\href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional}.
+
+\chapter*{Introducción}\label{introducciuxf3n}
+\addcontentsline{toc}{chapter}{Introducción}
+
+La producción de conteos poblacionales constituye uno de los procesos estadísticos más complejos y estratégicos desarrollados por los institutos nacionales de estadística. Los censos de población y vivienda no solo permiten cuantificar el tamaño de la población, sino también establecer la estructura demográfica, definir marcos de referencia territoriales y generar la base operativa para una gran parte de las estadísticas oficiales producidas posteriormente por los países.
+
+A nivel subnacional, los conteos censales son utilizados en procesos de planificación territorial, asignación presupuestal, focalización de programas sociales, construcción de marcos muestrales, producción de indicadores sociales y elaboración de proyecciones demográficas. La calidad de estas aplicaciones depende directamente de la precisión y coherencia de los conteos poblacionales observados en cada unidad geográfica.
+
+Sin embargo, la producción censal enfrenta limitaciones estructurales asociadas a errores de cobertura, omisión, duplicación y clasificación territorial. Estos problemas no se distribuyen homogéneamente en el territorio. Por el contrario, suelen concentrarse en áreas con alta dispersión poblacional, asentamientos informales, zonas rurales de difícil acceso, territorios indígenas y contextos urbanos con elevada movilidad poblacional.
+
+Como consecuencia, los conteos observados durante el operativo censal no necesariamente representan la población verdadera presente en cada unidad geográfica. Esta situación se vuelve particularmente crítica en niveles territoriales pequeños, donde errores relativamente reducidos en términos absolutos pueden generar distorsiones importantes en tasas, indicadores derivados y procesos de asignación institucional.
+
+Frente a este problema, los sistemas estadísticos modernos han comenzado a incorporar metodologías de integración de múltiples fuentes de información orientadas a fortalecer, ajustar y validar los conteos censales. Entre estas fuentes se incluyen preconteos operativos, registros administrativos, cartografía censal, imágenes satelitales y modelos espaciales derivados de información georreferenciada.
+
+En este contexto, los modelos bayesianos jerárquicos ofrecen un marco probabilístico flexible para representar explícitamente la incertidumbre asociada al proceso de enumeración poblacional y combinar información procedente de distintas fuentes bajo un esquema coherente de inferencia estadística.
+
+\chapter{Enfoque General de los Modelos de Población}\label{enfoque-general-de-los-modelos-de-poblaciuxf3n}
+
+\section{Producción de conteos censales}\label{producciuxf3n-de-conteos-censales}
 
 La producción de conteos poblacionales constituye uno de los procesos más relevantes dentro de los sistemas estadísticos nacionales. A través de los censos de población y vivienda, los países construyen la base demográfica utilizada para la planificación pública, la elaboración de indicadores sociales, la construcción de marcos muestrales y la formulación de políticas territoriales. En términos operativos y metodológicos, el censo representa la única operación estadística diseñada para enumerar exhaustivamente la población residente dentro de un territorio nacional bajo un mismo marco conceptual, temporal y geográfico.
 
@@ -18,8 +459,7 @@ A medida que aumenta el nivel de desagregación geográfica, los problemas de co
 
 En este contexto, la producción moderna de conteos poblacionales requiere complementar el operativo censal tradicional con mecanismos de validación, integración de fuentes auxiliares y modelamiento estadístico. Los modelos bayesianos de población surgen precisamente como una respuesta metodológica a este problema, permitiendo integrar información proveniente de distintas fuentes y representar explícitamente la incertidumbre asociada a los conteos observados.
 
-
-### Producción subnacional
+\subsection{Producción subnacional}\label{producciuxf3n-subnacional}
 
 Aunque los censos generan un conteo nacional de población, gran parte de su utilidad práctica se concentra en la producción de información subnacional. Los gobiernos requieren estadísticas desagregadas para departamentos, provincias, municipios, áreas urbanas y rurales, sectores censales y segmentos operativos. Es en estas escalas territoriales donde se ejecutan la mayoría de políticas públicas y procesos administrativos.
 
@@ -39,8 +479,7 @@ La producción subnacional también enfrenta desafíos asociados al crecimiento 
 
 Desde la perspectiva estadística, los conteos subnacionales deben entenderse como observaciones imperfectas de una población subyacente cuya magnitud real no es completamente observable. Esta situación motiva el uso de modelos probabilísticos capaces de integrar múltiples fuentes de información, representar explícitamente la incertidumbre y garantizar coherencia entre niveles territoriales.
 
-
-### Desagregación por sexo y edad
+\subsection{Desagregación por sexo y edad}\label{desagregaciuxf3n-por-sexo-y-edad}
 
 Uno de los principales aportes de los censos de población consiste en la posibilidad de caracterizar la estructura demográfica de la población. Los conteos no solo se producen para áreas geográficas, sino también para distintos grupos de edad y sexo. Esta desagregación constituye un insumo fundamental para el análisis demográfico, la formulación de políticas públicas y la elaboración de proyecciones poblacionales.
 
@@ -54,8 +493,7 @@ La desagregación etaria también constituye un componente central de los proces
 
 En el contexto del modelamiento bayesiano, la estructura por sexo y edad puede incorporarse mediante modelos jerárquicos que permiten compartir información entre grupos relacionados y estabilizar estimaciones en dominios con baja densidad poblacional. Esto resulta especialmente útil en áreas pequeñas donde la variabilidad observada puede ser considerablemente alta.
 
-
-### Uso en marcos muestrales
+\subsection{Uso en marcos muestrales}\label{uso-en-marcos-muestrales}
 
 Los conteos censales constituyen la principal base para la construcción de marcos muestrales utilizados en encuestas de hogares y otras operaciones estadísticas. Los sectores y segmentos definidos durante el operativo censal son utilizados posteriormente como unidades primarias de muestreo en gran parte de las encuestas nacionales desarrolladas por los institutos de estadística.
 
@@ -67,8 +505,7 @@ La segmentación censal también cumple un papel operativo fundamental en la imp
 
 En este contexto, mejorar la calidad de los conteos subnacionales no solo fortalece las estadísticas demográficas, sino también toda la infraestructura estadística utilizada posteriormente por los países para producir información social y económica.
 
-
-### Definición de dominios
+\subsection{Definición de dominios}\label{definiciuxf3n-de-dominios}
 
 La producción de estadísticas poblacionales requiere definir dominios geográficos y demográficos sobre los cuales se generan estimaciones e indicadores. Estos dominios corresponden a distintos niveles territoriales utilizados para organización administrativa, planificación pública y análisis estadístico.
 
@@ -86,7 +523,7 @@ En países como Bolivia, Paraguay y Colombia, los segmentos censales adquieren e
 
 Desde la perspectiva del modelamiento estadístico, los distintos dominios territoriales conforman una estructura jerárquica de información donde las estimaciones deben mantener coherencia entre niveles geográficos. Esta jerarquía constituye uno de los elementos centrales en el desarrollo posterior de modelos bayesianos subnacionales orientados a integración de fuentes y ajuste de cobertura.
 
-## Indicadores de interés
+\section{Indicadores de interés}\label{indicadores-de-interuxe9s}
 
 La producción de conteos censales tiene como propósito central generar información estadística que permita caracterizar la dinámica demográfica y territorial de la población. A partir de los datos censales es posible construir un amplio conjunto de indicadores utilizados en procesos de planificación, evaluación de políticas públicas, asignación presupuestaria y análisis socioeconómico.
 
@@ -98,37 +535,43 @@ Sin embargo, la producción de indicadores en dominios pequeños enfrenta limita
 
 En este contexto, resulta fundamental distinguir entre:
 
-* conteos poblacionales básicos;
-* tasas derivadas;
-* y estructuras demográficas.
+\begin{itemize}
+\tightlist
+\item
+  conteos poblacionales básicos;
+\item
+  tasas derivadas;
+\item
+  y estructuras demográficas.
+\end{itemize}
 
 Cada uno de estos componentes presenta características particulares en términos de interpretación, sensibilidad a errores de cobertura y comportamiento territorial.
 
-### Conteos poblacionales
+\subsection{Conteos poblacionales}\label{conteos-poblacionales}
 
 Los conteos poblacionales constituyen el núcleo de la producción estadística demográfica. A través de ellos, los países cuantifican la población presente o residente dentro de un territorio y construyen la base sobre la cual se desarrollan posteriormente las proyecciones demográficas, los marcos muestrales, los indicadores sociales y gran parte de las estadísticas oficiales utilizadas en procesos de planificación pública.
 
 Estos conteos son producidos para múltiples niveles de desagregación territorial y demográfica. En términos generales, la información censal se organiza para el nivel nacional, departamentos o provincias, municipios, áreas urbanas y rurales, así como para distintos grupos de edad y sexo. Esta estructura jerárquica permite caracterizar la distribución espacial de la población y construir estadísticas coherentes entre distintos niveles administrativos.
 
-Sea $N_{i,s,e}$ el número de personas en el dominio geográfico $i$, sexo $s \in \{M, F\}$ (masculino, femenino) y grupo de edad $e \in \{1, \ldots, E\}$. El conteo total de población para una unidad geográfica se obtiene por agregación sobre sexo y edad:
+Sea \(N_{i,s,e}\) el número de personas en el dominio geográfico \(i\), sexo \(s \in \{M, F\}\) (masculino, femenino) y grupo de edad \(e \in \{1, \ldots, E\}\). El conteo total de población para una unidad geográfica se obtiene por agregación sobre sexo y edad:
 
-$$
+\[
 N_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} N_{i,s,e}
-$$
+\]
 
 mientras que la población nacional corresponde a la suma sobre todos los dominios territoriales:
 
-$$
+\[
 N = \sum_{i=1}^{I} N_i
-$$
+\]
 
-La coherencia jerárquica exige que los conteos en niveles inferiores sean consistentes con los totales de los niveles superiores. Denotando con superíndice el nivel jerárquico —$N_j^{(2)}$ para un departamento $j$, $N_k^{(3)}$ para un municipio $k$ y $N_\ell^{(4)}$ para un segmento $\ell$— las restricciones de consistencia son:
+La coherencia jerárquica exige que los conteos en niveles inferiores sean consistentes con los totales de los niveles superiores. Denotando con superíndice el nivel jerárquico ---\(N_j^{(2)}\) para un departamento \(j\), \(N_k^{(3)}\) para un municipio \(k\) y \(N_\ell^{(4)}\) para un segmento \(\ell\)--- las restricciones de consistencia son:
 
-$$
+\[
 N_j^{(2)} = \sum_{k \,:\, k \subset j} N_k^{(3)}, \qquad N_k^{(3)} = \sum_{\ell \,:\, \ell \subset k} N_\ell^{(4)}
-$$
+\]
 
-donde la notación $k \subset j$ indica que el municipio $k$ pertenece al departamento $j$.
+donde la notación \(k \subset j\) indica que el municipio \(k\) pertenece al departamento \(j\).
 
 Esta coherencia jerárquica es esencial para garantizar la comparabilidad y consistencia de las estadísticas oficiales.
 
@@ -140,7 +583,7 @@ En América Latina y el Caribe, estas dificultades adquieren una relevancia espe
 
 Desde una perspectiva estadística, los conteos poblacionales no deben interpretarse como valores exactos libres de error, sino como observaciones sujetas a incertidumbre y condicionadas por las limitaciones propias del operativo censal. Esta interpretación resulta fundamental para el desarrollo posterior de modelos probabilísticos de población, donde los conteos observados se entienden como aproximaciones de una población subyacente no completamente observable.
 
-### Tasas derivadas
+\subsection{Tasas derivadas}\label{tasas-derivadas}
 
 A partir de los conteos poblacionales es posible construir un amplio conjunto de tasas e indicadores utilizados para describir dinámicas demográficas, caracterizar condiciones territoriales y apoyar procesos de planificación pública. Mientras los conteos absolutos permiten cuantificar el tamaño de la población, las tasas derivadas facilitan la comparación entre territorios con estructuras y magnitudes poblacionales diferentes.
 
@@ -150,31 +593,31 @@ Entre los indicadores más utilizados se encuentran la densidad poblacional, las
 
 La densidad poblacional permite medir la relación entre población y superficie territorial. Para un territorio (i), esta puede expresarse como:
 
-$$
+\[
 D_i = \frac{N_i}{A_i}
-$$
+\]
 
-donde $N_i$ representa la población observada y $A_i$ el área geográfica correspondiente. Este indicador es ampliamente utilizado en procesos de planificación urbana, expansión de infraestructura, análisis ambiental y organización de servicios públicos.
+donde \(N_i\) representa la población observada y \(A_i\) el área geográfica correspondiente. Este indicador es ampliamente utilizado en procesos de planificación urbana, expansión de infraestructura, análisis ambiental y organización de servicios públicos.
 
 Por su parte, la razón de masculinidad describe la relación entre población masculina y femenina dentro de un territorio determinado:
 
-$$
+\[
 \text{RM}_i = \frac{N_{i,M}}{N_{i,F}} \times 100
-$$
+\]
 
-donde $N_{i,M} = \sum_{e} N_{i,M,e}$ es la población masculina y $N_{i,F} = \sum_{e} N_{i,F,e}$ la femenina del territorio $i$. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.
+donde \(N_{i,M} = \sum_{e} N_{i,M,e}\) es la población masculina y \(N_{i,F} = \sum_{e} N_{i,F,e}\) la femenina del territorio \(i\). Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.
 
 Otro indicador ampliamente utilizado corresponde a la tasa de dependencia demográfica, la cual relaciona la población potencialmente dependiente con la población en edades productivas:
 
-$$
+\[
 \text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
-$$
+\]
 
-donde $N_{i,[a,b]} = \sum_{s} \sum_{e \,:\, e \in [a,b]} N_{i,s,e}$ denota la población del territorio $i$ en el intervalo de edad $[a, b]$. De manera complementaria, el índice de envejecimiento evalúa el peso relativo de la población adulta mayor frente a la población joven:
+donde \(N_{i,[a,b]} = \sum_{s} \sum_{e \,:\, e \in [a,b]} N_{i,s,e}\) denota la población del territorio \(i\) en el intervalo de edad \([a, b]\). De manera complementaria, el índice de envejecimiento evalúa el peso relativo de la población adulta mayor frente a la población joven:
 
-$$
+\[
 \text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
-$$
+\]
 
 Estos indicadores desempeñan un papel central en la planificación territorial y sectorial. Su utilización es frecuente en procesos de asignación presupuestaria, focalización de programas sociales, evaluación de necesidades de infraestructura y análisis de demanda potencial de servicios públicos.
 
@@ -184,39 +627,39 @@ En municipios con baja población o segmentos censales reducidos, las tasas pued
 
 Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento permiten complementar los métodos tradicionales mediante estrategias que incorporan integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.
 
-### Estructuras etarias
+\subsection{Estructuras etarias}\label{estructuras-etarias}
 
 La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender los cambios asociados a fecundidad, mortalidad, migración, envejecimiento y transición demográfica, así como las diferencias territoriales en la dinámica poblacional de los países.
 
 Los censos de población representan la principal fuente de información para caracterizar estas estructuras con altos niveles de desagregación geográfica. A partir de los conteos por edad y sexo es posible construir pirámides poblacionales, relaciones de dependencia, índices de envejecimiento y proyecciones demográficas, elementos fundamentales para la planificación social y económica.
 
-Sea $N_{i,e} = \sum_{s \in \{M,F\}} N_{i,s,e}$ la población del área $i$ en el grupo de edad $e$, obtenida por suma sobre ambos sexos. La participación relativa de cada grupo etario dentro de la población total del territorio puede expresarse como:
+Sea \(N_{i,e} = \sum_{s \in \{M,F\}} N_{i,s,e}\) la población del área \(i\) en el grupo de edad \(e\), obtenida por suma sobre ambos sexos. La participación relativa de cada grupo etario dentro de la población total del territorio puede expresarse como:
 
-$$
+\[
 p_{i,e} = \frac{N_{i,e}}{N_i}
-$$
+\]
 
-donde $N_i = \sum_{e=1}^{E} N_{i,e}$ es la población total del territorio. Por construcción, $\sum_{e=1}^{E} p_{i,e} = 1$.
+donde \(N_i = \sum_{e=1}^{E} N_{i,e}\) es la población total del territorio. Por construcción, \(\sum_{e=1}^{E} p_{i,e} = 1\).
 
 En la práctica, la estructura etaria suele organizarse utilizando grupos quinquenales de edad:
 
-$$
+\[
 0-4,\ 5-9,\ 10-14,\ \ldots,\ 80+
-$$
+\]
 
 debido a que esta agrupación proporciona mayor estabilidad demográfica y facilita la comparabilidad entre países y periodos censales. Adicionalmente, los grupos quinquenales constituyen la base utilizada en la mayoría de modelos de proyección poblacional y análisis demográficos oficiales.
 
-Los indicadores de cambio demográfico más utilizados se expresan directamente en términos de $N_{i,[a,b]}$. El índice de envejecimiento relaciona la población adulta mayor con la población joven:
+Los indicadores de cambio demográfico más utilizados se expresan directamente en términos de \(N_{i,[a,b]}\). El índice de envejecimiento relaciona la población adulta mayor con la población joven:
 
-$$
+\[
 \text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
-$$
+\]
 
-La tasa de dependencia demográfica total evalúa la presión potencial sobre la población en edades productivas y coincide con $\text{TD}_i$ definida en la sección anterior:
+La tasa de dependencia demográfica total evalúa la presión potencial sobre la población en edades productivas y coincide con \(\text{TD}_i\) definida en la sección anterior:
 
-$$
+\[
 \text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
-$$
+\]
 
 Estos indicadores son ampliamente utilizados en procesos de planificación pública debido a que permiten anticipar necesidades asociadas a educación, salud, protección social, empleo e infraestructura. Territorios con estructuras jóvenes suelen demandar mayores inversiones en sistemas educativos y servicios materno-infantiles, mientras que áreas con envejecimiento avanzado requieren una mayor capacidad de atención en salud y sistemas de cuidado.
 
@@ -230,19 +673,19 @@ Adicionalmente, las estructuras etarias cumplen un papel central en los procesos
 
 Desde la perspectiva del modelamiento estadístico, las estructuras etarias pueden entenderse como realizaciones sujetas a incertidumbre y error de cobertura. Bajo este enfoque, los modelos bayesianos jerárquicos permiten incorporar dependencia entre grupos de edad relacionados, estabilizar estimaciones en áreas con información limitada e integrar múltiples fuentes auxiliares para mejorar la coherencia territorial y demográfica de las estimaciones poblacionales.
 
-## Formulación del problema de subcobertura, no respuesta y omisión censal
+\section{Formulación del problema de subcobertura, no respuesta y omisión censal}\label{formulaciuxf3n-del-problema-de-subcobertura-no-respuesta-y-omisiuxf3n-censal}
 
 Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura asociados al operativo de enumeración. Aunque el objetivo conceptual del censo consiste en registrar exhaustivamente toda la población presente o residente dentro del territorio nacional, en la práctica siempre existen diferencias entre la población efectivamente observada y la población real presente en el territorio.
 
 Estas diferencias surgen por múltiples razones. Algunas personas no son censadas, ciertas viviendas quedan fuera del operativo, algunos registros son duplicados y, en otros casos, existen errores en la asignación territorial de la información recolectada. Como resultado, los conteos censales deben entenderse como realizaciones observadas de un proceso de enumeración sujeto a limitaciones operativas, errores cartográficos y dificultades de cobertura.
 
-Formalmente, sea $Y_{i,s,e}$ el conteo observado en el operativo censal para el territorio $i$, sexo $s$ y grupo de edad $e$, y sea $N_{i,s,e}$ la población verdadera correspondiente. La relación entre ambos puede representarse como:
+Formalmente, sea \(Y_{i,s,e}\) el conteo observado en el operativo censal para el territorio \(i\), sexo \(s\) y grupo de edad \(e\), y sea \(N_{i,s,e}\) la población verdadera correspondiente. La relación entre ambos puede representarse como:
 
-$$
+\[
 Y_{i,s,e} = N_{i,s,e} - O_{i,s,e} + D_{i,s,e} + C_{i,s,e}
-$$
+\]
 
-donde $O_{i,s,e}$ representa la omisión censal, $D_{i,s,e}$ la duplicación de personas y $C_{i,s,e}$ los errores asociados a clasificación o asignación territorial. Bajo esta formulación, los conteos observados no constituyen una medición exacta de la población, sino una aproximación afectada por distintos mecanismos de error.
+donde \(O_{i,s,e}\) representa la omisión censal, \(D_{i,s,e}\) la duplicación de personas y \(C_{i,s,e}\) los errores asociados a clasificación o asignación territorial. Bajo esta formulación, los conteos observados no constituyen una medición exacta de la población, sino una aproximación afectada por distintos mecanismos de error.
 
 En América Latina y el Caribe, la subcobertura censal presenta además una marcada heterogeneidad territorial. La omisión no ocurre aleatoriamente sobre la población ni sobre el territorio. Por el contrario, suele concentrarse en contextos específicos como asentamientos informales, zonas rurales dispersas, territorios indígenas, áreas de frontera o sectores urbanos con elevada movilidad residencial. Estas características generan patrones espaciales de cobertura diferencial que afectan directamente la calidad de los conteos subnacionales.
 
@@ -259,3 +702,7 @@ Frente a este escenario, los sistemas estadísticos han comenzado a complementar
 En este libro, el interés principal no se centra en modelar directamente tasas de cobertura, sino en estimar conteos poblacionales en segmentos censales donde existen problemas de cobertura, omisión o inconsistencias territoriales. Bajo esta perspectiva, los conteos observados se interpretan como información parcial sobre una población subyacente cuya magnitud real debe inferirse utilizando información auxiliar y estructuras jerárquicas coherentes con la organización territorial del censo.
 
 Desde esta perspectiva, los modelos bayesianos ofrecen un marco flexible para integrar múltiples fuentes de información, representar explícitamente la incertidumbre asociada a los conteos observados y estabilizar estimaciones en dominios geográficos pequeños. Los capítulos posteriores desarrollan estos elementos metodológicos y presentan estrategias orientadas específicamente a la estimación subnacional de conteos poblacionales en segmentos censales bajo esquemas probabilísticos modernos.
+
+\bibliography{book.bib,packages.bib}
+
+\end{document}

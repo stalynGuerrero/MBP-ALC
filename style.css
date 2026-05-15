@@ -1,36 +1,421 @@
-p.caption {
-  color: #777;
-  margin-top: 10px;
-}
-p code {
-  white-space: inherit;
-}
-pre {
-  word-break: normal;
-  word-wrap: normal;
-}
-pre code {
-  white-space: inherit;
+/* ================================================================
+   MBP-ALC — Estilo HTML moderno y académico
+   Fuentes: Google Fonts (Merriweather + Inter + JetBrains Mono)
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- Variables de diseño ---- */
+:root {
+  --navy:       #1B2A4A;
+  --blue:       #2563EB;
+  --blue-dk:    #1D4ED8;
+  --blue-lt:    #EFF6FF;
+  --text:       #1A202C;
+  --text-muted: #4A5568;
+  --bg:         #FFFFFF;
+  --bg-alt:     #F8FAFC;
+  --border:     #E2E8F0;
+  --code-bg:    #F1F5F9;
+  --caption:    #64748B;
+  --serif:      'Merriweather', Georgia, 'Times New Roman', serif;
+  --sans:       'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:       'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
 }
 
-.book .book-header h1 {
-  opacity: 1;
+/* ================================================================
+   CUERPO Y TIPOGRAFÍA
+   ================================================================ */
+
+body,
+.book .book-body {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.book .book-body .page-wrapper .page-inner {
+  max-width: 840px;
+  padding: 2.5rem 3rem 5rem;
+}
+
+p {
+  margin-bottom: 1.1em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ================================================================
+   ENCABEZADOS
+   ================================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sans);
+  color: var(--navy);
+  line-height: 1.3;
+  font-weight: 700;
+  margin-top: 2.2rem;
+  margin-bottom: 0.7rem;
+}
+
+h1.title {
+  font-size: 2.2rem;
+  border-bottom: 3px solid var(--blue);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+h1 {
+  font-size: 1.9rem;
+  border-bottom: 3px solid var(--blue);
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3rem;
+  margin-top: 2.4rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.8rem;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Número de sección */
+.header-section-number {
+  background: var(--blue);
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 0.75em;
+  font-weight: 700;
+  margin-right: 0.45em;
+  font-family: var(--sans);
+  vertical-align: middle;
+}
+
+/* ================================================================
+   BARRA LATERAL (TOC)
+   ================================================================ */
+
+.book-summary {
+  background: var(--navy) !important;
+  font-family: var(--sans);
+}
+
+.book-summary ul.summary li a,
+.book-summary ul.summary li span {
+  color: #94A3B8 !important;
+  font-size: 0.86rem;
+  font-weight: 400;
+  padding: 5px 16px;
+  line-height: 1.5;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.book-summary ul.summary li.active > a,
+.book-summary ul.summary li a:hover {
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,0.08) !important;
+  border-left-color: var(--blue) !important;
+  text-decoration: none;
+}
+
+.book-summary ul.summary li.divider {
+  background: rgba(255,255,255,0.1);
+  margin: 6px 0;
+}
+
+/* ================================================================
+   ENCABEZADO DE NAVEGACIÓN
+   ================================================================ */
+
+.book-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.book-header h1 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 1 !important;
+}
+
+.book-header .btn {
+  color: var(--text-muted);
+}
+
+/* ================================================================
+   CÓDIGO
+   ================================================================ */
+
+pre {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--blue) !important;
+  border-radius: 0 6px 6px 0;
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  line-height: 1.65;
+  padding: 1.1rem 1.3rem;
+  word-break: normal;
+  word-wrap: normal;
+  overflow-x: auto;
+  margin: 1.4rem 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.12em 0.4em;
+  color: #B91C1C;
+}
+
+pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ================================================================
+   TABLAS
+   ================================================================ */
+
+table {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.8rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+table thead th {
+  background: var(--navy);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 9px 14px;
+  text-align: left;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+table tbody tr:nth-child(even) {
+  background: var(--bg-alt);
+}
+
+table tbody tr:hover {
+  background: var(--blue-lt);
+  transition: background 0.12s;
+}
+
+table tbody td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+table tfoot td {
+  font-style: italic;
+  color: var(--caption);
+  font-size: 0.85em;
+  padding: 8px 14px;
+  border-top: 2px solid var(--border);
+}
+
+/* ================================================================
+   FIGURAS Y LEYENDAS
+   ================================================================ */
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin: 0.8rem auto;
+}
+
+p.caption,
+caption {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  color: var(--caption);
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+/* ================================================================
+   MATEMÁTICAS
+   ================================================================ */
+
+.math.display {
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  margin: 1.2rem 0;
+}
+
+/* ================================================================
+   CITAS / BLOCKQUOTE
+   ================================================================ */
+
+blockquote {
+  border-left: 4px solid var(--blue);
+  background: var(--bg-alt);
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.4rem;
+  border-radius: 0 6px 6px 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
   text-align: left;
 }
 
+/* ================================================================
+   NOTAS ESPECIALES (rmd boxes)
+   ================================================================ */
+
+.rmdnote, .rmdtip, .rmdwarning, .rmdimportant, .rmdcaution {
+  border-radius: 6px;
+  padding: 0.9rem 1.3rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  font-family: var(--sans);
+  font-size: 0.91rem;
+  line-height: 1.6;
+}
+
+.rmdnote {
+  background: var(--blue-lt);
+  border-color: var(--blue);
+  color: var(--navy);
+}
+
+.rmdtip {
+  background: #F0FDF4;
+  border-color: #16A34A;
+  color: #14532D;
+}
+
+.rmdwarning, .rmdcaution {
+  background: #FFFBEB;
+  border-color: #D97706;
+  color: #78350F;
+}
+
+.rmdimportant {
+  background: #FFF1F2;
+  border-color: #E11D48;
+  color: #881337;
+}
+
+/* ================================================================
+   ENLACES
+   ================================================================ */
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--blue-dk);
+  text-decoration: underline;
+}
+
+/* ================================================================
+   PORTADA (index.Rmd)
+   ================================================================ */
+
 #header .title {
-  margin-bottom: 0em;
+  font-size: 2.4rem;
+  margin-bottom: 0.3rem;
+  color: var(--navy);
 }
+
+#header .subtitle {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
 #header h4.author {
-  margin: 0;
-  color: #666;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0.15rem 0;
 }
+
 #header h4.author em {
   font-style: normal;
 }
 
-.book .book-body .page-wrapper .page-inner section.normal pre {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-color: #000;
+#header h4.date {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--caption);
+  margin-top: 0.5rem;
+}
+
+/* ================================================================
+   IMPRESIÓN
+   ================================================================ */
+
+@media print {
+  .book-summary,
+  .book-header,
+  .navigation,
+  .book-header.fixed { display: none !important; }
+
+  .book-body {
+    margin-left: 0 !important;
+  }
+
+  pre {
+    border: 1px solid #ccc;
+    background: #f9f9f9 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--caption);
+  }
 }

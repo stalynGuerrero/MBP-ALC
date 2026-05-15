@@ -1,0 +1,13 @@
+# Introducción {-}
+
+La producción de conteos poblacionales constituye uno de los procesos estadísticos más complejos y estratégicos desarrollados por los institutos nacionales de estadística. Los censos de población y vivienda no solo permiten cuantificar el tamaño de la población, sino también establecer la estructura demográfica, definir marcos de referencia territoriales y generar la base operativa para una gran parte de las estadísticas oficiales producidas posteriormente por los países.
+
+A nivel subnacional, los conteos censales son utilizados en procesos de planificación territorial, asignación presupuestal, focalización de programas sociales, construcción de marcos muestrales, producción de indicadores sociales y elaboración de proyecciones demográficas. La calidad de estas aplicaciones depende directamente de la precisión y coherencia de los conteos poblacionales observados en cada unidad geográfica.
+
+Sin embargo, la producción censal enfrenta limitaciones estructurales asociadas a errores de cobertura, omisión, duplicación y clasificación territorial. Estos problemas no se distribuyen homogéneamente en el territorio. Por el contrario, suelen concentrarse en áreas con alta dispersión poblacional, asentamientos informales, zonas rurales de difícil acceso, territorios indígenas y contextos urbanos con elevada movilidad poblacional.
+
+Como consecuencia, los conteos observados durante el operativo censal no necesariamente representan la población verdadera presente en cada unidad geográfica. Esta situación se vuelve particularmente crítica en niveles territoriales pequeños, donde errores relativamente reducidos en términos absolutos pueden generar distorsiones importantes en tasas, indicadores derivados y procesos de asignación institucional.
+
+Frente a este problema, los sistemas estadísticos modernos han comenzado a incorporar metodologías de integración de múltiples fuentes de información orientadas a fortalecer, ajustar y validar los conteos censales. Entre estas fuentes se incluyen preconteos operativos, registros administrativos, cartografía censal, imágenes satelitales y modelos espaciales derivados de información georreferenciada.
+
+En este contexto, los modelos bayesianos jerárquicos ofrecen un marco probabilístico flexible para representar explícitamente la incertidumbre asociada al proceso de enumeración poblacional y combinar información procedente de distintas fuentes bajo un esquema coherente de inferencia estadística.

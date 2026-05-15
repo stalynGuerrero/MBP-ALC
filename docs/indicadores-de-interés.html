@@ -216,22 +216,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.2.1</span> Conteos poblacionales<a href="indicadores-de-interés.html#conteos-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los conteos poblacionales constituyen el núcleo de la producción estadística demográfica. A través de ellos, los países cuantifican la población presente o residente dentro de un territorio y construyen la base sobre la cual se desarrollan posteriormente las proyecciones demográficas, los marcos muestrales, los indicadores sociales y gran parte de las estadísticas oficiales utilizadas en procesos de planificación pública.</p>
 <p>Estos conteos son producidos para múltiples niveles de desagregación territorial y demográfica. En términos generales, la información censal se organiza para el nivel nacional, departamentos o provincias, municipios, áreas urbanas y rurales, así como para distintos grupos de edad y sexo. Esta estructura jerárquica permite caracterizar la distribución espacial de la población y construir estadísticas coherentes entre distintos niveles administrativos.</p>
-<p>Sea <span class="math inline">\(N_{ise}\)</span> el número de personas observadas en el dominio geográfico <span class="math inline">\(i\)</span>, sexo <span class="math inline">\(s\)</span> y grupo de edad <span class="math inline">\(e\)</span>. El conteo total de población para un área geográfica puede representarse como:</p>
+<p>Sea <span class="math inline">\(N_{i,s,e}\)</span> el número de personas en el dominio geográfico <span class="math inline">\(i\)</span>, sexo <span class="math inline">\(s \in \{M, F\}\)</span> (masculino, femenino) y grupo de edad <span class="math inline">\(e \in \{1, \ldots, E\}\)</span>. El conteo total de población para una unidad geográfica se obtiene por agregación sobre sexo y edad:</p>
 <p><span class="math display">\[
-N_i = \sum_s \sum_e N_{ise}
+N_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} N_{i,s,e}
 \]</span></p>
-<p>mientras que la población nacional corresponde a la agregación de todos los dominios territoriales:</p>
+<p>mientras que la población nacional corresponde a la suma sobre todos los dominios territoriales:</p>
 <p><span class="math display">\[
-N = \sum_i N_i
+N = \sum_{i=1}^{I} N_i
 \]</span></p>
-<p>La lógica de agregación constituye uno de los principios fundamentales de la producción censal. Los conteos observados en niveles territoriales inferiores deben mantener consistencia con los totales publicados en niveles superiores. Por ejemplo, el total poblacional de un departamento debe corresponder a la suma de los municipios que lo componen:</p>
+<p>La coherencia jerárquica exige que los conteos en niveles inferiores sean consistentes con los totales de los niveles superiores. Denotando con superíndice el nivel jerárquico —<span class="math inline">\(N_j^{(2)}\)</span> para un departamento <span class="math inline">\(j\)</span>, <span class="math inline">\(N_k^{(3)}\)</span> para un municipio <span class="math inline">\(k\)</span> y <span class="math inline">\(N_\ell^{(4)}\)</span> para un segmento <span class="math inline">\(\ell\)</span>— las restricciones de consistencia son:</p>
 <p><span class="math display">\[
-N_d = \sum_m N_{dm}
+N_j^{(2)} = \sum_{k \,:\, k \subset j} N_k^{(3)}, \qquad N_k^{(3)} = \sum_{\ell \,:\, \ell \subset k} N_\ell^{(4)}
 \]</span></p>
-<p>y, de manera equivalente, el total municipal puede expresarse como la suma de los segmentos censales:</p>
-<p><span class="math display">\[
-N_m = \sum_g N_{mg}
-\]</span></p>
+<p>donde la notación <span class="math inline">\(k \subset j\)</span> indica que el municipio <span class="math inline">\(k\)</span> pertenece al departamento <span class="math inline">\(j\)</span>.</p>
 <p>Esta coherencia jerárquica es esencial para garantizar la comparabilidad y consistencia de las estadísticas oficiales.</p>
 <p>En la práctica, los conteos poblacionales pueden entenderse en distintos niveles. Los conteos observados corresponden directamente a la enumeración realizada durante el operativo censal. Posteriormente, algunos países incorporan procesos de conciliación y ajuste orientados a corregir problemas de cobertura o inconsistencias demográficas. Finalmente, en contextos donde existen limitaciones operativas o necesidad de actualización intercensal, los conteos pueden complementarse mediante procedimientos de estimación estadística e integración de múltiples fuentes de información.</p>
 <p>Uno de los principales desafíos asociados a los conteos poblacionales corresponde a su sensibilidad frente a errores de cobertura territorial. A medida que aumenta el nivel de desagregación geográfica, incluso pequeñas omisiones pueden generar distorsiones importantes sobre indicadores derivados. Este problema es particularmente visible en municipios pequeños, áreas rurales dispersas o segmentos censales con baja densidad poblacional, donde la omisión de algunos hogares puede modificar significativamente estructuras etarias, tasas de dependencia o indicadores sociales.</p>
@@ -250,80 +247,50 @@ D_i = \frac{N_i}{A_i}
 <p>donde <span class="math inline">\(N_i\)</span> representa la población observada y <span class="math inline">\(A_i\)</span> el área geográfica correspondiente. Este indicador es ampliamente utilizado en procesos de planificación urbana, expansión de infraestructura, análisis ambiental y organización de servicios públicos.</p>
 <p>Por su parte, la razón de masculinidad describe la relación entre población masculina y femenina dentro de un territorio determinado:</p>
 <p><span class="math display">\[
-RM_i = \frac{N_{ih}}{N_{im}} \times 100
+\text{RM}_i = \frac{N_{i,M}}{N_{i,F}} \times 100
 \]</span></p>
-<p>donde <span class="math inline">\(N_{ih}\)</span> corresponde a la población masculina y <span class="math inline">\(N_{im}\)</span> a la población femenina. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.</p>
+<p>donde <span class="math inline">\(N_{i,M} = \sum_{e} N_{i,M,e}\)</span> es la población masculina y <span class="math inline">\(N_{i,F} = \sum_{e} N_{i,F,e}\)</span> la femenina del territorio <span class="math inline">\(i\)</span>. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.</p>
 <p>Otro indicador ampliamente utilizado corresponde a la tasa de dependencia demográfica, la cual relaciona la población potencialmente dependiente con la población en edades productivas:</p>
 <p><span class="math display">\[
-TD_i = \frac{N_{i,(0-14)} + N_{i,(65+)}}{N_{i,(15-64)}} \times 100
+\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
 \]</span></p>
-<p>De manera complementaria, el índice de envejecimiento permite evaluar el peso relativo de la población adulta mayor frente a la población joven:</p>
+<p>donde <span class="math inline">\(N_{i,[a,b]} = \sum_{s} \sum_{e \,:\, e \in [a,b]} N_{i,s,e}\)</span> denota la población del territorio <span class="math inline">\(i\)</span> en el intervalo de edad <span class="math inline">\([a, b]\)</span>. De manera complementaria, el índice de envejecimiento evalúa el peso relativo de la población adulta mayor frente a la población joven:</p>
 <p><span class="math display">\[
-IE_i = \frac{N_{i,(65+)}}{N_{i,(0-14)}} \times 100
+\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
 \]</span></p>
 <p>Estos indicadores desempeñan un papel central en la planificación territorial y sectorial. Su utilización es frecuente en procesos de asignación presupuestaria, focalización de programas sociales, evaluación de necesidades de infraestructura y análisis de demanda potencial de servicios públicos.</p>
 <p>Sin embargo, las tasas derivadas presentan una sensibilidad considerable frente a errores de cobertura censal. Debido a que muchas de ellas se construyen como razones entre subgrupos poblacionales específicos, pequeñas omisiones o inconsistencias pueden generar fluctuaciones importantes en los resultados observados. Este fenómeno se vuelve particularmente evidente en dominios geográficos pequeños, donde diferencias reducidas en los conteos absolutos producen variaciones relativamente grandes en los indicadores derivados.</p>
 <p>En municipios con baja población o segmentos censales reducidos, las tasas pueden presentar comportamientos altamente inestables, especialmente cuando existen problemas de omisión diferencial por edad, sexo o localización territorial. En América Latina y el Caribe, estas dificultades suelen amplificarse debido a la heterogeneidad territorial, la expansión metropolitana acelerada, los procesos migratorios y las diferencias operativas observadas entre países y regiones.</p>
-<p>Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento probabilístico permiten complementar los métodos tradicionales mediante estrategias que incorporan dependencia espacial, integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.</p>
+<p>Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento permiten complementar los métodos tradicionales mediante estrategias que incorporan integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.</p>
 </div>
 <div id="estructuras-etarias" class="section level3 hasAnchor" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> Estructuras etarias<a href="indicadores-de-interés.html#estructuras-etarias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender dinámicas asociadas a fecundidad, mortalidad, migración, envejecimiento y transición demográfica.</p>
-<p>Los censos de población representan la principal fuente de información para caracterizar estructuras etarias con alta desagregación territorial. A partir de esta información es posible construir:</p>
-<ul>
-<li>pirámides poblacionales;</li>
-<li>grupos quinquenales de edad;</li>
-<li>relaciones de dependencia;</li>
-<li>índices de envejecimiento;</li>
-<li>y proyecciones demográficas.</li>
-</ul>
-<p>Sea:</p>
+<p>La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender los cambios asociados a fecundidad, mortalidad, migración, envejecimiento y transición demográfica, así como las diferencias territoriales en la dinámica poblacional de los países.</p>
+<p>Los censos de población representan la principal fuente de información para caracterizar estas estructuras con altos niveles de desagregación geográfica. A partir de los conteos por edad y sexo es posible construir pirámides poblacionales, relaciones de dependencia, índices de envejecimiento y proyecciones demográficas, elementos fundamentales para la planificación social y económica.</p>
+<p>Sea <span class="math inline">\(N_{i,e} = \sum_{s \in \{M,F\}} N_{i,s,e}\)</span> la población del área <span class="math inline">\(i\)</span> en el grupo de edad <span class="math inline">\(e\)</span>, obtenida por suma sobre ambos sexos. La participación relativa de cada grupo etario dentro de la población total del territorio puede expresarse como:</p>
 <p><span class="math display">\[
-P_{i,e}
+p_{i,e} = \frac{N_{i,e}}{N_i}
 \]</span></p>
-<p>la población del área geográfica (i) perteneciente al grupo de edad (e).</p>
-<p>La proporción poblacional correspondiente a un grupo etario específico puede expresarse como:</p>
-<p><span class="math display">\[
-PE_{i,e} = \frac{P_{i,e}}{P_i}
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(P_i\)</span>: población total del área.</li>
-</ul>
-<p>La estructura etaria suele organizarse en grupos quinquenales:</p>
+<p>donde <span class="math inline">\(N_i = \sum_{e=1}^{E} N_{i,e}\)</span> es la población total del territorio. Por construcción, <span class="math inline">\(\sum_{e=1}^{E} p_{i,e} = 1\)</span>.</p>
+<p>En la práctica, la estructura etaria suele organizarse utilizando grupos quinquenales de edad:</p>
 <p><span class="math display">\[
 0-4,\ 5-9,\ 10-14,\ \ldots,\ 80+
 \]</span></p>
-<p>debido a su estabilidad demográfica y compatibilidad con modelos de proyección poblacional.</p>
-<p>Uno de los indicadores más utilizados corresponde al índice de envejecimiento:</p>
+<p>debido a que esta agrupación proporciona mayor estabilidad demográfica y facilita la comparabilidad entre países y periodos censales. Adicionalmente, los grupos quinquenales constituyen la base utilizada en la mayoría de modelos de proyección poblacional y análisis demográficos oficiales.</p>
+<p>Los indicadores de cambio demográfico más utilizados se expresan directamente en términos de <span class="math inline">\(N_{i,[a,b]}\)</span>. El índice de envejecimiento relaciona la población adulta mayor con la población joven:</p>
 <p><span class="math display">\[
-IE_i = \frac{P_{i,65+}}{P_{i,0-14}} \times 100
+\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
 \]</span></p>
-<p>mientras que la relación de dependencia demográfica puede escribirse como:</p>
+<p>La tasa de dependencia demográfica total evalúa la presión potencial sobre la población en edades productivas y coincide con <span class="math inline">\(\text{TD}_i\)</span> definida en la sección anterior:</p>
 <p><span class="math display">\[
-RD_i = \frac{P_{i,0-14} + P_{i,65+}}{P_{i,15-64}} \times 100
+\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
 \]</span></p>
-<p>En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes entre países y territorios. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional, otras regiones mantienen estructuras jóvenes asociadas a mayores niveles de fecundidad y menor transición demográfica.</p>
-<p>Estas diferencias tienen implicaciones directas sobre:</p>
-<ul>
-<li>demanda de servicios públicos;</li>
-<li>sistemas de salud;</li>
-<li>infraestructura educativa;</li>
-<li>mercados laborales;</li>
-<li>y sostenibilidad de sistemas de protección social.</li>
-</ul>
-<p>La producción de estructuras etarias subnacionales enfrenta importantes desafíos operativos y estadísticos. Los errores de cobertura no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la omisión censal tiende a concentrarse en:</p>
-<ul>
-<li>niños pequeños;</li>
-<li>hombres jóvenes;</li>
-<li>migrantes;</li>
-<li>población indígena;</li>
-<li>y habitantes de zonas rurales dispersas.</li>
-</ul>
-<p>Como resultado, la distribución observada por edad puede diferir significativamente de la estructura demográfica verdadera.</p>
-<p>En áreas pequeñas, este problema se vuelve aún más crítico debido al reducido tamaño poblacional de algunos grupos etarios. En segmentos censales o municipios pequeños, ligeras variaciones en los conteos pueden alterar considerablemente la forma de la estructura poblacional observada.</p>
-<p>Adicionalmente, las estructuras etarias cumplen un papel fundamental en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de países dependen directamente de la calidad de la distribución inicial por edad y sexo.</p>
-<p>En el contexto de los modelos bayesianos de población, las estructuras etarias pueden incorporarse mediante esquemas jerárquicos que permiten compartir información entre grupos relacionados y estabilizar estimaciones en áreas con información limitada. Este enfoque resulta particularmente útil para dominios pequeños donde la variabilidad observada puede ser considerablemente alta.</p>
+<p>Estos indicadores son ampliamente utilizados en procesos de planificación pública debido a que permiten anticipar necesidades asociadas a educación, salud, protección social, empleo e infraestructura. Territorios con estructuras jóvenes suelen demandar mayores inversiones en sistemas educativos y servicios materno-infantiles, mientras que áreas con envejecimiento avanzado requieren una mayor capacidad de atención en salud y sistemas de cuidado.</p>
+<p>En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes territoriales. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional y reducción de fecundidad, otras regiones mantienen estructuras considerablemente más jóvenes asociadas a mayores niveles de natalidad y menor transición demográfica. Estas diferencias reflejan la elevada heterogeneidad demográfica de la región y generan importantes desafíos para la producción de estadísticas subnacionales comparables.</p>
+<p>La construcción de estructuras etarias confiables enfrenta además importantes limitaciones operativas. Los errores de cobertura censal no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la omisión censal tiende a concentrarse en niños pequeños, hombres jóvenes, migrantes, población indígena y habitantes de zonas rurales dispersas. Como consecuencia, la distribución observada por edad puede diferir significativamente de la estructura poblacional verdadera.</p>
+<p>Este problema se intensifica en dominios geográficos pequeños. En municipios con baja población o segmentos censales reducidos, pequeñas diferencias en los conteos observados pueden modificar considerablemente la forma de la estructura etaria y generar indicadores altamente inestables. La variabilidad observada suele aumentar aún más cuando los grupos poblacionales son desagregados simultáneamente por edad, sexo y localización territorial.</p>
+<p>Adicionalmente, las estructuras etarias cumplen un papel central en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de oficinas nacionales de estadística dependen directamente de la calidad de la distribución inicial por edad y sexo. En consecuencia, errores presentes en los conteos censales pueden propagarse hacia estimaciones futuras y afectar la consistencia temporal de las proyecciones oficiales.</p>
+<p>Desde la perspectiva del modelamiento estadístico, las estructuras etarias pueden entenderse como realizaciones sujetas a incertidumbre y error de cobertura. Bajo este enfoque, los modelos bayesianos jerárquicos permiten incorporar dependencia entre grupos de edad relacionados, estabilizar estimaciones en áreas con información limitada e integrar múltiples fuentes auxiliares para mejorar la coherencia territorial y demográfica de las estimaciones poblacionales.</p>
 </div>
 </div>
             </section>

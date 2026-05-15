@@ -110,29 +110,25 @@ Los conteos poblacionales constituyen el núcleo de la producción estadística 
 
 Estos conteos son producidos para múltiples niveles de desagregación territorial y demográfica. En términos generales, la información censal se organiza para el nivel nacional, departamentos o provincias, municipios, áreas urbanas y rurales, así como para distintos grupos de edad y sexo. Esta estructura jerárquica permite caracterizar la distribución espacial de la población y construir estadísticas coherentes entre distintos niveles administrativos.
 
-Sea $N_{ise}$ el número de personas observadas en el dominio geográfico $i$, sexo $s$ y grupo de edad $e$. El conteo total de población para un área geográfica puede representarse como:
+Sea $N_{i,s,e}$ el número de personas en el dominio geográfico $i$, sexo $s \in \{M, F\}$ (masculino, femenino) y grupo de edad $e \in \{1, \ldots, E\}$. El conteo total de población para una unidad geográfica se obtiene por agregación sobre sexo y edad:
 
 $$
-N_i = \sum_s \sum_e N_{ise}
+N_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} N_{i,s,e}
 $$
 
-mientras que la población nacional corresponde a la agregación de todos los dominios territoriales:
+mientras que la población nacional corresponde a la suma sobre todos los dominios territoriales:
 
 $$
-N = \sum_i N_i
+N = \sum_{i=1}^{I} N_i
 $$
 
-La lógica de agregación constituye uno de los principios fundamentales de la producción censal. Los conteos observados en niveles territoriales inferiores deben mantener consistencia con los totales publicados en niveles superiores. Por ejemplo, el total poblacional de un departamento debe corresponder a la suma de los municipios que lo componen:
+La coherencia jerárquica exige que los conteos en niveles inferiores sean consistentes con los totales de los niveles superiores. Denotando con superíndice el nivel jerárquico —$N_j^{(2)}$ para un departamento $j$, $N_k^{(3)}$ para un municipio $k$ y $N_\ell^{(4)}$ para un segmento $\ell$— las restricciones de consistencia son:
 
 $$
-N_d = \sum_m N_{dm}
+N_j^{(2)} = \sum_{k \,:\, k \subset j} N_k^{(3)}, \qquad N_k^{(3)} = \sum_{\ell \,:\, \ell \subset k} N_\ell^{(4)}
 $$
 
-y, de manera equivalente, el total municipal puede expresarse como la suma de los segmentos censales:
-
-$$
-N_m = \sum_g N_{mg}
-$$
+donde la notación $k \subset j$ indica que el municipio $k$ pertenece al departamento $j$.
 
 Esta coherencia jerárquica es esencial para garantizar la comparabilidad y consistencia de las estadísticas oficiales.
 
@@ -163,21 +159,21 @@ donde $N_i$ representa la población observada y $A_i$ el área geográfica corr
 Por su parte, la razón de masculinidad describe la relación entre población masculina y femenina dentro de un territorio determinado:
 
 $$
-RM_i = \frac{N_{ih}}{N_{im}} \times 100
+\text{RM}_i = \frac{N_{i,M}}{N_{i,F}} \times 100
 $$
 
-donde $N_{ih}$ corresponde a la población masculina y $N_{im}$ a la población femenina. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.
+donde $N_{i,M} = \sum_{e} N_{i,M,e}$ es la población masculina y $N_{i,F} = \sum_{e} N_{i,F,e}$ la femenina del territorio $i$. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.
 
 Otro indicador ampliamente utilizado corresponde a la tasa de dependencia demográfica, la cual relaciona la población potencialmente dependiente con la población en edades productivas:
 
 $$
-TD_i = \frac{N_{i,(0-14)} + N_{i,(65+)}}{N_{i,(15-64)}} \times 100
+\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
 $$
 
-De manera complementaria, el índice de envejecimiento permite evaluar el peso relativo de la población adulta mayor frente a la población joven:
+donde $N_{i,[a,b]} = \sum_{s} \sum_{e \,:\, e \in [a,b]} N_{i,s,e}$ denota la población del territorio $i$ en el intervalo de edad $[a, b]$. De manera complementaria, el índice de envejecimiento evalúa el peso relativo de la población adulta mayor frente a la población joven:
 
 $$
-IE_i = \frac{N_{i,(65+)}}{N_{i,(0-14)}} \times 100
+\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
 $$
 
 Estos indicadores desempeñan un papel central en la planificación territorial y sectorial. Su utilización es frecuente en procesos de asignación presupuestaria, focalización de programas sociales, evaluación de necesidades de infraestructura y análisis de demanda potencial de servicios públicos.
@@ -186,105 +182,80 @@ Sin embargo, las tasas derivadas presentan una sensibilidad considerable frente 
 
 En municipios con baja población o segmentos censales reducidos, las tasas pueden presentar comportamientos altamente inestables, especialmente cuando existen problemas de omisión diferencial por edad, sexo o localización territorial. En América Latina y el Caribe, estas dificultades suelen amplificarse debido a la heterogeneidad territorial, la expansión metropolitana acelerada, los procesos migratorios y las diferencias operativas observadas entre países y regiones.
 
-Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento probabilístico permiten complementar los métodos tradicionales mediante estrategias que incorporan dependencia espacial, integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.
-
+Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento permiten complementar los métodos tradicionales mediante estrategias que incorporan integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.
 
 ### Estructuras etarias
 
-La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender dinámicas asociadas a fecundidad, mortalidad, migración, envejecimiento y transición demográfica.
+La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender los cambios asociados a fecundidad, mortalidad, migración, envejecimiento y transición demográfica, así como las diferencias territoriales en la dinámica poblacional de los países.
 
-Los censos de población representan la principal fuente de información para caracterizar estructuras etarias con alta desagregación territorial. A partir de esta información es posible construir:
+Los censos de población representan la principal fuente de información para caracterizar estas estructuras con altos niveles de desagregación geográfica. A partir de los conteos por edad y sexo es posible construir pirámides poblacionales, relaciones de dependencia, índices de envejecimiento y proyecciones demográficas, elementos fundamentales para la planificación social y económica.
 
-* pirámides poblacionales;
-* grupos quinquenales de edad;
-* relaciones de dependencia;
-* índices de envejecimiento;
-* y proyecciones demográficas.
-
-Sea:
+Sea $N_{i,e} = \sum_{s \in \{M,F\}} N_{i,s,e}$ la población del área $i$ en el grupo de edad $e$, obtenida por suma sobre ambos sexos. La participación relativa de cada grupo etario dentro de la población total del territorio puede expresarse como:
 
 $$
-P_{i,e}
+p_{i,e} = \frac{N_{i,e}}{N_i}
 $$
 
-la población del área geográfica (i) perteneciente al grupo de edad (e).
+donde $N_i = \sum_{e=1}^{E} N_{i,e}$ es la población total del territorio. Por construcción, $\sum_{e=1}^{E} p_{i,e} = 1$.
 
-La proporción poblacional correspondiente a un grupo etario específico puede expresarse como:
-
-$$
-PE_{i,e} = \frac{P_{i,e}}{P_i}
-$$
-
-donde:
-
-* $P_i$: población total del área.
-
-La estructura etaria suele organizarse en grupos quinquenales:
+En la práctica, la estructura etaria suele organizarse utilizando grupos quinquenales de edad:
 
 $$
 0-4,\ 5-9,\ 10-14,\ \ldots,\ 80+
 $$
 
-debido a su estabilidad demográfica y compatibilidad con modelos de proyección poblacional.
+debido a que esta agrupación proporciona mayor estabilidad demográfica y facilita la comparabilidad entre países y periodos censales. Adicionalmente, los grupos quinquenales constituyen la base utilizada en la mayoría de modelos de proyección poblacional y análisis demográficos oficiales.
 
-Uno de los indicadores más utilizados corresponde al índice de envejecimiento:
-
-$$
-IE_i = \frac{P_{i,65+}}{P_{i,0-14}} \times 100
-$$
-
-mientras que la relación de dependencia demográfica puede escribirse como:
+Los indicadores de cambio demográfico más utilizados se expresan directamente en términos de $N_{i,[a,b]}$. El índice de envejecimiento relaciona la población adulta mayor con la población joven:
 
 $$
-RD_i = \frac{P_{i,0-14} + P_{i,65+}}{P_{i,15-64}} \times 100
+\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
 $$
 
-En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes entre países y territorios. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional, otras regiones mantienen estructuras jóvenes asociadas a mayores niveles de fecundidad y menor transición demográfica.
+La tasa de dependencia demográfica total evalúa la presión potencial sobre la población en edades productivas y coincide con $\text{TD}_i$ definida en la sección anterior:
 
-Estas diferencias tienen implicaciones directas sobre:
+$$
+\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
+$$
 
-* demanda de servicios públicos;
-* sistemas de salud;
-* infraestructura educativa;
-* mercados laborales;
-* y sostenibilidad de sistemas de protección social.
+Estos indicadores son ampliamente utilizados en procesos de planificación pública debido a que permiten anticipar necesidades asociadas a educación, salud, protección social, empleo e infraestructura. Territorios con estructuras jóvenes suelen demandar mayores inversiones en sistemas educativos y servicios materno-infantiles, mientras que áreas con envejecimiento avanzado requieren una mayor capacidad de atención en salud y sistemas de cuidado.
 
-La producción de estructuras etarias subnacionales enfrenta importantes desafíos operativos y estadísticos. Los errores de cobertura no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la omisión censal tiende a concentrarse en:
+En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes territoriales. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional y reducción de fecundidad, otras regiones mantienen estructuras considerablemente más jóvenes asociadas a mayores niveles de natalidad y menor transición demográfica. Estas diferencias reflejan la elevada heterogeneidad demográfica de la región y generan importantes desafíos para la producción de estadísticas subnacionales comparables.
 
-* niños pequeños;
-* hombres jóvenes;
-* migrantes;
-* población indígena;
-* y habitantes de zonas rurales dispersas.
+La construcción de estructuras etarias confiables enfrenta además importantes limitaciones operativas. Los errores de cobertura censal no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la omisión censal tiende a concentrarse en niños pequeños, hombres jóvenes, migrantes, población indígena y habitantes de zonas rurales dispersas. Como consecuencia, la distribución observada por edad puede diferir significativamente de la estructura poblacional verdadera.
 
-Como resultado, la distribución observada por edad puede diferir significativamente de la estructura demográfica verdadera.
+Este problema se intensifica en dominios geográficos pequeños. En municipios con baja población o segmentos censales reducidos, pequeñas diferencias en los conteos observados pueden modificar considerablemente la forma de la estructura etaria y generar indicadores altamente inestables. La variabilidad observada suele aumentar aún más cuando los grupos poblacionales son desagregados simultáneamente por edad, sexo y localización territorial.
 
-En áreas pequeñas, este problema se vuelve aún más crítico debido al reducido tamaño poblacional de algunos grupos etarios. En segmentos censales o municipios pequeños, ligeras variaciones en los conteos pueden alterar considerablemente la forma de la estructura poblacional observada.
+Adicionalmente, las estructuras etarias cumplen un papel central en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de oficinas nacionales de estadística dependen directamente de la calidad de la distribución inicial por edad y sexo. En consecuencia, errores presentes en los conteos censales pueden propagarse hacia estimaciones futuras y afectar la consistencia temporal de las proyecciones oficiales.
 
-Adicionalmente, las estructuras etarias cumplen un papel fundamental en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de países dependen directamente de la calidad de la distribución inicial por edad y sexo.
-
-En el contexto de los modelos bayesianos de población, las estructuras etarias pueden incorporarse mediante esquemas jerárquicos que permiten compartir información entre grupos relacionados y estabilizar estimaciones en áreas con información limitada. Este enfoque resulta particularmente útil para dominios pequeños donde la variabilidad observada puede ser considerablemente alta.
+Desde la perspectiva del modelamiento estadístico, las estructuras etarias pueden entenderse como realizaciones sujetas a incertidumbre y error de cobertura. Bajo este enfoque, los modelos bayesianos jerárquicos permiten incorporar dependencia entre grupos de edad relacionados, estabilizar estimaciones en áreas con información limitada e integrar múltiples fuentes auxiliares para mejorar la coherencia territorial y demográfica de las estimaciones poblacionales.
 
 ## Formulación del problema de subcobertura, no respuesta y omisión censal
 
-Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura asociados al operativo de enumeración. Aunque el objetivo conceptual del censo consiste en registrar exhaustivamente toda la población presente o residente dentro del territorio nacional, en la práctica siempre existen diferencias entre la población efectivamente observada y la población verdadera.
+Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura asociados al operativo de enumeración. Aunque el objetivo conceptual del censo consiste en registrar exhaustivamente toda la población presente o residente dentro del territorio nacional, en la práctica siempre existen diferencias entre la población efectivamente observada y la población real presente en el territorio.
 
-Estas diferencias pueden manifestarse de distintas formas. Algunas personas no son censadas, ciertas viviendas quedan fuera del operativo, algunos registros son duplicados y, en otros casos, la información es asignada incorrectamente a un territorio distinto o presenta inconsistencias en variables específicas. En consecuencia, los conteos publicados deben entenderse como aproximaciones observadas de un proceso poblacional subyacente cuya magnitud real no es completamente observable.
+Estas diferencias surgen por múltiples razones. Algunas personas no son censadas, ciertas viviendas quedan fuera del operativo, algunos registros son duplicados y, en otros casos, existen errores en la asignación territorial de la información recolectada. Como resultado, los conteos censales deben entenderse como realizaciones observadas de un proceso de enumeración sujeto a limitaciones operativas, errores cartográficos y dificultades de cobertura.
 
-La subcobertura censal constituye el fenómeno más relevante dentro de este conjunto de errores. Este problema ocurre cuando una parte de la población no es registrada durante el operativo de campo. Las causas pueden asociarse a dificultades de acceso territorial, ausencia temporal de los residentes, rechazo a responder, errores cartográficos, inseguridad o limitaciones logísticas del levantamiento.
+Formalmente, sea $Y_{i,s,e}$ el conteo observado en el operativo censal para el territorio $i$, sexo $s$ y grupo de edad $e$, y sea $N_{i,s,e}$ la población verdadera correspondiente. La relación entre ambos puede representarse como:
 
-En América Latina y el Caribe, la subcobertura presenta además una fuerte heterogeneidad territorial. La omisión censal no ocurre aleatoriamente sobre la población, sino que suele concentrarse en contextos específicos como asentamientos informales, zonas rurales dispersas, territorios indígenas, áreas de frontera y sectores urbanos con alta movilidad residencial. Como resultado, los errores de cobertura introducen sesgos sistemáticos sobre los conteos observados y afectan directamente la calidad de los indicadores derivados.
+$$
+Y_{i,s,e} = N_{i,s,e} - O_{i,s,e} + D_{i,s,e} + C_{i,s,e}
+$$
 
-La no respuesta constituye un problema adicional que afecta la completitud de la información censal. Incluso cuando una vivienda logra ser efectivamente censada, algunas variables pueden permanecer incompletas debido a ausencia de informantes, rechazo parcial, errores de captura o inconsistencias durante la entrevista. Este fenómeno afecta particularmente variables socioeconómicas, educativas y laborales, reduciendo la calidad analítica de los resultados censales.
+donde $O_{i,s,e}$ representa la omisión censal, $D_{i,s,e}$ la duplicación de personas y $C_{i,s,e}$ los errores asociados a clasificación o asignación territorial. Bajo esta formulación, los conteos observados no constituyen una medición exacta de la población, sino una aproximación afectada por distintos mecanismos de error.
 
-La combinación entre subcobertura, omisión y no respuesta genera efectos acumulativos sobre múltiples procesos estadísticos posteriores. Las proyecciones demográficas, la construcción de marcos muestrales, la estimación de indicadores sociales y los mecanismos de focalización territorial dependen directamente de la calidad de los conteos base. En consecuencia, errores relativamente pequeños en la enumeración pueden propagarse a lo largo de toda la infraestructura estadística nacional.
+En América Latina y el Caribe, la subcobertura censal presenta además una marcada heterogeneidad territorial. La omisión no ocurre aleatoriamente sobre la población ni sobre el territorio. Por el contrario, suele concentrarse en contextos específicos como asentamientos informales, zonas rurales dispersas, territorios indígenas, áreas de frontera o sectores urbanos con elevada movilidad residencial. Estas características generan patrones espaciales de cobertura diferencial que afectan directamente la calidad de los conteos subnacionales.
 
-Estos problemas adquieren una dimensión aún más crítica en niveles geográficos pequeños. En municipios con baja población o segmentos censales reducidos, la omisión de un número limitado de viviendas puede alterar significativamente las estructuras demográficas observadas y producir estimaciones inestables. Este fenómeno se intensifica cuando los errores de cobertura afectan diferencialmente determinados grupos de edad, sexo o condiciones socioeconómicas.
+La no respuesta constituye un problema adicional dentro del proceso censal. Incluso cuando una vivienda logra ser efectivamente enumerada, algunas variables pueden quedar incompletas debido a ausencia de informantes, rechazo parcial, inconsistencias durante la entrevista o errores de captura. Este fenómeno afecta particularmente variables socioeconómicas y laborales, reduciendo la completitud analítica de la información censal.
 
-Adicionalmente, la creciente movilidad poblacional y la rápida transformación territorial observada en muchos países de la región han incrementado la complejidad de los operativos censales. La expansión urbana acelerada, la aparición de nuevos asentamientos y los procesos migratorios dificultan la actualización permanente de la cartografía y reducen la capacidad de cobertura completa del operativo.
+La combinación entre subcobertura, omisión y no respuesta produce efectos acumulativos sobre múltiples procesos estadísticos posteriores. Las proyecciones demográficas, la construcción de marcos muestrales, la estimación de indicadores sociales y los procesos de focalización territorial dependen directamente de la calidad de los conteos base. En consecuencia, errores relativamente pequeños en la enumeración pueden propagarse posteriormente hacia distintas operaciones estadísticas oficiales.
 
-Frente a este escenario, los sistemas estadísticos han comenzado a complementar los enfoques tradicionales de conciliación censal mediante estrategias de integración de múltiples fuentes de información. Los registros administrativos, las imágenes satelitales, los preconteos operativos y otras fuentes auxiliares permiten identificar inconsistencias territoriales, mejorar procesos de validación y fortalecer la estimación de poblaciones subenumeradas.
+Estos problemas adquieren una relevancia aún mayor en niveles geográficos pequeños. En municipios con baja población o segmentos censales reducidos, la omisión de un número limitado de viviendas puede alterar significativamente las estructuras poblacionales observadas. Este fenómeno se intensifica cuando los errores de cobertura afectan diferencialmente determinados grupos de edad, sexo o condiciones socioeconómicas.
 
-Desde la perspectiva estadística, este problema puede formularse como un proceso de inferencia sobre una población verdadera parcialmente observable. Bajo este enfoque, los conteos censales dejan de interpretarse como valores exactos y pasan a entenderse como realizaciones sujetas a error e incertidumbre. Esta interpretación constituye uno de los fundamentos centrales de los modelos probabilísticos modernos aplicados a estimación subnacional de población.
+Adicionalmente, la rápida transformación territorial observada en muchos países de la región ha incrementado la complejidad operativa de los censos. La expansión urbana acelerada, el crecimiento de asentamientos informales y los procesos migratorios dificultan la actualización cartográfica permanente y reducen la capacidad de cobertura completa del operativo censal.
 
-En este contexto, los modelos bayesianos ofrecen un marco particularmente adecuado para integrar múltiples fuentes de información, representar explícitamente la incertidumbre asociada a los conteos observados e incorporar estructuras jerárquicas y espaciales coherentes con la organización territorial de los países. Los capítulos posteriores desarrollan estos elementos metodológicos y presentan estrategias orientadas a la estimación subnacional de población bajo esquemas probabilísticos modernos.
+Frente a este escenario, los sistemas estadísticos han comenzado a complementar los enfoques tradicionales de conciliación censal mediante estrategias de integración de múltiples fuentes de información. Los registros administrativos, las imágenes satelitales, los preconteos operativos y otras fuentes auxiliares permiten identificar inconsistencias territoriales y fortalecer la estimación de poblaciones subenumeradas.
+
+En este libro, el interés principal no se centra en modelar directamente tasas de cobertura, sino en estimar conteos poblacionales en segmentos censales donde existen problemas de cobertura, omisión o inconsistencias territoriales. Bajo esta perspectiva, los conteos observados se interpretan como información parcial sobre una población subyacente cuya magnitud real debe inferirse utilizando información auxiliar y estructuras jerárquicas coherentes con la organización territorial del censo.
+
+Desde esta perspectiva, los modelos bayesianos ofrecen un marco flexible para integrar múltiples fuentes de información, representar explícitamente la incertidumbre asociada a los conteos observados y estabilizar estimaciones en dominios geográficos pequeños. Los capítulos posteriores desarrollan estos elementos metodológicos y presentan estrategias orientadas específicamente a la estimación subnacional de conteos poblacionales en segmentos censales bajo esquemas probabilísticos modernos.

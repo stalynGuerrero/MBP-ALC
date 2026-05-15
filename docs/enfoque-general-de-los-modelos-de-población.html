@@ -4,26 +4,24 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 1 Enfoque General de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</title>
-  <meta name="description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <title>Capítulo 1 Enfoque General de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 1 Enfoque General de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta property="og:title" content="Capítulo 1 Enfoque General de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
-  <meta name="github-repo" content="psirusteam/2021ASDA" />
+  <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="github-repo" content="psirusteam/MBP-ALC" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 1 Enfoque General de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional" />
+  <meta name="twitter:title" content="Capítulo 1 Enfoque General de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe" />
   
-  <meta name="twitter:description" content="Este es el repositorio del libro Análisis de encuestas con R." />
+  <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
   
 
-<meta name="author" content="Andrés Gutiérrez,Stalyn Guerrero" />
 
 
-<meta name="date" content="2026-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +29,7 @@
   
   
 <link rel="prev" href="introducción.html"/>
-<link rel="next" href="producción-de-conteos-censales.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -85,39 +83,38 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  background-color: #f8f8f8; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <style type="text/css">
@@ -138,49 +135,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a></li>
+<li>
+  <a href="./" style="display:block; padding: 14px 15px 4px;">
+    <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:0.95rem; color:#CBD5E1; display:block; line-height:1.3;">
+      MBP-ALC
+    </span>
+    <span style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#94A3B8; display:block; padding-top:3px; line-height:1.5;">
+      Modelos Bayesianos de Población<br>América Latina y el Caribe
+    </span>
+  </a>
+</li>
+<li><hr style="border-color:rgba(255,255,255,0.1); margin:4px 15px 8px;"></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
 <li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
 <li class="chapter" data-level="1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<li class="chapter" data-level="1.1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#producci%C3%B3n-de-conteos-censales"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
-<li class="chapter" data-level="1.1.2" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
-<li class="chapter" data-level="1.1.3" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
-<li class="chapter" data-level="1.1.4" data-path="producción-de-conteos-censales.html"><a href="producción-de-conteos-censales.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+<li class="chapter" data-level="1.1.1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<li class="chapter" data-level="1.2" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#indicadores-de-inter%C3%A9s"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
-<li class="chapter" data-level="1.2.2" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
-<li class="chapter" data-level="1.2.3" data-path="indicadores-de-interés.html"><a href="indicadores-de-interés.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+<li class="chapter" data-level="1.2.1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal.html"><a href="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal.html"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+<li class="chapter" data-level="1.3" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#formulaci%C3%B3n-del-problema-de-subcobertura-no-respuesta-y-omisi%C3%B3n-censal"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>2</b> Parts</a></li>
-<li class="chapter" data-level="3" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>3</b> Footnotes and citations</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>3.1</b> Footnotes</a></li>
-<li class="chapter" data-level="3.2" data-path="citations.html"><a href="citations.html"><i class="fa fa-check"></i><b>3.2</b> Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>4</b> Blocks</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="equations.html"><a href="equations.html"><i class="fa fa-check"></i><b>4.1</b> Equations</a></li>
-<li class="chapter" data-level="4.2" data-path="theorems-and-proofs.html"><a href="theorems-and-proofs.html"><i class="fa fa-check"></i><b>4.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="4.3" data-path="callout-blocks.html"><a href="callout-blocks.html"><i class="fa fa-check"></i><b>4.3</b> Callout blocks</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>5</b> Sharing your book</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>5.1</b> Publishing</a></li>
-<li class="chapter" data-level="5.2" data-path="pages.html"><a href="pages.html"><i class="fa fa-check"></i><b>5.2</b> 404 pages</a></li>
-<li class="chapter" data-level="5.3" data-path="metadata-for-sharing.html"><a href="metadata-for-sharing.html"><i class="fa fa-check"></i><b>5.3</b> Metadata for sharing</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional </a></li>
+<li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+  <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+    © CEPAL 2025 — CC BY-NC-SA 4.0
+  </small>
+</li>
 
 </ul>
 
@@ -191,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe</a>
           </h1>
         </div>
 
@@ -201,14 +193,185 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="enfoque-general-de-los-modelos-de-población" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Capítulo 1</span> Enfoque General de los Modelos de Población<a href="enfoque-general-de-los-modelos-de-población.html#enfoque-general-de-los-modelos-de-poblaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="producción-de-conteos-censales" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Producción de conteos censales<a href="enfoque-general-de-los-modelos-de-población.html#producci%C3%B3n-de-conteos-censales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La producción de conteos poblacionales constituye uno de los procesos más relevantes dentro de los sistemas estadísticos nacionales. A través de los censos de población y vivienda, los países construyen la base demográfica utilizada para la planificación pública, la elaboración de indicadores sociales, la construcción de marcos muestrales y la formulación de políticas territoriales. En términos operativos y metodológicos, el censo representa la única operación estadística diseñada para enumerar exhaustivamente la población residente dentro de un territorio nacional bajo un mismo marco conceptual, temporal y geográfico.</p>
+<p>Los conteos censales no solo permiten conocer cuántas personas habitan un país, sino también cómo se distribuyen territorialmente y cómo se estructuran según características demográficas básicas como sexo y edad. Esta información es utilizada posteriormente en una gran variedad de procesos institucionales: proyecciones demográficas, encuestas de hogares, sistemas de focalización social, distribución presupuestaria, delimitación administrativa y producción de estadísticas subnacionales.</p>
+<p>En la práctica, la producción censal implica mucho más que el levantamiento de información en campo. Detrás de los conteos publicados existe una estructura compleja de actualización cartográfica, segmentación territorial, logística operativa, capacitación, validación y conciliación estadística. Cada una de estas etapas introduce potenciales fuentes de error que afectan la calidad final de las estimaciones poblacionales.</p>
+<p>Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura. La enumeración de la población nunca es perfecta. Existen personas que no son censadas, viviendas que no son visitadas, individuos registrados más de una vez o registros asignados incorrectamente a un territorio distinto. Estos problemas tienden a concentrarse en determinados contextos territoriales y sociales: áreas rurales dispersas, asentamientos informales, territorios indígenas, zonas fronterizas o áreas urbanas con alta movilidad poblacional.</p>
+<p>En América Latina y el Caribe, estas dificultades adquieren una dimensión particularmente importante debido a la elevada heterogeneidad territorial de la región. Los países presentan diferencias sustanciales en capacidad operativa, actualización cartográfica, infraestructura estadística y disponibilidad de registros administrativos. Adicionalmente, muchos territorios enfrentan condiciones geográficas complejas que dificultan las labores de enumeración y supervisión censal.</p>
+<p>La ronda censal de 2020 evidenció nuevamente estas limitaciones. Diversos países experimentaron retrasos operativos asociados a restricciones presupuestarias, conflictos sociales y efectos derivados de la pandemia de COVID-19. Como resultado, varios sistemas estadísticos enfrentaron dificultades para mantener continuidad temporal y coherencia territorial en sus conteos poblacionales.</p>
+<p>A medida que aumenta el nivel de desagregación geográfica, los problemas de cobertura se vuelven más visibles. Mientras que a nivel nacional algunos errores pueden compensarse parcialmente entre regiones, en niveles territoriales pequeños las omisiones o duplicaciones generan distorsiones importantes sobre indicadores demográficos y sociales. Esto afecta directamente la capacidad de los gobiernos para asignar recursos, diseñar programas y producir estadísticas territoriales consistentes.</p>
+<p>En este contexto, la producción moderna de conteos poblacionales requiere complementar el operativo censal tradicional con mecanismos de validación, integración de fuentes auxiliares y modelamiento estadístico. Los modelos bayesianos de población surgen precisamente como una respuesta metodológica a este problema, permitiendo integrar información proveniente de distintas fuentes y representar explícitamente la incertidumbre asociada a los conteos observados.</p>
+<div id="producción-subnacional" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Producción subnacional<a href="enfoque-general-de-los-modelos-de-población.html#producci%C3%B3n-subnacional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aunque los censos generan un conteo nacional de población, gran parte de su utilidad práctica se concentra en la producción de información subnacional. Los gobiernos requieren estadísticas desagregadas para departamentos, provincias, municipios, áreas urbanas y rurales, sectores censales y segmentos operativos. Es en estas escalas territoriales donde se ejecutan la mayoría de políticas públicas y procesos administrativos.</p>
+<p>La producción subnacional implica construir conteos consistentes entre distintos niveles geográficos. Los totales municipales deben coincidir con los agregados departamentales, y estos, a su vez, con los conteos nacionales. Esta coherencia territorial constituye uno de los principios fundamentales de la estadística oficial.</p>
+<p>Sin embargo, garantizar dicha consistencia no es un proceso trivial. A medida que disminuye el tamaño poblacional de las unidades geográficas, aumentan proporcionalmente los efectos de los errores de cobertura. En áreas pequeñas, la omisión de algunos hogares o viviendas puede alterar significativamente indicadores derivados como tasas de dependencia, razones de masculinidad o estructuras etarias.</p>
+<p>La calidad de los conteos subnacionales depende críticamente de la cartografía censal y de los procesos de segmentación territorial. Antes del levantamiento censal, los países deben actualizar mapas, identificar viviendas, definir rutas operativas y dividir el territorio en unidades de trabajo relativamente homogéneas. Estas unidades, conocidas generalmente como segmentos censales, constituyen la base operativa del operativo de campo.</p>
+<p>En América Latina y el Caribe, la definición de segmentos presenta importantes diferencias metodológicas entre países. Algunos sistemas censales utilizan criterios asociados al número esperado de viviendas, mientras que otros priorizan continuidad espacial, accesibilidad geográfica o carga operativa del censista. Como resultado, las unidades territoriales utilizadas en los censos no siempre son comparables entre países.</p>
+<p>Otro aspecto relevante corresponde a la diferencia entre censos de hecho y censos de derecho. En países como Bolivia, Paraguay y Colombia, los operativos censales han sido implementados bajo esquemas de censo de hecho, donde las personas son contabilizadas en el lugar donde se encuentran durante el momento censal. En contraste, los censos de derecho buscan registrar a las personas según su residencia habitual.</p>
+<p>Esta diferencia conceptual tiene implicaciones importantes sobre movilidad territorial, cobertura diferencial y consistencia espacial. En contextos con alta movilidad poblacional, los censos de hecho pueden generar concentraciones temporales de población en determinadas áreas, mientras que los censos de derecho requieren procedimientos más complejos para validar residencia habitual y evitar duplicaciones.</p>
+<p>La producción subnacional también enfrenta desafíos asociados al crecimiento urbano acelerado y a la expansión de asentamientos informales. En muchas ciudades de la región, los procesos de urbanización ocurren más rápidamente que la actualización cartográfica oficial, generando sectores con viviendas no registradas o límites territoriales desactualizados. Esto afecta directamente la cobertura del operativo y la calidad de los conteos resultantes.</p>
+<p>Desde la perspectiva estadística, los conteos subnacionales deben entenderse como observaciones imperfectas de una población subyacente cuya magnitud real no es completamente observable. Esta situación motiva el uso de modelos probabilísticos capaces de integrar múltiples fuentes de información, representar explícitamente la incertidumbre y garantizar coherencia entre niveles territoriales.</p>
 </div>
+<div id="desagregación-por-sexo-y-edad" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Desagregación por sexo y edad<a href="enfoque-general-de-los-modelos-de-población.html#desagregaci%C3%B3n-por-sexo-y-edad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uno de los principales aportes de los censos de población consiste en la posibilidad de caracterizar la estructura demográfica de la población. Los conteos no solo se producen para áreas geográficas, sino también para distintos grupos de edad y sexo. Esta desagregación constituye un insumo fundamental para el análisis demográfico, la formulación de políticas públicas y la elaboración de proyecciones poblacionales.</p>
+<p>La distribución por edad y sexo condiciona directamente múltiples dimensiones del desarrollo social y económico. La demanda de servicios educativos, sistemas de salud, programas de protección social y mercados laborales depende estrechamente de la estructura etaria de la población. Del mismo modo, indicadores como envejecimiento, dependencia demográfica o fecundidad requieren información detallada sobre composición poblacional.</p>
+<p>En términos operativos, la producción de conteos por sexo y edad incrementa considerablemente la complejidad del proceso censal. Los errores de cobertura no afectan de manera homogénea a todos los grupos poblacionales. En América Latina y el Caribe, las tasas de omisión suelen ser más elevadas en niños pequeños, hombres jóvenes, población indígena, migrantes y habitantes de zonas rurales dispersas.</p>
+<p>Estas diferencias generan distorsiones importantes en la estructura observada de la población. En niveles territoriales pequeños, incluso pequeñas omisiones pueden alterar significativamente indicadores demográficos derivados. Por esta razón, los sistemas estadísticos implementan procedimientos de validación y ajuste orientados a identificar inconsistencias en la distribución por sexo y edad.</p>
+<p>La desagregación etaria también constituye un componente central de los procesos de proyección demográfica. Los métodos cohortes-componentes utilizados por la mayoría de países requieren información detallada sobre estructura poblacional para modelar nacimientos, defunciones y migración. Como consecuencia, errores en la distribución censal inicial pueden propagarse a lo largo de toda la serie de proyecciones futuras.</p>
+<p>En el contexto del modelamiento bayesiano, la estructura por sexo y edad puede incorporarse mediante modelos jerárquicos que permiten compartir información entre grupos relacionados y estabilizar estimaciones en dominios con baja densidad poblacional. Esto resulta especialmente útil en áreas pequeñas donde la variabilidad observada puede ser considerablemente alta.</p>
+</div>
+<div id="uso-en-marcos-muestrales" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Uso en marcos muestrales<a href="enfoque-general-de-los-modelos-de-población.html#uso-en-marcos-muestrales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conteos censales constituyen la principal base para la construcción de marcos muestrales utilizados en encuestas de hogares y otras operaciones estadísticas. Los sectores y segmentos definidos durante el operativo censal son utilizados posteriormente como unidades primarias de muestreo en gran parte de las encuestas nacionales desarrolladas por los institutos de estadística.</p>
+<p>La calidad de un marco muestral depende directamente de la calidad de los conteos censales y de la actualización cartográfica asociada. Cuando existen omisiones territoriales, viviendas no registradas o límites desactualizados, los diseños muestrales pueden introducir sesgos de cobertura y pérdida de eficiencia estadística.</p>
+<p>En América Latina y el Caribe, muchos marcos muestrales permanecen vigentes durante periodos intercensales prolongados. Durante estos intervalos, los cambios demográficos y territoriales pueden modificar sustancialmente la distribución espacial de la población. La expansión urbana, la migración interna y la transformación de áreas rurales generan desactualizaciones progresivas en las unidades de muestreo originalmente construidas a partir del censo.</p>
+<p>La segmentación censal también cumple un papel operativo fundamental en la implementación de encuestas probabilísticas. Las unidades territoriales utilizadas durante el censo suelen redefinirse y reorganizarse para optimizar costos operativos, carga de trabajo y precisión estadística. Como resultado, la calidad de la información censal afecta directamente el desempeño posterior de múltiples sistemas de encuestas.</p>
+<p>En este contexto, mejorar la calidad de los conteos subnacionales no solo fortalece las estadísticas demográficas, sino también toda la infraestructura estadística utilizada posteriormente por los países para producir información social y económica.</p>
+</div>
+<div id="definición-de-dominios" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Definición de dominios<a href="enfoque-general-de-los-modelos-de-población.html#definici%C3%B3n-de-dominios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La producción de estadísticas poblacionales requiere definir dominios geográficos y demográficos sobre los cuales se generan estimaciones e indicadores. Estos dominios corresponden a distintos niveles territoriales utilizados para organización administrativa, planificación pública y análisis estadístico.</p>
+<p>El nivel nacional constituye el agregado principal del sistema estadístico y funciona como referencia para la producción de indicadores macrodemográficos y proyecciones oficiales. Sin embargo, gran parte de las decisiones operativas se realizan en escalas territoriales inferiores.</p>
+<p>El nivel intermedio, conformado generalmente por departamentos, provincias o estados, representa uno de los principales niveles de descentralización administrativa en América Latina y el Caribe. En estos territorios se ejecutan programas regionales, se distribuyen recursos fiscales y se implementan estrategias sectoriales de salud, educación e infraestructura.</p>
+<p>La diferenciación urbano-rural constituye además una dimensión central en la producción estadística regional. Las brechas territoriales entre áreas urbanas y rurales continúan siendo una de las principales características demográficas y socioeconómicas de la región. Como consecuencia, muchos indicadores poblacionales requieren desagregación específica según tipo de área.</p>
+<p>A nivel local, los municipios representan una de las principales unidades de gestión territorial. En este nivel se concentran procesos de planeación urbana, focalización social, administración tributaria y provisión de servicios públicos. La precisión de los conteos municipales afecta directamente la asignación presupuestaria y la medición de múltiples indicadores sociales.</p>
+<p>Finalmente, el segmento censal constituye la unidad operativa básica del levantamiento. Estas unidades poseen alta resolución espacial y permiten representar con mayor detalle la heterogeneidad territorial. Sin embargo, también presentan mayor sensibilidad a errores de cobertura y problemas de consistencia espacial.</p>
+<p>En países como Bolivia, Paraguay y Colombia, los segmentos censales adquieren especial importancia debido a la implementación de censos de hecho y a la necesidad de coordinar operativos intensivos de corta duración. En este contexto, la calidad de la segmentación territorial condiciona directamente la cobertura del operativo y la precisión de los conteos finales.</p>
+<p>Desde la perspectiva del modelamiento estadístico, los distintos dominios territoriales conforman una estructura jerárquica de información donde las estimaciones deben mantener coherencia entre niveles geográficos. Esta jerarquía constituye uno de los elementos centrales en el desarrollo posterior de modelos bayesianos subnacionales orientados a integración de fuentes y ajuste de cobertura.</p>
+</div>
+</div>
+<div id="indicadores-de-interés" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Indicadores de interés<a href="enfoque-general-de-los-modelos-de-población.html#indicadores-de-inter%C3%A9s" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La producción de conteos censales tiene como propósito central generar información estadística que permita caracterizar la dinámica demográfica y territorial de la población. A partir de los datos censales es posible construir un amplio conjunto de indicadores utilizados en procesos de planificación, evaluación de políticas públicas, asignación presupuestaria y análisis socioeconómico.</p>
+<p>Los indicadores derivados de los censos no solo describen el tamaño de la población, sino también su distribución espacial, estructura etaria, composición por sexo y condiciones territoriales. Estos indicadores constituyen además el punto de partida para procesos posteriores de estimación, proyección demográfica y construcción de estadísticas oficiales.</p>
+<p>En América Latina y el Caribe, la creciente demanda de información subnacional ha incrementado la necesidad de producir indicadores con alta desagregación territorial. Los gobiernos requieren estadísticas consistentes para departamentos, municipios, áreas urbanas y rurales, e incluso niveles operativos más pequeños como sectores y segmentos censales.</p>
+<p>Sin embargo, la producción de indicadores en dominios pequeños enfrenta limitaciones importantes asociadas a errores de cobertura, omisión censal y variabilidad espacial de los conteos. En consecuencia, muchos indicadores derivados presentan altos niveles de inestabilidad cuando se calculan directamente a partir de los conteos observados.</p>
+<p>En este contexto, resulta fundamental distinguir entre:</p>
+<ul>
+<li>conteos poblacionales básicos;</li>
+<li>tasas derivadas;</li>
+<li>y estructuras demográficas.</li>
+</ul>
+<p>Cada uno de estos componentes presenta características particulares en términos de interpretación, sensibilidad a errores de cobertura y comportamiento territorial.</p>
+<div id="conteos-poblacionales" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Conteos poblacionales<a href="enfoque-general-de-los-modelos-de-población.html#conteos-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conteos poblacionales constituyen el núcleo de la producción estadística demográfica. A través de ellos, los países cuantifican la población presente o residente dentro de un territorio y construyen la base sobre la cual se desarrollan posteriormente las proyecciones demográficas, los marcos muestrales, los indicadores sociales y gran parte de las estadísticas oficiales utilizadas en procesos de planificación pública.</p>
+<p>Estos conteos son producidos para múltiples niveles de desagregación territorial y demográfica. En términos generales, la información censal se organiza para el nivel nacional, departamentos o provincias, municipios, áreas urbanas y rurales, así como para distintos grupos de edad y sexo. Esta estructura jerárquica permite caracterizar la distribución espacial de la población y construir estadísticas coherentes entre distintos niveles administrativos.</p>
+<p>Sea <span class="math inline">\(N_{i,s,e}\)</span> el número de personas en el dominio geográfico <span class="math inline">\(i\)</span>, sexo <span class="math inline">\(s \in \{M, F\}\)</span> (masculino, femenino) y grupo de edad <span class="math inline">\(e \in \{1, \ldots, E\}\)</span>. El conteo total de población para una unidad geográfica se obtiene por agregación sobre sexo y edad:</p>
+<p><span class="math display">\[
+N_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} N_{i,s,e}
+\]</span></p>
+<p>mientras que la población nacional corresponde a la suma sobre todos los dominios territoriales:</p>
+<p><span class="math display">\[
+N = \sum_{i=1}^{I} N_i
+\]</span></p>
+<p>La coherencia jerárquica exige que los conteos en niveles inferiores sean consistentes con los totales de los niveles superiores. Denotando con superíndice el nivel jerárquico —<span class="math inline">\(N_j^{(2)}\)</span> para un departamento <span class="math inline">\(j\)</span>, <span class="math inline">\(N_k^{(3)}\)</span> para un municipio <span class="math inline">\(k\)</span> y <span class="math inline">\(N_\ell^{(4)}\)</span> para un segmento <span class="math inline">\(\ell\)</span>— las restricciones de consistencia son:</p>
+<p><span class="math display">\[
+N_j^{(2)} = \sum_{k \,:\, k \subset j} N_k^{(3)}, \qquad N_k^{(3)} = \sum_{\ell \,:\, \ell \subset k} N_\ell^{(4)}
+\]</span></p>
+<p>donde la notación <span class="math inline">\(k \subset j\)</span> indica que el municipio <span class="math inline">\(k\)</span> pertenece al departamento <span class="math inline">\(j\)</span>.</p>
+<p>Esta coherencia jerárquica es esencial para garantizar la comparabilidad y consistencia de las estadísticas oficiales.</p>
+<p>En la práctica, los conteos poblacionales pueden entenderse en distintos niveles. Los conteos observados corresponden directamente a la enumeración realizada durante el operativo censal. Posteriormente, algunos países incorporan procesos de conciliación y ajuste orientados a corregir problemas de cobertura o inconsistencias demográficas. Finalmente, en contextos donde existen limitaciones operativas o necesidad de actualización intercensal, los conteos pueden complementarse mediante procedimientos de estimación estadística e integración de múltiples fuentes de información.</p>
+<p>Uno de los principales desafíos asociados a los conteos poblacionales corresponde a su sensibilidad frente a errores de cobertura territorial. A medida que aumenta el nivel de desagregación geográfica, incluso pequeñas omisiones pueden generar distorsiones importantes sobre indicadores derivados. Este problema es particularmente visible en municipios pequeños, áreas rurales dispersas o segmentos censales con baja densidad poblacional, donde la omisión de algunos hogares puede modificar significativamente estructuras etarias, tasas de dependencia o indicadores sociales.</p>
+<p>En América Latina y el Caribe, estas dificultades adquieren una relevancia especial debido a la heterogeneidad territorial de la región. La expansión urbana acelerada, el crecimiento de asentamientos informales, la movilidad poblacional y las diferencias en capacidad operativa entre países generan importantes desafíos para la actualización cartográfica y la cobertura completa del operativo censal. Como consecuencia, la precisión espacial de los conteos puede variar considerablemente entre territorios.</p>
+<p>Desde una perspectiva estadística, los conteos poblacionales no deben interpretarse como valores exactos libres de error, sino como observaciones sujetas a incertidumbre y condicionadas por las limitaciones propias del operativo censal. Esta interpretación resulta fundamental para el desarrollo posterior de modelos probabilísticos de población, donde los conteos observados se entienden como aproximaciones de una población subyacente no completamente observable.</p>
+</div>
+<div id="tasas-derivadas" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Tasas derivadas<a href="enfoque-general-de-los-modelos-de-población.html#tasas-derivadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A partir de los conteos poblacionales es posible construir un amplio conjunto de tasas e indicadores utilizados para describir dinámicas demográficas, caracterizar condiciones territoriales y apoyar procesos de planificación pública. Mientras los conteos absolutos permiten cuantificar el tamaño de la población, las tasas derivadas facilitan la comparación entre territorios con estructuras y magnitudes poblacionales diferentes.</p>
+<p>Este tipo de indicadores resulta fundamental para el análisis territorial, ya que permite transformar los conteos censales en medidas comparables entre regiones, municipios o áreas urbanas y rurales. De esta manera, es posible evaluar fenómenos asociados a concentración poblacional, envejecimiento, dependencia demográfica o composición por sexo bajo una escala relativa más adecuada para el análisis estadístico.</p>
+<p>Entre los indicadores más utilizados se encuentran la densidad poblacional, las tasas de dependencia, las razones de masculinidad y los índices de envejecimiento. Cada uno de ellos resume distintas dimensiones de la estructura demográfica y constituye un insumo importante para la toma de decisiones institucionales.</p>
+<p>La densidad poblacional permite medir la relación entre población y superficie territorial. Para un territorio (i), esta puede expresarse como:</p>
+<p><span class="math display">\[
+D_i = \frac{N_i}{A_i}
+\]</span></p>
+<p>donde <span class="math inline">\(N_i\)</span> representa la población observada y <span class="math inline">\(A_i\)</span> el área geográfica correspondiente. Este indicador es ampliamente utilizado en procesos de planificación urbana, expansión de infraestructura, análisis ambiental y organización de servicios públicos.</p>
+<p>Por su parte, la razón de masculinidad describe la relación entre población masculina y femenina dentro de un territorio determinado:</p>
+<p><span class="math display">\[
+\text{RM}_i = \frac{N_{i,M}}{N_{i,F}} \times 100
+\]</span></p>
+<p>donde <span class="math inline">\(N_{i,M} = \sum_{e} N_{i,M,e}\)</span> es la población masculina y <span class="math inline">\(N_{i,F} = \sum_{e} N_{i,F,e}\)</span> la femenina del territorio <span class="math inline">\(i\)</span>. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.</p>
+<p>Otro indicador ampliamente utilizado corresponde a la tasa de dependencia demográfica, la cual relaciona la población potencialmente dependiente con la población en edades productivas:</p>
+<p><span class="math display">\[
+\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
+\]</span></p>
+<p>donde <span class="math inline">\(N_{i,[a,b]} = \sum_{s} \sum_{e \,:\, e \in [a,b]} N_{i,s,e}\)</span> denota la población del territorio <span class="math inline">\(i\)</span> en el intervalo de edad <span class="math inline">\([a, b]\)</span>. De manera complementaria, el índice de envejecimiento evalúa el peso relativo de la población adulta mayor frente a la población joven:</p>
+<p><span class="math display">\[
+\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
+\]</span></p>
+<p>Estos indicadores desempeñan un papel central en la planificación territorial y sectorial. Su utilización es frecuente en procesos de asignación presupuestaria, focalización de programas sociales, evaluación de necesidades de infraestructura y análisis de demanda potencial de servicios públicos.</p>
+<p>Sin embargo, las tasas derivadas presentan una sensibilidad considerable frente a errores de cobertura censal. Debido a que muchas de ellas se construyen como razones entre subgrupos poblacionales específicos, pequeñas omisiones o inconsistencias pueden generar fluctuaciones importantes en los resultados observados. Este fenómeno se vuelve particularmente evidente en dominios geográficos pequeños, donde diferencias reducidas en los conteos absolutos producen variaciones relativamente grandes en los indicadores derivados.</p>
+<p>En municipios con baja población o segmentos censales reducidos, las tasas pueden presentar comportamientos altamente inestables, especialmente cuando existen problemas de omisión diferencial por edad, sexo o localización territorial. En América Latina y el Caribe, estas dificultades suelen amplificarse debido a la heterogeneidad territorial, la expansión metropolitana acelerada, los procesos migratorios y las diferencias operativas observadas entre países y regiones.</p>
+<p>Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento permiten complementar los métodos tradicionales mediante estrategias que incorporan integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.</p>
+</div>
+<div id="estructuras-etarias" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Estructuras etarias<a href="enfoque-general-de-los-modelos-de-población.html#estructuras-etarias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender los cambios asociados a fecundidad, mortalidad, migración, envejecimiento y transición demográfica, así como las diferencias territoriales en la dinámica poblacional de los países.</p>
+<p>Los censos de población representan la principal fuente de información para caracterizar estas estructuras con altos niveles de desagregación geográfica. A partir de los conteos por edad y sexo es posible construir pirámides poblacionales, relaciones de dependencia, índices de envejecimiento y proyecciones demográficas, elementos fundamentales para la planificación social y económica.</p>
+<p>Sea <span class="math inline">\(N_{i,e} = \sum_{s \in \{M,F\}} N_{i,s,e}\)</span> la población del área <span class="math inline">\(i\)</span> en el grupo de edad <span class="math inline">\(e\)</span>, obtenida por suma sobre ambos sexos. La participación relativa de cada grupo etario dentro de la población total del territorio puede expresarse como:</p>
+<p><span class="math display">\[
+p_{i,e} = \frac{N_{i,e}}{N_i}
+\]</span></p>
+<p>donde <span class="math inline">\(N_i = \sum_{e=1}^{E} N_{i,e}\)</span> es la población total del territorio. Por construcción, <span class="math inline">\(\sum_{e=1}^{E} p_{i,e} = 1\)</span>.</p>
+<p>En la práctica, la estructura etaria suele organizarse utilizando grupos quinquenales de edad:</p>
+<p><span class="math display">\[
+0-4,\ 5-9,\ 10-14,\ \ldots,\ 80+
+\]</span></p>
+<p>debido a que esta agrupación proporciona mayor estabilidad demográfica y facilita la comparabilidad entre países y periodos censales. Adicionalmente, los grupos quinquenales constituyen la base utilizada en la mayoría de modelos de proyección poblacional y análisis demográficos oficiales.</p>
+<p>Los indicadores de cambio demográfico más utilizados se expresan directamente en términos de <span class="math inline">\(N_{i,[a,b]}\)</span>. El índice de envejecimiento relaciona la población adulta mayor con la población joven:</p>
+<p><span class="math display">\[
+\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
+\]</span></p>
+<p>La tasa de dependencia demográfica total evalúa la presión potencial sobre la población en edades productivas y coincide con <span class="math inline">\(\text{TD}_i\)</span> definida en la sección anterior:</p>
+<p><span class="math display">\[
+\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
+\]</span></p>
+<p>Estos indicadores son ampliamente utilizados en procesos de planificación pública debido a que permiten anticipar necesidades asociadas a educación, salud, protección social, empleo e infraestructura. Territorios con estructuras jóvenes suelen demandar mayores inversiones en sistemas educativos y servicios materno-infantiles, mientras que áreas con envejecimiento avanzado requieren una mayor capacidad de atención en salud y sistemas de cuidado.</p>
+<p>En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes territoriales. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional y reducción de fecundidad, otras regiones mantienen estructuras considerablemente más jóvenes asociadas a mayores niveles de natalidad y menor transición demográfica. Estas diferencias reflejan la elevada heterogeneidad demográfica de la región y generan importantes desafíos para la producción de estadísticas subnacionales comparables.</p>
+<p>La construcción de estructuras etarias confiables enfrenta además importantes limitaciones operativas. Los errores de cobertura censal no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la omisión censal tiende a concentrarse en niños pequeños, hombres jóvenes, migrantes, población indígena y habitantes de zonas rurales dispersas. Como consecuencia, la distribución observada por edad puede diferir significativamente de la estructura poblacional verdadera.</p>
+<p>Este problema se intensifica en dominios geográficos pequeños. En municipios con baja población o segmentos censales reducidos, pequeñas diferencias en los conteos observados pueden modificar considerablemente la forma de la estructura etaria y generar indicadores altamente inestables. La variabilidad observada suele aumentar aún más cuando los grupos poblacionales son desagregados simultáneamente por edad, sexo y localización territorial.</p>
+<p>Adicionalmente, las estructuras etarias cumplen un papel central en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de oficinas nacionales de estadística dependen directamente de la calidad de la distribución inicial por edad y sexo. En consecuencia, errores presentes en los conteos censales pueden propagarse hacia estimaciones futuras y afectar la consistencia temporal de las proyecciones oficiales.</p>
+<p>Desde la perspectiva del modelamiento estadístico, las estructuras etarias pueden entenderse como realizaciones sujetas a incertidumbre y error de cobertura. Bajo este enfoque, los modelos bayesianos jerárquicos permiten incorporar dependencia entre grupos de edad relacionados, estabilizar estimaciones en áreas con información limitada e integrar múltiples fuentes auxiliares para mejorar la coherencia territorial y demográfica de las estimaciones poblacionales.</p>
+</div>
+</div>
+<div id="formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Formulación del problema de subcobertura, no respuesta y omisión censal<a href="enfoque-general-de-los-modelos-de-población.html#formulaci%C3%B3n-del-problema-de-subcobertura-no-respuesta-y-omisi%C3%B3n-censal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura asociados al operativo de enumeración. Aunque el objetivo conceptual del censo consiste en registrar exhaustivamente toda la población presente o residente dentro del territorio nacional, en la práctica siempre existen diferencias entre la población efectivamente observada y la población real presente en el territorio.</p>
+<p>Estas diferencias surgen por múltiples razones. Algunas personas no son censadas, ciertas viviendas quedan fuera del operativo, algunos registros son duplicados y, en otros casos, existen errores en la asignación territorial de la información recolectada. Como resultado, los conteos censales deben entenderse como realizaciones observadas de un proceso de enumeración sujeto a limitaciones operativas, errores cartográficos y dificultades de cobertura.</p>
+<p>Formalmente, sea <span class="math inline">\(Y_{i,s,e}\)</span> el conteo observado en el operativo censal para el territorio <span class="math inline">\(i\)</span>, sexo <span class="math inline">\(s\)</span> y grupo de edad <span class="math inline">\(e\)</span>, y sea <span class="math inline">\(N_{i,s,e}\)</span> la población verdadera correspondiente. La relación entre ambos puede representarse como:</p>
+<p><span class="math display">\[
+Y_{i,s,e} = N_{i,s,e} - O_{i,s,e} + D_{i,s,e} + C_{i,s,e}
+\]</span></p>
+<p>donde <span class="math inline">\(O_{i,s,e}\)</span> representa la omisión censal, <span class="math inline">\(D_{i,s,e}\)</span> la duplicación de personas y <span class="math inline">\(C_{i,s,e}\)</span> los errores asociados a clasificación o asignación territorial. Bajo esta formulación, los conteos observados no constituyen una medición exacta de la población, sino una aproximación afectada por distintos mecanismos de error.</p>
+<p>En América Latina y el Caribe, la subcobertura censal presenta además una marcada heterogeneidad territorial. La omisión no ocurre aleatoriamente sobre la población ni sobre el territorio. Por el contrario, suele concentrarse en contextos específicos como asentamientos informales, zonas rurales dispersas, territorios indígenas, áreas de frontera o sectores urbanos con elevada movilidad residencial. Estas características generan patrones espaciales de cobertura diferencial que afectan directamente la calidad de los conteos subnacionales.</p>
+<p>La no respuesta constituye un problema adicional dentro del proceso censal. Incluso cuando una vivienda logra ser efectivamente enumerada, algunas variables pueden quedar incompletas debido a ausencia de informantes, rechazo parcial, inconsistencias durante la entrevista o errores de captura. Este fenómeno afecta particularmente variables socioeconómicas y laborales, reduciendo la completitud analítica de la información censal.</p>
+<p>La combinación entre subcobertura, omisión y no respuesta produce efectos acumulativos sobre múltiples procesos estadísticos posteriores. Las proyecciones demográficas, la construcción de marcos muestrales, la estimación de indicadores sociales y los procesos de focalización territorial dependen directamente de la calidad de los conteos base. En consecuencia, errores relativamente pequeños en la enumeración pueden propagarse posteriormente hacia distintas operaciones estadísticas oficiales.</p>
+<p>Estos problemas adquieren una relevancia aún mayor en niveles geográficos pequeños. En municipios con baja población o segmentos censales reducidos, la omisión de un número limitado de viviendas puede alterar significativamente las estructuras poblacionales observadas. Este fenómeno se intensifica cuando los errores de cobertura afectan diferencialmente determinados grupos de edad, sexo o condiciones socioeconómicas.</p>
+<p>Adicionalmente, la rápida transformación territorial observada en muchos países de la región ha incrementado la complejidad operativa de los censos. La expansión urbana acelerada, el crecimiento de asentamientos informales y los procesos migratorios dificultan la actualización cartográfica permanente y reducen la capacidad de cobertura completa del operativo censal.</p>
+<p>Frente a este escenario, los sistemas estadísticos han comenzado a complementar los enfoques tradicionales de conciliación censal mediante estrategias de integración de múltiples fuentes de información. Los registros administrativos, las imágenes satelitales, los preconteos operativos y otras fuentes auxiliares permiten identificar inconsistencias territoriales y fortalecer la estimación de poblaciones subenumeradas.</p>
+<p>En este libro, el interés principal no se centra en modelar directamente tasas de cobertura, sino en estimar conteos poblacionales en segmentos censales donde existen problemas de cobertura, omisión o inconsistencias territoriales. Bajo esta perspectiva, los conteos observados se interpretan como información parcial sobre una población subyacente cuya magnitud real debe inferirse utilizando información auxiliar y estructuras jerárquicas coherentes con la organización territorial del censo.</p>
+<p>Desde esta perspectiva, los modelos bayesianos ofrecen un marco flexible para integrar múltiples fuentes de información, representar explícitamente la incertidumbre asociada a los conteos observados y estabilizar estimaciones en dominios geográficos pequeños. Los capítulos posteriores desarrollan estos elementos metodológicos y presentan estrategias orientadas específicamente a la estimación subnacional de conteos poblacionales en segmentos censales bajo esquemas probabilísticos modernos.</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="introducción.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="producción-de-conteos-censales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introducción.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -223,24 +386,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
   "sharing": {
-    "github": true,
+    "github": false,
     "facebook": false,
-    "twitter": true,
+    "twitter": false,
     "linkedin": false,
     "weibo": false,
     "instapaper": false,
     "vk": false,
     "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+    "all": false
   },
   "fontsettings": {
     "theme": "white",
-    "family": "sans",
+    "family": "serif",
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/psirusteam/2021ASDA/02-Modelos_poblacion.Rmd",
-    "text": "Edit"
+    "link": null,
+    "text": null
   },
   "history": {
     "link": null,
@@ -250,15 +413,15 @@ gitbook.start({
     "link": null,
     "text": null
   },
-  "download": ["Análisis de encuestas con R.pdf", "Análisis de encuestas con R.epub", "Análisis de encuestas con R.mobi"],
+  "download": ["MBP-ALC.pdf", "MBP-ALC.docx"],
   "search": {
     "engine": "fuse",
     "options": null
   },
   "toc": {
-    "collapse": "section"
-  },
-  "tconfig": null
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>

@@ -1,3 +1,83 @@
+---
+title: "Modelos Bayesianos de Población para América Latina y el Caribe"
+subtitle: "Implementación, Validación y Aplicación Subnacional"
+author: |
+  Andrés Gutiérrez^[Experto Regional en Estadísticas Sociales, CEPAL. andres.gutierrez@cepal.org]
+  Stalyn Guerrero^[Consultor, CEPAL. guerrerostalyn@gmail.com]
+date: "mayo de 2026"
+lang: es
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+site: bookdown::bookdown_site
+github-repo: psirusteam/MBP-ALC
+description: >
+  Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional
+  de población en América Latina y el Caribe, con énfasis en integración de múltiples
+  fuentes de información y aplicación en institutos nacionales de estadística.
+---
+
+# Prefacio {-}
+
+Este libro expone el marco metodológico y computacional para la producción de estimaciones
+de población subnacional mediante modelos bayesianos jerárquicos. Surge de la experiencia
+acumulada en proyectos de asistencia técnica a institutos nacionales de estadística de
+América Latina y el Caribe, en el marco de las actividades de cooperación estadística de la
+Comisión Económica para América Latina y el Caribe (CEPAL).
+
+La motivación central es práctica: los censos de población proporcionan conteos que, en
+unidades geográficas pequeñas, presentan errores de cobertura sistemáticos y difíciles de
+cuantificar con los métodos de conciliación demográfica tradicionales. La integración de
+fuentes modernas de información —preconteos operativos, registros administrativos e
+imágenes satelitales— en un marco probabilístico coherente ofrece una respuesta
+metodológica rigurosa a este problema.
+
+El libro combina fundamentos estadísticos formales con implementación computacional
+reproducible en R y Stan, y está dirigido a estadísticos y demógrafos de organismos
+nacionales e internacionales con formación cuantitativa de nivel avanzado.
+
+**Cómo compilar este libro**
+
+```r
+# HTML interactivo
+bookdown::render_book("index.Rmd", "bookdown::gitbook")
+
+# PDF
+bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+
+# Word (.docx)
+bookdown::render_book("index.Rmd", "bookdown::word_document2")
+```
+
+**Licencia**
+
+La versión en línea de este libro está licenciada bajo
+[Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Introducción {-}
+
+La producción de conteos poblacionales constituye uno de los procesos estadísticos más complejos y estratégicos desarrollados por los institutos nacionales de estadística. Los censos de población y vivienda no solo permiten cuantificar el tamaño de la población, sino también establecer la estructura demográfica, definir marcos de referencia territoriales y generar la base operativa para una gran parte de las estadísticas oficiales producidas posteriormente por los países.
+
+A nivel subnacional, los conteos censales son utilizados en procesos de planificación territorial, asignación presupuestal, focalización de programas sociales, construcción de marcos muestrales, producción de indicadores sociales y elaboración de proyecciones demográficas. La calidad de estas aplicaciones depende directamente de la precisión y coherencia de los conteos poblacionales observados en cada unidad geográfica.
+
+Sin embargo, la producción censal enfrenta limitaciones estructurales asociadas a errores de cobertura, omisión, duplicación y clasificación territorial. Estos problemas no se distribuyen homogéneamente en el territorio. Por el contrario, suelen concentrarse en áreas con alta dispersión poblacional, asentamientos informales, zonas rurales de difícil acceso, territorios indígenas y contextos urbanos con elevada movilidad poblacional.
+
+Como consecuencia, los conteos observados durante el operativo censal no necesariamente representan la población verdadera presente en cada unidad geográfica. Esta situación se vuelve particularmente crítica en niveles territoriales pequeños, donde errores relativamente reducidos en términos absolutos pueden generar distorsiones importantes en tasas, indicadores derivados y procesos de asignación institucional.
+
+Frente a este problema, los sistemas estadísticos modernos han comenzado a incorporar metodologías de integración de múltiples fuentes de información orientadas a fortalecer, ajustar y validar los conteos censales. Entre estas fuentes se incluyen preconteos operativos, registros administrativos, cartografía censal, imágenes satelitales y modelos espaciales derivados de información georreferenciada.
+
+En este contexto, los modelos bayesianos jerárquicos ofrecen un marco probabilístico flexible para representar explícitamente la incertidumbre asociada al proceso de enumeración poblacional y combinar información procedente de distintas fuentes bajo un esquema coherente de inferencia estadística.
+
+<!--chapter:end:01-intro.Rmd-->
+
 # Enfoque General de los Modelos de Población
 
 ## Producción de conteos censales
@@ -259,3 +339,6 @@ Frente a este escenario, los sistemas estadísticos han comenzado a complementar
 En este libro, el interés principal no se centra en modelar directamente tasas de cobertura, sino en estimar conteos poblacionales en segmentos censales donde existen problemas de cobertura, omisión o inconsistencias territoriales. Bajo esta perspectiva, los conteos observados se interpretan como información parcial sobre una población subyacente cuya magnitud real debe inferirse utilizando información auxiliar y estructuras jerárquicas coherentes con la organización territorial del censo.
 
 Desde esta perspectiva, los modelos bayesianos ofrecen un marco flexible para integrar múltiples fuentes de información, representar explícitamente la incertidumbre asociada a los conteos observados y estabilizar estimaciones en dominios geográficos pequeños. Los capítulos posteriores desarrollan estos elementos metodológicos y presentan estrategias orientadas específicamente a la estimación subnacional de conteos poblacionales en segmentos censales bajo esquemas probabilísticos modernos.
+
+<!--chapter:end:02-Modelos_poblacion.Rmd-->
+

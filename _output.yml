@@ -1,25 +1,61 @@
 bookdown::gitbook:
-  split_by: section
+  split_by: chapter
   split_bib: yes
   dev: svglite
   css: style.css
+  highlight: tango
   config:
-    tconfig:
     toc:
       collapse: section
+      scroll_highlight: yes
       before: |
-        <li><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional</a></li>
+        <li>
+          <a href="./" style="display:block; padding: 14px 15px 4px;">
+            <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:0.95rem; color:#CBD5E1; display:block; line-height:1.3;">
+              MBP-ALC
+            </span>
+            <span style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#94A3B8; display:block; padding-top:3px; line-height:1.5;">
+              Modelos Bayesianos de Población<br>América Latina y el Caribe
+            </span>
+          </a>
+        </li>
+        <li><hr style="border-color:rgba(255,255,255,0.1); margin:4px 15px 8px;"></li>
       after: |
-        <li><a Modelos Bayesianos de Población para América Latina y el Caribe Implementación, Validación y Aplicación Subnacional </a></li>
-    download: [pdf, epub, mobi]
-    edit: https://github.com/psirusteam/2021ASDA/%s
+        <li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+          <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+            © CEPAL 2025 — CC BY-NC-SA 4.0
+          </small>
+        </li>
+    download: ["pdf", "docx"]
     sharing:
-      github: yes
-      facebook: no
+      github: false
+      facebook: false
+      twitter: false
+      linkedin: false
+      all: false
+    fontsettings:
+      theme: white
+      family: serif
+      size: 2
+
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
-  latex_engine: pdflatex
+  latex_engine: xelatex
   citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
+  keep_tex: no
+  toc: true
+  toc_depth: 3
+  number_sections: true
+  fig_caption: true
+  pandoc_args: ["--top-level-division=chapter"]
+
+bookdown::word_document2:
+  toc: true
+  toc_depth: 3
+  number_sections: true
+  fig_caption: true
+  pandoc_args: ["--mathml"]
+  # Para usar una plantilla personalizada, generar word_template.docx con
+  # crear_plantilla_word.R y descomentar la siguiente línea:
+  # reference_docx: word_template.docx
