@@ -25,7 +25,7 @@ variables-explicativas
 variables-demográficas
 variables-socioeconómicas
 variables-espaciales
-footnotes-and-citations
+preparación-de-imágenes-satelitales
 fuentes-de-datos-satelitales-landsat-sentinel-modis
 preprocesamiento-y-correcciones-atmosféricas
 extracción-de-características-ndvi-índices-espectrales
@@ -48,4 +48,3 @@ diagnóstico-exploratorio
 distribución-de-conteos
 outliers
 relación-entre-variables
-preparación-de-imágenes-satelitales

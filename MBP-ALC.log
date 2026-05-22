@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.15)  15 MAY 2026 15:52
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.15)  22 MAY 2026 09:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -412,10 +412,11 @@ LaTeX Info: Redefining \addtolength on input line 87.
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count326
-) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
-Package: footnote 1997/01/28 1.13 Save footnotes around boxes
-\fn@notes=\box63
-\fn@width=\dimen185
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/footnotehyper/footnotehyper.sty
+Package: footnotehyper 2025/11/15 v1.1f hyperref aware footnote.sty (JFB)
+\FNH@notes=\box63
+\FNH@width=\dimen185
+\FNH@toks=\toks25
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
@@ -451,7 +452,7 @@ Package babel Info: Importing font and identification data for spanish
 (babel)             from babel-es.ini. Reported on input line 4348.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
-\es@quottoks=\toks25
+\es@quottoks=\toks26
 \es@quotdepth=\count329
 ))
 LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) on input line 111.
@@ -866,7 +867,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas scale = 0.88.
+(fontspec)             Consolas scale = 0.95.
 
 
 Package fontspec Info: 
@@ -874,7 +875,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas scale = 0.88.
+(fontspec)             Consolas scale = 0.95.
 
 
 Package fontspec Info: 
@@ -882,7 +883,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas/B scale = 0.88.
+(fontspec)             Consolas/B scale = 0.95.
 
 
 Package fontspec Info: 
@@ -890,7 +891,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas/I scale = 0.88.
+(fontspec)             Consolas/I scale = 0.95.
 
 
 Package fontspec Info: 
@@ -898,25 +899,25 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas/BI scale = 0.88.
+(fontspec)             Consolas/BI scale = 0.95.
 
 
 Package fontspec Info: 
 (fontspec)             Font family 'Consolas(0)' created for font 'Consolas'
 (fontspec)             with options
-(fontspec)             [Scale=MatchLowercase,WordSpace={1,0,0},HyphenChar=None,PunctuationSpace=WordSpace,Scale=0.88].
+(fontspec)             [Scale=MatchLowercase,WordSpace={1,0,0},HyphenChar=None,PunctuationSpace=WordSpace,Scale=0.95].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/OT:script=latn;language=dflt;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/B/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/B/OT:script=latn;language=dflt;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/I/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/I/OT:script=latn;language=dflt;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/BI/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/BI/OT:script=latn;language=dflt;"
 
 
 Package fontspec Info: 
@@ -924,7 +925,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas scale = 0.88.
+(fontspec)             Consolas scale = 0.95.
 
 
 Package fontspec Info: 
@@ -932,7 +933,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas scale = 0.88.
+(fontspec)             Consolas scale = 0.95.
 
 
 Package fontspec Info: 
@@ -940,7 +941,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas/B scale = 0.88.
+(fontspec)             Consolas/B scale = 0.95.
 
 
 Package fontspec Info: 
@@ -948,7 +949,7 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas/I scale = 0.88.
+(fontspec)             Consolas/I scale = 0.95.
 
 
 Package fontspec Info: 
@@ -956,24 +957,24 @@ Package fontspec Info:
 
 
 Package fontspec Info: 
-(fontspec)             Consolas/BI scale = 0.88.
+(fontspec)             Consolas/BI scale = 0.95.
 
 
 Package fontspec Info: 
 (fontspec)             Font family 'Consolas(1)' created for font 'Consolas'
-(fontspec)             with options [Scale=MatchLowercase,Scale=0.88].
+(fontspec)             with options [Scale=MatchLowercase,Scale=0.95].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/OT:script=latn;language=dflt;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/B/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/B/OT:script=latn;language=dflt;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/I/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/I/OT:script=latn;language=dflt;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[0.88]"Consolas/BI/OT:script=latn;language=dflt;"
+(fontspec)             <->s*[0.95]"Consolas/BI/OT:script=latn;language=dflt;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/lmtt/m/n --> TU/Consolas(1)/m/n on input line 149.
@@ -1195,15 +1196,15 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/CambriaMath(3)/b/n on input line 158.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks26
-\thm@bodyfont=\toks27
-\thm@headfont=\toks28
-\thm@notefont=\toks29
-\thm@headpunct=\toks30
+\thm@style=\toks27
+\thm@bodyfont=\toks28
+\thm@headfont=\toks29
+\thm@notefont=\toks30
+\thm@headpunct=\toks31
 \thm@preskip=\skip66
 \thm@postskip=\skip67
 \thm@headsep=\skip68
-\dth@everypar=\toks31
+\dth@everypar=\toks32
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -1240,7 +1241,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen258
 \Gm@layouthoffset=\dimen259
 \Gm@layoutvoffset=\dimen260
-\Gm@dimlist=\toks32
+\Gm@dimlist=\toks33
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
@@ -1250,7 +1251,7 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \aftertitleunit=\skip71
 \ttl@plus=\dimen261
 \ttl@minus=\dimen262
-\ttl@toksa=\toks33
+\ttl@toksa=\toks34
 \titlewidth=\dimen263
 \titlewidthlast=\dimen264
 \titlewidthfirst=\dimen265
@@ -1270,10 +1271,10 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthL=\skip83
 \f@nch@widthC=\skip84
 \f@nch@widthR=\skip85
-\@temptokenb=\toks34
+\@temptokenb=\toks35
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2026/05/01 v1.0l Color table columns (DPC)
-\everycr=\toks35
+\everycr=\toks36
 \minrowclearance=\skip86
 \rownum=\count335
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
@@ -1286,7 +1287,7 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen267
 \c@nlinenum=\count337
-\TeXr@lab=\toks36
+\TeXr@lab=\toks37
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fvextra/fvextra.sty
 Package: fvextra 2026/02/25 v1.14.0 fvextra - extensions and patches for fancyvrb
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
@@ -1299,7 +1300,7 @@ Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ))
 \linenopenalty=\count338
-\output=\toks37
+\output=\toks38
 \linenoprevgraf=\count339
 \linenumbersep=\dimen268
 \linenumberwidth=\dimen269
@@ -1343,7 +1344,7 @@ Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2025/11/28 version 6.9.0 text color boxes
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks38
+\pgfutil@everybye=\toks39
 \pgfutil@tempdima=\dimen279
 \pgfutil@tempdimb=\dimen280
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
@@ -1355,10 +1356,10 @@ Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks39
-\pgfkeys@temptoks=\toks40
+\pgfkeys@pathtoks=\toks40
+\pgfkeys@temptoks=\toks41
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks41
+\pgfkeys@tmptoks=\toks42
 ))
 \pgf@x=\dimen281
 \pgf@y=\dimen282
@@ -1376,9 +1377,9 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \c@pgf@countb=\count361
 \c@pgf@countc=\count362
 \c@pgf@countd=\count363
-\t@pgf@toka=\toks42
-\t@pgf@tokb=\toks43
-\t@pgf@tokc=\toks44
+\t@pgf@toka=\toks43
+\t@pgf@tokb=\toks44
+\t@pgf@tokc=\toks45
 \pgf@sys@id@count=\count364
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
@@ -1404,9 +1405,9 @@ Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
 \pgfmath@dimen=\dimen291
 \pgfmath@count=\count368
 \pgfmath@box=\box74
-\pgfmath@toks=\toks45
-\pgfmath@stack@operand=\toks46
-\pgfmath@stack@operation=\toks47
+\pgfmath@toks=\toks46
+\pgfmath@stack@operand=\toks47
+\pgfmath@stack@operation=\toks48
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count369
 )) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
@@ -1489,8 +1490,8 @@ Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen318
 \pgffor@skip=\dimen319
-\pgffor@stack=\toks48
-\pgffor@toks=\toks49
+\pgffor@stack=\toks49
+\pgffor@toks=\toks50
 )) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
@@ -1525,8 +1526,8 @@ File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks50
-\verbatim@line=\toks51
+\every@verbatim=\toks51
+\verbatim@line=\toks52
 \verbatim@in@stream=\read5
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
@@ -1593,7 +1594,7 @@ Library (tcolorbox): 'tcblistings.code.tex' version '6.9.0'
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count390
 \lst@gtempboxa=\box97
-\lst@token=\toks52
+\lst@token=\toks53
 \lst@length=\count391
 \lst@currlwidth=\dimen335
 \lst@column=\count392
@@ -1747,12 +1748,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip90
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 335.
+Package hyperref Info: Option `colorlinks' set `true' on input line 330.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip91
 \enit@outerparindent=\dimen351
-\enit@toks=\toks53
+\enit@toks=\toks54
 \enit@inbox=\box100
 \enit@count@id=\count414
 \enitdp@description=\count415
@@ -1854,7 +1855,7 @@ Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
 \BKM@id=\count423
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 364.
+Package hyperref Info: Option `colorlinks' set `true' on input line 359.
 (./MBP-ALC.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
@@ -1863,26 +1864,26 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `MBP-ALC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 378.
-LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 373.
+LaTeX Font Info:    ... okay on input line 373.
 
 Package unicode-math Warning: Using \overbracket and \underbracket from
 (unicode-math)                `mathtools' package.
@@ -1901,8 +1902,8 @@ Package unicode-math Warning: I'm going to overwrite the following commands
 (unicode-math)                colon-like commands, using them will lead to
 (unicode-math)                inconsistencies.
 
-LaTeX Info: Redefining \. on input line 378.
-LaTeX Info: Redefining \% on input line 378.
+LaTeX Info: Redefining \. on input line 373.
+LaTeX Info: Redefining \% on input line 373.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1941,67 +1942,67 @@ LaTeX Info: Redefining \% on input line 378.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 378.
+Package hyperref Info: Link coloring ON on input line 373.
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 380.
+(Font)              scaled to size 17.28pt on input line 375.
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 380.
+(Font)              scaled to size 12.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 380.
+(Font)              scaled to size 12.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 380.
+(Font)              scaled to size 8.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 380.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 380.
+(Font)              scaled to size 6.0pt on input line 375.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 375.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 380.
+(Font)              scaled to size 12.0011pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 380.
+(Font)              scaled to size 8.00073pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 380.
+(Font)              scaled to size 6.00055pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 380.
+(Font)              scaled to size 11.99872pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 380.
+(Font)              scaled to size 7.99915pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 380.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 380.
+(Font)              scaled to size 5.99936pt on input line 375.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 375.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 380.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 375.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 380.
+(Font)              scaled to size 8.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 380.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 380.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 380.
+(Font)              scaled to size 5.0pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 9.00082pt on input line 380.
+(Font)              scaled to size 9.00082pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 380.
+(Font)              scaled to size 5.00046pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
-(Font)              scaled to size 8.99904pt on input line 380.
+(Font)              scaled to size 8.99904pt on input line 375.
 LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 380.
+(Font)              scaled to size 4.99947pt on input line 375.
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 380.
+(Font)              scaled to size 6.0pt on input line 375.
 [1
 
 
 ]
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 24.88pt on input line 383.
+(Font)              scaled to size 24.88pt on input line 378.
 LaTeX Font Info:    Font shape `TU/Cambria(0)/b/n' will be
-(Font)              scaled to size 24.88pt on input line 383.
+(Font)              scaled to size 24.88pt on input line 378.
 (./MBP-ALC.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -2023,7 +2024,7 @@ LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
 (Font)              scaled to size 7.29921pt on input line 2.
 LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
 (Font)              scaled to size 9.04724pt on input line 6.
-)
+[2])
 \tf@toc=\write5
 \openout5 = `MBP-ALC.toc'.
 
@@ -2041,102 +2042,194 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lot=\write7
 \openout7 = `MBP-ALC.lot'.
 
-[2]
-LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
-(Font)              scaled to size 20.84886pt on input line 387.
-LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
-(Font)              scaled to size 20.6536pt on input line 387.
-
-Overfull \hbox (69.5647pt too wide) in paragraph at lines 387--387
-|[][][]\TU/Calibri(0)/b/n/20.74 Prefacio| 
- []
-
-LaTeX Font Info:    Font shape `TU/Consolas(0)/m/n' will be
-(Font)              scaled to size 7.92004pt on input line 410.
-LaTeX Font Info:    Font shape `TU/Consolas(0)/m/it' will be
-(Font)              scaled to size 7.92004pt on input line 411.
-LaTeX Font Info:    Font shape `TU/Consolas(0)/b/n' will be
-(Font)              scaled to size 7.92004pt on input line 412.
-
-Overfull \hbox (1.67204pt too wide) in paragraph at lines 424--426
-[]\TU/Cambria(0)/m/n/10 La versión en línea de este libro está licenciada bajo [][]Creative Commons Atribución-NoComercial-CompartirIgual
- []
-
-[3
-
-]
-LaTeX Info: Redefining \. on input line 427.
-LaTeX Info: Redefining \% on input line 427.
+[3]
+LaTeX Info: Redefining \. on input line 382.
+LaTeX Info: Redefining \% on input line 382.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 427.
+(babel)             Reported on input line 382.
 [4
 
 ]
-Overfull \hbox (108.46162pt too wide) in paragraph at lines 427--427
-|[][][]\TU/Calibri(0)/b/n/20.74 Introducción| 
- []
-
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 17.3707pt on input line 382.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 17.20801pt on input line 382.
+LaTeX Font Info:    Font shape `TU/Consolas(0)/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 405.
+LaTeX Font Info:    Font shape `TU/Consolas(0)/m/it' will be
+(Font)              scaled to size 9.49997pt on input line 406.
+LaTeX Font Info:    Font shape `TU/Consolas(0)/b/n' will be
+(Font)              scaled to size 9.49997pt on input line 407.
 [5]
-LaTeX Info: Redefining \. on input line 442.
-LaTeX Info: Redefining \% on input line 442.
+LaTeX Info: Redefining \. on input line 417.
+LaTeX Info: Redefining \% on input line 417.
 [6
+
+] [7]
+LaTeX Info: Redefining \. on input line 432.
+LaTeX Info: Redefining \% on input line 432.
+[8
 
 ]
 Capítulo 1.
-LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
-(Font)              scaled to size 71.70007pt on input line 442.
-
-Overfull \hbox (70.93623pt too wide) in paragraph at lines 442--442
-|[][][]\TU/Calibri(0)/b/n/20.74 Enfoque
- []
-
 LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
-(Font)              scaled to size 14.47557pt on input line 444.
+(Font)              scaled to size 14.47557pt on input line 434.
 LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
-(Font)              scaled to size 14.34pt on input line 444.
-[7]
-LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
-(Font)              scaled to size 12.06299pt on input line 462.
-LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
-(Font)              scaled to size 11.95001pt on input line 462.
-LaTeX Info: Redefining \. on input line 478.
-LaTeX Info: Redefining \% on input line 478.
-[8]
-Underfull \vbox (badness 1038) has occurred while \output is active []
-
-
-Underfull \vbox (badness 1038) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 499.
-LaTeX Info: Redefining \% on input line 499.
+(Font)              scaled to size 14.34pt on input line 434.
 [9]
-LaTeX Info: Redefining \. on input line 521.
-LaTeX Info: Redefining \% on input line 521.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 12.06299pt on input line 452.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 11.95001pt on input line 452.
+LaTeX Info: Redefining \. on input line 471.
+LaTeX Info: Redefining \% on input line 471.
 [10]
-LaTeX Info: Redefining \. on input line 553.
-LaTeX Info: Redefining \% on input line 553.
+LaTeX Info: Redefining \. on input line 493.
+LaTeX Info: Redefining \% on input line 493.
 [11]
-LaTeX Info: Redefining \. on input line 583.
-LaTeX Info: Redefining \% on input line 583.
+LaTeX Info: Redefining \. on input line 516.
+LaTeX Info: Redefining \% on input line 516.
 [12]
-LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 7.3pt on input line 605.
-LaTeX Info: Redefining \. on input line 614.
-LaTeX Info: Redefining \% on input line 614.
+LaTeX Info: Redefining \. on input line 548.
+LaTeX Info: Redefining \% on input line 548.
 [13]
-LaTeX Info: Redefining \. on input line 646.
-LaTeX Info: Redefining \% on input line 646.
+LaTeX Info: Redefining \. on input line 576.
+LaTeX Info: Redefining \% on input line 576.
 [14]
-LaTeX Info: Redefining \. on input line 675.
-LaTeX Info: Redefining \% on input line 675.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 7.3pt on input line 595.
+LaTeX Info: Redefining \. on input line 610.
+LaTeX Info: Redefining \% on input line 610.
 [15]
-LaTeX Info: Redefining \. on input line 699.
-LaTeX Info: Redefining \% on input line 699.
+LaTeX Info: Redefining \. on input line 642.
+LaTeX Info: Redefining \% on input line 642.
 [16]
+LaTeX Info: Redefining \. on input line 669.
+LaTeX Info: Redefining \% on input line 669.
+[17]
+LaTeX Info: Redefining \. on input line 691.
+LaTeX Info: Redefining \% on input line 691.
+[18]
+LaTeX Info: Redefining \. on input line 696.
+LaTeX Info: Redefining \% on input line 696.
+[19]
+LaTeX Info: Redefining \. on input line 696.
+LaTeX Info: Redefining \% on input line 696.
+[20
+
+]
+Capítulo 2.
+LaTeX Font Info:    Font shape `TU/Cambria(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 725.
+LaTeX Font Info:    Font shape `TU/Cambria(1)/m/n' will be
+(Font)              scaled to size 7.3pt on input line 725.
+LaTeX Font Info:    Font shape `TU/Cambria(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 725.
+LaTeX Font Info:    Font shape `TU/Cambria(1)/b/n' will be
+(Font)              scaled to size 9.637pt on input line 725.
+LaTeX Font Info:    Font shape `TU/Cambria(1)/b/n' will be
+(Font)              scaled to size 7.035pt on input line 725.
+LaTeX Font Info:    Font shape `TU/Cambria(1)/b/n' will be
+(Font)              scaled to size 5.7822pt on input line 725.
+
+LaTeX Font Warning: Font shape `TU/CambriaMath(1)/b/n' undefined
+(Font)              using `TU/CambriaMath(1)/m/n' instead on input line 725.
+
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/b/n' will be
+(Font)              scaled to size 7.3pt on input line 725.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/b/n' will be
+(Font)              scaled to size 6.0pt on input line 725.
+
+LaTeX Font Warning: Font shape `TU/CambriaMath(2)/b/n' undefined
+(Font)              using `TU/CambriaMath(2)/m/n' instead on input line 725.
+
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/b/n' will be
+(Font)              scaled to size 7.30066pt on input line 725.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/b/n' will be
+(Font)              scaled to size 6.00055pt on input line 725.
+
+LaTeX Font Warning: Font shape `TU/CambriaMath(3)/b/n' undefined
+(Font)              using `TU/CambriaMath(3)/m/n' instead on input line 725.
+
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/b/n' will be
+(Font)              scaled to size 7.29921pt on input line 725.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/b/n' will be
+(Font)              scaled to size 5.99936pt on input line 725.
+[21]
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 728.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/b/n' will be
+(Font)              scaled to size 10.00092pt on input line 728.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/b/n' will be
+(Font)              scaled to size 9.99893pt on input line 728.
+LaTeX Info: Redefining \. on input line 763.
+LaTeX Info: Redefining \% on input line 763.
+[22]
+LaTeX Info: Redefining \. on input line 788.
+LaTeX Info: Redefining \% on input line 788.
+[23]
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/it' will be
+(Font)              scaled to size 10.0pt on input line 804.
+LaTeX Info: Redefining \. on input line 821.
+LaTeX Info: Redefining \% on input line 821.
+[24]
+LaTeX Info: Redefining \. on input line 845.
+LaTeX Info: Redefining \% on input line 845.
+[25]
+LaTeX Info: Redefining \. on input line 871.
+LaTeX Info: Redefining \% on input line 871.
+[26]
+LaTeX Info: Redefining \. on input line 899.
+LaTeX Info: Redefining \% on input line 899.
+[27]
+LaTeX Info: Redefining \. on input line 924.
+LaTeX Info: Redefining \% on input line 924.
+[28]
+LaTeX Info: Redefining \. on input line 947.
+LaTeX Info: Redefining \% on input line 947.
+[29]
+LaTeX Info: Redefining \. on input line 956.
+LaTeX Info: Redefining \% on input line 956.
+[30]
+Capítulo 3.
+[31
+
+]
+LaTeX Info: Redefining \. on input line 968.
+LaTeX Info: Redefining \% on input line 968.
+[32
+
+]
+Capítulo 4.
+[33]
+LaTeX Info: Redefining \. on input line 1020.
+LaTeX Info: Redefining \% on input line 1020.
+[34]
+LaTeX Info: Redefining \. on input line 1052.
+LaTeX Info: Redefining \% on input line 1052.
+[35]
+LaTeX Info: Redefining \. on input line 1083.
+LaTeX Info: Redefining \% on input line 1083.
+[36]
+LaTeX Info: Redefining \. on input line 1119.
+LaTeX Info: Redefining \% on input line 1119.
+[37]
+LaTeX Info: Redefining \. on input line 1157.
+LaTeX Info: Redefining \% on input line 1157.
+[38]
+LaTeX Info: Redefining \. on input line 1207.
+LaTeX Info: Redefining \% on input line 1207.
+[39]
+LaTeX Info: Redefining \. on input line 1234.
+LaTeX Info: Redefining \% on input line 1234.
+[40]
+LaTeX Info: Redefining \. on input line 1281.
+LaTeX Info: Redefining \% on input line 1281.
+[41]
 No file MBP-ALC.bbl.
-LaTeX Info: Redefining \. on input line 708.
-LaTeX Info: Redefining \% on input line 708.
-[17] (./MBP-ALC.aux
+LaTeX Info: Redefining \. on input line 1289.
+LaTeX Info: Redefining \% on input line 1289.
+[42] (./MBP-ALC.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -2144,14 +2237,17 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 42354 strings out of 469993
- 866736 string characters out of 5472795
- 1499999 words of memory out of 5000000
- 70457 multiletter control sequences out of 15000+600000
- 635470 words of font info for 134 fonts, out of 8000000 for 9000
+ 42515 strings out of 469993
+ 870263 string characters out of 5472795
+ 1505808 words of memory out of 5000000
+ 70609 multiletter control sequences out of 15000+600000
+ 636584 words of font info for 143 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,13n,117p,659b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,117p,802b,783s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MBP-ALC.pdf (17 pages).
+Output written on MBP-ALC.pdf (42 pages).

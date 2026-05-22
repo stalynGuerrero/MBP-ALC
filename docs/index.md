@@ -53,9 +53,5 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 bookdown::render_book("index.Rmd", "bookdown::word_document2")
 ```
 
-**Licencia**
-
-La versión en línea de este libro está licenciada bajo
-[Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 
