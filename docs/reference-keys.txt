@@ -1,0 +1,11 @@
+enfoque-general-de-los-modelos-de-población
+producción-de-conteos-censales
+producción-subnacional
+desagregación-por-sexo-y-edad
+uso-en-marcos-muestrales
+definición-de-dominios
+indicadores-de-interés
+conteos-poblacionales
+tasas-derivadas
+estructuras-etarias
+formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal

@@ -27,7 +27,7 @@
 ]
 % \setsansfont{TeX Gyre Heros}[...]
 
-\setmonofont{Consolas}[Scale=0.88]
+\setmonofont{Consolas}[Scale=0.95]
 % \setmonofont{Inconsolata}[Scale=0.88]
 
 % --- Matemáticas ------------------------------------------------
@@ -71,20 +71,15 @@
 % --- Estilo de capítulos y secciones ----------------------------
 \usepackage{titlesec}
 
-% Capítulo: número grande a la derecha, título con línea inferior
+% Capítulo: etiqueta pequeña + regla azul + título grande
+% Estilo [display]: sin número gigante, sin riesgo de desborde de margen
 \titleformat{\chapter}[display]
-  {\normalfont\sffamily\huge\bfseries\color{cepalnavy}}
-  {%
-    \raggedleft
-    \textcolor{cepalborder}{\fontsize{72}{72}\selectfont\thechapter}%
-  }
-  {-1.2ex}
-  {%
-    \vspace{0.8ex}%
-    \textcolor{cepalblue}{\rule{\textwidth}{1.5pt}}%
-    \vspace{0.6ex}%
-  }
-  [\vspace{0.3ex}\textcolor{cepalborder}{\rule{\textwidth}{0.4pt}}]
+  {\normalfont\sffamily\LARGE\bfseries\color{cepalnavy}}
+  {\normalsize\sffamily\bfseries\color{cepalblue}%
+   \MakeUppercase{\chaptertitlename}\ \thechapter}
+  {0.5em}
+  {\color{cepalblue}\titlerule[1.5pt]\vspace{0.4em}}
+  []
 
 \titleformat{\section}
   {\normalfont\sffamily\Large\bfseries\color{cepalnavy}}
@@ -140,7 +135,7 @@
 
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
   commandchars = \\\{\},
-  fontsize     = \small,
+  fontsize     = \normalsize,
   breaklines,
   breakanywhere,
   frame        = leftline,

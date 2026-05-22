@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.15)  15 MAY 2026 15:40
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.15)  15 MAY 2026 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -326,7 +326,11 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2026/04/16 4.6a verbatim text (tvz,hv)
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
@@ -438,7 +442,7 @@ LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) o
 LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2088.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2113.
 \U@D=\dimen188
-\l@unhyphenated=\language3
+\l@unhyphenated=\language4
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/xebabel.def)
 \bbl@readstream=\read3
 \bbl@dirlevel=\count328
@@ -447,15 +451,6 @@ Package babel Info: Importing font and identification data for spanish
 (babel)             from babel-es.ini. Reported on input line 4348.
 (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
-
-Package babel Warning: No hyphenation patterns were preloaded for
-(babel)                the language 'Spanish' into the format.
-(babel)                Please, configure your TeX system to add them and
-(babel)                rebuild the format. Now I will use the patterns
-(babel)                preloaded for \language=0 instead on input line 51.
-
-Package babel Info: Hyphen rules for 'spanish' set to \l@english
-(babel)             (\language0). Reported on input line 52.
 \es@quottoks=\toks25
 \es@quotdepth=\count329
 ))
@@ -1248,28 +1243,915 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@dimlist=\toks32
 ) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box66
+\beforetitleunit=\skip70
+\aftertitleunit=\skip71
+\ttl@plus=\dimen261
+\ttl@minus=\dimen262
+\ttl@toksa=\toks33
+\titlewidth=\dimen263
+\titlewidthlast=\dimen264
+\titlewidthfirst=\dimen265
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+\f@nch@headwidth=\skip72
+\f@nch@offset@elh=\skip73
+\f@nch@offset@erh=\skip74
+\f@nch@offset@olh=\skip75
+\f@nch@offset@orh=\skip76
+\f@nch@offset@elf=\skip77
+\f@nch@offset@erf=\skip78
+\f@nch@offset@olf=\skip79
+\f@nch@offset@orf=\skip80
+\f@nch@height=\skip81
+\f@nch@footalignment=\skip82
+\f@nch@widthL=\skip83
+\f@nch@widthC=\skip84
+\f@nch@widthR=\skip85
+\@temptokenb=\toks34
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2026/05/01 v1.0l Color table columns (DPC)
+\everycr=\toks35
+\minrowclearance=\skip86
+\rownum=\count335
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip87
+\multirow@cntb=\count336
+\multirow@dima=\skip88
+\bigstrutjot=\dimen266
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen267
+\c@nlinenum=\count337
+\TeXr@lab=\toks36
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2026/02/25 v1.14.0 fvextra - extensions and patches for fancyvrb
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2026/03/08 line numbers on paragraphs v5.9
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+\linenopenalty=\count338
+\output=\toks37
+\linenoprevgraf=\count339
+\linenumbersep=\dimen268
+\linenumberwidth=\dimen269
+\c@linenumber=\count340
+\c@pagewiselinenumber=\count341
+\c@LN@truepage=\count342
+\c@internallinenumber=\count343
+\c@internallinenumbers=\count344
+\quotelinenumbersep=\dimen270
+\bframerule=\dimen271
+\bframesep=\dimen272
+\bframebox=\box67
+\@LN@amsmath@ams@eqpen=\count345
 )
+\c@FancyVerbWriteLine=\count346
+\c@FancyVerbBufferLine=\count347
+\c@FV@TrueTabGroupLevel=\count348
+\c@FV@TrueTabCounter=\count349
+\FV@TabBox@Group=\box68
+\FV@bgcolorstructbox=\box69
+\FV@TmpLength=\skip89
+\c@FV@HighlightLinesStart=\count350
+\c@FV@HighlightLinesStop=\count351
+\FV@LoopCount=\count352
+\FV@NCharsBox=\box70
+\FV@BreakIndent=\dimen273
+\FV@BreakIndentNChars=\count353
+\FV@BreakSymbolSepLeft=\dimen274
+\FV@BreakSymbolSepLeftNChars=\count354
+\FV@BreakSymbolSepRight=\dimen275
+\FV@BreakSymbolSepRightNChars=\count355
+\FV@BreakSymbolIndentLeft=\dimen276
+\FV@BreakSymbolIndentLeftNChars=\count356
+\FV@BreakSymbolIndentRight=\dimen277
+\FV@BreakSymbolIndentRightNChars=\count357
+\c@FancyVerbLineBreakLast=\count358
+\FV@LineBox=\box71
+\FV@LineIndentBox=\box72
+\c@FV@BreakBufferDepth=\count359
+\FV@LineWidth=\dimen278
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2025/11/28 version 6.9.0 text color boxes
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks38
+\pgfutil@tempdima=\dimen279
+\pgfutil@tempdimb=\dimen280
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box73
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks39
+\pgfkeys@temptoks=\toks40
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks41
+))
+\pgf@x=\dimen281
+\pgf@y=\dimen282
+\pgf@xa=\dimen283
+\pgf@ya=\dimen284
+\pgf@xb=\dimen285
+\pgf@yb=\dimen286
+\pgf@xc=\dimen287
+\pgf@yc=\dimen288
+\pgf@xd=\dimen289
+\pgf@yd=\dimen290
+\w@pgf@writea=\write4
+\r@pgf@reada=\read4
+\c@pgf@counta=\count360
+\c@pgf@countb=\count361
+\c@pgf@countc=\count362
+\c@pgf@countd=\count363
+\t@pgf@toka=\toks42
+\t@pgf@tokb=\toks43
+\t@pgf@tokc=\toks44
+\pgf@sys@id@count=\count364
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-xetex.def
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)
+\pgfsys@objnum=\count365
+))) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count366
+\pgfsyssoftpath@bigbuffer@items=\count367
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen291
+\pgfmath@count=\count368
+\pgfmath@box=\box74
+\pgfmath@toks=\toks45
+\pgfmath@stack@operand=\toks46
+\pgfmath@stack@operation=\toks47
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count369
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen292
+\pgf@picmaxx=\dimen293
+\pgf@picminy=\dimen294
+\pgf@picmaxy=\dimen295
+\pgf@pathminx=\dimen296
+\pgf@pathmaxx=\dimen297
+\pgf@pathminy=\dimen298
+\pgf@pathmaxy=\dimen299
+\pgf@xx=\dimen300
+\pgf@xy=\dimen301
+\pgf@yx=\dimen302
+\pgf@yy=\dimen303
+\pgf@zx=\dimen304
+\pgf@zy=\dimen305
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen306
+\pgf@path@lasty=\dimen307
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen308
+\pgf@shorten@start@additional=\dimen309
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box75
+\pgf@hbox=\box76
+\pgf@layerbox@main=\box77
+\pgf@picture@serial@count=\count370
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen310
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen311
+\pgf@pt@y=\dimen312
+\pgf@pt@temp=\dimen313
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen314
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen315
+\pgf@sys@shading@range@num=\count371
+\pgf@shadingcount=\count372
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box78
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box79
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen316
+\pgf@nodesepend=\dimen317
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen318
+\pgffor@skip=\dimen319
+\pgffor@stack=\toks48
+\pgffor@toks=\toks49
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count373
+\pgfplotmarksize=\dimen320
+)
+\tikz@lastx=\dimen321
+\tikz@lasty=\dimen322
+\tikz@lastxsaved=\dimen323
+\tikz@lastysaved=\dimen324
+\tikz@lastmovetox=\dimen325
+\tikz@lastmovetoy=\dimen326
+\tikzleveldistance=\dimen327
+\tikzsiblingdistance=\dimen328
+\tikz@figbox=\box80
+\tikz@figbox@bg=\box81
+\tikz@tempbox=\box82
+\tikz@tempbox@bg=\box83
+\tikztreelevel=\count374
+\tikznumberofchildren=\count375
+\tikznumberofcurrentchild=\count376
+\tikz@fig@count=\count377
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count378
+\pgfmatrixcurrentcolumn=\count379
+\pgf@matrix@numberofcolumns=\count380
+)
+\tikz@expandcount=\count381
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks50
+\verbatim@line=\toks51
+\verbatim@in@stream=\read5
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box84
+\tcb@upperbox=\box85
+\tcb@lowerbox=\box86
+\tcb@phantombox=\box87
+\c@tcbbreakpart=\count382
+\c@tcblayer=\count383
+\c@tcolorbox@number=\count384
+\l__tcobox_tmpa_box=\box88
+\l__tcobox_tmpa_dim=\dimen329
+\tcb@temp=\box89
+\tcb@temp=\box90
+\tcb@temp=\box91
+\tcb@temp=\box92
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.9.0'
+\c@tcbrastercolumn=\count385
+\c@tcbrasterrow=\count386
+\c@tcbrasternum=\count387
+\c@tcbraster=\count388
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.9.0'
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2026/04/23 v1.2.0 Image filling library for TikZ
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2026/04/23 v1.2.0 Image filling library
+\l__tikzfill_tmpa_dim=\dimen330
+\l__tikzfill_tmpb_dim=\dimen331
+\l__tikzfill_img_box=\box93
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.9.0'
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.9.0'
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdfcol Info: Interface disabled because of missing PDF mode of pdfTeX.
+)
+Package pdfcol Info: pdfTeX's color stacks are not available.
+\tcb@testbox=\box94
+\tcb@totalupperbox=\box95
+\tcb@totallowerbox=\box96
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.9.0'
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.9.0'
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.9.0'
+\tcbfitdim=\dimen332
+\tcb@lowerfitdim=\dimen333
+\tcb@upperfitdim=\dimen334
+\tcb@cur@hbadness=\count389
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.9.0'
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.9.0'
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count390
+\lst@gtempboxa=\box97
+\lst@token=\toks52
+\lst@length=\count391
+\lst@currlwidth=\dimen335
+\lst@column=\count392
+\lst@pos=\count393
+\lst@lostspace=\dimen336
+\lst@width=\dimen337
+\lst@newlines=\count394
+\lst@lineno=\count395
+\lst@maxwidth=\dimen338
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count396
+\lst@skipnumbers=\count397
+\lst@framebox=\box98
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.9.0'
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.9.0'
+)
+\c@tcblisting=\count398
+))
+Package tcolorbox Info: Library `listingsutf8' is compatible with pdftex only. Library `listings` is loaded instead. on input line 29.
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.9.0'
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.9.0'
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.9.0'
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.9.0'
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen339
+\captionmargin=\dimen340
+\caption@leftmargin=\dimen341
+\caption@rightmargin=\dimen342
+\caption@width=\dimen343
+\caption@indent=\dimen344
+\caption@parindent=\dimen345
+\caption@hangindent=\dimen346
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count399
+\c@continuedfloat=\count400
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-04-24 v7.01q Hypertext links for LaTeX
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count401
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen347
+\Hy@linkcounter=\count402
+\Hy@pagecounter=\count403
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count404
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4070.
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count405
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip19
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen348
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count406
+\Field@Width=\dimen349
+\Fld@charsize=\dimen350
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count407
+\c@Item=\count408
+\c@Hfootnote=\count409
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2026-04-24 v7.01q Hyperref driver for XeTeX
+\pdfm@box=\box99
+\c@Hy@AnnotLevel=\count410
+\HyField@AnnotCount=\count411
+\Fld@listcount=\count412
+\c@bookmark@seq@number=\count413
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip90
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 335.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip91
+\enit@outerparindent=\dimen351
+\enit@toks=\toks53
+\enit@inbox=\box100
+\enit@count@id=\count414
+\enitdp@description=\count415
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Invalid UTF-8 byte or sequence at line 284 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 299 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 550 replaced by U+FFFD.
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count416
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip92
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count417
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip93
+\skiplinenumber=\skip94
+\skiprule=\skip95
+\skiphlne=\skip96
+\skiptext=\skip97
+\skiplength=\skip98
+\algomargin=\skip99
+\skipalgocfslide=\skip100
+\algowidth=\dimen352
+\inoutsize=\dimen353
+\inoutindent=\dimen354
+\interspacetitleruled=\dimen355
+\interspacealgoruled=\dimen356
+\interspacetitleboxruled=\dimen357
+\algocf@ruledwidth=\skip101
+\algocf@inoutbox=\box101
+\algocf@inputbox=\box102
+\AlCapSkip=\skip102
+\AlCapHSkip=\skip103
+\algoskipindent=\skip104
+\algocf@nlbox=\box103
+\algocf@hangingbox=\box104
+\algocf@untilbox=\box105
+\algocf@skipuntil=\skip105
+\algocf@capbox=\box106
+\algocf@lcaptionbox=\skip106
+\algoheightruledefault=\skip107
+\algoheightrule=\skip108
+\algotitleheightruledefault=\skip109
+\algotitleheightrule=\skip110
+\c@algocfline=\count418
+\c@algocfproc=\count419
+\c@algocf=\count420
+\algocf@algoframe=\box107
+\algocf@algobox=\box108
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip111
+\cftbeforetoctitleskip=\skip112
+\cftaftertoctitleskip=\skip113
+\cftbeforepartskip=\skip114
+\cftpartnumwidth=\skip115
+\cftpartindent=\skip116
+\cftbeforechapskip=\skip117
+\cftchapindent=\skip118
+\cftchapnumwidth=\skip119
+\cftbeforesecskip=\skip120
+\cftsecindent=\skip121
+\cftsecnumwidth=\skip122
+\cftbeforesubsecskip=\skip123
+\cftsubsecindent=\skip124
+\cftsubsecnumwidth=\skip125
+\cftbeforesubsubsecskip=\skip126
+\cftsubsubsecindent=\skip127
+\cftsubsubsecnumwidth=\skip128
+\cftbeforeparaskip=\skip129
+\cftparaindent=\skip130
+\cftparanumwidth=\skip131
+\cftbeforesubparaskip=\skip132
+\cftsubparaindent=\skip133
+\cftsubparanumwidth=\skip134
+\cftbeforeloftitleskip=\skip135
+\cftafterloftitleskip=\skip136
+\cftbeforefigskip=\skip137
+\cftfigindent=\skip138
+\cftfignumwidth=\skip139
+\c@lofdepth=\count421
+\c@lotdepth=\count422
+\cftbeforelottitleskip=\skip140
+\cftafterlottitleskip=\skip141
+\cftbeforetabskip=\skip142
+\cfttabindent=\skip143
+\cfttabnumwidth=\skip144
+) (c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
+File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
+\BKM@id=\count423
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 364.
+(./MBP-ALC.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 11.
+)
+\openout1 = `MBP-ALC.aux'.
 
-! LaTeX Error: File `titlesec.sty' not found.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 378.
+LaTeX Font Info:    ... okay on input line 378.
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+Package unicode-math Warning: Using \overbracket and \underbracket from
+(unicode-math)                `mathtools' package.
+(unicode-math)                 
+(unicode-math)                 Use \Uoverbracket and \Uunderbracket for
+(unicode-math)                original `unicode-math' definition.
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.192 ^^M
-         
-*** (cannot \read from terminal in nonstop modes)
 
- 
+Package unicode-math Warning: I'm going to overwrite the following commands
+(unicode-math)                from the `mathtools' package: 
+(unicode-math)                 
+(unicode-math)                     \dblcolon, \coloneqq, \Coloneqq, \eqqcolon.
+(unicode-math)                
+(unicode-math)                 
+(unicode-math)                 Note that since I won't overwrite the other
+(unicode-math)                colon-like commands, using them will lead to
+(unicode-math)                inconsistencies.
+
+LaTeX Info: Redefining \. on input line 378.
+LaTeX Info: Redefining \% on input line 378.
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(85.35826pt, 466.34077pt, 62.59596pt)
+* v-part:(T,H,B)=(71.13188pt, 638.47984pt, 85.35826pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=466.34077pt
+* \textheight=638.47984pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=-9.67403pt
+* \topmargin=-32.20993pt
+* \headheight=14.0pt
+* \headsep=17.07182pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\c@lstlisting=\count424
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 378.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 17.28pt on input line 380.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 380.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 380.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 12.0011pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 8.00073pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 6.00055pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 380.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 380.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 380.
+(c:/Users/STALYN/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 9.00082pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 8.99904pt on input line 380.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 380.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 380.
+[1
+
+
+]
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 24.88pt on input line 383.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/b/n' will be
+(Font)              scaled to size 24.88pt on input line 383.
+(./MBP-ALC.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 10.05249pt on input line 2.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 9.95834pt on input line 2.
+LaTeX Font Info:    Font shape `TU/Cambria(0)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 7.3pt on input line 2.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 2.
+LaTeX Font Info:    Font shape `TU/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 7.30066pt on input line 2.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 2.
+LaTeX Font Info:    Font shape `TU/CambriaMath(3)/m/n' will be
+(Font)              scaled to size 7.29921pt on input line 2.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 9.04724pt on input line 6.
+)
+\tf@toc=\write5
+\openout5 = `MBP-ALC.toc'.
+
+(./MBP-ALC.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lof=\write6
+\openout6 = `MBP-ALC.lof'.
+
+(./MBP-ALC.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write7
+\openout7 = `MBP-ALC.lot'.
+
+[2]
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 20.84886pt on input line 387.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 20.6536pt on input line 387.
+
+Overfull \hbox (69.5647pt too wide) in paragraph at lines 387--387
+|[][][]\TU/Calibri(0)/b/n/20.74 Prefacio| 
+ []
+
+LaTeX Font Info:    Font shape `TU/Consolas(0)/m/n' will be
+(Font)              scaled to size 7.92004pt on input line 410.
+LaTeX Font Info:    Font shape `TU/Consolas(0)/m/it' will be
+(Font)              scaled to size 7.92004pt on input line 411.
+LaTeX Font Info:    Font shape `TU/Consolas(0)/b/n' will be
+(Font)              scaled to size 7.92004pt on input line 412.
+
+Overfull \hbox (1.67204pt too wide) in paragraph at lines 424--426
+[]\TU/Cambria(0)/m/n/10 La versión en línea de este libro está licenciada bajo [][]Creative Commons Atribución-NoComercial-CompartirIgual
+ []
+
+[3
+
+]
+LaTeX Info: Redefining \. on input line 427.
+LaTeX Info: Redefining \% on input line 427.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 427.
+[4
+
+]
+Overfull \hbox (108.46162pt too wide) in paragraph at lines 427--427
+|[][][]\TU/Calibri(0)/b/n/20.74 Introducción| 
+ []
+
+[5]
+LaTeX Info: Redefining \. on input line 442.
+LaTeX Info: Redefining \% on input line 442.
+[6
+
+]
+Capítulo 1.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 71.70007pt on input line 442.
+
+Overfull \hbox (70.93623pt too wide) in paragraph at lines 442--442
+|[][][]\TU/Calibri(0)/b/n/20.74 Enfoque
+ []
+
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 14.47557pt on input line 444.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 14.34pt on input line 444.
+[7]
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 12.06299pt on input line 462.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
+(Font)              scaled to size 11.95001pt on input line 462.
+LaTeX Info: Redefining \. on input line 478.
+LaTeX Info: Redefining \% on input line 478.
+[8]
+Underfull \vbox (badness 1038) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1038) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 499.
+LaTeX Info: Redefining \% on input line 499.
+[9]
+LaTeX Info: Redefining \. on input line 521.
+LaTeX Info: Redefining \% on input line 521.
+[10]
+LaTeX Info: Redefining \. on input line 553.
+LaTeX Info: Redefining \% on input line 553.
+[11]
+LaTeX Info: Redefining \. on input line 583.
+LaTeX Info: Redefining \% on input line 583.
+[12]
+LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
+(Font)              scaled to size 7.3pt on input line 605.
+LaTeX Info: Redefining \. on input line 614.
+LaTeX Info: Redefining \% on input line 614.
+[13]
+LaTeX Info: Redefining \. on input line 646.
+LaTeX Info: Redefining \% on input line 646.
+[14]
+LaTeX Info: Redefining \. on input line 675.
+LaTeX Info: Redefining \% on input line 675.
+[15]
+LaTeX Info: Redefining \. on input line 699.
+LaTeX Info: Redefining \% on input line 699.
+[16]
+No file MBP-ALC.bbl.
+LaTeX Info: Redefining \. on input line 708.
+LaTeX Info: Redefining \% on input line 708.
+[17] (./MBP-ALC.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-04-28>
+ ***********
+ ) 
 Here is how much of TeX's memory you used:
- 13393 strings out of 470007
- 261551 string characters out of 5473440
- 840690 words of memory out of 5000000
- 42024 multiletter control sequences out of 15000+600000
- 628246 words of font info for 70 fonts, out of 8000000 for 9000
+ 42354 strings out of 469993
+ 866736 string characters out of 5472795
+ 1499999 words of memory out of 5000000
+ 70457 multiletter control sequences out of 15000+600000
+ 635470 words of font info for 134 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,0n,117p,406b,282s stack positions out of 10000i,1000n,20000p,200000b,200000s
-No pages of output.
+ 98i,13n,117p,659b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on MBP-ALC.pdf (17 pages).
