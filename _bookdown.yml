@@ -7,7 +7,9 @@ rmd_files: [
   "index.Rmd",
   "01-intro.Rmd",
   "02-Modelos_poblacion.Rmd",
-  "03-Integracion_Fuentes.Rmd"
+  "03-Integracion_Fuentes.Rmd",
+  "04-Imagenes_Satelitales.Rmd",
+  "05-InsumosModelamiento.Rmd"
 ]
 
 language:

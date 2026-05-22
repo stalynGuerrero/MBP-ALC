@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Preparación de Insumos para Modelamiento | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Preparación de Insumos para Modelamiento | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="github-repo" content="psirusteam/MBP-ALC" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Preparación de Insumos para Modelamiento | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  
+  <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="footnotes-and-citations.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li>
+  <a href="./" style="display:block; padding: 16px 15px 6px; text-decoration:none;">
+    <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:1.05rem; color:#E2E8F0; display:block; line-height:1.3;">
+      MBP-ALC
+    </span>
+    <span style="font-family:'Inter',sans-serif; font-size:0.82rem; color:#94A3B8; display:block; padding-top:4px; line-height:1.55;">
+      Modelos Bayesianos de Población<br>América Latina y el Caribe
+    </span>
+  </a>
+</li>
+<li><hr style="border-color:rgba(255,255,255,0.12); margin:6px 15px 10px;"></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#producci%C3%B3n-de-conteos-censales"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#indicadores-de-inter%C3%A9s"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="enfoque-general-de-los-modelos-de-población.html"><a href="enfoque-general-de-los-modelos-de-población.html#formulaci%C3%B3n-del-problema-de-subcobertura-no-respuesta-y-omisi%C3%B3n-censal"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html"><i class="fa fa-check"></i><b>2</b> Integración de Fuentes de Información</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#principios-de-modelamiento"><i class="fa fa-check"></i><b>2.1</b> Principios de modelamiento</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#modelos-de-conteo"><i class="fa fa-check"></i><b>2.1.1</b> Modelos de conteo</a></li>
+<li class="chapter" data-level="2.1.2" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#requerimientos-de-estimaci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>2.1.2</b> Requerimientos de estimación subnacional</a></li>
+<li class="chapter" data-level="2.1.3" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#justificaci%C3%B3n-del-enfoque-bayesiano"><i class="fa fa-check"></i><b>2.1.3</b> Justificación del enfoque bayesiano</a></li>
+<li class="chapter" data-level="2.1.4" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#integraci%C3%B3n-de-m%C3%BAltiples-fuentes"><i class="fa fa-check"></i><b>2.1.4</b> Integración de múltiples fuentes</a></li>
+<li class="chapter" data-level="2.1.5" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#relaci%C3%B3n-con-small-area-estimation"><i class="fa fa-check"></i><b>2.1.5</b> Relación con Small Area Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#identificaci%C3%B3n-de-fuentes"><i class="fa fa-check"></i><b>2.2</b> Identificación de fuentes</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#medici%C3%B3n-de-cobertura-a-nivel-de-segmento"><i class="fa fa-check"></i><b>2.2.1</b> Medición de cobertura a nivel de segmento</a></li>
+<li class="chapter" data-level="2.2.2" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#preconteos-y-segmentaci%C3%B3n"><i class="fa fa-check"></i><b>2.2.2</b> Preconteos y segmentación</a></li>
+<li class="chapter" data-level="2.2.3" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#registros-administrativos-variables-proxy"><i class="fa fa-check"></i><b>2.2.3</b> Registros administrativos (variables proxy)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#fuentes-satelitales"><i class="fa fa-check"></i><b>2.2.4</b> Fuentes satelitales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#variables-explicativas"><i class="fa fa-check"></i><b>2.3</b> Variables explicativas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#variables-demogr%C3%A1ficas"><i class="fa fa-check"></i><b>2.3.1</b> Variables demográficas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#variables-socioecon%C3%B3micas"><i class="fa fa-check"></i><b>2.3.2</b> Variables socioeconómicas</a></li>
+<li class="chapter" data-level="2.3.3" data-path="integración-de-fuentes-de-información.html"><a href="integración-de-fuentes-de-información.html#variables-espaciales"><i class="fa fa-check"></i><b>2.3.3</b> Variables espaciales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>3</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#fuentes-de-datos-satelitales-landsat-sentinel-modis"><i class="fa fa-check"></i><b>3.1</b> Fuentes de datos satelitales (Landsat, Sentinel, MODIS)</a></li>
+<li class="chapter" data-level="3.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#preprocesamiento-y-correcciones-atmosf%C3%A9ricas"><i class="fa fa-check"></i><b>3.2</b> Preprocesamiento y correcciones atmosféricas</a></li>
+<li class="chapter" data-level="3.3" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#extracci%C3%B3n-de-caracter%C3%ADsticas-ndvi-%C3%ADndices-espectrales"><i class="fa fa-check"></i><b>3.3</b> Extracción de características (NDVI, índices espectrales)</a></li>
+<li class="chapter" data-level="3.4" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#validaci%C3%B3n-con-datos-de-campo"><i class="fa fa-check"></i><b>3.4</b> Validación con datos de campo</a></li>
+<li class="chapter" data-level="3.5" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#generaci%C3%B3n-de-capas-para-el-modelo"><i class="fa fa-check"></i><b>3.5</b> Generación de capas para el modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html"><i class="fa fa-check"></i><b>4</b> Preparación de Insumos para Modelamiento</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#estandarizaci%C3%B3n-de-fuentes"><i class="fa fa-check"></i><b>4.1</b> Estandarización de fuentes</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#homologaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>4.1.1</b> Homologación de variables</a></li>
+<li class="chapter" data-level="4.1.2" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#normalizaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>4.1.2</b> Normalización de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#evaluaci%C3%B3n-de-cobertura"><i class="fa fa-check"></i><b>4.2</b> Evaluación de cobertura</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#tasa-de-cobertura-por-segmento"><i class="fa fa-check"></i><b>4.2.1</b> Tasa de cobertura por segmento</a></li>
+<li class="chapter" data-level="4.2.2" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#clasificaci%C3%B3n-de-segmentos"><i class="fa fa-check"></i><b>4.2.2</b> Clasificación de segmentos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#construcci%C3%B3n-de-la-variable-dependiente"><i class="fa fa-check"></i><b>4.3</b> Construcción de la variable dependiente</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#conteos-agregados"><i class="fa fa-check"></i><b>4.3.1</b> Conteos agregados</a></li>
+<li class="chapter" data-level="4.3.2" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#tasas-poblacionales"><i class="fa fa-check"></i><b>4.3.2</b> Tasas poblacionales</a></li>
+<li class="chapter" data-level="4.3.3" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#transformaciones"><i class="fa fa-check"></i><b>4.3.3</b> Transformaciones</a></li>
+<li class="chapter" data-level="4.3.4" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#definici%C3%B3n-de-poblaci%C3%B3n-base"><i class="fa fa-check"></i><b>4.3.4</b> Definición de población base</a></li>
+<li class="chapter" data-level="4.3.5" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#escalamiento"><i class="fa fa-check"></i><b>4.3.5</b> Escalamiento</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#diagn%C3%B3stico-exploratorio"><i class="fa fa-check"></i><b>4.4</b> Diagnóstico exploratorio</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#distribuci%C3%B3n-de-conteos"><i class="fa fa-check"></i><b>4.4.1</b> Distribución de conteos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#outliers"><i class="fa fa-check"></i><b>4.4.2</b> Outliers</a></li>
+<li class="chapter" data-level="4.4.3" data-path="preparación-de-insumos-para-modelamiento.html"><a href="preparación-de-insumos-para-modelamiento.html#relaci%C3%B3n-entre-variables"><i class="fa fa-check"></i><b>4.4.3</b> Relación entre variables</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+  <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+    © CEPAL 2025 — CC BY-NC-SA 4.0
+  </small>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="preparación-de-insumos-para-modelamiento" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Preparación de Insumos para Modelamiento<a href="preparación-de-insumos-para-modelamiento.html#preparaci%C3%B3n-de-insumos-para-modelamiento" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La construcción de un modelo bayesiano de estimación subnacional requiere, como condición previa, disponer de un conjunto de insumos analíticos preparados con criterios estadísticos explícitos y documentados. La calidad de las estimaciones finales depende no solo de la sofisticación del modelo, sino fundamentalmente de la coherencia, completitud y representatividad de los datos que lo alimentan.</p>
+<p>Este capítulo describe el proceso de preparación de insumos en cuatro etapas secuenciales: la estandarización de las fuentes de información, la evaluación de cobertura por segmento, la construcción de la variable dependiente y el diagnóstico exploratorio de los datos. Cada etapa introduce operaciones estadísticas específicas cuya omisión puede comprometer la validez de las inferencias posteriores.</p>
+<div id="estandarización-de-fuentes" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Estandarización de fuentes<a href="preparación-de-insumos-para-modelamiento.html#estandarizaci%C3%B3n-de-fuentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las fuentes de información descritas en el capítulo anterior provienen de sistemas institucionales con distintas definiciones operativas, unidades de medida, fechas de referencia y marcos territoriales. Su incorporación conjunta en un modelo estadístico exige un proceso previo de estandarización que garantice la comparabilidad entre fuentes y la compatibilidad con los dominios de estimación definidos.</p>
+<div id="homologación-de-variables" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Homologación de variables<a href="preparación-de-insumos-para-modelamiento.html#homologaci%C3%B3n-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La homologación consiste en establecer correspondencias semánticas y operativas entre variables provenientes de distintas fuentes que miden conceptos equivalentes o relacionados bajo definiciones diferentes. Este proceso es necesario porque los sistemas administrativos, los registros satelitales y los datos censales utilizan nomenclaturas, clasificaciones y criterios de asignación territorial que no siempre son directamente comparables.</p>
+<p><strong>Compatibilización de marcos territoriales.</strong> El primer paso en la homologación es garantizar que todas las fuentes estén referenciadas al mismo marco geográfico. En América Latina y el Caribe, los distintos registros administrativos suelen estar organizados por municipios, provincias o códigos postales que no coinciden directamente con los segmentos censales. Sea <span class="math inline">\(\mathcal{S} = \{1, 2, \ldots, I\}\)</span> el conjunto de segmentos del operativo censal y <span class="math inline">\(\mathcal{U} = \{1, 2, \ldots, J\}\)</span> las unidades geográficas del registro administrativo. La asignación de cada registro al segmento correspondiente requiere construir una función de mapeo <span class="math inline">\(\phi: \mathcal{U} \to \mathcal{S}\)</span> basada en la intersección espacial entre las geometrías de ambos marcos.</p>
+<p>Cuando las unidades del registro son más grandes que los segmentos censales, la desagregación territorial se realiza mediante ponderación por área o por densidad de viviendas. Si la unidad administrativa <span class="math inline">\(j\)</span> contiene <span class="math inline">\(m_{ij}\)</span> segmentos, la estimación del conteo administrativo para el segmento <span class="math inline">\(i\)</span> se obtiene como:</p>
+<p><span class="math display">\[
+\hat{A}_i = A_j \cdot \frac{w_{ij}}{\sum_{k \,:\, k \subset j} w_{kj}}
+\]</span></p>
+<p>donde <span class="math inline">\(A_j\)</span> es el conteo total del registro en la unidad <span class="math inline">\(j\)</span> y <span class="math inline">\(w_{ij}\)</span> es el peso asignado al segmento <span class="math inline">\(i\)</span> dentro de la unidad <span class="math inline">\(j\)</span>, que puede ser proporcional al área, al número de viviendas del preconteo o a la población proyectada.</p>
+<p><strong>Homologación de definiciones de población.</strong> Las distintas fuentes pueden diferir en la definición de la unidad de observación. Los censos cuentan personas según residencia habitual o presencia en el momento censal, los padrones electorales registran ciudadanos habilitados para votar, los sistemas de salud registran afiliados activos y los registros civiles registran eventos vitales. La homologación requiere documentar explícitamente estas diferencias y construir factores de ajuste que permitan aproximar cada fuente a la definición censal de referencia.</p>
+<p><strong>Compatibilización temporal.</strong> Las fuentes de información tienen distintas fechas de referencia. El preconteo puede haberse realizado entre seis y dieciocho meses antes del momento censal. Los registros administrativos corresponden al cierre de un ejercicio fiscal o al corte de un padrón en una fecha específica. Las imágenes satelitales capturan el territorio en distintos momentos a lo largo del año. La compatibilización temporal consiste en seleccionar o construir versiones de cada fuente que sean lo más próximas posible al momento censal de referencia, documentando el desfase temporal residual como fuente de incertidumbre adicional.</p>
+</div>
+<div id="normalización-de-variables" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Normalización de variables<a href="preparación-de-insumos-para-modelamiento.html#normalizaci%C3%B3n-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez homologadas, las variables auxiliares presentan distribuciones con escalas y dispersiones heterogéneas que dificultan la estimación numérica de los coeficientes y la interpretación comparada de los efectos. La normalización transforma las variables a una escala común que facilita la estimación y mejora el comportamiento computacional de los algoritmos de inferencia.</p>
+<p><strong>Estandarización por media y desviación estándar.</strong> Para una variable continua <span class="math inline">\(x_{i,k}\)</span> medida en el segmento <span class="math inline">\(i\)</span>, la estandarización produce:</p>
+<p><span class="math display">\[
+\tilde{x}_{i,k} = \frac{x_{i,k} - \bar{x}_k}{s_k}
+\]</span></p>
+<p>donde <span class="math inline">\(\bar{x}_k = \frac{1}{I}\sum_{i=1}^{I} x_{i,k}\)</span> es la media y <span class="math inline">\(s_k = \sqrt{\frac{1}{I-1}\sum_{i=1}^{I}(x_{i,k} - \bar{x}_k)^2}\)</span> es la desviación estándar de la variable calculadas sobre todos los segmentos. Bajo esta transformación, <span class="math inline">\(\tilde{x}_{i,k}\)</span> tiene media cero y desviación estándar uno, y el coeficiente <span class="math inline">\(\beta_k\)</span> se interpreta como el cambio esperado en el logaritmo de la población por unidad de desviación estándar en la covariable <span class="math inline">\(k\)</span>.</p>
+<p><strong>Transformación logarítmica.</strong> Las variables de conteo y magnitud —número de viviendas, conteos de registros administrativos, áreas construidas— presentan distribuciones fuertemente asimétricas con cola derecha pesada. La transformación logarítmica reduce la asimetría y aproxima la distribución a la normalidad:</p>
+<p><span class="math display">\[
+\tilde{x}_{i,k} = \log(x_{i,k} + 1)
+\]</span></p>
+<p>La constante <span class="math inline">\(+1\)</span> garantiza que la transformación esté definida para valores cero, lo cual es frecuente en covariables de conteo en segmentos con baja densidad poblacional.</p>
+<p><strong>Normalización al intervalo unitario.</strong> Para variables que representan proporciones o índices con interpretación intrínseca en el rango <span class="math inline">\([0,1]\)</span>, como tasas de cobertura o índices de vegetación, puede ser preferible la normalización min-max:</p>
+<p><span class="math display">\[
+\tilde{x}_{i,k} = \frac{x_{i,k} - \min_i(x_{i,k})}{\max_i(x_{i,k}) - \min_i(x_{i,k})}
+\]</span></p>
+<p>Esta transformación preserva la interpretación original de la variable y facilita la especificación de distribuciones a priori informativas sobre los coeficientes.</p>
+<p><strong>Tratamiento de valores faltantes.</strong> La presencia de valores faltantes en las covariables auxiliares debe ser resuelta antes de la estimación. Las estrategias más comunes incluyen la imputación por la mediana o la media del grupo territorial al que pertenece el segmento, la imputación mediante modelos de regresión utilizando covariables con cobertura completa, y la imputación múltiple para propagar la incertidumbre asociada a los valores faltantes hacia las estimaciones finales.</p>
+</div>
+</div>
+<div id="evaluación-de-cobertura" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Evaluación de cobertura<a href="preparación-de-insumos-para-modelamiento.html#evaluaci%C3%B3n-de-cobertura" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La evaluación de cobertura censal por segmento es un paso crítico previo a la estimación. Permite identificar los dominios con información deficiente, cuantificar el grado de omisión territorial y establecer una clasificación de los segmentos que oriente las decisiones de modelamiento.</p>
+<div id="tasa-de-cobertura-por-segmento" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Tasa de cobertura por segmento<a href="preparación-de-insumos-para-modelamiento.html#tasa-de-cobertura-por-segmento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La tasa de cobertura de un segmento censal mide la proporción de la población verdadera que fue efectivamente enumerada durante el operativo. Dado que la población verdadera <span class="math inline">\(N_i\)</span> no es directamente observable, la estimación de la tasa de cobertura requiere una referencia externa independiente del conteo censal.</p>
+<p>Sea <span class="math inline">\(R_i\)</span> una estimación de referencia de la población del segmento <span class="math inline">\(i\)</span> obtenida a partir de una fuente auxiliar confiable, como un preconteo operativo ajustado o una proyección demográfica intercensal. La tasa de cobertura estimada para el segmento <span class="math inline">\(i\)</span> se define como:</p>
+<p><span class="math display">\[
+\hat{c}_i = \frac{Y_i^{(C)}}{R_i}
+\]</span></p>
+<p>donde <span class="math inline">\(Y_i^{(C)}\)</span> es el conteo censal observado en el segmento. Un valor <span class="math inline">\(\hat{c}_i &lt; 1\)</span> indica subcobertura —el operativo no logró enumerar toda la población de referencia— mientras que <span class="math inline">\(\hat{c}_i &gt; 1\)</span> puede indicar sobrecobertura, duplicación de registros o inconsistencias en la referencia utilizada.</p>
+<p>En la práctica, la tasa de cobertura puede estimarse también mediante métodos de captura-recaptura cuando se dispone de dos fuentes de información independientes para el mismo segmento. Si <span class="math inline">\(Y_i^{(C)}\)</span> es el conteo censal y <span class="math inline">\(A_i\)</span> es el conteo de un registro administrativo, y si <span class="math inline">\(M_i\)</span> es el número de personas identificadas en ambas fuentes, la estimación de Chapman para la población total es:</p>
+<p><span class="math display">\[
+\hat{N}_i^{CR} = \frac{(Y_i^{(C)} + 1)(A_i + 1)}{M_i + 1} - 1
+\]</span></p>
+<p>y la tasa de cobertura del censo respecto a esta estimación:</p>
+<p><span class="math display">\[
+\hat{c}_i^{CR} = \frac{Y_i^{(C)}}{\hat{N}_i^{CR}}
+\]</span></p>
+<p>Este estimador requiere el supuesto de independencia entre ambas fuentes, condición que puede ser violada cuando la propensión a ser registrado en el censo y en el registro administrativo están correlacionadas con características del individuo o del territorio.</p>
+<p>La distribución de las tasas de cobertura entre segmentos permite identificar patrones espaciales de omisión diferencial. El coeficiente de variación de <span class="math inline">\(\hat{c}_i\)</span> entre segmentos es un indicador de la heterogeneidad territorial de la cobertura. Valores elevados de este coeficiente indican que la omisión censal no es aleatoria y que un modelo que ignore esta heterogeneidad producirá estimaciones sesgadas.</p>
+</div>
+<div id="clasificación-de-segmentos" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Clasificación de segmentos<a href="preparación-de-insumos-para-modelamiento.html#clasificaci%C3%B3n-de-segmentos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La clasificación de los segmentos según su nivel de cobertura permite diseñar estrategias diferenciadas de estimación y validación. Una tipología operativa agrupa los segmentos en tres categorías:</p>
+<p><strong>Segmentos con cobertura aceptable</strong> (<span class="math inline">\(\hat{c}_i \geq c^*\)</span>): el conteo censal observado es suficientemente representativo de la población subyacente y puede utilizarse como variable dependiente del modelo sin ajuste previo. El umbral <span class="math inline">\(c^*\)</span> se fija típicamente entre 0.85 y 0.95, dependiendo de los estándares de calidad del sistema estadístico.</p>
+<p><strong>Segmentos con cobertura parcial</strong> (<span class="math inline">\(c_{**} \leq \hat{c}_i &lt; c^*\)</span>): el conteo censal presenta omisión detectable pero el segmento fue efectivamente enumerado. Estos segmentos ingresan al modelo con un peso reducido o con un indicador de calidad que refleja la mayor incertidumbre de su conteo. El umbral inferior <span class="math inline">\(c_{**}\)</span> se sitúa típicamente entre 0.60 y 0.75.</p>
+<p><strong>Segmentos con cobertura insuficiente</strong> (<span class="math inline">\(\hat{c}_i &lt; c_{**}\)</span>): el operativo censal no alcanzó una enumeración mínimamente representativa. Estos segmentos son tratados como dominios sin información propia y su estimación depende enteramente de las covariables auxiliares y de la estructura jerárquica del modelo.</p>
+<p>Formalmente, la clasificación puede expresarse mediante la variable indicadora:</p>
+<p><span class="math display">\[
+\kappa_i = \begin{cases} 2 &amp; \text{si } \hat{c}_i \geq c^* \\ 1 &amp; \text{si } c_{**} \leq \hat{c}_i &lt; c^* \\ 0 &amp; \text{si } \hat{c}_i &lt; c_{**} \end{cases}
+\]</span></p>
+<p>Esta clasificación se incorpora al modelo mediante pesos de verosimilitud o mediante la especificación diferenciada de la varianza del error de medición según la categoría del segmento.</p>
+</div>
+</div>
+<div id="construcción-de-la-variable-dependiente" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Construcción de la variable dependiente<a href="preparación-de-insumos-para-modelamiento.html#construcci%C3%B3n-de-la-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La variable dependiente del modelo de estimación subnacional es el conteo poblacional que se desea estimar en cada segmento. Su construcción no es un proceso trivial: requiere decisiones explícitas sobre la agregación de categorías, las transformaciones aplicadas y la definición de la población de referencia.</p>
+<div id="conteos-agregados" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Conteos agregados<a href="preparación-de-insumos-para-modelamiento.html#conteos-agregados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El conteo agregado para el segmento <span class="math inline">\(i\)</span> se construye sumando los conteos censales observados sobre los grupos de sexo y edad de interés. Sea <span class="math inline">\(Y_{i,s,e}^{(C)}\)</span> el conteo censal del segmento <span class="math inline">\(i\)</span>, sexo <span class="math inline">\(s\)</span> y grupo de edad <span class="math inline">\(e\)</span>. El conteo total del segmento es:</p>
+<p><span class="math display">\[
+Y_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} Y_{i,s,e}^{(C)}
+\]</span></p>
+<p>Cuando el objetivo es estimar conteos desagregados por sexo o grupo etario, la variable dependiente se construye para cada celda demográfica de interés:</p>
+<p><span class="math display">\[
+Y_{i,s,e} = Y_{i,s,e}^{(C)}, \qquad s \in \{M, F\},\quad e = 1, \ldots, E
+\]</span></p>
+<p>y el modelo se estima de forma separada para cada celda o mediante un modelo conjunto que impone coherencia entre celdas a través de una estructura jerárquica compartida.</p>
+<p>La decisión sobre el nivel de desagregación de la variable dependiente tiene implicaciones directas sobre el tamaño del problema de estimación y la disponibilidad de información. A mayor desagregación, mayor es el número de celdas con conteos pequeños o nulos, lo que incrementa la dependencia del modelo respecto a las covariables auxiliares y a la estructura jerárquica.</p>
+</div>
+<div id="tasas-poblacionales" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Tasas poblacionales<a href="preparación-de-insumos-para-modelamiento.html#tasas-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En algunos contextos, la variable de interés no es el conteo absoluto sino una tasa relativa que expresa la magnitud de un subgrupo poblacional como proporción del total. Sea <span class="math inline">\(Y_i^{(g)}\)</span> el conteo del grupo de interés <span class="math inline">\(g\)</span> en el segmento <span class="math inline">\(i\)</span> y <span class="math inline">\(Y_i\)</span> el total del segmento. La tasa poblacional se define como:</p>
+<p><span class="math display">\[
+\pi_i^{(g)} = \frac{Y_i^{(g)}}{Y_i}
+\]</span></p>
+<p>Las tasas poblacionales son especialmente relevantes cuando el objetivo es comparar la composición demográfica entre segmentos con magnitudes poblacionales muy distintas. Sin embargo, en dominios con conteos pequeños, las tasas presentan elevada variabilidad aleatoria que puede distorsionar la comparación territorial.</p>
+<p>El modelamiento de tasas en el contexto bayesiano utiliza frecuentemente la distribución beta como modelo para la variable dependiente cuando <span class="math inline">\(\pi_i^{(g)} \in (0,1)\)</span>, o modelos binomiales cuando se dispone del denominador exacto:</p>
+<p><span class="math display">\[
+Y_i^{(g)} \mid \pi_i^{(g)}, Y_i \sim \text{Binomial}(Y_i,\, \pi_i^{(g)})
+\]</span></p>
+</div>
+<div id="transformaciones" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Transformaciones<a href="preparación-de-insumos-para-modelamiento.html#transformaciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las transformaciones de la variable dependiente buscan estabilizar la varianza, aproximar la distribución a la normalidad o linealizar la relación entre la variable de respuesta y los predictores. En el contexto de conteos poblacionales, las transformaciones más utilizadas son las siguientes.</p>
+<p><strong>Transformación logarítmica.</strong> La transformación <span class="math inline">\(\log(Y_i + 1)\)</span> es la más frecuentemente utilizada en modelos log-lineales de conteo. Estabiliza la varianza en distribuciones de Poisson y permite interpretar los efectos de las covariables en términos de cambios porcentuales en la población esperada.</p>
+<p><strong>Transformación raíz cuadrada.</strong> La transformación <span class="math inline">\(\sqrt{Y_i}\)</span> tiene la propiedad de estabilizar la varianza en distribuciones de Poisson, dado que <span class="math inline">\(\text{Var}(\sqrt{Y_i}) \approx 1/4\)</span> cuando <span class="math inline">\(\lambda_i\)</span> es grande. Es menos utilizada que la logarítmica pero puede ser apropiada cuando los conteos son muy pequeños y la transformación logarítmica introduce distorsiones.</p>
+<p><strong>Transformación de potencia de Box-Cox.</strong> Para una búsqueda más sistemática de la transformación estabilizadora de varianza, la familia de transformaciones de Box-Cox parametriza el tipo de transformación mediante un parámetro <span class="math inline">\(\lambda_{BC}\)</span>:</p>
+<p><span class="math display">\[
+Y_i^{(\lambda_{BC})} = \begin{cases} \dfrac{Y_i^{\lambda_{BC}} - 1}{\lambda_{BC}} &amp; \text{si } \lambda_{BC} \neq 0 \\ \log(Y_i) &amp; \text{si } \lambda_{BC} = 0 \end{cases}
+\]</span></p>
+<p>El parámetro <span class="math inline">\(\lambda_{BC}\)</span> puede estimarse por máxima verosimilitud como parte del proceso de especificación del modelo. Los valores <span class="math inline">\(\lambda_{BC} = 0\)</span> (logarítmica) y <span class="math inline">\(\lambda_{BC} = 0.5\)</span> (raíz cuadrada) son los más frecuentes en la práctica.</p>
+</div>
+<div id="definición-de-población-base" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Definición de población base<a href="preparación-de-insumos-para-modelamiento.html#definici%C3%B3n-de-poblaci%C3%B3n-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La población base define el universo de referencia sobre el cual se construye el conteo de interés. Su especificación correcta es fundamental para garantizar la comparabilidad entre segmentos y la coherencia con los totales de niveles superiores.</p>
+<p>La definición de población base más común en censos de población es la población residente habitual: el conjunto de personas cuya residencia principal está localizada en el segmento en el momento del censo. Sin embargo, algunos censos implementan el criterio de población de hecho, que contabiliza a las personas presentes en el segmento durante el momento censal, independientemente de su residencia habitual.</p>
+<p>Formalmente, la población base <span class="math inline">\(\mathcal{P}_i\)</span> del segmento <span class="math inline">\(i\)</span> puede definirse bajo distintos criterios:</p>
+<ul>
+<li><strong>Población residente:</strong> <span class="math inline">\(\mathcal{P}_i = \{j : \text{residencia habitual de } j \text{ está en } i\}\)</span></li>
+<li><strong>Población de hecho:</strong> <span class="math inline">\(\mathcal{P}_i = \{j : j \text{ está físicamente presente en } i \text{ en el momento censal}\}\)</span></li>
+<li><strong>Población en hogares particulares:</strong> excluye a las personas en colectividades institucionales (hospitales, cárceles, cuarteles).</li>
+<li><strong>Población civil:</strong> excluye adicionalmente al personal militar.</li>
+</ul>
+<p>La elección de la población base afecta la coherencia de los conteos en territorios con alta movilidad diurna, presencia de instituciones totales o frontera entre áreas urbanas y rurales. El modelo de estimación debe adoptarse para la misma definición de población base utilizada en el operativo censal.</p>
+</div>
+<div id="escalamiento" class="section level3 hasAnchor" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Escalamiento<a href="preparación-de-insumos-para-modelamiento.html#escalamiento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El escalamiento de los conteos es necesario cuando se trabaja simultáneamente con segmentos de tamaño muy heterogéneo o cuando se requiere comparar estimaciones entre países o periodos censales con distintas magnitudes poblacionales.</p>
+<p>El escalamiento por tamaño esperado utiliza una referencia <span class="math inline">\(R_i\)</span> para expresar el conteo observado como una proporción de la población esperada:</p>
+<p><span class="math display">\[
+z_i = \frac{Y_i}{R_i}
+\]</span></p>
+<p>donde <span class="math inline">\(R_i\)</span> puede ser el preconteo ajustado, la proyección demográfica intercensal u otro estimador de referencia. La variable escalada <span class="math inline">\(z_i\)</span> puede interpretarse como un factor de cobertura relativa y tiene la ventaja de reducir la dependencia del modelo respecto al tamaño absoluto de cada segmento.</p>
+<p>El escalamiento por exposición es especialmente útil cuando la variable dependiente representa un conteo sobre un denominador que varía entre segmentos. En el modelo de Poisson, esta escala se incorpora mediante el término de offset:</p>
+<p><span class="math display">\[
+\log(\lambda_i) = \log(R_i) + \mathbf{x}_i^{\top}\boldsymbol{\beta} + u_i
+\]</span></p>
+<p>donde <span class="math inline">\(\log(R_i)\)</span> es el offset —una constante conocida que ajusta la intensidad esperada por el tamaño de la exposición del segmento— y los coeficientes <span class="math inline">\(\boldsymbol{\beta}\)</span> se interpretan como efectos sobre la tasa por unidad de exposición.</p>
+</div>
+</div>
+<div id="diagnóstico-exploratorio" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Diagnóstico exploratorio<a href="preparación-de-insumos-para-modelamiento.html#diagn%C3%B3stico-exploratorio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Antes de ajustar el modelo bayesiano, es indispensable realizar un análisis exploratorio sistemático de los datos preparados. Este diagnóstico permite verificar la coherencia interna de los insumos, identificar observaciones atípicas, evaluar la capacidad predictiva de las covariables y detectar posibles violaciones de los supuestos del modelo.</p>
+<div id="distribución-de-conteos" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Distribución de conteos<a href="preparación-de-insumos-para-modelamiento.html#distribuci%C3%B3n-de-conteos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El análisis de la distribución de los conteos observados <span class="math inline">\(Y_i\)</span> permite caracterizar la variabilidad entre segmentos y evaluar la adecuación de las familias distribucionales consideradas para el modelamiento.</p>
+<p>Los estadísticos descriptivos básicos —media, mediana, desviación estándar, coeficientes de asimetría y curtosis— proveen una caracterización inicial de la distribución. La comparación entre la media y la varianza muestral:</p>
+<p><span class="math display">\[
+\bar{Y} = \frac{1}{I}\sum_{i=1}^{I} Y_i, \qquad S^2_Y = \frac{1}{I-1}\sum_{i=1}^{I}(Y_i - \bar{Y})^2
+\]</span></p>
+<p>ofrece un diagnóstico informal de sobredispersión: si <span class="math inline">\(S^2_Y \gg \bar{Y}\)</span>, la distribución de Poisson puede ser insuficiente y el modelo binomial negativo resulta más apropiado. El índice de dispersión <span class="math inline">\(D = S^2_Y / \bar{Y}\)</span> cuantifica el grado de sobredispersión; valores superiores a 1.5 o 2 suelen justificar el uso de modelos más flexibles.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="preparación-de-insumos-para-modelamiento.html#cb2-1" tabindex="-1"></a>resumen_conteos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-2"><a href="preparación-de-insumos-para-modelamiento.html#cb2-2" tabindex="-1"></a>  <span class="at">n_segmentos =</span> <span class="fu">length</span>(Y),</span>
+<span id="cb2-3"><a href="preparación-de-insumos-para-modelamiento.html#cb2-3" tabindex="-1"></a>  <span class="at">media       =</span> <span class="fu">mean</span>(Y),</span>
+<span id="cb2-4"><a href="preparación-de-insumos-para-modelamiento.html#cb2-4" tabindex="-1"></a>  <span class="at">mediana     =</span> <span class="fu">median</span>(Y),</span>
+<span id="cb2-5"><a href="preparación-de-insumos-para-modelamiento.html#cb2-5" tabindex="-1"></a>  <span class="at">desv_est    =</span> <span class="fu">sd</span>(Y),</span>
+<span id="cb2-6"><a href="preparación-de-insumos-para-modelamiento.html#cb2-6" tabindex="-1"></a>  <span class="at">asimetria   =</span> moments<span class="sc">::</span><span class="fu">skewness</span>(Y),</span>
+<span id="cb2-7"><a href="preparación-de-insumos-para-modelamiento.html#cb2-7" tabindex="-1"></a>  <span class="at">curtosis    =</span> moments<span class="sc">::</span><span class="fu">kurtosis</span>(Y),</span>
+<span id="cb2-8"><a href="preparación-de-insumos-para-modelamiento.html#cb2-8" tabindex="-1"></a>  <span class="at">indice_disp =</span> <span class="fu">var</span>(Y) <span class="sc">/</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb2-9"><a href="preparación-de-insumos-para-modelamiento.html#cb2-9" tabindex="-1"></a>)</span>
+<span id="cb2-10"><a href="preparación-de-insumos-para-modelamiento.html#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="preparación-de-insumos-para-modelamiento.html#cb2-11" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(Y <span class="sc">+</span> <span class="dv">1</span>),</span>
+<span id="cb2-12"><a href="preparación-de-insumos-para-modelamiento.html#cb2-12" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">40</span>,</span>
+<span id="cb2-13"><a href="preparación-de-insumos-para-modelamiento.html#cb2-13" tabindex="-1"></a>     <span class="at">main   =</span> <span class="st">&quot;Distribución de log(Y + 1) por segmento&quot;</span>,</span>
+<span id="cb2-14"><a href="preparación-de-insumos-para-modelamiento.html#cb2-14" tabindex="-1"></a>     <span class="at">xlab   =</span> <span class="st">&quot;log(conteo + 1)&quot;</span>,</span>
+<span id="cb2-15"><a href="preparación-de-insumos-para-modelamiento.html#cb2-15" tabindex="-1"></a>     <span class="at">col    =</span> <span class="st">&quot;#CBD5E1&quot;</span>,</span>
+<span id="cb2-16"><a href="preparación-de-insumos-para-modelamiento.html#cb2-16" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p>La visualización de la distribución debe realizarse tanto en escala original como en escala logarítmica. En la escala original, la distribución suele ser fuertemente asimétrica con cola derecha pesada; en la escala logarítmica, la distribución es más simétrica y permite evaluar si la especificación log-lineal es adecuada.</p>
+<p>La proporción de ceros en los conteos es otro indicador relevante. Un exceso de ceros respecto a lo esperado bajo el modelo de Poisson puede indicar la presencia de segmentos genuinamente deshabitados, problemas de cobertura en áreas con baja densidad, o la necesidad de incorporar un componente de inflación de ceros en el modelo.</p>
+</div>
+<div id="outliers" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Outliers<a href="preparación-de-insumos-para-modelamiento.html#outliers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La identificación de observaciones atípicas en los conteos y en las covariables auxiliares es fundamental para evitar que estas observaciones dominen la estimación de los parámetros del modelo. En el contexto de datos de conteo, los outliers pueden manifestarse como valores excepcionalmente altos o bajos en relación con la tendencia general de los datos, o como combinaciones inusuales de conteo y covariables.</p>
+<p><strong>Detección basada en residuos del modelo nulo.</strong> Un modelo de regresión de Poisson sin covariables permite obtener residuos de Pearson para cada segmento:</p>
+<p><span class="math display">\[
+r_i^P = \frac{Y_i - \hat{\lambda}_i}{\sqrt{\hat{\lambda}_i}}
+\]</span></p>
+<p>donde <span class="math inline">\(\hat{\lambda}_i = \exp(\hat{\alpha})\)</span> con <span class="math inline">\(\hat{\alpha} = \log(\bar{Y})\)</span>. Segmentos con <span class="math inline">\(|r_i^P| &gt; 3\)</span> son candidatos a revisión como observaciones atípicas.</p>
+<p><strong>Detección basada en la distancia de Cook.</strong> En el modelo log-lineal con covariables, la distancia de Cook <span class="math inline">\(D_i\)</span> cuantifica la influencia del segmento <span class="math inline">\(i\)</span> sobre el vector de coeficientes estimados. Valores elevados de <span class="math inline">\(D_i\)</span> indican que la exclusión del segmento <span class="math inline">\(i\)</span> modificaría sustancialmente los coeficientes del modelo.</p>
+<p><strong>Detección multivariada.</strong> Las observaciones atípicas en el espacio de covariables pueden identificarse mediante la distancia de Mahalanobis:</p>
+<p><span class="math display">\[
+d_i^2 = (\mathbf{x}_i - \bar{\mathbf{x}})^{\top} \hat{\boldsymbol{\Sigma}}^{-1} (\mathbf{x}_i - \bar{\mathbf{x}})
+\]</span></p>
+<p>donde <span class="math inline">\(\bar{\mathbf{x}}\)</span> es el vector de medias y <span class="math inline">\(\hat{\boldsymbol{\Sigma}}\)</span> es la matriz de covarianza muestral de las covariables. Bajo normalidad multivariada, <span class="math inline">\(d_i^2 \sim \chi^2_p\)</span>, y valores superiores al percentil 97.5 de esta distribución son indicativos de observaciones atípicas en el espacio de covariables.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="preparación-de-insumos-para-modelamiento.html#cb3-1" tabindex="-1"></a>lambda_nulo       <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb3-2"><a href="preparación-de-insumos-para-modelamiento.html#cb3-2" tabindex="-1"></a>residuos_p        <span class="ot">&lt;-</span> (Y <span class="sc">-</span> lambda_nulo) <span class="sc">/</span> <span class="fu">sqrt</span>(lambda_nulo)</span>
+<span id="cb3-3"><a href="preparación-de-insumos-para-modelamiento.html#cb3-3" tabindex="-1"></a>segmentos_outlier <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">abs</span>(residuos_p) <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb3-4"><a href="preparación-de-insumos-para-modelamiento.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="preparación-de-insumos-para-modelamiento.html#cb3-5" tabindex="-1"></a>X_mat   <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(covariables_std)</span>
+<span id="cb3-6"><a href="preparación-de-insumos-para-modelamiento.html#cb3-6" tabindex="-1"></a>d2_mah  <span class="ot">&lt;-</span> <span class="fu">mahalanobis</span>(X_mat, <span class="fu">colMeans</span>(X_mat), <span class="fu">cov</span>(X_mat))</span>
+<span id="cb3-7"><a href="preparación-de-insumos-para-modelamiento.html#cb3-7" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="fu">pchisq</span>(d2_mah, <span class="at">df =</span> <span class="fu">ncol</span>(X_mat), <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-8"><a href="preparación-de-insumos-para-modelamiento.html#cb3-8" tabindex="-1"></a>outliers_multivariados <span class="ot">&lt;-</span> <span class="fu">which</span>(p_valor <span class="sc">&lt;</span> <span class="fl">0.025</span>)</span></code></pre></div>
+<p>Una vez identificadas, las observaciones atípicas deben revisarse para determinar si corresponden a errores de procesamiento, a características genuinas del territorio o a problemas de cobertura del operativo. La decisión sobre su tratamiento —corrección, exclusión o inclusión con peso reducido— debe documentarse explícitamente.</p>
+</div>
+<div id="relación-entre-variables" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Relación entre variables<a href="preparación-de-insumos-para-modelamiento.html#relaci%C3%B3n-entre-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El análisis de la relación entre la variable dependiente y las covariables auxiliares permite evaluar la pertinencia predictiva de cada fuente de información y orientar las decisiones de especificación del modelo.</p>
+<p><strong>Correlación con los conteos.</strong> La correlación de Pearson entre <span class="math inline">\(\log(Y_i + 1)\)</span> y cada covariable estandarizada <span class="math inline">\(\tilde{x}_{i,k}\)</span> proporciona una medida lineal de la asociación bivariada. Covariables con correlación superior a 0.5 en valor absoluto suelen tener valor predictivo relevante; covariables con correlación inferior a 0.1 pueden ser candidatas a exclusión del modelo.</p>
+<p><strong>Diagramas de dispersión.</strong> La representación gráfica de <span class="math inline">\(\log(Y_i + 1)\)</span> contra cada covariable permite detectar relaciones no lineales, patrones de heteroscedasticidad y grupos de segmentos con comportamiento diferenciado. La adición de una curva de suavizado no paramétrico (LOESS) facilita la identificación de estructuras no lineales que podrían requerir transformaciones adicionales de las covariables.</p>
+<p><strong>Correlación entre covariables.</strong> La matriz de correlación entre las covariables auxiliares permite identificar pares con alta colinealidad. Correlaciones superiores a 0.85 en valor absoluto indican que dos covariables aportan información casi redundante. Los factores de inflación de varianza (VIF) son una herramienta complementaria para el diagnóstico de multicolinealidad:</p>
+<p><span class="math display">\[
+\text{VIF}_k = \frac{1}{1 - R_k^2}
+\]</span></p>
+<p>donde <span class="math inline">\(R_k^2\)</span> es el coeficiente de determinación obtenido al regresar la covariable <span class="math inline">\(k\)</span> sobre el resto de covariables. Valores de <span class="math inline">\(\text{VIF}_k &gt; 10\)</span> son indicativos de multicolinealidad problemática.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="preparación-de-insumos-para-modelamiento.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb4-2"><a href="preparación-de-insumos-para-modelamiento.html#cb4-2" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(<span class="fu">cbind</span>(<span class="at">log_Y =</span> <span class="fu">log</span>(Y <span class="sc">+</span> <span class="dv">1</span>), covariables_std),</span>
+<span id="cb4-3"><a href="preparación-de-insumos-para-modelamiento.html#cb4-3" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb4-4"><a href="preparación-de-insumos-para-modelamiento.html#cb4-4" tabindex="-1"></a><span class="fu">corrplot</span>(cor_mat,</span>
+<span id="cb4-5"><a href="preparación-de-insumos-para-modelamiento.html#cb4-5" tabindex="-1"></a>         <span class="at">method      =</span> <span class="st">&quot;color&quot;</span>,</span>
+<span id="cb4-6"><a href="preparación-de-insumos-para-modelamiento.html#cb4-6" tabindex="-1"></a>         <span class="at">type        =</span> <span class="st">&quot;upper&quot;</span>,</span>
+<span id="cb4-7"><a href="preparación-de-insumos-para-modelamiento.html#cb4-7" tabindex="-1"></a>         <span class="at">addCoef.col =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb4-8"><a href="preparación-de-insumos-para-modelamiento.html#cb4-8" tabindex="-1"></a>         <span class="at">number.cex  =</span> <span class="fl">0.7</span>,</span>
+<span id="cb4-9"><a href="preparación-de-insumos-para-modelamiento.html#cb4-9" tabindex="-1"></a>         <span class="at">tl.cex      =</span> <span class="fl">0.8</span>)</span>
+<span id="cb4-10"><a href="preparación-de-insumos-para-modelamiento.html#cb4-10" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="preparación-de-insumos-para-modelamiento.html#cb4-11" tabindex="-1"></a>modelo_ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Y <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">as.data.frame</span>(covariables_std))</span>
+<span id="cb4-12"><a href="preparación-de-insumos-para-modelamiento.html#cb4-12" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo_ols)</span></code></pre></div>
+<p><strong>Análisis por estrato territorial.</strong> La relación entre la variable dependiente y las covariables puede variar entre distintos estratos territoriales —urbano/rural, región geográfica, nivel de cobertura—. La exploración estratificada permite detectar interacciones relevantes que podrían justificar la inclusión de términos de interacción o la estimación diferenciada de coeficientes por grupo.</p>
+<p>La documentación sistemática de los resultados del diagnóstico exploratorio es un insumo esencial para la especificación del modelo. Las decisiones sobre transformaciones, exclusión de covariables, tratamiento de outliers y estratificación del análisis deben fundamentarse en este diagnóstico y quedar registradas para garantizar la reproducibilidad y auditabilidad de las estimaciones finales.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="footnotes-and-citations.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "serif",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["MBP-ALC.pdf", "MBP-ALC.docx"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
