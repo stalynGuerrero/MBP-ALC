@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.15)  22 MAY 2026 09:08
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.15)  3 JUN 2026 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2226,10 +2226,48 @@ LaTeX Info: Redefining \% on input line 1234.
 LaTeX Info: Redefining \. on input line 1281.
 LaTeX Info: Redefining \% on input line 1281.
 [41]
+LaTeX Info: Redefining \. on input line 1287.
+LaTeX Info: Redefining \% on input line 1287.
+[42]
+Capítulo 5.
+[43
+
+]
+LaTeX Info: Redefining \. on input line 1336.
+LaTeX Info: Redefining \% on input line 1336.
+[44]
+LaTeX Info: Redefining \. on input line 1371.
+LaTeX Info: Redefining \% on input line 1371.
+[45]
+LaTeX Info: Redefining \. on input line 1408.
+LaTeX Info: Redefining \% on input line 1408.
+[46]
+Overfull \hbox (11.77086pt too wide) detected at line 1421
+[][][][] [] [] [][][]  []  [] [] [] [][][][] [] [][] [][][] [] [] [][][][] [] [][] [][] [] [][][][] [] [][][][][]
+ []
+
+LaTeX Info: Redefining \. on input line 1440.
+LaTeX Info: Redefining \% on input line 1440.
+[47]
+LaTeX Info: Redefining \. on input line 1464.
+LaTeX Info: Redefining \% on input line 1464.
+[48]
+LaTeX Info: Redefining \. on input line 1484.
+LaTeX Info: Redefining \% on input line 1484.
+[49]
+LaTeX Info: Redefining \. on input line 1504.
+LaTeX Info: Redefining \% on input line 1504.
+[50]
+LaTeX Info: Redefining \. on input line 1528.
+LaTeX Info: Redefining \% on input line 1528.
+[51]
+LaTeX Info: Redefining \. on input line 1551.
+LaTeX Info: Redefining \% on input line 1551.
+[52]
 No file MBP-ALC.bbl.
-LaTeX Info: Redefining \. on input line 1289.
-LaTeX Info: Redefining \% on input line 1289.
-[42] (./MBP-ALC.aux
+LaTeX Info: Redefining \. on input line 1565.
+LaTeX Info: Redefining \% on input line 1565.
+[53] (./MBP-ALC.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -2242,12 +2280,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 42515 strings out of 469993
- 870263 string characters out of 5472795
- 1505808 words of memory out of 5000000
- 70609 multiletter control sequences out of 15000+600000
+ 42539 strings out of 469993
+ 870668 string characters out of 5472795
+ 1509809 words of memory out of 5000000
+ 70633 multiletter control sequences out of 15000+600000
  636584 words of font info for 143 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,13n,117p,802b,783s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,117p,921b,783s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MBP-ALC.pdf (42 pages).
+Output written on MBP-ALC.pdf (53 pages).
