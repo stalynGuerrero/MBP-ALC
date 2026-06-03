@@ -48,3 +48,15 @@ diagnóstico-exploratorio
 distribución-de-conteos
 outliers
 relación-entre-variables
+modelo-para-conteos-poblacionales
+modelo-poisson-lognormal
+definición-formal
+función-de-verosimilitud
+distribuciones-a-priori
+distribución-posterior
+interpretación-de-parámetros
+componentes-del-modelo
+efectos-fijos
+efectos-aleatorios
+interacciones
+sobredispersión-offset-y-alternativas-distribucionales
