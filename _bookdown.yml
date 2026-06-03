@@ -9,7 +9,8 @@ rmd_files: [
   "02-Modelos_poblacion.Rmd",
   "03-Integracion_Fuentes.Rmd",
   "04-Imagenes_Satelitales.Rmd",
-  "05-InsumosModelamiento.Rmd"
+  "05-InsumosModelamiento.Rmd",
+  "06-Modelo_Conteos.Rmd"
 ]
 
 language:
