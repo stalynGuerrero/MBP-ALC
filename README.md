@@ -1,5 +1,7 @@
 # Modelos Bayesianos de Población para América Latina y el Caribe
 
+https://stalynguerrero.github.io/MBP-ALC/
+
 ## Descripción del Proyecto
 
 Libro completo sobre implementación, validación y aplicación subnacional de modelos bayesianos para estimación de población. Enfoque práctico con fundamentos teóricos, ecuaciones, código computacional y casos de aplicación regional.
@@ -7,6 +9,7 @@ Libro completo sobre implementación, validación y aplicación subnacional de m
 **Idioma:** Español  
 **Audiencia:** Estadísticos, demógrafos, profesionales de institutos nacionales de estadística  
 **Formato final:** PDF con capítulos, ecuaciones, código y apéndices
+
 
 
 ## Estructura del Libro
