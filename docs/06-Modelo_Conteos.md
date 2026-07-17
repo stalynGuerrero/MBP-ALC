@@ -14,6 +14,8 @@ La estructura del capítulo se organiza en dos secciones principales. La primera
 
 La especificación del modelo parte de dos cantidades fundamentales definidas para cada segmento censal $i$ perteneciente al conjunto $\mathcal{S} = \{1, 2, \ldots, D\}$ de todos los segmentos del país. La primera es el conteo de población observado $Y_i$, disponible únicamente para los segmentos que alcanzaron cobertura efectiva durante el operativo censal. La segunda es el número de estructuras habitacionales $V_i$, derivado del preconteo operativo o de fuentes satelitales de área construida, y disponible para todos los segmentos del país.
 
+**Nota de notación.** La cardinalidad $D = |\mathcal{S}|$ corresponde al mismo conjunto de segmentos denotado $\{1, \ldots, I\}$ en los Capítulos 2 y 4; se adopta aquí la notación $D$ ($D_{obs}$, $D_{tot}$) por su correspondencia directa con la implementación computacional en Stan (Sección \@ref(stan-implementacion) del capítulo siguiente). El número de estructuras habitacionales $V_i$ es la misma cantidad denotada $P_i$ (preconteo de viviendas) en el Capítulo 2. Finalmente, ni $D$ ni sus variantes indexadas deben confundirse con la densidad poblacional por área $D_i = N_i/A_i$ definida en el Capítulo 1: la densidad de personas por estructura habitacional propia de este capítulo se denota $\delta_i$.
+
 Sea $\mathcal{S}_{obs} \subset \mathcal{S}$ el subconjunto de segmentos con información censal observada, de cardinalidad $D_{obs} = |\mathcal{S}_{obs}|$. El modelo distingue explícitamente entre estos dos conjuntos: los parámetros se estiman a partir de $\mathcal{S}_{obs}$ y se utilizan posteriormente para generar predicciones sobre la totalidad de $\mathcal{S}$, incluyendo los segmentos no observados en el operativo censal.
 
 El elemento central del modelo es la densidad poblacional $\delta_i$, definida como el número esperado de personas por estructura habitacional en el segmento $i$:
@@ -150,7 +152,7 @@ $$
 
 donde $\mu_i^{(t)} = \mathbf{x}_i^{\top}\boldsymbol{\beta}^{(t)} + \mathbf{z}_i^{\top}\boldsymbol{\gamma}^{(t)}$ se evalúa utilizando los parámetros de la muestra $t$. Esta predicción se realiza sobre la totalidad de $\mathcal{S}$, lo que permite obtener estimaciones de población para todos los segmentos del país, incluidos aquellos sin cobertura censal directa.
 
-La estimación del total de población de un nivel geográfico superior —municipio, departamento o país— se obtiene agregando las distribuciones predictivas posteriores de los segmentos que lo componen. Si $\mathcal{S}_k \subset \mathcal{S}$ denota el conjunto de segmentos del municipio $k$, el conteo total estimado para ese municipio —denominado nivel 3 en la jerarquía geográfica censal, donde el nivel 1 corresponde al segmento y el nivel 2 a la localidad— es:
+La estimación del total de población de un nivel geográfico superior —municipio, departamento o país— se obtiene agregando las distribuciones predictivas posteriores de los segmentos que lo componen. Si $\mathcal{S}_k \subset \mathcal{S}$ denota el conjunto de segmentos del municipio $k$, el conteo total estimado para ese municipio —nivel (3) en la jerarquía geográfica utilizada en el Capítulo 1, donde el departamento corresponde al nivel (2) y el segmento censal al nivel (4)— es:
 
 $$
 \hat{N}_k^{(3)} = \sum_{i \in \mathcal{S}_k} \hat{N}_i, \qquad \hat{N}_i = \begin{cases} Y_i + \hat{Y}_i^{(aus)} & \text{si } i \in \mathcal{S}_{obs} \\ \tilde{Y}_i & \text{si } i \notin \mathcal{S}_{obs} \end{cases}

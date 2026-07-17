@@ -164,6 +164,8 @@ $$
 
 donde $\alpha_0$ y $\alpha_1$ son parámetros a estimar y $\eta_i$ es un error residual que captura la variabilidad no explicada por el preconteo. El parámetro $\alpha_1$ puede interpretarse como la elasticidad de la población respecto al preconteo: si $\alpha_1 = 1$, la relación entre viviendas y personas es proporcional; si $\alpha_1 > 1$, segmentos con más viviendas tienen mayor tamaño medio de hogar.
 
+En los capítulos siguientes, esta misma cantidad —el número de viviendas o estructuras habitacionales del segmento— se denota $V_i$ y desempeña el papel de offset en el modelo de conteos poblacionales (Capítulo 5). $P_i$ y $V_i$ deben entenderse, por tanto, como notaciones equivalentes del preconteo de estructuras; se conserva $P_i$ en este capítulo por continuidad con la formulación de regresión log-lineal aquí presentada.
+
 El preconteo es especialmente valioso en contextos donde el operativo censal no logró cobertura completa, dado que provee una señal anticipada sobre la magnitud poblacional esperada que es independiente del proceso de enumeración. Su principal limitación es la distancia temporal entre la actualización cartográfica y el momento censal: en contextos con crecimiento urbano acelerado, los preconteos pueden quedar desactualizados rápidamente.
 
 ### Registros administrativos (variables proxy)
@@ -176,7 +178,7 @@ Entre los registros administrativos más utilizados en modelos de estimación su
 
 **Padrones electorales.** Los padrones de electores habilitados para votar proporcionan un conteo de personas adultas registradas con dirección conocida en cada territorio. Su cobertura está condicionada por la participación en el sistema electoral y puede ser incompleta en poblaciones jóvenes, migrantes o con baja interacción institucional.
 
-**Registros de afiliación a sistemas de salud y seguridad social.** Los sistemas de salud pública o los registros de afiliación a la seguridad social contienen información sobre personas que acceden regularmente a servicios institutucionales. Su cobertura depende del grado de formalidad laboral y del acceso efectivo a los servicios en cada territorio.
+**Registros de afiliación a sistemas de salud y seguridad social.** Los sistemas de salud pública o los registros de afiliación a la seguridad social contienen información sobre personas que acceden regularmente a servicios institucionales. Su cobertura depende del grado de formalidad laboral y del acceso efectivo a los servicios en cada territorio.
 
 **Registros de beneficiarios de programas sociales.** Los padrones de beneficiarios de programas de transferencias condicionadas u otros programas sociales focalizados proporcionan información sobre hogares en situación de vulnerabilidad. Aunque su cobertura no es universal, pueden ser especialmente informativos en áreas con alta concentración de población en condición de pobreza.
 
@@ -194,7 +196,7 @@ Las imágenes satelitales y los productos de percepción remota han ampliado con
 
 Las fuentes satelitales más utilizadas en estimación poblacional pueden agruparse en las siguientes categorías:
 
-**Luminosidad nocturna.** Los datos de radiance nocturna capturados por sensores satelitales, como el producto VIIRS-DNB de la NOAA, permiten identificar áreas con presencia de iluminación artificial. La intensidad lumínica nocturna está correlacionada con la actividad económica y la densidad de asentamientos humanos permanentes. Sea $L_i$ el valor medio de luminosidad nocturna en el segmento $i$; su transformación logarítmica $\log(L_i + 1)$ es utilizada frecuentemente como predictor de la población.
+**Luminosidad nocturna.** Los datos de radiancia nocturna capturados por sensores satelitales, como el producto VIIRS-DNB de la NOAA, permiten identificar áreas con presencia de iluminación artificial. La intensidad lumínica nocturna está correlacionada con la actividad económica y la densidad de asentamientos humanos permanentes. Sea $L_i$ el valor medio de luminosidad nocturna en el segmento $i$; su transformación logarítmica $\log(L_i + 1)$ es utilizada frecuentemente como predictor de la población.
 
 **Área construida y cobertura urbana.** Los productos de clasificación de uso del suelo derivados de imágenes ópticas como Sentinel-2 o Landsat permiten estimar la proporción de área construida dentro de cada segmento. El producto Global Human Settlement Layer (GHSL) de la Comisión Europea ofrece estimaciones de área construida a resolución de 100 metros con cobertura global.
 

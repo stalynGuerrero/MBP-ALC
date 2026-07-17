@@ -173,7 +173,7 @@ Formalmente, la población base $\mathcal{P}_i$ del segmento $i$ puede definirse
 - **Población en hogares particulares:** excluye a las personas en colectividades institucionales (hospitales, cárceles, cuarteles).
 - **Población civil:** excluye adicionalmente al personal militar.
 
-La elección de la población base afecta la coherencia de los conteos en territorios con alta movilidad diurna, presencia de instituciones totales o frontera entre áreas urbanas y rurales. El modelo de estimación debe adoptarse para la misma definición de población base utilizada en el operativo censal.
+La elección de la población base afecta la coherencia de los conteos en territorios con alta movilidad diurna, presencia de instituciones totales o frontera entre áreas urbanas y rurales. El modelo de estimación debe adaptarse a la misma definición de población base utilizada en el operativo censal.
 
 ### Escalamiento
 

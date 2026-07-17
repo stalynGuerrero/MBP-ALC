@@ -60,6 +60,4 @@ bookdown::word_document2:
   pandoc_args:
     - "--mathml"
     - "--highlight-style=tango"
-  # RECOMENDADO: generar la plantilla de estilos con crear_plantilla_word.R
-  # y luego descomentar la línea siguiente para un .docx con formato uniforme:
-  # reference_docx: word_template.docx
+  reference_docx: word_template.docx

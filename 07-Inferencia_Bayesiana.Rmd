@@ -8,7 +8,7 @@ $$
 
 pero no la hace analíticamente tratable: la combinación entre Poisson y log-normal no tiene forma cerrada en ninguno de los parámetros, y la dimensión del espacio parametral —que incluye $D_{obs}$ densidades latentes más los $P + Q + 2$ parámetros estructurales— puede superar varios miles de dimensiones en aplicaciones censales reales.
 
-El presente capítulo cierra esa brecha entre la especificación y la inferencia. La herramienta central es la simulación Monte Carlo por cadenas de Markov (MCMC), y dentro de ella el algoritmo de Monte Carlo Hamiltoniano (HMC) con el muestreador adaptativo NUTS [@Hoffman2014], cuya implementación en Stan [@Carpenter2017] permite obtener muestras de alta calidad de distribuciones posteriores complejas de manera eficiente. El capítulo se organiza en tres secciones: la primera describe los fundamentos del método de simulación y su implementación en Stan; la segunda describe el procedimiento para derivar estimaciones, intervalos de credibilidad y agregaciones territoriales; y la tercera documenta las experiencias de aplicación en cinco países del Caribe y América Latina en las que esta metodología ha sido implementada en el marco de proyectos de asistencia técnica de CEPAL.
+El presente capítulo cierra esa brecha entre la especificación y la inferencia. La herramienta central es la simulación Monte Carlo por cadenas de Markov (MCMC), y dentro de ella el algoritmo de Monte Carlo Hamiltoniano (HMC) con el muestreador adaptativo NUTS [@Hoffman2014], cuya implementación en Stan [@Carpenter2017] permite obtener muestras de alta calidad de distribuciones posteriores complejas de manera eficiente. El capítulo se organiza en dos secciones: la primera describe los fundamentos del método de simulación y su implementación en Stan, ilustrada con las aplicaciones desarrolladas en cinco países del Caribe y América Latina en el marco de proyectos de asistencia técnica de CEPAL; la segunda describe el procedimiento para derivar estimaciones, intervalos de credibilidad y agregaciones territoriales.
 
 ## Métodos de simulación
 
@@ -54,7 +54,7 @@ Una introducción conceptual accesible a la mecánica de HMC, orientada a la pr�
 
 El algoritmo NUTS [@Hoffman2014] resuelve el problema de elegir automáticamente el número de pasos leapfrog en cada iteración. La selección manual de este hiperparámetro en HMC estándar requiere ajuste fino; NUTS elimina esta necesidad mediante un criterio de parada automático que detiene la simulación cuando la trayectoria empieza a retroceder —a hacer un *U-turn* en el espacio parametral—, indicando que continuar la trayectoria no aportaría información adicional sobre la distribución posterior. El tamaño de paso $\varepsilon$ se ajusta automáticamente durante la fase de calentamiento mediante un algoritmo de tipo dual-averaging para alcanzar una tasa de aceptación objetivo en torno al 65--80%.
 
-Las ventajas de HMC-NUTS sobre los métodos clásicos son decisivas para modelos de alta dimensión. En tanto que los métodos tipo Gibbs o Metropolis-Hastings presentan un tamaño efectivo de muestra que crece aproximadamente como $T/\sqrt{d}$ con $d$ dimensiones, HMC-NUTS escala mucho más favorablemente —en ciertos regímenes aproximadamente como $T/d^{1/4}$— lo que hace factible la inferencia en modelos con miles de parámetros latentes como los que surgen en el contexto de la estimación subnacional de población [@Betancourt2017]. Esta propiedad ha sido un factor determinante en la adopción de Stan como plataforma de estimación en los proyectos de estimación censal de CEPAL descritos en la sección \@ref(aplicaciones).
+Las ventajas de HMC-NUTS sobre los métodos clásicos son decisivas para modelos de alta dimensión. En tanto que los métodos tipo Gibbs o Metropolis-Hastings presentan un tamaño efectivo de muestra que crece aproximadamente como $T/\sqrt{d}$ con $d$ dimensiones, HMC-NUTS escala mucho más favorablemente —en ciertos regímenes aproximadamente como $T/d^{1/4}$— lo que hace factible la inferencia en modelos con miles de parámetros latentes como los que surgen en el contexto de la estimación subnacional de población [@Betancourt2017]. Esta propiedad ha sido un factor determinante en la adopción de Stan como plataforma de estimación en los proyectos de estimación censal de CEPAL descritos en la sección \@ref(stan-implementacion).
 
 ### Implementación en Stan {#stan-implementacion}
 
@@ -66,17 +66,17 @@ El código Stan del modelo Poisson-lognormal, desarrollado en el marco de los pr
 
 ```stan
 data {
-  int<lower=1> D_obs;          // UGMs observadas en el censo
-  int<lower=1> D_tot;          // Total de UGMs en el país
-  int<lower=1> P;              // Número de covariables
-  int<lower=1> Q;              // Número de efectos aleatorios
-  int<lower=0> Y_obs[D_obs];   // Conteos poblacionales observados
-  int<lower=0> V_obs[D_obs];   // Estructuras en UGMs observadas
-  int<lower=0> V_tot[D_tot];   // Estructuras en todas las UGMs
-  matrix[D_obs, P] X_obs;      // Covariables en UGMs observadas
-  matrix[D_tot, P] X_tot;      // Covariables en todas las UGMs
-  matrix[D_obs, Q] Z_obs;      // Indicadores de efectos aleatorios (observadas)
-  matrix[D_tot, Q] Z_tot;      // Indicadores de efectos aleatorios (todas)
+  int<lower=1> D_obs;                  // Segmentos observados en el censo
+  int<lower=1> D_tot;                  // Total de segmentos en el país
+  int<lower=1> P;                      // Número de covariables
+  int<lower=1> Q;                      // Número de efectos aleatorios
+  array[D_obs] int<lower=0> Y_obs;     // Conteos poblacionales observados
+  array[D_obs] int<lower=0> V_obs;     // Estructuras en segmentos observados
+  array[D_tot] int<lower=0> V_tot;     // Estructuras en todos los segmentos
+  matrix[D_obs, P] X_obs;              // Covariables en segmentos observados
+  matrix[D_tot, P] X_tot;              // Covariables en todos los segmentos
+  matrix[D_obs, Q] Z_obs;              // Indicadores de efectos aleatorios (observadas)
+  matrix[D_tot, Q] Z_tot;              // Indicadores de efectos aleatorios (todas)
 }
 
 parameters {
@@ -84,7 +84,7 @@ parameters {
   vector[Q]           gamma;    // Coeficientes de efectos aleatorios
   real<lower=0>       sigma;    // Escala de la distribución log-normal
   real<lower=0>       sigmaU;   // Escala de los efectos aleatorios
-  vector<lower=0>[D_obs] densidad; // Densidades latentes en UGMs observadas
+  vector<lower=0>[D_obs] densidad; // Densidades latentes en segmentos observados
 }
 
 transformed parameters {
@@ -111,9 +111,10 @@ model {
 
 generated quantities {
   vector[D_tot]           lp_tot;
-  real<lower=0>           densidad_hat[D_tot];
+  array[D_tot] real<lower=0> densidad_hat;
   vector<lower=0>[D_tot]  lambda2;
-  int<lower=0>            Y_tot[D_tot];
+  array[D_tot] int<lower=0> Y_tot;
+  vector[D_obs]           log_lik;      // Log-verosimilitud puntual (LOO/WAIC)
 
   lp_tot = X_tot * beta + Z_tot * gamma;
 
@@ -122,6 +123,9 @@ generated quantities {
     lambda2[d]      = fmin(fmax(1, densidad_hat[d] * V_tot[d]), 10000000);
     Y_tot[d]        = poisson_rng(lambda2[d]);
   }
+
+  for (d in 1:D_obs)
+    log_lik[d] = poisson_lpmf(Y_obs[d] | lambda[d]);
 }
 ```
 
@@ -131,7 +135,7 @@ En el bloque `transformed parameters` se calcula el predictor lineal $\mathbf{lp
 
 El bloque `model` transcribe directamente las especificaciones probabilísticas del capítulo anterior. La línea `Y_obs ~ poisson(lambda)` acumula la log-verosimilitud de Poisson; `densidad ~ lognormal(lp, sigma)` acumula la contribución log-normal de las densidades latentes incluyendo el jacobiano correspondiente; y las distribuciones a priori reflejan las elecciones débilmente informativas discutidas en el capítulo anterior, siguiendo las recomendaciones de @Gelman2013 y @McElreath2020 para modelos jerárquicos.
 
-El bloque `generated quantities` implementa la predicción fuera de muestra. Para cada UGM del conjunto completo $\mathcal{S}$ se calcula el predictor lineal con las covariables de todas las UGMs, se genera una muestra de la densidad predictiva $\tilde{\delta}_d \sim \text{LogNormal}(\text{lp\_tot}_d, \sigma)$ y se genera un conteo predictivo $\tilde{Y}_d \sim \text{Poisson}(\tilde{\delta}_d \cdot V_d)$. Este bloque se ejecuta una vez por muestra de la distribución posterior, de modo que la colección de matrices `Y_tot` y `densidad_hat` a lo largo de las $T$ iteraciones constituye directamente la distribución predictiva posterior.
+El bloque `generated quantities` implementa la predicción fuera de muestra. Para cada segmento del conjunto completo $\mathcal{S}$ se calcula el predictor lineal con las covariables de todos los segmentos, se genera una muestra de la densidad predictiva $\tilde{\delta}_d \sim \text{LogNormal}(\text{lp\_tot}_d, \sigma)$ y se genera un conteo predictivo $\tilde{Y}_d \sim \text{Poisson}(\tilde{\delta}_d \cdot V_d)$. Este bloque se ejecuta una vez por muestra de la distribución posterior, de modo que la colección de matrices `Y_tot` y `densidad_hat` a lo largo de las $T$ iteraciones constituye directamente la distribución predictiva posterior. Adicionalmente, el bloque calcula el vector `log_lik` con la log-verosimilitud puntual de Poisson evaluada en cada segmento observado —$\log p(Y_i \mid \delta_i, V_i)$ para $i \in \mathcal{S}_{obs}$—, requerido posteriormente para el cálculo de los criterios LOO y WAIC.
 
 ### Configuración de cadenas, muestras e iteraciones
 
@@ -159,7 +163,7 @@ stan_model <- rstan::stan(
 
 El parámetro `iter` fija el número total de iteraciones por cadena, incluyendo el calentamiento. De las 2 000 iteraciones totales por cadena, 1 500 corresponden a la fase de calentamiento y 500 a la fase de inferencia. Con 4 cadenas en paralelo, el conjunto de muestras útiles comprende $4 \times 500 = 2\,000$ muestras de la distribución posterior. En aplicaciones censales con alta dimensión latente —$D_{obs}$ del orden de miles de segmentos— esta configuración es un punto de partida razonable que puede refinarse en función de los diagnósticos de convergencia descritos en el capítulo siguiente.
 
-El uso de múltiples cadenas independientes, iniciadas desde puntos dispersos del espacio paramétrico, es una práctica estándar en inferencia MCMC [@Gelman1992]. La comparación entre cadenas permite detectar problemas de convergencia que una cadena única no puede revelar: si todas las cadenas convergen a la misma región de alta densidad posterior, existe mayor confianza en que están explorando adecuadamente la distribución objetivo. El diagnóstico formal basado en la comparación de varianza entre cadenas e intra-cadena, el estadístico $\hat{R}$ [@Gelman1992; @Vehtari2021], se describe en detalle en el capítulo siguiente.
+El uso de múltiples cadenas independientes, iniciadas desde puntos dispersos del espacio paramétrico, es una práctica estándar en inferencia MCMC [@Gelman1992]. La comparación entre cadenas permite detectar problemas de convergencia que una cadena única no puede revelar: si todas las cadenas convergen a la misma región de alta densidad posterior, existe mayor confianza en que están explorando adecuadamente la distribución objetivo. El diagnóstico formal basado en la comparación de varianza entre cadenas e intra-cadena, el estadístico $\hat{R}$ [@Gelman1992; @Vehtari2021], cuyo fundamento matemático se documenta en dichas referencias, se reporta de forma sistemática junto con el tamaño efectivo de muestra en el resumen posterior presentado en la sección siguiente.
 
 La fase de calentamiento cumple tres funciones en Stan. Primera: el algoritmo NUTS ajusta adaptativamente el tamaño de paso $\varepsilon$ para alcanzar la tasa de aceptación objetivo. Segunda: se estima la matriz de masa $M$ que actúa como métrica del espacio parametral; Stan utiliza por defecto una métrica euclidiana diagonal cuyos elementos se estiman a partir de la varianza empírica de las muestras de calentamiento. Tercera: la cadena se aproxima a la región de alta densidad posterior, descartando las muestras iniciales que pueden estar lejos del modo. Las muestras de la fase de calentamiento no son utilizables para inferencia porque los hiperparámetros del algoritmo aún están siendo ajustados.
 
@@ -361,13 +365,13 @@ En este gráfico [@bayesplot2022], la línea sólida corresponde a la distribuci
 Los criterios de comparación de modelos permiten seleccionar entre especificaciones alternativas sin recurrir a validación cruzada explícita [@Vehtari2017]. El criterio LOO-CV y el WAIC [@Watanabe2010] se calculan a partir de la log-verosimilitud evaluada en cada muestra posterior:
 
 ```r
-# Extraer log-verosimilitud
-log_lik_ytot <- loo::extract_log_lik(stan_model,
-                                      parameter_name = "Y_tot")
+# Extraer log-verosimilitud puntual (una columna por segmento observado)
+log_lik_mat <- loo::extract_log_lik(stan_model,
+                                     parameter_name = "log_lik")
 
 # WAIC y LOO-CV
-waic_result <- loo::waic(log_lik_ytot)
-loo_result  <- loo::loo(log_lik_ytot)
+waic_result <- loo::waic(log_lik_mat)
+loo_result  <- loo::loo(log_lik_mat)
 
 print(waic_result)
 print(loo_result)
@@ -381,4 +385,4 @@ Valores más altos de elpd-LOO (*expected log predictive density*) indican mejor
 
 ## Resumen
 
-Este capítulo describió el ciclo completo de inferencia computacional para el modelo Poisson-lognormal: desde los fundamentos del algoritmo HMC-NUTS [@Hoffman2014; @Betancourt2017], pasando por la implementación en Stan [@Carpenter2017] con los cinco bloques del programa, hasta el procedimiento de extracción de estimaciones puntuales, intervalos de credibilidad y agregaciones territoriales en R mediante `rstan` [@rstan2023], `bayesplot` [@bayesplot2022] y `loo` [@loo2022; @Vehtari2017]. Las aplicaciones en Costa Rica, Barbados, Jamaica, Dominica y República Dominicana ilustraron cómo los parámetros de implementación —selección de covariables, fuente del offset, umbral de densidad y configuración MCMC— se adaptan al contexto de cada operativo censal sin alterar la especificación estadística del modelo. El capítulo siguiente completa el ciclo con el diagnóstico formal de convergencia mediante los estadísticos $\hat{R}$ y ESS [@Vehtari2021; @Gelman1992], la validación predictiva posterior y la selección entre modelos alternativos mediante los criterios LOO y WAIC [@Vehtari2017; @Watanabe2010].
+Este capítulo describió el ciclo completo de inferencia computacional para el modelo Poisson-lognormal: desde los fundamentos del algoritmo HMC-NUTS [@Hoffman2014; @Betancourt2017], pasando por la implementación en Stan [@Carpenter2017] con los cinco bloques del programa, hasta el procedimiento de extracción de estimaciones puntuales, intervalos de credibilidad y agregaciones territoriales en R mediante `rstan` [@rstan2023], `bayesplot` [@bayesplot2022] y `loo` [@loo2022; @Vehtari2017]. Las aplicaciones en Costa Rica, Barbados, Jamaica, Dominica y República Dominicana ilustraron cómo los parámetros de implementación —selección de covariables, fuente del offset, umbral de densidad y configuración MCMC— se adaptan al contexto de cada operativo censal sin alterar la especificación estadística del modelo. El capítulo incluyó además el diagnóstico de convergencia mediante los estadísticos $\hat{R}$ y ESS [@Vehtari2021; @Gelman1992], la validación predictiva posterior [@Gabry2019] y la selección entre modelos alternativos mediante los criterios LOO y WAIC [@Vehtari2017; @Watanabe2010]. El capítulo siguiente profundiza en estos diagnósticos —trazas, autocorrelación y diagnósticos específicos de HMC, residuos bayesianos y calibración, criterios formales de aceptación de modelos— y añade la validación externa frente a proyecciones demográficas, registros administrativos independientes y coherencia geoespacial, como verificación final antes de la publicación de estimaciones oficiales.

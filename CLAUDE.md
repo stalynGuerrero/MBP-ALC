@@ -36,8 +36,11 @@ Defined in `_bookdown.yml`. Current order:
 5. `04-Imagenes_Satelitales.Rmd` — Imágenes Satelitales
 6. `05-InsumosModelamiento.Rmd` — Insumos para Modelamiento
 7. `06-Modelo_Conteos.Rmd` — Modelo para Conteos Poblacionales
-8. `07-Inferencia_Bayesiana.Rmd` — (in progress, not yet in `_bookdown.yml`)
-9. `07-references.Rmd` — References
+8. `07-Inferencia_Bayesiana.Rmd`
+9. `08-Diagnostico_Validacion.Rmd` — Diagnóstico y Validación del Modelo
+10. `09-Calibracion_Benchmarking.Rmd` — Calibración y Benchmarking Subnacional
+11. `10-Conclusiones.Rmd` — Conclusiones y Recomendaciones Institucionales
+12. `11-references.Rmd` — References
 
 New chapters must be added to `rmd_files:` in `_bookdown.yml` to be included in the build.
 
