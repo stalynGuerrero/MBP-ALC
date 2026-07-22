@@ -9,3 +9,7 @@ conteos-poblacionales
 tasas-derivadas
 estructuras-etarias
 formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal
+eq:dependencia
+eq:envejecimiento
+eq:poblacion-tramo
+formulación-del-problema-de-subcobertura-no-respuesta-y-omisión-censal-1

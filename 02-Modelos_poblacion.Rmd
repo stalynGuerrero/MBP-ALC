@@ -85,147 +85,116 @@ Desde la perspectiva del modelamiento estadístico, los dominios territoriales c
 
 ## Indicadores de interés
 
-La producción de conteos censales tiene como propósito central generar información estadística que permita caracterizar la dinámica demográfica y territorial de la población. A partir de los datos censales es posible construir un amplio conjunto de indicadores utilizados en procesos de planificación, evaluación de políticas públicas, asignación presupuestaria y análisis socioeconómico.
+La producción de estadísticas de población tiene como propósito cuantificar el número de habitantes y describir su distribución territorial y demográfica. A partir de los conteos obtenidos en los censos de población y vivienda se construye un amplio conjunto de indicadores utilizados para la elaboración de estadísticas oficiales, el diseño y evaluación de políticas públicas, la asignación de recursos, la planificación territorial y la formulación de estimaciones y proyecciones de población.
 
-Los indicadores derivados de los censos no solo describen el tamaño de la población, sino también su distribución espacial, estructura etaria, composición por sexo y condiciones territoriales. Estos indicadores constituyen además el punto de partida para procesos posteriores de estimación, proyección demográfica y construcción de estadísticas oficiales.
+Desde una perspectiva estadística, estos indicadores pueden clasificarse en tres grandes categorías: conteos poblacionales, tasas derivadas y estructuras etarias. Aunque cada uno describe una dimensión distinta de la población, todos dependen de una misma cantidad fundamental: el número de personas residentes en un determinado dominio geográfico y demográfico. En consecuencia, la calidad de los indicadores derivados está condicionada por la precisión de los conteos poblacionales que les sirven de base.
 
-En América Latina y el Caribe, la creciente demanda de información subnacional ha incrementado la necesidad de producir indicadores con alta desagregación territorial. Los gobiernos requieren estadísticas consistentes para departamentos, municipios, áreas urbanas y rurales, e incluso niveles operativos más pequeños como sectores y segmentos censales.
+En la práctica, los conteos observados durante un censo pueden verse afectados por errores de cobertura, omisiones, duplicaciones, problemas de acceso al territorio, rechazo de los informantes y otras dificultades operativas propias del proceso de enumeración. Estas limitaciones adquieren mayor relevancia a medida que aumenta el nivel de desagregación geográfica, donde incluso pequeñas diferencias en los conteos pueden producir variaciones importantes en los indicadores derivados y comprometer la comparabilidad entre territorios.
 
-Sin embargo, la producción de indicadores en dominios pequeños enfrenta limitaciones importantes asociadas a errores de cobertura, omisión censal y variabilidad espacial de los conteos. En consecuencia, muchos indicadores derivados presentan altos niveles de inestabilidad cuando se calculan directamente a partir de los conteos observados.
+Por esta razón, el objetivo central de este libro no consiste en modelar cada indicador demográfico de manera independiente, sino en estimar de forma consistente los conteos poblacionales por área geográfica, sexo y grupo de edad. Una vez estimados estos conteos, es posible obtener de manera coherente la mayoría de los indicadores utilizados en el análisis demográfico y en la producción de estadísticas oficiales. Bajo este enfoque, los indicadores derivados se entienden como funciones de una población subyacente cuya estimación constituye el problema fundamental del modelamiento estadístico desarrollado en los capítulos siguientes.
 
-En este contexto, resulta fundamental distinguir entre:
+En este contexto, la presente sección describe las principales cantidades de interés consideradas a lo largo del libro y su relación con los modelos de población. En particular, se distinguen tres componentes fundamentales:
 
-* conteos poblacionales básicos;
-* tasas derivadas;
-* y estructuras demográficas.
+- *Conteos poblacionales*, que constituyen la variable de interés principal del modelamiento.
 
-Cada uno de estos componentes presenta características particulares en términos de interpretación, sensibilidad a errores de cobertura y comportamiento territorial.
+- *Tasas derivadas*, obtenidas como funciones de los conteos y utilizadas para comparar territorios con diferentes tamaños poblacionales.
+
+- *Estructuras etarias*, que describen la distribución de la población según características como la edad y el sexo y sirven de base para numerosos indicadores y proyecciones demográficas.
+
 
 ### Conteos poblacionales
 
-Los conteos poblacionales constituyen el núcleo de la producción estadística demográfica. A través de ellos, los países cuantifican la población presente o residente dentro de un territorio y construyen la base sobre la cual se desarrollan posteriormente las proyecciones demográficas, los marcos muestrales, los indicadores sociales y gran parte de las estadísticas oficiales utilizadas en procesos de planificación pública.
+Los conteos poblacionales constituyen la unidad básica de información de los sistemas estadísticos de población y la principal variable de interés de este libro. Representan el número de personas residentes o presentes en un dominio geográfico determinado y sirven de base para la construcción de indicadores demográficos, sociales y económicos.
 
-Estos conteos son producidos para múltiples niveles de desagregación territorial y demográfica. En términos generales, la información censal se organiza para el nivel nacional, departamentos o provincias, municipios, áreas urbanas y rurales, así como para distintos grupos de edad y sexo. Esta estructura jerárquica permite caracterizar la distribución espacial de la población y construir estadísticas coherentes entre distintos niveles administrativos.
+Sea $N_{i,s,e}$ el número de personas residentes en el dominio geográfico $i$, de sexo $s \in \{M,F\}$ y grupo de edad $e \in \{1,\ldots,E\}$. Esta cantidad constituye la unidad fundamental de análisis, al representar simultáneamente la dimensión territorial y la estructura demográfica de la población.
 
-Sea $N_{i,s,e}$ el número de personas en el dominio geográfico $i$, sexo $s \in \{M, F\}$ (masculino, femenino) y grupo de edad $e \in \{1, \ldots, E\}$. El conteo total de población para una unidad geográfica se obtiene por agregación sobre sexo y edad:
-
-$$
-N_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} N_{i,s,e}
-$$
-
-mientras que la población nacional corresponde a la suma sobre todos los dominios territoriales:
+El conteo total de población del dominio $i$ se obtiene mediante
 
 $$
-N = \sum_{i=1}^{I} N_i
+N_i=\sum_{s\in\{M,F\}}\sum_{e=1}^{E}N_{i,s,e},
 $$
 
-La coherencia jerárquica exige que los conteos en niveles inferiores sean consistentes con los totales de los niveles superiores. Denotando con superíndice el nivel jerárquico —$N_j^{(2)}$ para un departamento $j$, $N_k^{(3)}$ para un municipio $k$ y $N_\ell^{(4)}$ para un segmento $\ell$— las restricciones de consistencia son:
+mientras que la población total del país corresponde a
 
 $$
-N_j^{(2)} = \sum_{k \,:\, k \subset j} N_k^{(3)}, \qquad N_k^{(3)} = \sum_{\ell \,:\, \ell \subset k} N_\ell^{(4)}
+N=\sum_{i=1}^{I}N_i.
 $$
 
-donde la notación $k \subset j$ indica que el municipio $k$ pertenece al departamento $j$.
+La organización jerárquica de los sistemas estadísticos requiere que los conteos de niveles geográficos inferiores sean consistentes con los totales de niveles superiores. Si $N_j^{(2)}$, $N_k^{(3)}$ y $N_\ell^{(4)}$ representan, respectivamente, los conteos de un departamento, municipio y segmento censal, entonces deben cumplirse las relaciones
 
-Esta coherencia jerárquica es esencial para garantizar la comparabilidad y consistencia de las estadísticas oficiales.
+$$
+N_j^{(2)}=\sum_{k:k\subset j}N_k^{(3)}, \qquad
+N_k^{(3)}=\sum_{\ell:\ell\subset k}N_\ell^{(4)}.
+$$
 
-En la práctica, los conteos poblacionales pueden entenderse en distintos niveles. Los conteos observados corresponden directamente a la enumeración realizada durante el operativo censal. Posteriormente, algunos países incorporan procesos de conciliación y ajuste orientados a corregir problemas de cobertura o inconsistencias demográficas. Finalmente, en contextos donde existen limitaciones operativas o necesidad de actualización intercensal, los conteos pueden complementarse mediante procedimientos de estimación estadística e integración de múltiples fuentes de información.
+En la práctica, los conteos observados pueden diferir de la población verdadera debido a errores de cobertura, omisiones, problemas de acceso al territorio o dificultades durante el operativo censal. Estas diferencias adquieren mayor importancia en dominios pequeños, donde incluso pequeñas omisiones pueden afectar significativamente los indicadores derivados.
 
-Uno de los principales desafíos asociados a los conteos poblacionales corresponde a su sensibilidad frente a errores de cobertura territorial. A medida que aumenta el nivel de desagregación geográfica, incluso pequeñas omisiones pueden generar distorsiones importantes sobre indicadores derivados. Este problema es particularmente visible en municipios pequeños, áreas rurales dispersas o segmentos censales con baja densidad poblacional, donde la omisión de algunos hogares puede modificar significativamente estructuras etarias, tasas de dependencia o indicadores sociales.
-
-En América Latina y el Caribe, estas dificultades adquieren una relevancia especial debido a la heterogeneidad territorial de la región. La expansión urbana acelerada, el crecimiento de asentamientos informales, la movilidad poblacional y las diferencias en capacidad operativa entre países generan importantes desafíos para la actualización cartográfica y la cobertura completa del operativo censal. Como consecuencia, la precisión espacial de los conteos puede variar considerablemente entre territorios.
-
-Desde una perspectiva estadística, los conteos poblacionales no deben interpretarse como valores exactos libres de error, sino como observaciones sujetas a incertidumbre y condicionadas por las limitaciones propias del operativo censal. Esta interpretación resulta fundamental para el desarrollo posterior de modelos probabilísticos de población, donde los conteos observados se entienden como aproximaciones de una población subyacente no completamente observable.
+Por esta razón, en este libro los conteos poblacionales se consideran variables observadas sujetas a incertidumbre. Los modelos bayesianos desarrollados en los capítulos siguientes tienen como objetivo estimar los conteos poblacionales en dominios con cobertura parcial o incompleta, preservando la coherencia entre los distintos niveles territoriales y las desagregaciones por sexo y edad.
 
 ### Tasas derivadas
 
-A partir de los conteos poblacionales es posible construir un amplio conjunto de tasas e indicadores utilizados para describir dinámicas demográficas, caracterizar condiciones territoriales y apoyar procesos de planificación pública. Mientras los conteos absolutos permiten cuantificar el tamaño de la población, las tasas derivadas facilitan la comparación entre territorios con estructuras y magnitudes poblacionales diferentes.
+Los conteos poblacionales constituyen la base para la construcción de numerosos indicadores utilizados en el análisis demográfico y territorial. A diferencia de los conteos absolutos, las tasas e índices permiten comparar poblaciones de diferente tamaño y describir características relativas de su distribución y estructura. Sin embargo, todos estos indicadores dependen directamente de los conteos poblacionales y, por tanto, su calidad está condicionada por la precisión de las estimaciones que les sirven de base.
 
-Este tipo de indicadores resulta fundamental para el análisis territorial, ya que permite transformar los conteos censales en medidas comparables entre regiones, municipios o áreas urbanas y rurales. De esta manera, es posible evaluar fenómenos asociados a concentración poblacional, envejecimiento, dependencia demográfica o composición por sexo bajo una escala relativa más adecuada para el análisis estadístico.
-
-Entre los indicadores más utilizados se encuentran la densidad poblacional, las tasas de dependencia, las razones de masculinidad y los índices de envejecimiento. Cada uno de ellos resume distintas dimensiones de la estructura demográfica y constituye un insumo importante para la toma de decisiones institucionales.
-
-La densidad poblacional permite medir la relación entre población y superficie territorial. Para un territorio (i), esta puede expresarse como:
+Uno de los indicadores más utilizados es la **densidad poblacional**, que expresa la relación entre el número de habitantes y la superficie del territorio. Para un dominio geográfico $i$, se define como
 
 $$
-D_i = \frac{N_i}{A_i}
+D_i=\frac{N_i}{A_i},
 $$
 
-donde $N_i$ representa la población observada y $A_i$ el área geográfica correspondiente. Este indicador es ampliamente utilizado en procesos de planificación urbana, expansión de infraestructura, análisis ambiental y organización de servicios públicos.
+donde $N_i$ representa la población del territorio y $A_i$ su superficie.
 
-Por su parte, la razón de masculinidad describe la relación entre población masculina y femenina dentro de un territorio determinado:
-
-$$
-\text{RM}_i = \frac{N_{i,M}}{N_{i,F}} \times 100
-$$
-
-donde $N_{i,M} = \sum_{e} N_{i,M,e}$ es la población masculina y $N_{i,F} = \sum_{e} N_{i,F,e}$ la femenina del territorio $i$. Este indicador permite identificar desequilibrios demográficos asociados a migración, envejecimiento o cambios en la estructura poblacional.
-
-Otro indicador ampliamente utilizado corresponde a la tasa de dependencia demográfica, la cual relaciona la población potencialmente dependiente con la población en edades productivas:
+Otro indicador de uso frecuente es la **razón de masculinidad**, que mide la relación entre la población masculina y femenina,
 
 $$
-\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
+\text{RM}_i=\frac{N_{i,M}}{N_{i,F}}\times100,
 $$
 
-donde $N_{i,[a,b]} = \sum_{s} \sum_{e \,:\, e \in [a,b]} N_{i,s,e}$ denota la población del territorio $i$ en el intervalo de edad $[a, b]$. De manera complementaria, el índice de envejecimiento evalúa el peso relativo de la población adulta mayor frente a la población joven:
+donde $N_{i,M}=\sum_eN_{i,M,e}$ y $N_{i,F}=\sum_eN_{i,F,e}$ corresponden a la población masculina y femenina del territorio $i$, respectivamente.
+
+La **tasa de dependencia demográfica** resume la relación entre la población potencialmente dependiente y la población en edades económicamente activas,
 
 $$
-\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
+\text{TD}_i=
+\frac{N_{i,[0,14]}+N_{i,[65+]}}
+{N_{i,[15,64]}}
+\times100,
 $$
 
-Estos indicadores desempeñan un papel central en la planificación territorial y sectorial. Su utilización es frecuente en procesos de asignación presupuestaria, focalización de programas sociales, evaluación de necesidades de infraestructura y análisis de demanda potencial de servicios públicos.
+donde
 
-Sin embargo, las tasas derivadas presentan una sensibilidad considerable frente a errores de cobertura censal. Debido a que muchas de ellas se construyen como razones entre subgrupos poblacionales específicos, pequeñas omisiones o inconsistencias pueden generar fluctuaciones importantes en los resultados observados. Este fenómeno se vuelve particularmente evidente en dominios geográficos pequeños, donde diferencias reducidas en los conteos absolutos producen variaciones relativamente grandes en los indicadores derivados.
+$$
+N_{i,[a,b]}=\sum_{s}\sum_{e\,:\,e\in[a,b]}N_{i,s,e}
+(\#eq:poblacion-tramo)
+$$
 
-En municipios con baja población o segmentos censales reducidos, las tasas pueden presentar comportamientos altamente inestables, especialmente cuando existen problemas de omisión diferencial por edad, sexo o localización territorial. En América Latina y el Caribe, estas dificultades suelen amplificarse debido a la heterogeneidad territorial, la expansión metropolitana acelerada, los procesos migratorios y las diferencias operativas observadas entre países y regiones.
+denota la población del dominio $i$ comprendida entre las edades $a$ y $b$, agregada sobre ambos sexos. De manera complementaria, el **índice de envejecimiento** se expresa como
 
-Como consecuencia, la producción de indicadores subnacionales requiere mecanismos de validación y ajuste orientados a mejorar estabilidad estadística y coherencia territorial. Desde esta perspectiva, los enfoques de modelamiento permiten complementar los métodos tradicionales mediante estrategias que incorporan integración de información auxiliar y representación explícita de la incertidumbre asociada a los conteos base.
+$$
+\text{IE}_i=
+\frac{N_{i,[65+]}}
+{N_{i,[0,14]}}
+\times100.
+$$
+
+Estos indicadores constituyen funciones de los conteos poblacionales y permiten caracterizar la distribución territorial y la estructura demográfica de la población. Debido a que se construyen a partir de los conteos observados, cualquier error de cobertura, omisión o subenumeración se transmite a las tasas derivadas. Este efecto es especialmente importante en dominios geográficos pequeños, donde diferencias reducidas en los conteos pueden producir variaciones relativamente grandes en los indicadores.
+
+Por esta razón, el interés metodológico de este libro no se centra en modelar directamente las tasas derivadas, sino en estimar de manera consistente los conteos poblacionales que les sirven de base. Una vez obtenidos estos conteos, los indicadores derivados pueden calcularse preservando la coherencia entre áreas geográficas y grupos demográficos.
 
 ### Estructuras etarias
 
-La estructura por edad de la población constituye uno de los componentes centrales del análisis demográfico. Su estudio permite comprender los cambios asociados a fecundidad, mortalidad, migración, envejecimiento y transición demográfica, así como las diferencias territoriales en la dinámica poblacional de los países.
+La distribución de la población por sexo y edad constituye una de las principales dimensiones de análisis demográfico, ya que permite caracterizar la composición de la población y estudiar los cambios asociados a la fecundidad, la mortalidad y la migración. La mayoría de los indicadores demográficos y las proyecciones de población requieren información desagregada por estas características, razón por la cual los censos nacionales producen conteos para diferentes grupos de edad y sexo.
 
-Los censos de población representan la principal fuente de información para caracterizar estas estructuras con altos niveles de desagregación geográfica. A partir de los conteos por edad y sexo es posible construir pirámides poblacionales, relaciones de dependencia, índices de envejecimiento y proyecciones demográficas, elementos fundamentales para la planificación social y económica.
-
-Sea $N_{i,e} = \sum_{s \in \{M,F\}} N_{i,s,e}$ la población del área $i$ en el grupo de edad $e$, obtenida por suma sobre ambos sexos. La participación relativa de cada grupo etario dentro de la población total del territorio puede expresarse como:
+Retomando el conteo $N_{i,s,e}$ definido en la sección \@ref(conteos-poblacionales), la distribución por edad para cada sexo puede expresarse mediante la proporción
 
 $$
-p_{i,e} = \frac{N_{i,e}}{N_i}
+P_{i,s,e}=\frac{N_{i,s,e}}{N_i},
 $$
 
-donde $N_i = \sum_{e=1}^{E} N_{i,e}$ es la población total del territorio. Por construcción, $\sum_{e=1}^{E} p_{i,e} = 1$.
+donde $N_i$ representa la población total del dominio. Estas proporciones describen la estructura demográfica y permiten construir pirámides poblacionales, indicadores de dependencia y otros resúmenes de la composición por edad y sexo.
 
-En la práctica, la estructura etaria suele organizarse utilizando grupos quinquenales de edad:
+La desagregación demográfica también resulta fundamental para el análisis territorial. Las diferencias en la estructura por edad entre regiones reflejan procesos de urbanización, envejecimiento, migración y dinámica demográfica, proporcionando información esencial para la formulación de políticas públicas y la planificación de servicios dirigidos a grupos específicos de población.
 
-$$
-0-4,\ 5-9,\ 10-14,\ \ldots,\ 80+
-$$
-
-debido a que esta agrupación proporciona mayor estabilidad demográfica y facilita la comparabilidad entre países y periodos censales. Adicionalmente, los grupos quinquenales constituyen la base utilizada en la mayoría de modelos de proyección poblacional y análisis demográficos oficiales.
-
-Los indicadores de cambio demográfico más utilizados se expresan directamente en términos de $N_{i,[a,b]}$. El índice de envejecimiento relaciona la población adulta mayor con la población joven:
-
-$$
-\text{IE}_i = \frac{N_{i,[65+]}}{N_{i,[0,14]}} \times 100
-$$
-
-La tasa de dependencia demográfica total evalúa la presión potencial sobre la población en edades productivas y coincide con $\text{TD}_i$ definida en la sección anterior:
-
-$$
-\text{TD}_i = \frac{N_{i,[0,14]} + N_{i,[65+]}}{N_{i,[15,64]}} \times 100
-$$
-
-Estos indicadores son ampliamente utilizados en procesos de planificación pública debido a que permiten anticipar necesidades asociadas a educación, salud, protección social, empleo e infraestructura. Territorios con estructuras jóvenes suelen demandar mayores inversiones en sistemas educativos y servicios materno-infantiles, mientras que áreas con envejecimiento avanzado requieren una mayor capacidad de atención en salud y sistemas de cuidado.
-
-En América Latina y el Caribe, la estructura etaria presenta fuertes contrastes territoriales. Mientras algunas áreas metropolitanas muestran procesos avanzados de envejecimiento poblacional y reducción de fecundidad, otras regiones mantienen estructuras considerablemente más jóvenes asociadas a mayores niveles de natalidad y menor transición demográfica. Estas diferencias reflejan la elevada heterogeneidad demográfica de la región y generan importantes desafíos para la producción de estadísticas subnacionales comparables.
-
-La construcción de estructuras etarias confiables enfrenta además importantes limitaciones operativas. Los errores de cobertura censal no afectan homogéneamente a todos los grupos de edad. En muchos países de la región, la evidencia disponible sugiere que la omisión censal tiende a concentrarse en niños pequeños, hombres jóvenes, migrantes, población indígena y habitantes de zonas rurales dispersas. Como consecuencia, la distribución observada por edad puede diferir significativamente de la estructura poblacional verdadera.
-
-Este problema se intensifica en dominios geográficos pequeños. En municipios con baja población o segmentos censales reducidos, pequeñas diferencias en los conteos observados pueden modificar considerablemente la forma de la estructura etaria y generar indicadores altamente inestables. La variabilidad observada suele aumentar aún más cuando los grupos poblacionales son desagregados simultáneamente por edad, sexo y localización territorial.
-
-Adicionalmente, las estructuras etarias cumplen un papel central en los procesos de proyección demográfica y estimación intercensal. Los modelos cohortes-componentes utilizados por la mayoría de oficinas nacionales de estadística dependen directamente de la calidad de la distribución inicial por edad y sexo [@Preston2001]. En consecuencia, errores presentes en los conteos censales pueden propagarse hacia estimaciones futuras y afectar la consistencia temporal de las proyecciones oficiales.
-
-Desde la perspectiva del modelamiento estadístico, las estructuras etarias pueden entenderse como realizaciones sujetas a incertidumbre y error de cobertura. Bajo este enfoque, los modelos bayesianos de población permiten incorporar dependencia entre grupos de edad relacionados, estabilizar estimaciones en áreas con información limitada e integrar múltiples fuentes auxiliares para mejorar la coherencia territorial y demográfica de las estimaciones poblacionales.
+Desde la perspectiva del modelamiento estadístico, la estimación simultánea de la población por área geográfica, sexo y grupo de edad representa un problema de alta dimensionalidad. En dominios con cobertura censal incompleta o con baja población, la información disponible puede ser insuficiente para estimar de manera precisa cada uno de estos subconjuntos de población. En estos casos, los modelos jerárquicos bayesianos permiten aprovechar la dependencia existente entre áreas geográficas y grupos demográficos para obtener estimaciones más estables y coherentes, preservando las relaciones de agregación entre los distintos niveles territoriales y las desagregaciones por sexo y edad.
 
 ## Formulación del problema de subcobertura, no respuesta y omisión censal
 
@@ -233,7 +202,7 @@ Uno de los principales desafíos de los censos modernos corresponde a los proble
 
 Estas diferencias surgen por múltiples razones. Algunas personas no son censadas, ciertas viviendas quedan fuera del operativo, algunos registros son duplicados y, en otros casos, existen errores en la asignación territorial de la información recolectada. Como resultado, los conteos censales deben entenderse como realizaciones observadas de un proceso de enumeración sujeto a limitaciones operativas, errores cartográficos y dificultades de cobertura.
 
-Formalmente, sea $Y_{i,s,e}$ el conteo observado en el operativo censal para el territorio $i$, sexo $s$ y grupo de edad $e$, y sea $N_{i,s,e}$ la población verdadera correspondiente. La relación entre ambos puede representarse como:
+Formalmente, sea $Y_{i,s,e}$ el conteo observado en el operativo censal para el territorio $i$, sexo $s$ y grupo de edad $e$, y sea $N_{i,s,e}$ la población verdadera correspondiente, definida en la sección \@ref(conteos-poblacionales). La relación entre ambos puede representarse como:
 
 $$
 Y_{i,s,e} = N_{i,s,e} - O_{i,s,e} + D_{i,s,e} + C_{i,s,e}
