@@ -1,4 +1,4 @@
-# Preparación de Insumos para Modelamiento
+# Preparación de Insumos para Modelamiento {#cap-insumos}
 
 La construcción de un modelo bayesiano de estimación subnacional requiere, como condición previa, disponer de un conjunto de insumos analíticos preparados con criterios estadísticos explícitos y documentados. La calidad de las estimaciones finales depende no solo de la sofisticación del modelo, sino fundamentalmente de la coherencia, completitud y representatividad de los datos que lo alimentan.
 
@@ -56,7 +56,7 @@ Esta transformación preserva la interpretación original de la variable y facil
 
 **Tratamiento de valores faltantes.** La presencia de valores faltantes en las covariables auxiliares debe ser resuelta antes de la estimación. Las estrategias más comunes incluyen la imputación por la mediana o la media del grupo territorial al que pertenece el segmento, la imputación mediante modelos de regresión utilizando covariables con cobertura completa, y la imputación múltiple para propagar la incertidumbre asociada a los valores faltantes hacia las estimaciones finales.
 
-## Evaluación de cobertura
+## Evaluación de cobertura {#evaluacion-cobertura}
 
 La evaluación de cobertura censal por segmento es un paso crítico previo a la estimación. Permite identificar los dominios con información deficiente, cuantificar el grado de omisión territorial y establecer una clasificación de los segmentos que oriente las decisiones de modelamiento.
 
