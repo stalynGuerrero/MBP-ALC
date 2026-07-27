@@ -206,7 +206,8 @@ $$
 
 ofrece un diagnóstico informal de sobredispersión: si $S^2_Y \gg \bar{Y}$, la distribución de Poisson puede ser insuficiente y el modelo binomial negativo resulta más apropiado. El índice de dispersión $D = S^2_Y / \bar{Y}$ cuantifica el grado de sobredispersión; valores superiores a 1.5 o 2 suelen justificar el uso de modelos más flexibles.
 
-```{r dist-conteos, echo=TRUE, eval=FALSE}
+
+``` r
 resumen_conteos <- data.frame(
   n_segmentos = length(Y),
   media       = mean(Y),
@@ -251,7 +252,8 @@ $$
 
 donde $\bar{\mathbf{x}}$ es el vector de medias y $\hat{\boldsymbol{\Sigma}}$ es la matriz de covarianza muestral de las covariables. Bajo normalidad multivariada, $d_i^2 \sim \chi^2_p$, y valores superiores al percentil 97.5 de esta distribución son indicativos de observaciones atípicas en el espacio de covariables.
 
-```{r outliers-deteccion, echo=TRUE, eval=FALSE}
+
+``` r
 lambda_nulo       <- mean(Y)
 residuos_p        <- (Y - lambda_nulo) / sqrt(lambda_nulo)
 segmentos_outlier <- which(abs(residuos_p) > 3)
@@ -280,7 +282,8 @@ $$
 
 donde $R_k^2$ es el coeficiente de determinación obtenido al regresar la covariable $k$ sobre el resto de covariables. Valores de $\text{VIF}_k > 10$ son indicativos de multicolinealidad problemática.
 
-```{r relacion-variables, echo=TRUE, eval=FALSE}
+
+``` r
 library(corrplot)
 cor_mat <- cor(cbind(log_Y = log(Y + 1), covariables_std),
                method = "pearson")

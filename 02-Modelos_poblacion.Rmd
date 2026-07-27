@@ -1,4 +1,4 @@
-# Enfoque General de los Modelos de Población
+# Enfoque General de los Modelos de Población {#cap-modelos-poblacion}
 
 ## Producción de conteos censales
 
@@ -196,7 +196,7 @@ La desagregación demográfica también resulta fundamental para el análisis te
 
 Desde la perspectiva del modelamiento estadístico, la estimación simultánea de la población por área geográfica, sexo y grupo de edad representa un problema de alta dimensionalidad. En dominios con cobertura censal incompleta o con baja población, la información disponible puede ser insuficiente para estimar de manera precisa cada uno de estos subconjuntos de población. En estos casos, los modelos jerárquicos bayesianos permiten aprovechar la dependencia existente entre áreas geográficas y grupos demográficos para obtener estimaciones más estables y coherentes, preservando las relaciones de agregación entre los distintos niveles territoriales y las desagregaciones por sexo y edad.
 
-## Formulación del problema de subcobertura, no respuesta y omisión censal
+## Formulación del problema de subcobertura, no respuesta y omisión censal {#subcobertura-omision}
 
 Uno de los principales desafíos de los censos modernos corresponde a los problemas de cobertura asociados al operativo de enumeración. Aunque el objetivo conceptual del censo consiste en registrar exhaustivamente toda la población presente o residente dentro del territorio nacional, en la práctica siempre existen diferencias entre la población efectivamente observada y la población real presente en el territorio.
 
