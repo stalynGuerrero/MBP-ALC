@@ -1,4 +1,4 @@
-# Calibración y Benchmarking Subnacional
+# Calibración y Benchmarking Subnacional {#cap-calibracion}
 
 El capítulo anterior estableció los criterios de convergencia, validación predictiva y validación externa que un modelo Poisson-lognormal debe satisfacer antes de que sus estimaciones puedan utilizarse en la producción de estadísticas oficiales de población. Sin embargo, la validación de un modelo no resuelve por sí sola un problema adicional, frecuente en la práctica institucional: los organismos nacionales de estadística suelen requerir que las estimaciones subnacionales, al agregarse, coincidan exactamente con totales de referencia fijados de manera independiente al modelo —un total nacional publicado oficialmente, una cifra departamental proveniente de un recuento preliminar de mayor confiabilidad, o una proyección demográfica considerada autoridad institucional para efectos de asignación presupuestaria—. Este capítulo desarrolla el conjunto de técnicas conocidas como calibración o *benchmarking*, orientadas a conciliar las estimaciones del modelo con dichos totales de control, preservando en la mayor medida posible la información distribucional aportada por el modelo bayesiano.
 
@@ -191,26 +191,26 @@ La calibración modifica las estimaciones producidas por un modelo previamente v
 El cambio relativo introducido por la calibración en la unidad $k$ se define como:
 
 $$
-\kappa_k = \frac{\hat{N}_k^{bench} - \hat{N}_k}{\hat{N}_k}
+\eta_k = \frac{\hat{N}_k^{bench} - \hat{N}_k}{\hat{N}_k}
 $$
 
-Bajo el ajuste proporcional, $\kappa_k = \phi - 1$ es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, $\kappa_k$ varía sistemáticamente entre unidades: se espera una relación positiva entre $\kappa_k$ y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de $\kappa_k$ cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:
+Se usa $\eta_k$, y no $\kappa_k$, para no confundir esta cantidad con la variable indicadora de clasificación de cobertura $\kappa_i$ del Capítulo \@ref(cap-insumos). Bajo el ajuste proporcional, $\eta_k = \phi - 1$ es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, $\eta_k$ varía sistemáticamente entre unidades: se espera una relación positiva entre $\eta_k$ y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de $\eta_k$ cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:
 
 ```r
 cambio_relativo <- estimaciones_departamento %>%
   mutate(
-    kappa_prop = (N_bench_prop - tot_pob_media) / tot_pob_media,
-    kappa_pond = (N_bench_pond - tot_pob_media) / tot_pob_media
+    eta_prop = (N_bench_prop - tot_pob_media) / tot_pob_media,
+    eta_pond = (N_bench_pond - tot_pob_media) / tot_pob_media
   )
 
 # Relación entre el cambio relativo y la incertidumbre posterior
-ggplot(cambio_relativo, aes(x = tot_pob_sd / tot_pob_media, y = kappa_pond)) +
+ggplot(cambio_relativo, aes(x = tot_pob_sd / tot_pob_media, y = eta_pond)) +
   geom_point() +
   labs(x = "Coeficiente de variación posterior",
        y = "Cambio relativo tras calibración ponderada")
 ```
 
-Un patrón en el que las unidades con mayor coeficiente de variación posterior muestran mayores valores de $|\kappa_k|$ confirma que el ajuste ponderado está operando de acuerdo con el principio que lo motiva: concentrar la corrección donde la información propia del modelo es más débil. La ausencia de este patrón —o su presencia inversa, con grandes correcciones sobre unidades de alta precisión— señala que los pesos utilizados no reflejan adecuadamente la incertidumbre relativa de las unidades y debe revisarse su especificación.
+Un patrón en el que las unidades con mayor coeficiente de variación posterior muestran mayores valores de $|\eta_k|$ confirma que el ajuste ponderado está operando de acuerdo con el principio que lo motiva: concentrar la corrección donde la información propia del modelo es más débil. La ausencia de este patrón —o su presencia inversa, con grandes correcciones sobre unidades de alta precisión— señala que los pesos utilizados no reflejan adecuadamente la incertidumbre relativa de las unidades y debe revisarse su especificación.
 
 ### Intervalos de credibilidad post-calibración
 

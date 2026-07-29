@@ -241,7 +241,7 @@ $$
 
 donde $\hat{\lambda}_i = \exp(\hat{\alpha})$ con $\hat{\alpha} = \log(\bar{Y})$. Segmentos con $|r_i^P| > 3$ son candidatos a revisión como observaciones atípicas.
 
-**Detección basada en la distancia de Cook.** En el modelo log-lineal con covariables, la distancia de Cook $D_i$ cuantifica la influencia del segmento $i$ sobre el vector de coeficientes estimados. Valores elevados de $D_i$ indican que la exclusión del segmento $i$ modificaría sustancialmente los coeficientes del modelo.
+**Detección basada en la distancia de Cook.** En el modelo log-lineal con covariables, la distancia de Cook $CD_i$ cuantifica la influencia del segmento $i$ sobre el vector de coeficientes estimados. Valores elevados de $CD_i$ indican que la exclusión del segmento $i$ modificaría sustancialmente los coeficientes del modelo. Se usa $CD_i$, y no $D_i$, para no confundir esta distancia con la cardinalidad $D = |\mathcal{S}|$ introducida en el Capítulo \@ref(cap-conteos) ni con la densidad poblacional por área $D_i = N_i/A_i$ del Capítulo \@ref(cap-modelos-poblacion).
 
 **Detección multivariada.** Las observaciones atípicas en el espacio de covariables pueden identificarse mediante la distancia de Mahalanobis:
 

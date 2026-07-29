@@ -1,4 +1,4 @@
-# Diagnóstico y Validación del Modelo
+# Diagnóstico y Validación del Modelo {#cap-diagnostico}
 
 El capítulo anterior estableció el procedimiento de estimación del modelo Poisson-lognormal mediante HMC-NUTS en Stan y presentó, de forma introductoria, tres herramientas de verificación: el estadístico $\hat{R}$ y el tamaño efectivo de muestra reportados por `summary()`, la verificación predictiva posterior mediante superposición de densidades y los criterios de información LOO y WAIC. Ninguna estimación bayesiana debe considerarse válida por el solo hecho de haber sido producida por el muestreador: las muestras posteriores pueden provenir de cadenas que no convergieron a la distribución objetivo, el modelo puede ajustar razonablemente la media de los datos pero fallar en reproducir su variabilidad o su forma, y una especificación puede superar los diagnósticos internos de ajuste y, sin embargo, ser inconsistente con fuentes de información externas al propio modelo.
 
@@ -328,10 +328,10 @@ Cuando el modelo incorpora registros administrativos como covariables —padrone
 La comparación se realiza mediante la razón entre la predicción del modelo y el conteo del registro reservado:
 
 $$
-\rho_i = \frac{\hat{N}_i}{A_i^{(val)}}
+\rho_i = \frac{\hat{N}_i}{Y_i^{(A_{val})}}
 $$
 
-donde $A_i^{(val)}$ es el conteo del registro administrativo reservado para el segmento $i$. Dado que ningún registro administrativo captura la totalidad de la población —su tasa de cobertura relativa $c_{i,r}$ es, por construcción, menor o igual a uno—, se espera que $\rho_i$ se ubique sistemáticamente por encima de uno y dentro de un rango plausible determinado por la naturaleza del registro utilizado; valores de $\rho_i$ inferiores a uno, o con una dispersión territorial inconsistente con la cobertura esperada del registro, señalan posibles problemas de especificación del modelo o de calidad del registro de referencia.
+donde $Y_i^{(A_{val})}$ es el conteo del registro administrativo reservado para el segmento $i$ —siguiendo la misma convención de superíndices por fuente $Y^{(A)}$ del Capítulo \@ref(cap-insumos), con el subíndice adicional $val$ para distinguirlo de los registros administrativos ya incorporados como covariables—. Dado que ningún registro administrativo captura la totalidad de la población —su tasa de cobertura relativa $c_{i,r}$ es, por construcción, menor o igual a uno—, se espera que $\rho_i$ se ubique sistemáticamente por encima de uno y dentro de un rango plausible determinado por la naturaleza del registro utilizado; valores de $\rho_i$ inferiores a uno, o con una dispersión territorial inconsistente con la cobertura esperada del registro, señalan posibles problemas de especificación del modelo o de calidad del registro de referencia.
 
 ### Evaluación de coherencia geoespacial
 
