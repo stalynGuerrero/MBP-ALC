@@ -194,7 +194,7 @@ $$
 \eta_k = \frac{\hat{N}_k^{bench} - \hat{N}_k}{\hat{N}_k}
 $$
 
-Se usa $\eta_k$, y no $\kappa_k$, para no confundir esta cantidad con la variable indicadora de clasificación de cobertura $\kappa_i$ del Capítulo \@ref(cap-insumos). Bajo el ajuste proporcional, $\eta_k = \phi - 1$ es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, $\eta_k$ varía sistemáticamente entre unidades: se espera una relación positiva entre $\eta_k$ y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de $\eta_k$ cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:
+Bajo el ajuste proporcional, $\eta_k = \phi - 1$ es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, $\eta_k$ varía sistemáticamente entre unidades: se espera una relación positiva entre $\eta_k$ y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de $\eta_k$ cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:
 
 ```r
 cambio_relativo <- estimaciones_departamento %>%

@@ -55,105 +55,78 @@ Esta transformación preserva la interpretación original de la variable y facil
 
 La evaluación de cobertura censal por segmento es un paso crítico previo a la estimación. Permite identificar los dominios con información deficiente, cuantificar el grado de omisión territorial y establecer una clasificación de los segmentos que oriente las decisiones de modelamiento.
 
-### Tasa de cobertura por segmento
+La tasa de cobertura de un segmento censal expresa la proporción de la población del segmento que fue efectivamente enumerada durante el operativo censal. Como la población verdadera no es observable, la cobertura debe estimarse utilizando una referencia externa, como un preconteo operativo ajustado o una estimación demográfica independiente.
 
-La tasa de cobertura de un segmento censal mide la proporción de la población verdadera que fue efectivamente enumerada durante el operativo. Dado que la población verdadera $N_i$ no es directamente observable, la estimación de la tasa de cobertura requiere una referencia externa independiente del conteo censal.
-
-Sea $\widehat{N}_i$ una estimación de referencia de la población del segmento $i$ obtenida a partir de una fuente auxiliar confiable, como un preconteo operativo ajustado o una proyección demográfica intercensal —la misma referencia externa introducida en la Sección \@ref(medicion-cobertura) del Capítulo \@ref(cap-integracion)—. La tasa de cobertura estimada para el segmento $i$ se define como:
+Si $\widehat{N}_i$ representa la población de referencia del segmento $i$ y $Y_i^{(C)}$ el conteo obtenido por el censo, la tasa de cobertura se calcula como
 
 $$
-\hat{c}_i = \frac{Y_i^{(C)}}{\widehat{N}_i}
+\hat{c}_i=\frac{Y_i^{(C)}}{\widehat{N}_i}.
 $$
 
-donde $Y_i^{(C)}$ es el conteo censal observado en el segmento. Un valor $\hat{c}_i < 1$ indica subcobertura —el operativo no logró enumerar toda la población de referencia— mientras que $\hat{c}_i > 1$ puede indicar sobrecobertura, duplicación de registros o inconsistencias en la referencia utilizada.
+Un valor cercano a uno indica que el conteo censal es consistente con la población de referencia. Valores inferiores a uno sugieren subcobertura, mientras que valores superiores a uno pueden reflejar sobrecobertura o diferencias entre el conteo censal y la fuente utilizada como referencia.
 
-En la práctica, la tasa de cobertura puede estimarse también mediante métodos de captura-recaptura cuando se dispone de dos fuentes de información independientes para el mismo segmento. Si $Y_i^{(C)}$ es el conteo censal y $Y_i^{(A)}$ es el conteo de un registro administrativo (Sección \@ref(registros-administrativos)), y si $M_i$ es el número de personas identificadas en ambas fuentes, la estimación de Chapman para la población total es:
+La comparación de las tasas de cobertura entre segmentos permite identificar áreas donde el operativo censal presentó mayores dificultades de enumeración. Cuando la cobertura varía significativamente entre segmentos, la omisión deja de ser un fenómeno aleatorio y pasa a depender de características territoriales u operativas. En estos casos, la información sobre cobertura constituye un insumo importante para interpretar la calidad de los datos y para definir la estrategia de modelamiento de la población en los segmentos afectados.
 
-$$
-\hat{N}_i^{CR} = \frac{(Y_i^{(C)} + 1)(Y_i^{(A)} + 1)}{M_i + 1} - 1
-$$
 
-y la tasa de cobertura del censo respecto a esta estimación:
+### Clasificación de segmentos {#clasificacion-segmentos}
 
-$$
-\hat{c}_i^{CR} = \frac{Y_i^{(C)}}{\hat{N}_i^{CR}}
-$$
+La estrategia de estimación depende del nivel de cobertura observado en cada segmento censal. Con base en la tasa de cobertura estimada, los segmentos se clasifican en tres grupos:
 
-Este estimador requiere el supuesto de independencia entre ambas fuentes, condición que puede ser violada cuando la propensión a ser registrado en el censo y en el registro administrativo están correlacionadas con características del individuo o del territorio.
+* **Cobertura completa** ($\hat{c}_i = 1$). El operativo censal logró enumerar la totalidad de la población del segmento. En este caso, el conteo observado se considera completo y se utiliza para ajustar el modelo de población.
 
-La distribución de las tasas de cobertura entre segmentos permite identificar patrones espaciales de omisión diferencial. El coeficiente de variación de $\hat{c}_i$ entre segmentos es un indicador de la heterogeneidad territorial de la cobertura. Valores elevados de este coeficiente indican que la omisión censal no es aleatoria y que un modelo que ignore esta heterogeneidad producirá estimaciones sesgadas.
+* **Cobertura nula** ($\hat{c}_i = 0$). El segmento no fue enumerado durante el operativo censal. La población se estima íntegramente mediante el modelo, utilizando la información auxiliar disponible.
 
-### Clasificación de segmentos
+* **Cobertura parcial** ($0 < \hat{c}_i < 1$). El operativo censal logró enumerar únicamente una fracción de la población del segmento. En este caso, el modelo estima la población no observada y la estimación final se obtiene combinando el conteo censal observado con la predicción correspondiente a la población omitida.
 
-Retomando la tipología cualitativa introducida en la Sección \@ref(medicion-cobertura) del Capítulo \@ref(cap-integracion) —cobertura aceptable, parcial e insuficiente—, esta sección formaliza los umbrales de $\hat{c}_i$ que delimitan cada categoría:
+Esta clasificación determina el papel que desempeña el modelo en cada segmento: reproducir el conteo observado cuando la cobertura es completa, predecir la población cuando la cobertura es nula y complementar el conteo censal cuando la cobertura es parcial. La expresión formal de la variable dependiente bajo estos tres casos se presenta en la sección siguiente.
 
-**Segmentos con cobertura aceptable** ($\hat{c}_i \geq c^*$): el umbral $c^*$ se fija típicamente entre 0.85 y 0.95, dependiendo de los estándares de calidad del sistema estadístico.
-
-**Segmentos con cobertura parcial** ($c_{**} \leq \hat{c}_i < c^*$): el umbral inferior $c_{**}$ se sitúa típicamente entre 0.60 y 0.75.
-
-**Segmentos con cobertura insuficiente** ($\hat{c}_i < c_{**}$): agrupa los segmentos por debajo del umbral inferior $c_{**}$.
-
-Formalmente, la clasificación puede expresarse mediante la variable indicadora:
-
-$$
-\kappa_i = \begin{cases} 2 & \text{si } \hat{c}_i \geq c^* \\ 1 & \text{si } c_{**} \leq \hat{c}_i < c^* \\ 0 & \text{si } \hat{c}_i < c_{**} \end{cases}
-$$
-
-Esta clasificación se incorpora al modelo mediante pesos de verosimilitud o mediante la especificación diferenciada de la varianza del error de medición según la categoría del segmento.
 
 ## Construcción de la variable dependiente
 
-La variable dependiente del modelo de estimación subnacional es el conteo poblacional que se desea estimar en cada segmento. Su construcción no es un proceso trivial: requiere decisiones explícitas sobre la agregación de categorías, las transformaciones aplicadas y la definición de la población de referencia.
+La variable dependiente corresponde al número de personas que residen en cada segmento censal. Su construcción combina el conteo censal observado con la predicción del modelo según el nivel de cobertura del segmento, siguiendo la clasificación de la Sección \@ref(clasificacion-segmentos).
 
-### Conteos agregados
-
-El conteo agregado para el segmento $i$ se construye sumando los conteos censales observados sobre los grupos de sexo y edad de interés. Sea $Y_{i,s,e}^{(C)}$ el conteo censal del segmento $i$, sexo $s$ y grupo de edad $e$ —el mismo conteo observado denotado $Y_{i,s,e}$ en la Sección \@ref(subcobertura-omision) del Capítulo \@ref(cap-modelos-poblacion), aquí con el superíndice $(C)$ para distinguirlo explícitamente de los conteos de fuente administrativa $Y^{(A)}$ empleados en la Sección \@ref(evaluacion-cobertura)—. El conteo total del segmento es:
+Sea $Y_i^{(C)}$ el conteo censal observado en el segmento $i$ y $\widehat{Y}_i^{(M)}$ la población omitida estimada por el modelo cuando la cobertura no es completa. La variable dependiente se define como:
 
 $$
-Y_i = \sum_{s \in \{M,F\}} \sum_{e=1}^{E} Y_{i,s,e}^{(C)}
+Y_i=
+\begin{cases}
+Y_i^{(C)}, & \hat{c}_i=1\\
+\widehat{Y}_i^{(M)}, & \hat{c}_i=0\\
+Y_i^{(C)}+\widehat{Y}_i^{(M)}, & 0<\hat{c}_i<1,
+\end{cases}
+\qquad i=1,\ldots,I.
 $$
 
-Cuando el objetivo es estimar conteos desagregados por sexo o grupo etario, la variable dependiente se construye para cada celda demográfica de interés:
+Esta definición asigna a cada segmento el conteo observado cuando la enumeración fue completa, la predicción íntegra del modelo cuando no hubo enumeración, y la suma de ambas fuentes cuando la cobertura fue parcial.
+
+En los capítulos siguientes, una vez desarrollado el modelo para el conteo total de personas, se extenderá la metodología para estimar la población desagregada por sexo y grupos de edad, preservando la coherencia entre las estimaciones agregadas y sus componentes.
+
+### Densidad poblacional
+
+Aunque la variable dependiente del modelo es el número de personas por segmento, en el análisis exploratorio resulta útil considerar la densidad poblacional como una medida complementaria de la distribución espacial de la población. La densidad permite comparar segmentos con áreas muy diferentes y facilita la identificación de patrones de concentración o dispersión que pueden ser explicados por las covariables auxiliares.
+
+Si $Y_i$ representa el número de personas del segmento $i$ y $A_i$ su superficie, la densidad poblacional se define como
 
 $$
-Y_{i,s,e} = Y_{i,s,e}^{(C)}, \qquad s \in \{M, F\},\quad e = 1, \ldots, E
+D_i=\frac{Y_i}{A_i},
 $$
 
-y el modelo se estima de forma separada para cada celda o mediante un modelo conjunto que impone coherencia entre celdas a través de una estructura jerárquica compartida.
+donde $A_i$ se expresa en kilómetros cuadrados u otra unidad de superficie consistente. La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.
 
-La decisión sobre el nivel de desagregación de la variable dependiente tiene implicaciones directas sobre el tamaño del problema de estimación y la disponibilidad de información. A mayor desagregación, mayor es el número de celdas con conteos pequeños o nulos, lo que incrementa la dependencia del modelo respecto a las covariables auxiliares y a la estructura jerárquica.
 
-### Tasas poblacionales
+### Número promedio de personas por hogar
 
-En algunos contextos, la variable de interés no es el conteo absoluto sino una tasa relativa que expresa la magnitud de un subgrupo poblacional como proporción del total. Sea $Y_i^{(g)}$ el conteo del grupo de interés $g$ en el segmento $i$ y $Y_i$ el total del segmento. La tasa poblacional se define como:
+El número promedio de personas por hogar constituye un indicador descriptivo que relaciona la población observada con el número de hogares del segmento censal. Este indicador resume la intensidad de ocupación residencial y permite identificar segmentos con valores inusualmente bajos o altos que pueden reflejar problemas de cobertura, errores de enumeración o características particulares del territorio.
 
-$$
-\pi_i^{(g)} = \frac{Y_i^{(g)}}{Y_i}
-$$
-
-Las tasas poblacionales son especialmente relevantes cuando el objetivo es comparar la composición demográfica entre segmentos con magnitudes poblacionales muy distintas. Sin embargo, en dominios con conteos pequeños, las tasas presentan elevada variabilidad aleatoria que puede distorsionar la comparación territorial.
-
-El modelamiento de tasas en el contexto bayesiano utiliza frecuentemente la distribución beta como modelo para la variable dependiente cuando $\pi_i^{(g)} \in (0,1)$, o modelos binomiales cuando se dispone del denominador exacto:
+Sea $Y_i$ el número de personas del segmento $i$ y $H_i$ el número de hogares registrados en el mismo segmento. El promedio de personas por hogar se calcula como
 
 $$
-Y_i^{(g)} \mid \pi_i^{(g)}, Y_i \sim \text{Binomial}(Y_i,\, \pi_i^{(g)})
+\bar{P}_i=\frac{Y_i}{H_i},
 $$
 
-### Transformaciones
+donde $H_i>0$. Este indicador se utiliza principalmente durante el análisis exploratorio para evaluar la consistencia de la información censal y comparar segmentos con características similares. Valores extremos pueden señalar la necesidad de revisar la calidad de los datos o la existencia de condiciones demográficas particulares que deban considerarse durante la especificación del modelo.
 
-Las transformaciones de la variable dependiente buscan estabilizar la varianza, aproximar la distribución a la normalidad o linealizar la relación entre la variable de respuesta y los predictores. En el contexto de conteos poblacionales, las transformaciones más utilizadas son las siguientes.
 
-**Transformación logarítmica.** La transformación $\log(Y_i + 1)$ es la más frecuentemente utilizada en modelos log-lineales de conteo. Estabiliza la varianza en distribuciones de Poisson y permite interpretar los efectos de las covariables en términos de cambios porcentuales en la población esperada.
-
-**Transformación raíz cuadrada.** La transformación $\sqrt{Y_i}$ tiene la propiedad de estabilizar la varianza en distribuciones de Poisson, dado que $\text{Var}(\sqrt{Y_i}) \approx 1/4$ cuando $\lambda_i$ es grande. Es menos utilizada que la logarítmica pero puede ser apropiada cuando los conteos son muy pequeños y la transformación logarítmica introduce distorsiones.
-
-**Transformación de potencia de Box-Cox.** Para una búsqueda más sistemática de la transformación estabilizadora de varianza, la familia de transformaciones de Box-Cox parametriza el tipo de transformación mediante un parámetro $\lambda_{BC}$:
-
-$$
-Y_i^{(\lambda_{BC})} = \begin{cases} \dfrac{Y_i^{\lambda_{BC}} - 1}{\lambda_{BC}} & \text{si } \lambda_{BC} \neq 0 \\ \log(Y_i) & \text{si } \lambda_{BC} = 0 \end{cases}
-$$
-
-El parámetro $\lambda_{BC}$ puede estimarse por máxima verosimilitud como parte del proceso de especificación del modelo. Los valores $\lambda_{BC} = 0$ (logarítmica) y $\lambda_{BC} = 0.5$ (raíz cuadrada) son los más frecuentes en la práctica.
 
 ### Definición de población base
 
@@ -170,29 +143,20 @@ Formalmente, la población base $\mathcal{P}_i$ del segmento $i$ puede definirse
 
 La elección de la población base afecta la coherencia de los conteos en territorios con alta movilidad diurna, presencia de instituciones totales o frontera entre áreas urbanas y rurales. El modelo de estimación debe adaptarse a la misma definición de población base utilizada en el operativo censal.
 
-### Escalamiento
+### Variable de exposición
 
-El escalamiento de los conteos es necesario cuando se trabaja simultáneamente con segmentos de tamaño muy heterogéneo o cuando se requiere comparar estimaciones entre países o periodos censales con distintas magnitudes poblacionales.
+En los modelos de conteo es frecuente incorporar una variable de exposición que represente el tamaño potencial del segmento. En este libro, la exposición corresponde al número de estructuras habitacionales o viviendas identificadas durante el preconteo, denotado por $V_i$. Esta variable constituye una aproximación al tamaño físico del segmento y está disponible incluso en aquellos casos donde el operativo censal presenta cobertura parcial o nula.
 
-El escalamiento por tamaño esperado utiliza una referencia $\widehat{N}_i$ —la misma estimación de referencia de la Sección \@ref(evaluacion-cobertura)— para expresar el conteo observado como una proporción de la población esperada:
+La utilización de $V_i$ permite comparar segmentos con diferentes tamaños y modelar el número esperado de personas en función de la cantidad de estructuras existentes. En los modelos de conteo desarrollados en el Capítulo \@ref(cap-conteos), esta variable se incorpora mediante un término de *offset*, de forma que las covariables expliquen la intensidad poblacional por estructura habitacional y no únicamente el conteo absoluto de personas.
 
-$$
-z_i = \frac{Y_i}{\widehat{N}_i}
-$$
-
-donde $\widehat{N}_i$ puede ser el preconteo ajustado, la proyección demográfica intercensal u otro estimador de referencia. La variable escalada $z_i$ puede interpretarse como un factor de cobertura relativa y tiene la ventaja de reducir la dependencia del modelo respecto al tamaño absoluto de cada segmento.
-
-El escalamiento por exposición es especialmente útil cuando la variable dependiente representa un conteo sobre un denominador que varía entre segmentos. A diferencia de la referencia poblacional $\widehat{N}_i$ del párrafo anterior, la exposición apropiada para el modelo de conteos de este libro es el número de estructuras habitacionales $V_i$ —el mismo preconteo introducido en la Sección \@ref(preconteos-segmentacion) del Capítulo \@ref(cap-integracion)—, y no un estimador de población: usar una proyección demográfica como offset sería circular, pues equivaldría a emplear una estimación de la propia población para predecirla. En el modelo de Poisson, esta escala se incorpora mediante el término de offset:
-
-$$
-\log(\lambda_i) = \log(V_i) + \mathbf{x}_i^{\top}\boldsymbol{\beta} + \mathbf{z}_i^{\top}\boldsymbol{\gamma}
-$$
-
-donde $\log(V_i)$ es el offset —una constante conocida que ajusta la intensidad esperada por el tamaño de la exposición del segmento—, $\mathbf{x}_i^{\top}\boldsymbol{\beta} + \mathbf{z}_i^{\top}\boldsymbol{\gamma}$ es el predictor lineal de efectos fijos y aleatorios territoriales definido en la Sección \@ref(modelos-de-conteo) del Capítulo \@ref(cap-integracion), y los coeficientes $\boldsymbol{\beta}$ se interpretan como efectos sobre la tasa por unidad de exposición. La especificación completa de este modelo, incluido el tratamiento de $V_i$ como offset, se desarrolla en el Capítulo \@ref(cap-conteos).
 
 ## Diagnóstico exploratorio
 
 Antes de ajustar el modelo bayesiano, es indispensable realizar un análisis exploratorio sistemático de los datos preparados. Este diagnóstico permite verificar la coherencia interna de los insumos, identificar observaciones atípicas, evaluar la capacidad predictiva de las covariables y detectar posibles violaciones de los supuestos del modelo.
+
+A continuación se ilustran los diagnósticos descritos sobre el conjunto de segmentos preparado según los criterios de las secciones anteriores, con la densidad latente $\delta_i$, el offset de estructuras habitacionales $V_i$ y el conteo poblacional $Y_i$ ya construidos:
+
+
 
 ### Distribución de conteos
 
@@ -204,27 +168,74 @@ $$
 \bar{Y} = \frac{1}{I}\sum_{i=1}^{I} Y_i, \qquad S^2_Y = \frac{1}{I-1}\sum_{i=1}^{I}(Y_i - \bar{Y})^2
 $$
 
-ofrece un diagnóstico informal de sobredispersión: si $S^2_Y \gg \bar{Y}$, la distribución de Poisson puede ser insuficiente y el modelo binomial negativo resulta más apropiado. El índice de dispersión $D = S^2_Y / \bar{Y}$ cuantifica el grado de sobredispersión; valores superiores a 1.5 o 2 suelen justificar el uso de modelos más flexibles.
+ofrece un diagnóstico informal de sobredispersión: si $S^2_Y \gg \bar{Y}$, el modelo de Poisson simple resulta insuficiente. En ese caso, el diagnóstico respalda la especificación jerárquica con densidad latente log-normal (Poisson-lognormal) desarrollada en el Capítulo \@ref(cap-conteos), dado que es precisamente el parámetro $\sigma$ de la densidad latente $\delta_i$ quien absorbe la sobredispersión detectada aquí. El índice de dispersión $\text{ID} = S^2_Y / \bar{Y}$ cuantifica el grado de sobredispersión; valores superiores a 1.5 o 2 suelen justificar esa especificación más flexible. Se usa $\text{ID}$, y no $D$, para no confundir este índice con la cardinalidad $D=|\mathcal{S}|$ del Capítulo \@ref(cap-conteos).
+
+El Código \@ref(exr:cod-dist-conteos-stats) calcula estos estadísticos sobre los conteos observados.
+
+::: {.exercise #cod-dist-conteos-stats name="Cálculo de estadísticos descriptivos"}
 
 
 ``` r
-resumen_conteos <- data.frame(
+library(tidyverse)
+
+# Asimetría y curtosis muestrales (evita la dependencia del paquete moments)
+skewness <- function(x) mean((x - mean(x))^3) / sd(x)^3
+kurtosis <- function(x) mean((x - mean(x))^4) / sd(x)^4
+
+resumen_conteos <- tibble(
   n_segmentos = length(Y),
   media       = mean(Y),
   mediana     = median(Y),
   desv_est    = sd(Y),
-  asimetria   = moments::skewness(Y),
-  curtosis    = moments::kurtosis(Y),
+  asimetria   = skewness(Y),
+  curtosis    = kurtosis(Y),
   indice_disp = var(Y) / mean(Y)
 )
-
-hist(log(Y + 1),
-     breaks = 40,
-     main   = "Distribución de log(Y + 1) por segmento",
-     xlab   = "log(conteo + 1)",
-     col    = "#CBD5E1",
-     border = "white")
 ```
+
+:::
+
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:dist-conteos-tabla)Resumen descriptivo de los conteos observados por segmento</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> N.º segmentos </th>
+   <th style="text-align:center;"> Media </th>
+   <th style="text-align:center;"> Mediana </th>
+   <th style="text-align:center;"> Desv. estándar </th>
+   <th style="text-align:center;"> Asimetría </th>
+   <th style="text-align:center;"> Curtosis </th>
+   <th style="text-align:center;"> Índice de dispersión </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 500 </td>
+   <td style="text-align:center;"> 54.29 </td>
+   <td style="text-align:center;"> 51 </td>
+   <td style="text-align:center;"> 28.9 </td>
+   <td style="text-align:center;"> 6.92 </td>
+   <td style="text-align:center;"> 65.11 </td>
+   <td style="text-align:center;"> 15.38 </td>
+  </tr>
+</tbody>
+</table>
+
+La Tabla \@ref(tab:dist-conteos-tabla) resume los estadísticos descriptivos calculados sobre los 500 segmentos. El índice de dispersión es 15.38, muy por encima de 1, lo que confirma la sobredispersión de los conteos y respalda la especificación jerárquica con densidad latente log-normal desarrollada en el Capítulo \@ref(cap-conteos). El coeficiente de asimetría (6.92) señala una distribución con cola derecha pesada, mientras que la curtosis (65.11) evidencia un comportamiento leptocúrtico respecto a la distribución normal ($\text{curtosis}=3$). Este patrón es característico de los conteos poblacionales por segmento, donde la mayoría de las unidades presenta valores moderados y un número reducido de segmentos concentra valores extremos.
+
+
+``` r
+tibble(log_Y = log(Y + 1)) %>%
+  ggplot(aes(x = log_Y)) +
+  geom_histogram(bins = 40, fill = "#CBD5E1", color = "white") +
+  labs(x = "log(conteo + 1)", y = "Frecuencia") +
+  theme_minimal()
+```
+
+<div class="figure">
+<img src="05-InsumosModelamiento_files/figure-html/dist-conteos-hist-1.svg" alt="Distribución de log(Y + 1) por segmento" width="672" />
+<p class="caption">(\#fig:dist-conteos-hist)Distribución de log(Y + 1) por segmento</p>
+</div>
 
 La visualización de la distribución debe realizarse tanto en escala original como en escala logarítmica. En la escala original, la distribución suele ser fuertemente asimétrica con cola derecha pesada; en la escala logarítmica, la distribución es más simétrica y permite evaluar si la especificación log-lineal es adecuada.
 
@@ -242,8 +253,6 @@ $$
 
 donde $\hat{\lambda}_i = \exp(\hat{\alpha})$ con $\hat{\alpha} = \log(\bar{Y})$. Segmentos con $|r_i^P| > 3$ son candidatos a revisión como observaciones atípicas.
 
-**Detección basada en la distancia de Cook.** En el modelo log-lineal con covariables, la distancia de Cook $CD_i$ cuantifica la influencia del segmento $i$ sobre el vector de coeficientes estimados. Valores elevados de $CD_i$ indican que la exclusión del segmento $i$ modificaría sustancialmente los coeficientes del modelo. Se usa $CD_i$, y no $D_i$, para no confundir esta distancia con la cardinalidad $D = |\mathcal{S}|$ introducida en el Capítulo \@ref(cap-conteos) ni con la densidad poblacional por área $D_i = N_i/A_i$ del Capítulo \@ref(cap-modelos-poblacion).
-
 **Detección multivariada.** Las observaciones atípicas en el espacio de covariables pueden identificarse mediante la distancia de Mahalanobis:
 
 $$
@@ -251,6 +260,10 @@ d_i^2 = (\mathbf{x}_i - \bar{\mathbf{x}})^{\top} \hat{\boldsymbol{\Sigma}}^{-1} 
 $$
 
 donde $\bar{\mathbf{x}}$ es el vector de medias y $\hat{\boldsymbol{\Sigma}}$ es la matriz de covarianza muestral de las covariables. Bajo normalidad multivariada, $d_i^2 \sim \chi^2_p$, y valores superiores al percentil 97.5 de esta distribución son indicativos de observaciones atípicas en el espacio de covariables.
+
+El Código \@ref(exr:cod-outliers-deteccion) implementa ambos criterios de detección.
+
+::: {.exercise #cod-outliers-deteccion name="Detección de observaciones atípicas"}
 
 
 ``` r
@@ -264,11 +277,20 @@ p_valor <- pchisq(d2_mah, df = ncol(X_mat), lower.tail = FALSE)
 outliers_multivariados <- which(p_valor < 0.025)
 ```
 
-Una vez identificadas, las observaciones atípicas deben revisarse para determinar si corresponden a errores de procesamiento, a características genuinas del territorio o a problemas de cobertura del operativo. La decisión sobre su tratamiento —corrección, exclusión o inclusión con peso reducido— debe documentarse explícitamente.
+:::
+
+<div class="figure">
+<img src="05-InsumosModelamiento_files/figure-html/outliers-grafico-1.svg" alt="Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis" width="672" />
+<p class="caption">(\#fig:outliers-grafico)Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis</p>
+</div>
+
+La Figura \@ref(fig:outliers-grafico) ubica a cada uno de los 500 segmentos en el plano definido por el residuo de Pearson del modelo nulo y la distancia de Mahalanobis sobre las covariables auxiliares, con líneas punteadas que marcan los respectivos umbrales de decisión ($|r_i^P| = 3$ y el percentil 97.5 de $\chi^2_p$). De ellos, 48 segmentos superan el umbral del residuo de Pearson (categoría "Residuo de Pearson", en azul), 16 superan el umbral de la distancia de Mahalanobis (categoría "Mahalanobis", en naranja), y 3 son señalados simultáneamente por los dos criterios (categoría "Ambos criterios", en rojo).
+
+Los segmentos marcados en rojo constituyen los candidatos prioritarios de revisión, ya que combinan un conteo discordante con el nivel general de la muestra y una combinación inusual de covariables auxiliares. Los segmentos señalados por un solo criterio —ya sea un conteo extremo sin covariables atípicas, o covariables atípicas con un conteo dentro del rango esperado— requieren un análisis más detallado antes de decidir su tratamiento, pues cada criterio captura una forma distinta de atipicidad: el residuo de Pearson detecta conteos discordantes con el nivel medio de la muestra, mientras que la distancia de Mahalanobis detecta combinaciones inusuales en el espacio de las covariables, independientemente del valor del conteo. Una vez identificadas, las observaciones atípicas deben revisarse para determinar si corresponden a errores de procesamiento, a características genuinas del territorio o a problemas de cobertura del operativo. La decisión sobre su tratamiento —corrección, exclusión o inclusión con peso reducido— debe documentarse explícitamente.
 
 ### Relación entre variables {#relacion-variables}
 
-El análisis de la relación entre la variable dependiente y las covariables auxiliares permite evaluar la pertinencia predictiva de cada fuente de información y orientar las decisiones de especificación del modelo.
+El análisis de la relación entre la variable dependiente y las covariables auxiliares permite evaluar la pertinencia predictiva de cada fuente de información y orientar las decisiones de especificación del modelo. Dado que el modelo desarrollado en este libro tiene un propósito predictivo y no explicativo, este análisis no busca establecer relaciones causales ni interpretar el efecto individual de cada covariable sobre la población, sino identificar patrones que puedan mejorar la capacidad de predicción del modelo en los segmentos con información censal incompleta.
 
 **Correlación con los conteos.** La correlación de Pearson entre $\log(Y_i + 1)$ y cada covariable estandarizada $\tilde{x}_{i,k}$ proporciona una medida lineal de la asociación bivariada. Covariables con correlación superior a 0.5 en valor absoluto suelen tener valor predictivo relevante; covariables con correlación inferior a 0.1 pueden ser candidatas a exclusión del modelo.
 
@@ -282,22 +304,58 @@ $$
 
 donde $R_k^2$ es el coeficiente de determinación obtenido al regresar la covariable $k$ sobre el resto de covariables. Valores de $\text{VIF}_k > 10$ son indicativos de multicolinealidad problemática.
 
+El Código \@ref(exr:cod-relacion-variables) calcula la matriz de correlación y los factores de inflación de varianza.
+
+::: {.exercise #cod-relacion-variables name="Correlación y factores de inflación de varianza"}
+
 
 ``` r
-library(corrplot)
 cor_mat <- cor(cbind(log_Y = log(Y + 1), covariables_std),
                method = "pearson")
-corrplot(cor_mat,
-         method      = "color",
-         type        = "upper",
-         addCoef.col = "black",
-         number.cex  = 0.7,
-         tl.cex      = 0.8)
 
 modelo_ols <- lm(log(Y + 1) ~ ., data = as.data.frame(covariables_std))
-car::vif(modelo_ols)
+tabla_vif  <- tibble(
+  covariable = names(car::vif(modelo_ols)),
+  VIF        = car::vif(modelo_ols)
+)
 ```
 
-**Análisis por estrato territorial.** La relación entre la variable dependiente y las covariables puede variar entre distintos estratos territoriales —urbano/rural, región geográfica, nivel de cobertura—. La exploración estratificada permite detectar interacciones relevantes que podrían justificar la inclusión de términos de interacción o la estimación diferenciada de coeficientes por grupo.
+:::
 
-La documentación sistemática de los resultados del diagnóstico exploratorio es un insumo esencial para la especificación del modelo. Las decisiones sobre transformaciones, exclusión de covariables, tratamiento de outliers y estratificación del análisis deben fundamentarse en este diagnóstico y quedar registradas para garantizar la reproducibilidad y auditabilidad de las estimaciones finales.
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:relacion-variables-vif-tabla)Factores de inflación de varianza (VIF) de las covariables auxiliares</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Covariable </th>
+   <th style="text-align:center;"> VIF </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> luminosidad </td>
+   <td style="text-align:center;"> 1.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> area_construida </td>
+   <td style="text-align:center;"> 1.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> dist_urbano </td>
+   <td style="text-align:center;"> 1.00 </td>
+  </tr>
+</tbody>
+</table>
+
+La Tabla \@ref(tab:relacion-variables-vif-tabla) reporta el VIF de cada covariable. El valor máximo observado es 1.01, muy por debajo del umbral de 10, por lo que no se evidencia multicolinealidad problemática entre las covariables auxiliares.
+
+<div class="figure">
+<img src="05-InsumosModelamiento_files/figure-html/relacion-variables-heatmap-1.svg" alt="Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares" width="70%" />
+<p class="caption">(\#fig:relacion-variables-heatmap)Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares</p>
+</div>
+
+La Figura \@ref(fig:relacion-variables-heatmap) muestra la matriz de correlación entre $\log(Y_i + 1)$ y las covariables estandarizadas, en una escala divergente (rojo = correlación negativa, azul = correlación positiva) que facilita distinguir la dirección y magnitud de cada asociación de un vistazo.
+
+En un modelo de propósito predictivo, la presencia de correlaciones elevadas entre la variable dependiente y las covariables no constituye por sí sola un criterio suficiente para seleccionar o descartar predictores, ni una correlación baja implica necesariamente ausencia de valor predictivo una vez consideradas las demás covariables. De igual forma, la multicolinealidad detectada mediante el VIF no necesariamente deteriora la capacidad predictiva del modelo, especialmente en el enfoque bayesiano adoptado en este libro, donde la regularización inducida por las distribuciones a priori contribuye a estabilizar las estimaciones ante covariables correlacionadas. Por esta razón, los diagnósticos de esta sección deben interpretarse como herramientas para comprender la estructura de los datos y detectar redundancias, y no como reglas automáticas de inclusión o exclusión de covariables.
+
+
+La documentación sistemática de los resultados del diagnóstico exploratorio es un insumo esencial para la especificación del modelo. Las decisiones sobre transformaciones, exclusión de covariables, tratamiento de outliers y estratificación del análisis deben fundamentarse en este diagnóstico y quedar registradas para garantizar la reproducibilidad de las estimaciones finales.

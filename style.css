@@ -174,7 +174,7 @@ pre {
   border-left: 4px solid var(--blue) !important;
   border-radius: 0 6px 6px 0;
   font-family: var(--mono);
-  font-size: 0.84rem;
+  font-size: 1.5rem;
   line-height: 1.65;
   padding: 1.1rem 1.3rem;
   word-break: normal;
@@ -185,7 +185,7 @@ pre {
 
 code {
   font-family: var(--mono);
-  font-size: 0.86em;
+  font-size: 1.5em;
   background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: 3px;
@@ -266,7 +266,7 @@ img {
 p.caption,
 caption {
   font-family: var(--sans);
-  font-size: 0.84rem;
+  font-size: 1.5rem;
   color: var(--caption);
   font-style: italic;
   text-align: center;
@@ -340,6 +340,38 @@ blockquote p {
   background: #FFF1F2;
   border-color: #E11D48;
   color: #881337;
+}
+
+/* ================================================================
+   BLOQUES DE CÓDIGO NUMERADOS (Código X.Y)
+   Reutiliza el entorno "exercise" de bookdown (relabel a "Código "
+   en _bookdown.yml) para numerar chunks destacados por capítulo,
+   igual que Figura/Tabla.
+   ================================================================ */
+
+div.exercise {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.3rem 0.2rem;
+  margin: 1.6rem 0;
+}
+
+div.exercise pre {
+  border: none !important;
+  border-radius: 4px;
+  background: var(--bg) !important;
+}
+
+span.exercise {
+  font-family: var(--sans);
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+span.exercise strong {
+  color: var(--blue-dk);
 }
 
 /* ================================================================

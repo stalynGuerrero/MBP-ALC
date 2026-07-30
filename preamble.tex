@@ -187,10 +187,27 @@
   colbacktitle = {orange!80!black}
 }
 
+% --- Bloques de código numerados (Código X.Y) --------------------
+% Reutiliza el entorno "exercise" generado automáticamente por bookdown
+% (relabel a "Código " en _bookdown.yml) para dar a los chunks
+% destacados una numeración por capítulo, igual que Figura/Tabla.
+\AtBeginDocument{
+  \tcolorboxenvironment{exercise}{
+    colback   = cepalltbg,
+    colframe  = cepalblue,
+    boxrule   = 0.4pt,
+    arc       = 4pt,
+    left      = 8pt,
+    right     = 8pt,
+    top       = 6pt,
+    bottom    = 6pt
+  }
+}
+
 % --- Figuras y leyendas -----------------------------------------
 \usepackage{caption}
 \captionsetup{
-  font        = {small, sf},
+  font        = {normalsize, sf},
   labelfont   = {bf, color=cepalnavy},
   labelsep    = period,
   justification = centering,

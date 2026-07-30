@@ -10,7 +10,7 @@ rmd_files: [
   "03-Integracion_Fuentes.Rmd",
   #"04-Imagenes_Satelitales.Rmd",
   "05-InsumosModelamiento.Rmd",
-  # "06-Modelo_Conteos.Rmd",
+  "06-Modelo_Conteos.Rmd",
   # "07-Inferencia_Bayesiana.Rmd",
   # "08-Diagnostico_Validacion.Rmd",
   # "09-Calibracion_Benchmarking.Rmd",
@@ -30,7 +30,7 @@ language:
     cnj: 'Conjetura '
     def: 'Definición '
     exm: 'Ejemplo '
-    exr: 'Ejercicio '
+    exr: 'Código '
     hyp: 'Hipótesis '
     proof: 'Demostración. '
     remark: 'Nota. '
