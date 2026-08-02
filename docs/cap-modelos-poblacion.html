@@ -243,10 +243,10 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="cap-conteos.html"><a href="cap-conteos.html#modelo-poisson-lognormal"><i class="fa fa-check"></i><b>4.1</b> Modelo Poisson-lognormal</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definici%C3%B3n-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
-<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funci%C3%B3n-de-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
-<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-a-priori"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones a priori</a></li>
-<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuci%C3%B3n-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
+<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definicion-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funcion-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
+<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-previas"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones previas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribucion-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
 <li class="chapter" data-level="4.1.5" data-path="cap-conteos.html"><a href="cap-conteos.html#interpretaci%C3%B3n-de-par%C3%A1metros"><i class="fa fa-check"></i><b>4.1.5</b> Interpretación de parámetros</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="cap-conteos.html"><a href="cap-conteos.html#componentes-del-modelo"><i class="fa fa-check"></i><b>4.2</b> Componentes del modelo</a>
@@ -254,7 +254,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.1" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-fijos"><i class="fa fa-check"></i><b>4.2.1</b> Efectos fijos</a></li>
 <li class="chapter" data-level="4.2.2" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-aleatorios"><i class="fa fa-check"></i><b>4.2.2</b> Efectos aleatorios</a></li>
 <li class="chapter" data-level="4.2.3" data-path="cap-conteos.html"><a href="cap-conteos.html#interacciones"><i class="fa fa-check"></i><b>4.2.3</b> Interacciones</a></li>
-<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersi%C3%B3n-offset-y-alternativas-distribucionales"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión, offset y alternativas distribucionales</a></li>
+<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersion-offset"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión y offset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -371,9 +371,9 @@ N_k^{(3)}=\sum_{\ell:\ell\subset k}N_\ell^{(4)}.
 <p>Los conteos poblacionales constituyen la base para la construcción de numerosos indicadores utilizados en el análisis demográfico y territorial. A diferencia de los conteos absolutos, las tasas e índices permiten comparar poblaciones de diferente tamaño y describir características relativas de su distribución y estructura. Sin embargo, todos estos indicadores dependen directamente de los conteos poblacionales y, por tanto, su calidad está condicionada por la precisión de las estimaciones que les sirven de base.</p>
 <p>Uno de los indicadores más utilizados es la <strong>densidad poblacional</strong>, que expresa la relación entre el número de habitantes y la superficie del territorio. Para un dominio geográfico <span class="math inline">\(i\)</span>, se define como</p>
 <p><span class="math display">\[
-D_i=\frac{N_i}{A_i},
+\text{DP}_i=\frac{N_i}{A_i},
 \]</span></p>
-<p>donde <span class="math inline">\(N_i\)</span> representa la población del territorio y <span class="math inline">\(A_i\)</span> su superficie.</p>
+<p>donde <span class="math inline">\(N_i\)</span> representa la población del territorio y <span class="math inline">\(A_i\)</span> su superficie. Se usa la notación <span class="math inline">\(\text{DP}_i\)</span>, y no <span class="math inline">\(D_i\)</span>, para evitar toda confusión con la cardinalidad <span class="math inline">\(D=|\mathcal{S}|\)</span> del conjunto de segmentos introducida en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a>.</p>
 <p>Otro indicador de uso frecuente es la <strong>razón de masculinidad</strong>, que mide la relación entre la población masculina y femenina,</p>
 <p><span class="math display">\[
 \text{RM}_i=\frac{N_{i,M}}{N_{i,F}}\times100,

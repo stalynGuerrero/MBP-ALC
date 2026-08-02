@@ -7,6 +7,7 @@ fig:outliers-grafico
 exr:cod-relacion-variables
 tab:relacion-variables-vif-tabla
 fig:relacion-variables-heatmap
+eq:verosimilitud-conjunta
 cap-modelos-poblacion
 producción-de-conteos-censales
 producción-subnacional
@@ -50,13 +51,13 @@ outliers
 relacion-variables
 cap-conteos
 modelo-poisson-lognormal
-definición-formal
-función-de-verosimilitud
-distribuciones-a-priori
-distribución-posterior
+definicion-formal
+funcion-verosimilitud
+distribuciones-previas
+distribucion-posterior
 interpretación-de-parámetros
 componentes-del-modelo
 efectos-fijos
 efectos-aleatorios
 interacciones
-sobredispersión-offset-y-alternativas-distribucionales
+sobredispersion-offset

@@ -108,10 +108,10 @@ Aunque la variable dependiente del modelo es el número de personas por segmento
 Si $Y_i$ representa el número de personas del segmento $i$ y $A_i$ su superficie, la densidad poblacional se define como
 
 $$
-D_i=\frac{Y_i}{A_i},
+\text{DP}_i=\frac{Y_i}{A_i},
 $$
 
-donde $A_i$ se expresa en kilómetros cuadrados u otra unidad de superficie consistente. La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.
+donde $A_i$ se expresa en kilómetros cuadrados u otra unidad de superficie consistente. Se usa $\text{DP}_i$, y no $D_i$, por la misma razón señalada en el Capítulo \@ref(cap-modelos-poblacion): evitar confusión con la cardinalidad $D=|\mathcal{S}|$ introducida en el Capítulo \@ref(cap-conteos). La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.
 
 
 ### Número promedio de personas por hogar

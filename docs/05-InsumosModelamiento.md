@@ -108,10 +108,10 @@ Aunque la variable dependiente del modelo es el número de personas por segmento
 Si $Y_i$ representa el número de personas del segmento $i$ y $A_i$ su superficie, la densidad poblacional se define como
 
 $$
-D_i=\frac{Y_i}{A_i},
+\text{DP}_i=\frac{Y_i}{A_i},
 $$
 
-donde $A_i$ se expresa en kilómetros cuadrados u otra unidad de superficie consistente. La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.
+donde $A_i$ se expresa en kilómetros cuadrados u otra unidad de superficie consistente. Se usa $\text{DP}_i$, y no $D_i$, por la misma razón señalada en el Capítulo \@ref(cap-modelos-poblacion): evitar confusión con la cardinalidad $D=|\mathcal{S}|$ introducida en el Capítulo \@ref(cap-conteos). La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.
 
 
 ### Número promedio de personas por hogar
@@ -195,7 +195,7 @@ resumen_conteos <- tibble(
 
 :::
 
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">(\#tab:dist-conteos-tabla)Resumen descriptivo de los conteos observados por segmento</caption>
  <thead>
   <tr>
@@ -322,7 +322,7 @@ tabla_vif  <- tibble(
 
 :::
 
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">(\#tab:relacion-variables-vif-tabla)Factores de inflación de varianza (VIF) de las covariables auxiliares</caption>
  <thead>
   <tr>

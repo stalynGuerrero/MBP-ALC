@@ -243,10 +243,10 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="cap-conteos.html"><a href="cap-conteos.html#modelo-poisson-lognormal"><i class="fa fa-check"></i><b>4.1</b> Modelo Poisson-lognormal</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definici%C3%B3n-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
-<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funci%C3%B3n-de-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
-<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-a-priori"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones a priori</a></li>
-<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuci%C3%B3n-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
+<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definicion-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funcion-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
+<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-previas"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones previas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribucion-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
 <li class="chapter" data-level="4.1.5" data-path="cap-conteos.html"><a href="cap-conteos.html#interpretaci%C3%B3n-de-par%C3%A1metros"><i class="fa fa-check"></i><b>4.1.5</b> Interpretación de parámetros</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="cap-conteos.html"><a href="cap-conteos.html#componentes-del-modelo"><i class="fa fa-check"></i><b>4.2</b> Componentes del modelo</a>
@@ -254,7 +254,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.1" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-fijos"><i class="fa fa-check"></i><b>4.2.1</b> Efectos fijos</a></li>
 <li class="chapter" data-level="4.2.2" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-aleatorios"><i class="fa fa-check"></i><b>4.2.2</b> Efectos aleatorios</a></li>
 <li class="chapter" data-level="4.2.3" data-path="cap-conteos.html"><a href="cap-conteos.html#interacciones"><i class="fa fa-check"></i><b>4.2.3</b> Interacciones</a></li>
-<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersi%C3%B3n-offset-y-alternativas-distribucionales"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión, offset y alternativas distribucionales</a></li>
+<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersion-offset"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión y offset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -359,9 +359,9 @@ Y_i^{(C)}+\widehat{Y}_i^{(M)}, &amp; 0&lt;\hat{c}_i&lt;1,
 <p>Aunque la variable dependiente del modelo es el número de personas por segmento, en el análisis exploratorio resulta útil considerar la densidad poblacional como una medida complementaria de la distribución espacial de la población. La densidad permite comparar segmentos con áreas muy diferentes y facilita la identificación de patrones de concentración o dispersión que pueden ser explicados por las covariables auxiliares.</p>
 <p>Si <span class="math inline">\(Y_i\)</span> representa el número de personas del segmento <span class="math inline">\(i\)</span> y <span class="math inline">\(A_i\)</span> su superficie, la densidad poblacional se define como</p>
 <p><span class="math display">\[
-D_i=\frac{Y_i}{A_i},
+\text{DP}_i=\frac{Y_i}{A_i},
 \]</span></p>
-<p>donde <span class="math inline">\(A_i\)</span> se expresa en kilómetros cuadrados u otra unidad de superficie consistente. La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.</p>
+<p>donde <span class="math inline">\(A_i\)</span> se expresa en kilómetros cuadrados u otra unidad de superficie consistente. Se usa <span class="math inline">\(\text{DP}_i\)</span>, y no <span class="math inline">\(D_i\)</span>, por la misma razón señalada en el Capítulo <a href="cap-modelos-poblacion.html#cap-modelos-poblacion">1</a>: evitar confusión con la cardinalidad <span class="math inline">\(D=|\mathcal{S}|\)</span> introducida en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a>. La densidad no constituye la variable de respuesta del modelo, sino una variable derivada utilizada para el análisis exploratorio, la evaluación de valores atípicos y la interpretación de la variabilidad espacial de la población.</p>
 </div>
 <div id="número-promedio-de-personas-por-hogar" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Número promedio de personas por hogar<a href="cap-insumos.html#n%C3%BAmero-promedio-de-personas-por-hogar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -422,7 +422,7 @@ D_i=\frac{Y_i}{A_i},
 <span id="cb1-14"><a href="cap-insumos.html#cb1-14" tabindex="-1"></a>  <span class="at">indice_disp =</span> <span class="fu">var</span>(Y) <span class="sc">/</span> <span class="fu">mean</span>(Y)</span>
 <span id="cb1-15"><a href="cap-insumos.html#cb1-15" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:dist-conteos-tabla">Tabla 3.1: </span>Resumen descriptivo de los conteos observados por segmento
 </caption>
@@ -548,7 +548,7 @@ Figura 3.2: Segmentos atípicos según residuo de Pearson y distancia de Mahalan
 <span id="cb4-7"><a href="cap-insumos.html#cb4-7" tabindex="-1"></a>  <span class="at">VIF        =</span> car<span class="sc">::</span><span class="fu">vif</span>(modelo_ols)</span>
 <span id="cb4-8"><a href="cap-insumos.html#cb4-8" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:relacion-variables-vif-tabla">Tabla 3.2: </span>Factores de inflación de varianza (VIF) de las covariables auxiliares
 </caption>

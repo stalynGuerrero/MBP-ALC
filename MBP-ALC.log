@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.7.23)  30 JUL 2026 17:51
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.7.23)  2 AUG 2026 16:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2225,7 +2225,7 @@ LaTeX Info: Redefining \. on input line 590.
 LaTeX Info: Redefining \% on input line 590.
 [14]
 LaTeX Font Info:    Font shape `TU/Cambria(0)/m/n' will be
-(Font)              scaled to size 7.3pt on input line 611.
+(Font)              scaled to size 7.3pt on input line 603.
 LaTeX Info: Redefining \. on input line 633.
 LaTeX Info: Redefining \% on input line 633.
 [15]
@@ -2337,8 +2337,8 @@ LaTeX Info: Redefining \% on input line 971.
 LaTeX Info: Redefining \. on input line 1008.
 LaTeX Info: Redefining \% on input line 1008.
 [32]
-LaTeX Info: Redefining \. on input line 1049.
-LaTeX Info: Redefining \% on input line 1049.
+LaTeX Info: Redefining \. on input line 1046.
+LaTeX Info: Redefining \% on input line 1046.
 [33]
 LaTeX Font Info:    Font shape `TU/Consolas(0)/b/n' will be
 (Font)              scaled to size 9.49997pt on input line 1077.
@@ -2378,91 +2378,93 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 1218.
 LaTeX Info: Redefining \% on input line 1218.
 [39]
-LaTeX Font Info:    Font shape `TU/Consolas(0)/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 1245.
-LaTeX Font Info:    Font shape `TU/Cambria(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1245.
-LaTeX Font Info:    Font shape `TU/Cambria(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 1245.
-LaTeX Font Info:    Font shape `TU/Cambria(1)/b/n' will be
-(Font)              scaled to size 7.7096pt on input line 1245.
-LaTeX Font Info:    Font shape `TU/Cambria(1)/b/n' will be
-(Font)              scaled to size 4.8185pt on input line 1245.
 File: 05-InsumosModelamiento_files/figure-latex/relacion-variables-heatmap-1.pdf Graphic file (type pdf)
 <use 05-InsumosModelamiento_files/figure-latex/relacion-variables-heatmap-1.pdf>
-LaTeX Info: Redefining \. on input line 1263.
-LaTeX Info: Redefining \% on input line 1263.
+LaTeX Info: Redefining \. on input line 1244.
+LaTeX Info: Redefining \% on input line 1244.
 [40]
-LaTeX Info: Redefining \. on input line 1268.
-LaTeX Info: Redefining \% on input line 1268.
+LaTeX Info: Redefining \. on input line 1247.
+LaTeX Info: Redefining \% on input line 1247.
 [41]
-LaTeX Info: Redefining \. on input line 1268.
-LaTeX Info: Redefining \% on input line 1268.
+LaTeX Info: Redefining \. on input line 1247.
+LaTeX Info: Redefining \% on input line 1247.
 [42
 
 ]
 Capítulo 4.
 
-LaTeX Warning: Reference `stan-implementacion' on page 43 undefined on input line 1284.
+LaTeX Warning: Reference `stan-implementacion' on page 43 undefined on input line 1263.
 
 [43]
-LaTeX Info: Redefining \. on input line 1317.
-LaTeX Info: Redefining \% on input line 1317.
+LaTeX Info: Redefining \. on input line 1297.
+LaTeX Info: Redefining \% on input line 1297.
 [44]
-LaTeX Info: Redefining \. on input line 1350.
-LaTeX Info: Redefining \% on input line 1350.
+LaTeX Info: Redefining \. on input line 1342.
+LaTeX Info: Redefining \% on input line 1342.
 [45]
-LaTeX Info: Redefining \. on input line 1383.
-LaTeX Info: Redefining \% on input line 1383.
+LaTeX Info: Redefining \. on input line 1399.
+LaTeX Info: Redefining \% on input line 1399.
 [46]
-Overfull \hbox (11.77086pt too wide) detected at line 1404
-[][][][] [] [] [][][]  []  [] [] [] [][][][] [] [][] [][][] [] [] [][][][] [] [][] [][] [] [][][][] [] [][][][][]
+LaTeX Info: Redefining \. on input line 1449.
+LaTeX Info: Redefining \% on input line 1449.
+[47]
+LaTeX Info: Redefining \. on input line 1501.
+LaTeX Info: Redefining \% on input line 1501.
+[48]
+Underfull \hbox (badness 2005) in paragraph at lines 1503--1504
+[]\TU/Cambria(0)/m/n/10 La expresión anterior muestra que la varianza marginal está compuesta por dos fuentes de variabili-
  []
 
-LaTeX Info: Redefining \. on input line 1418.
-LaTeX Info: Redefining \% on input line 1418.
-[47]
-LaTeX Info: Redefining \. on input line 1445.
-LaTeX Info: Redefining \% on input line 1445.
-[48]
-LaTeX Info: Redefining \. on input line 1465.
-LaTeX Info: Redefining \% on input line 1465.
+LaTeX Info: Redefining \. on input line 1528.
+LaTeX Info: Redefining \% on input line 1528.
 [49]
-LaTeX Info: Redefining \. on input line 1485.
-LaTeX Info: Redefining \% on input line 1485.
+LaTeX Info: Redefining \. on input line 1566.
+LaTeX Info: Redefining \% on input line 1566.
 [50]
-LaTeX Info: Redefining \. on input line 1506.
-LaTeX Info: Redefining \% on input line 1506.
+LaTeX Info: Redefining \. on input line 1665.
+LaTeX Info: Redefining \% on input line 1665.
 [51]
-LaTeX Info: Redefining \. on input line 1530.
-LaTeX Info: Redefining \% on input line 1530.
-[52] (./MBP-ALC.bbl
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \. on input line 1716.
+LaTeX Info: Redefining \% on input line 1716.
+[52]
+LaTeX Info: Redefining \. on input line 1738.
+LaTeX Info: Redefining \% on input line 1738.
 [53]
+LaTeX Info: Redefining \. on input line 1760.
+LaTeX Info: Redefining \% on input line 1760.
+[54]
+LaTeX Info: Redefining \. on input line 1779.
+LaTeX Info: Redefining \% on input line 1779.
+[55]
+LaTeX Info: Redefining \. on input line 1805.
+LaTeX Info: Redefining \% on input line 1805.
+[56]
+LaTeX Info: Redefining \. on input line 1824.
+LaTeX Info: Redefining \% on input line 1824.
+[57] (./MBP-ALC.bbl
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-[54
-
-]
-Underfull \hbox (badness 1377) in paragraph at lines 4--8
+[58]
+Underfull \hbox (badness 1377) in paragraph at lines 9--13
 []\TU/Cambria(0)/m/n/10 Betancourt, M. (2017).  A conceptual introduction to Hamiltonian Monte Carlo.  \TU/Cambria(0)/m/it/10 arXiv preprint\TU/Cambria(0)/m/n/10 .  ar-
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 55--59
+Underfull \hbox (badness 1769) in paragraph at lines 65--69
 []\TU/Cambria(0)/m/n/10 Naciones Unidas (2017).  \TU/Cambria(0)/m/it/10 Principios y recomendaciones para los censos de población y habitación, Re-
  []
 
 
-Underfull \hbox (badness 4168) in paragraph at lines 55--59
+Underfull \hbox (badness 4168) in paragraph at lines 65--69
 \TU/Cambria(0)/m/it/10 visión 3\TU/Cambria(0)/m/n/10 .  Departamento de Asuntos Económicos y Sociales, División de Estadística, Nueva York.
  []
 
-[55])
-LaTeX Info: Redefining \. on input line 1540.
-LaTeX Info: Redefining \% on input line 1540.
-[56] (./MBP-ALC.aux
+[59
+
+])
+LaTeX Info: Redefining \. on input line 1827.
+LaTeX Info: Redefining \% on input line 1827.
+[60] (./MBP-ALC.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -2479,11 +2481,11 @@ LaTeX Warning: There were undefined references.
  ) 
 Here is how much of TeX's memory you used:
  45662 strings out of 469823
- 929949 string characters out of 5467053
- 1587774 words of memory out of 5000000
- 73858 multiletter control sequences out of 15000+600000
- 636754 words of font info for 152 fonts, out of 8000000 for 9000
+ 929825 string characters out of 5467053
+ 1591963 words of memory out of 5000000
+ 73863 multiletter control sequences out of 15000+600000
+ 636714 words of font info for 147 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,13n,117p,1833b,832s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,15n,117p,1833b,832s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MBP-ALC.pdf (56 pages).
+Output written on MBP-ALC.pdf (60 pages).

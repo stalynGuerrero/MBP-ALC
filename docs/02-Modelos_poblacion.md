@@ -138,10 +138,10 @@ Los conteos poblacionales constituyen la base para la construcción de numerosos
 Uno de los indicadores más utilizados es la **densidad poblacional**, que expresa la relación entre el número de habitantes y la superficie del territorio. Para un dominio geográfico $i$, se define como
 
 $$
-D_i=\frac{N_i}{A_i},
+\text{DP}_i=\frac{N_i}{A_i},
 $$
 
-donde $N_i$ representa la población del territorio y $A_i$ su superficie.
+donde $N_i$ representa la población del territorio y $A_i$ su superficie. Se usa la notación $\text{DP}_i$, y no $D_i$, para evitar toda confusión con la cardinalidad $D=|\mathcal{S}|$ del conjunto de segmentos introducida en el Capítulo \@ref(cap-conteos).
 
 Otro indicador de uso frecuente es la **razón de masculinidad**, que mide la relación entre la población masculina y femenina,
 
