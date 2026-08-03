@@ -4,7 +4,6 @@ subtitle: "Implementación, Validación y Aplicación Subnacional"
 author: |
   Andrés Gutiérrez^[Experto Regional en Estadísticas Sociales, CEPAL. andres.gutierrez@cepal.org]
   Stalyn Guerrero^[Consultor, CEPAL. guerrerostalyn@gmail.com]
-date: "Agosto 2026"
 lang: es
 documentclass: book
 bibliography: [book.bib, packages.bib]
