@@ -65,3 +65,18 @@ New chapters must be added to `rmd_files:` in `_bookdown.yml` to be included in 
 ## Country/Data Context
 
 Examples use census data from Colombia (DANE), Bolivia (INE), and Paraguay (DGEEC). Synthetic or publicly available data should be used in code examples; no real microdata should be committed.
+
+**Current priority (next stage):** Chapters 5 and 6 currently use fabricated data (`set.seed()`, `rnorm()`, `rpois()`) so their chunks are runnable without real inputs. The active goal is migrating these examples to **real, publicly available data** (open aggregate/microdata portals from DANE, INE, DGEEC, or similar official sources) so the analyses and their narrative reflect genuine results — not simulated placeholders. This does not relax the no-real-microdata-committed rule; use public aggregates or properly licensed open data. Chapter 7's Stan examples are currently illustrative (not executed) because `rstan`/`bayesplot`/`loo` are not installed in this environment — fitting the model on real data will also require installing those (plus Rtools) and re-running the chunks for genuine posterior output (summaries, $\hat R$/ESS, PPC plot, LOO/WAIC).
+
+## Established Conventions (do not revert without discussion)
+
+These were deliberate decisions made while drafting Chapters 5–7; see `README.md`'s "Registro de Cambios" for full context.
+
+- **Prior terminology:** always "distribución previa" / "distribuciones previas" in Spanish prose — never "a priori".
+- **No Negative Binomial:** the book never uses or mentions the negative binomial model anywhere; the author does not use it. Don't reintroduce it as a contrast/alternative.
+- **θ and prior scale notation (Ch. 6):** $\boldsymbol{\theta} = (\boldsymbol{\beta}, \boldsymbol{\gamma}, \sigma, \sigma_U)$. Priors are written with generic large-variance ("non-informative") hyperparameters $\tau_\beta^2$, $\tau_U^2$, $\tau_\sigma$ rather than hardcoded numbers, with a note that the Stan implementation (Ch. 7) fixes $\tau_\beta^2=1$, $\tau_U^2=1$, $\tau_\sigma=2.5$. $\sigma$ keeps a half-Cauchy prior (not half-normal) — heavier tails, standard choice for a scale parameter.
+- **Segment-count vs. density notation (Ch. 2, 5, 6):** $D = |\mathcal{S}|$ is the *cardinality* of the segment set (matches Stan's `D_obs`/`D_tot`). Population density by area is $\text{DP}_i$ (never bare $D_i$, which collides with the cardinality). Density by housing structure is $\delta_i$. All three are explicitly disambiguated wherever they could be confused.
+- **Numbered "Código X.Y" code boxes:** wrap a chunk with `::: {.exercise #cod-<id> name="Título"}` ... `:::` and cross-reference via `` \@ref(exr:cod-<id>) `` (the `exr` theorem-kind is relabeled to "Código " in `_bookdown.yml`). **Never** wrap a chunk that has its own `fig.cap` this way — LaTeX cannot nest a float inside a tcolorbox and the PDF build will fail. Such chunks stay unwrapped and get their own numbered Figura instead.
+- **Multi-format tables:** always set `format` explicitly in `knitr::kable()` (`"latex"` / `"html"` / `"pipe"` based on `knitr::is_latex_output()` / `is_html_output()`) — omitting it causes duplicate table numbering when piped into `kableExtra::kable_styling()`. Skip `kable_styling()` entirely when format is `"pipe"` (Word) — it emits raw HTML that breaks the `.docx` render.
+- **Multi-line equations:** never leave a blank line inside a `$$...$$` block (including inside `\begin{aligned}...\end{aligned}`) — it breaks PDF compilation with "allowed only in math mode" because pandoc stops treating the block as math at the blank line.
+- **GitHub Pages:** `docs/.nojekyll` must always exist (committed) so GitHub Pages serves the bookdown output directly instead of failing during Jekyll processing.
