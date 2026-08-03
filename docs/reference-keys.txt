@@ -1,4 +1,13 @@
 eq:poblacion-tramo
+exr:cod-dist-conteos-stats
+tab:dist-conteos-tabla
+fig:dist-conteos-hist
+exr:cod-outliers-deteccion
+fig:outliers-grafico
+exr:cod-relacion-variables
+tab:relacion-variables-vif-tabla
+fig:relacion-variables-heatmap
+eq:verosimilitud-conjunta
 cap-modelos-poblacion
 producción-de-conteos-censales
 producción-subnacional
@@ -67,12 +76,3 @@ agregación-a-niveles-geográficos-superiores
 verificación-predictiva-posterior
 criterios-de-información-loo-y-waic
 resumen
-exr:cod-dist-conteos-stats
-tab:dist-conteos-tabla
-fig:dist-conteos-hist
-exr:cod-outliers-deteccion
-fig:outliers-grafico
-exr:cod-relacion-variables
-tab:relacion-variables-vif-tabla
-fig:relacion-variables-heatmap
-eq:verosimilitud-conjunta

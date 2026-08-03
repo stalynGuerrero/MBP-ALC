@@ -195,7 +195,7 @@ resumen_conteos <- tibble(
 
 :::
 
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">(\#tab:dist-conteos-tabla)Resumen descriptivo de los conteos observados por segmento</caption>
  <thead>
   <tr>
@@ -322,7 +322,7 @@ tabla_vif  <- tibble(
 
 :::
 
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">(\#tab:relacion-variables-vif-tabla)Factores de inflación de varianza (VIF) de las covariables auxiliares</caption>
  <thead>
   <tr>
