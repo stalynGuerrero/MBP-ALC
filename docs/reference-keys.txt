@@ -1,10 +1,7 @@
 eq:poblacion-tramo
-exr:cod-dist-conteos-stats
 tab:dist-conteos-tabla
 fig:dist-conteos-hist
-exr:cod-outliers-deteccion
 fig:outliers-grafico
-exr:cod-relacion-variables
 tab:relacion-variables-vif-tabla
 fig:relacion-variables-heatmap
 eq:verosimilitud-conjunta
