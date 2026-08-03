@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introducción | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introducción | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="github-repo" content="psirusteam/MBP-ALC" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introducción | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  
+  <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="cap-modelos-poblacion.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li>
+  <a href="./" style="display:block; padding: 16px 15px 6px; text-decoration:none;">
+    <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:1.05rem; color:#E2E8F0; display:block; line-height:1.3;">
+      MBP-ALC
+    </span>
+    <span style="font-family:'Inter',sans-serif; font-size:0.82rem; color:#94A3B8; display:block; padding-top:4px; line-height:1.55;">
+      Modelos Bayesianos de Población<br>América Latina y el Caribe
+    </span>
+  </a>
+</li>
+<li><hr style="border-color:rgba(255,255,255,0.12); margin:6px 15px 10px;"></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-de-conteos-censales"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#indicadores-de-inter%C3%A9s"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#subcobertura-omision"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+  <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+    © CEPAL 2025 — CC BY-NC-SA 4.0
+  </small>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción" class="section level1 unnumbered hasAnchor">
+<h1>Introducción<a href="introducción.html#introducci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Los censos nacionales de población y vivienda constituyen la principal fuente de información para cuantificar la población de un país y describir su distribución espacial. Sus resultados sirven de base para la producción de estadísticas oficiales, el cálculo de indicadores demográficos y socioeconómicos, la asignación de recursos públicos y la elaboración de las estimaciones y proyecciones de población realizadas por las oficinas nacionales de estadística.</p>
+<p>A pesar de su importancia, los conteos censales están sujetos a errores de cobertura, siendo la omisión censal la principal fuente de discrepancia entre la población observada y la población efectivamente residente. Este problema ha adquirido una relevancia particular durante la ronda censal de 2020 en América Latina y el Caribe, donde diversos países reportaron niveles de subcobertura superiores a los previstos <span class="citation">(<a href="references.html#ref-CEPAL2023">CEPAL 2023</a>)</span>. Dado que la omisión censal no se distribuye de manera uniforme sobre el territorio, sus efectos son especialmente significativos en unidades geográficas pequeñas, donde incluso un número reducido de personas no censadas puede generar sesgos importantes en los conteos observados y, en consecuencia, en las estadísticas e indicadores derivados de ellos.</p>
+<p>La evaluación de la cobertura censal se ha apoyado tradicionalmente en estudios de cobertura, encuestas poscensales y procedimientos de conciliación demográfica. Estas herramientas permiten cuantificar la magnitud de la omisión y evaluar la calidad global del operativo censal; sin embargo, sus resultados suelen obtenerse para dominios geográficos relativamente amplios y ofrecen información limitada sobre la variabilidad espacial de la cobertura. Como resultado, persiste la necesidad de desarrollar metodologías que permitan estimar la población residente en escalas geográficas más desagregadas, incorporando la información disponible durante y después del operativo censal.</p>
+<p>En los últimos años, las oficinas nacionales de estadística han comenzado a disponer de un volumen creciente de información auxiliar generada antes, durante y después del censo. Los preconteos operativos, los registros administrativos, la cartografía digital, las imágenes satelitales, los modelos digitales de elevación, las bases de datos de infraestructura y otras variables geoespaciales contienen información relacionada tanto con la distribución espacial de la población como con los patrones de cobertura censal. La integración de estas fuentes representa una oportunidad para mejorar las estimaciones derivadas del censo, siempre que se disponga de modelos estadísticos capaces de incorporar información heterogénea y representar explícitamente la incertidumbre asociada a cada fuente.</p>
+<p>En este contexto, los modelos bayesianos de población constituyen una herramienta particularmente adecuada para abordar este problema. Su formulación permite representar simultáneamente el proceso que genera la población de interés y el proceso mediante el cual esta es observada durante el censo, incorporando además información auxiliar, efectos espaciales y diferentes fuentes de incertidumbre. Bajo este enfoque, el interés no radica en reemplazar el conteo censal, sino en utilizar toda la evidencia disponible para obtener una estimación más consistente de la población residente compatible con la información observada.</p>
+<p>Las estimaciones obtenidas mediante estos modelos no pretenden sustituir los métodos demográficos empleados para producir estimaciones y proyecciones de población. Por el contrario, constituyen un complemento estadístico a dichos procedimientos, al proporcionar estimaciones ajustadas de los conteos censales que pueden emplearse como insumo para la construcción de una población base de mayor calidad.</p>
+<p>Este libro desarrolla un marco metodológico para la estimación de población a partir de conteos censales mediante modelos bayesianos de población. Se presentan los fundamentos probabilísticos de los modelos para datos de conteo, las estrategias para integrar información censal, administrativa y geoespacial, los métodos de inferencia implementados en Stan y los procedimientos necesarios para evaluar la calidad y consistencia de las estimaciones obtenidas. Cada uno de los desarrollos metodológicos se acompaña de implementaciones reproducibles en R, con énfasis en aplicaciones inspiradas en experiencias desarrolladas por oficinas nacionales de estadística de América Latina y el Caribe.</p>
+<p>La propuesta presentada en esta obra no constituye un nuevo método demográfico de estimación o proyección de población. Se trata de una metodología estadística diseñada para abordar uno de los principales problemas que enfrentan los censos modernos: la estimación de la población residente en presencia de omisión censal y otras fuentes de error de cobertura. Mediante la integración de múltiples fuentes de información y el uso de modelos bayesianos de población, se busca obtener estimaciones espacialmente consistentes, acompañadas de una cuantificación explícita de la incertidumbre, que fortalezcan la producción de estadísticas oficiales y sirvan como insumo para los procesos demográficos desarrollados posteriormente.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cap-modelos-poblacion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "serif",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["MBP-ALC.pdf", "MBP-ALC.docx"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Inferencia Bayesiana e Implementación Computacional | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Inferencia Bayesiana e Implementación Computacional | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="github-repo" content="psirusteam/MBP-ALC" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Inferencia Bayesiana e Implementación Computacional | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  
+  <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cap-conteos.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li>
+  <a href="./" style="display:block; padding: 16px 15px 6px; text-decoration:none;">
+    <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:1.05rem; color:#E2E8F0; display:block; line-height:1.3;">
+      MBP-ALC
+    </span>
+    <span style="font-family:'Inter',sans-serif; font-size:0.82rem; color:#94A3B8; display:block; padding-top:4px; line-height:1.55;">
+      Modelos Bayesianos de Población<br>América Latina y el Caribe
+    </span>
+  </a>
+</li>
+<li><hr style="border-color:rgba(255,255,255,0.12); margin:6px 15px 10px;"></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-de-conteos-censales"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#indicadores-de-inter%C3%A9s"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#subcobertura-omision"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cap-integracion.html"><a href="cap-integracion.html"><i class="fa fa-check"></i><b>2</b> Integración de Fuentes de Información</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cap-integracion.html"><a href="cap-integracion.html#principios-de-modelamiento"><i class="fa fa-check"></i><b>2.1</b> Principios de modelamiento</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="cap-integracion.html"><a href="cap-integracion.html#modelos-de-conteo"><i class="fa fa-check"></i><b>2.1.1</b> Modelos de conteo</a></li>
+<li class="chapter" data-level="2.1.2" data-path="cap-integracion.html"><a href="cap-integracion.html#requerimientos-de-estimaci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>2.1.2</b> Requerimientos de estimación subnacional</a></li>
+<li class="chapter" data-level="2.1.3" data-path="cap-integracion.html"><a href="cap-integracion.html#justificaci%C3%B3n-del-enfoque-bayesiano"><i class="fa fa-check"></i><b>2.1.3</b> Justificación del enfoque bayesiano</a></li>
+<li class="chapter" data-level="2.1.4" data-path="cap-integracion.html"><a href="cap-integracion.html#integracion-multiples-fuentes"><i class="fa fa-check"></i><b>2.1.4</b> Integración de múltiples fuentes</a></li>
+<li class="chapter" data-level="2.1.5" data-path="cap-integracion.html"><a href="cap-integracion.html#relaci%C3%B3n-con-small-area-estimation-sae"><i class="fa fa-check"></i><b>2.1.5</b> Relación con <em>Small Area Estimation</em> (SAE)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="cap-integracion.html"><a href="cap-integracion.html#identificacion-fuentes"><i class="fa fa-check"></i><b>2.2</b> Identificación de fuentes</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cap-integracion.html"><a href="cap-integracion.html#medicion-cobertura"><i class="fa fa-check"></i><b>2.2.1</b> Medición de cobertura a nivel de segmento</a></li>
+<li class="chapter" data-level="2.2.2" data-path="cap-integracion.html"><a href="cap-integracion.html#preconteos-segmentacion"><i class="fa fa-check"></i><b>2.2.2</b> Preconteos y segmentación</a></li>
+<li class="chapter" data-level="2.2.3" data-path="cap-integracion.html"><a href="cap-integracion.html#registros-administrativos"><i class="fa fa-check"></i><b>2.2.3</b> Registros administrativos</a></li>
+<li class="chapter" data-level="2.2.4" data-path="cap-integracion.html"><a href="cap-integracion.html#fuentes-satelitales"><i class="fa fa-check"></i><b>2.2.4</b> Fuentes satelitales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-explicativas"><i class="fa fa-check"></i><b>2.3</b> Variables explicativas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-socioecon%C3%B3micas"><i class="fa fa-check"></i><b>2.3.1</b> Variables socioeconómicas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-espaciales"><i class="fa fa-check"></i><b>2.3.2</b> Variables espaciales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap-insumos.html"><a href="cap-insumos.html"><i class="fa fa-check"></i><b>3</b> Preparación de Insumos para Modelamiento</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cap-insumos.html"><a href="cap-insumos.html#estandarizaci%C3%B3n-de-fuentes"><i class="fa fa-check"></i><b>3.1</b> Estandarización de fuentes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cap-insumos.html"><a href="cap-insumos.html#homologaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>3.1.1</b> Homologación de variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cap-insumos.html"><a href="cap-insumos.html#normalizaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>3.1.2</b> Normalización de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cap-insumos.html"><a href="cap-insumos.html#evaluacion-cobertura"><i class="fa fa-check"></i><b>3.2</b> Evaluación de cobertura</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cap-insumos.html"><a href="cap-insumos.html#clasificacion-segmentos"><i class="fa fa-check"></i><b>3.2.1</b> Clasificación de segmentos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cap-insumos.html"><a href="cap-insumos.html#construcci%C3%B3n-de-la-variable-dependiente"><i class="fa fa-check"></i><b>3.3</b> Construcción de la variable dependiente</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cap-insumos.html"><a href="cap-insumos.html#densidad-poblacional"><i class="fa fa-check"></i><b>3.3.1</b> Densidad poblacional</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cap-insumos.html"><a href="cap-insumos.html#n%C3%BAmero-promedio-de-personas-por-hogar"><i class="fa fa-check"></i><b>3.3.2</b> Número promedio de personas por hogar</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cap-insumos.html"><a href="cap-insumos.html#definici%C3%B3n-de-poblaci%C3%B3n-base"><i class="fa fa-check"></i><b>3.3.3</b> Definición de población base</a></li>
+<li class="chapter" data-level="3.3.4" data-path="cap-insumos.html"><a href="cap-insumos.html#variable-de-exposici%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> Variable de exposición</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cap-insumos.html"><a href="cap-insumos.html#diagn%C3%B3stico-exploratorio"><i class="fa fa-check"></i><b>3.4</b> Diagnóstico exploratorio</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cap-insumos.html"><a href="cap-insumos.html#distribuci%C3%B3n-de-conteos"><i class="fa fa-check"></i><b>3.4.1</b> Distribución de conteos</a></li>
+<li class="chapter" data-level="3.4.2" data-path="cap-insumos.html"><a href="cap-insumos.html#outliers"><i class="fa fa-check"></i><b>3.4.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.4.3" data-path="cap-insumos.html"><a href="cap-insumos.html#relacion-variables"><i class="fa fa-check"></i><b>3.4.3</b> Relación entre variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cap-conteos.html"><a href="cap-conteos.html"><i class="fa fa-check"></i><b>4</b> Modelo para Conteos Poblacionales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cap-conteos.html"><a href="cap-conteos.html#modelo-poisson-lognormal"><i class="fa fa-check"></i><b>4.1</b> Modelo Poisson-lognormal</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definicion-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funcion-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
+<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-previas"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones previas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribucion-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
+<li class="chapter" data-level="4.1.5" data-path="cap-conteos.html"><a href="cap-conteos.html#interpretaci%C3%B3n-de-par%C3%A1metros"><i class="fa fa-check"></i><b>4.1.5</b> Interpretación de parámetros</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="cap-conteos.html"><a href="cap-conteos.html#componentes-del-modelo"><i class="fa fa-check"></i><b>4.2</b> Componentes del modelo</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-fijos"><i class="fa fa-check"></i><b>4.2.1</b> Efectos fijos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-aleatorios"><i class="fa fa-check"></i><b>4.2.2</b> Efectos aleatorios</a></li>
+<li class="chapter" data-level="4.2.3" data-path="cap-conteos.html"><a href="cap-conteos.html#interacciones"><i class="fa fa-check"></i><b>4.2.3</b> Interacciones</a></li>
+<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersion-offset"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión y offset</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html"><i class="fa fa-check"></i><b>5</b> Inferencia Bayesiana e Implementación Computacional</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#m%C3%A9todos-de-simulaci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Métodos de simulación</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#cadenas-de-markov-monte-carlo"><i class="fa fa-check"></i><b>5.1.1</b> Cadenas de Markov Monte Carlo</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#monte-carlo-hamiltoniano-y-el-algoritmo-nuts"><i class="fa fa-check"></i><b>5.1.2</b> Monte Carlo Hamiltoniano y el algoritmo NUTS</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#stan-implementacion"><i class="fa fa-check"></i><b>5.1.3</b> Implementación en Stan</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#configuraci%C3%B3n-de-cadenas-muestras-e-iteraciones"><i class="fa fa-check"></i><b>5.1.4</b> Configuración de cadenas, muestras e iteraciones</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#paralelizaci%C3%B3n-y-eficiencia-computacional"><i class="fa fa-check"></i><b>5.1.5</b> Paralelización y eficiencia computacional</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#distribuci%C3%B3n-posterior-y-estimaciones"><i class="fa fa-check"></i><b>5.2</b> Distribución posterior y estimaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#estimaciones-puntuales-y-resumen-posterior"><i class="fa fa-check"></i><b>5.2.1</b> Estimaciones puntuales y resumen posterior</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#extracci%C3%B3n-de-muestras-e-intervalos-de-credibilidad"><i class="fa fa-check"></i><b>5.2.2</b> Extracción de muestras e intervalos de credibilidad</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#estimaciones-a-nivel-de-segmento-censal"><i class="fa fa-check"></i><b>5.2.3</b> Estimaciones a nivel de segmento censal</a></li>
+<li class="chapter" data-level="5.2.4" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#agregaci%C3%B3n-a-niveles-geogr%C3%A1ficos-superiores"><i class="fa fa-check"></i><b>5.2.4</b> Agregación a niveles geográficos superiores</a></li>
+<li class="chapter" data-level="5.2.5" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#verificaci%C3%B3n-predictiva-posterior"><i class="fa fa-check"></i><b>5.2.5</b> Verificación predictiva posterior</a></li>
+<li class="chapter" data-level="5.2.6" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#criterios-de-informaci%C3%B3n-loo-y-waic"><i class="fa fa-check"></i><b>5.2.6</b> Criterios de información LOO y WAIC</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#resumen"><i class="fa fa-check"></i><b>5.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+  <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+    © CEPAL 2025 — CC BY-NC-SA 4.0
+  </small>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inferencia-bayesiana-e-implementación-computacional" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Inferencia Bayesiana e Implementación Computacional<a href="inferencia-bayesiana-e-implementación-computacional.html#inferencia-bayesiana-e-implementaci%C3%B3n-computacional" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El capítulo anterior estableció la especificación probabilística completa del modelo Poisson-lognormal: la distribución log-normal para la densidad latente de personas por estructura, la distribución de Poisson para los conteos observados, el predictor lineal con efectos fijos y aleatorios, y las distribuciones previas no informativas para todos los parámetros <span class="citation">(<a href="references.html#ref-Gelman2013">Gelman et al. 2013</a>)</span>. Esa especificación, derivada a partir del teorema de Bayes en la Sección <a href="cap-conteos.html#distribucion-posterior">4.1.4</a>, define la distribución posterior</p>
+<p><span class="math display">\[
+p(\boldsymbol{\theta}, \boldsymbol{\delta} \mid \mathbf{Y}_{obs}) \;\propto\; p(\mathbf{Y}_{obs}, \boldsymbol{\delta} \mid \boldsymbol{\beta}, \boldsymbol{\gamma}, \sigma) \cdot p(\boldsymbol{\gamma} \mid \sigma_U) \cdot p(\boldsymbol{\beta}) \cdot p(\sigma) \cdot p(\sigma_U)
+\]</span></p>
+<p>pero no la hace analíticamente tratable: la combinación entre Poisson y log-normal no tiene forma cerrada en ninguno de los parámetros, y la dimensión del espacio parametral —que incluye <span class="math inline">\(D_{obs}\)</span> densidades latentes más los <span class="math inline">\(P + Q + 2\)</span> parámetros estructurales— puede superar varios miles de dimensiones en aplicaciones censales reales.</p>
+<p>El presente capítulo cierra esa brecha entre la especificación y la inferencia. La herramienta central es la simulación Monte Carlo por cadenas de Markov (MCMC), y dentro de ella el algoritmo de Monte Carlo Hamiltoniano (HMC) con el muestreador adaptativo NUTS <span class="citation">(<a href="references.html#ref-Hoffman2014">Hoffman y Gelman 2014</a>)</span>, cuya implementación en Stan <span class="citation">(<a href="references.html#ref-Carpenter2017">Carpenter et al. 2017</a>)</span> permite obtener muestras de alta calidad de distribuciones posteriores complejas de manera eficiente. El capítulo se organiza en dos secciones: la primera describe los fundamentos del método de simulación y su implementación en Stan, ilustrada con las aplicaciones desarrolladas en cinco países del Caribe y América Latina en el marco de proyectos de asistencia técnica de CEPAL; la segunda describe el procedimiento para derivar estimaciones, intervalos de credibilidad y agregaciones territoriales.</p>
+<div id="métodos-de-simulación" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Métodos de simulación<a href="inferencia-bayesiana-e-implementación-computacional.html#m%C3%A9todos-de-simulaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cadenas-de-markov-monte-carlo" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Cadenas de Markov Monte Carlo<a href="inferencia-bayesiana-e-implementación-computacional.html#cadenas-de-markov-monte-carlo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El principio fundamental de la inferencia MCMC es aproximar la distribución posterior <span class="math inline">\(p(\boldsymbol{\theta} \mid \mathbf{Y})\)</span> mediante una colección de muestras <span class="math inline">\(\boldsymbol{\theta}^{(1)}, \boldsymbol{\theta}^{(2)}, \ldots, \boldsymbol{\theta}^{(T)}\)</span> generadas por una cadena de Markov ergódica cuya distribución estacionaria es precisamente la distribución posterior <span class="citation">(<a href="references.html#ref-Tierney1994">Tierney 1994</a>)</span>. Una vez que la cadena ha convergido a su distribución estacionaria, las muestras pueden tratarse como realizaciones aproximadas de la distribución posterior y utilizarse para calcular cualquier cantidad de interés mediante promedios de Monte Carlo.</p>
+<p>Formalmente, para cualquier función <span class="math inline">\(g(\boldsymbol{\theta})\)</span> cuadrado-integrable respecto a la distribución posterior, el estimador de Monte Carlo</p>
+<p><span class="math display">\[
+\hat{g}_T = \frac{1}{T} \sum_{t=1}^{T} g\!\left(\boldsymbol{\theta}^{(t)}\right)
+\]</span></p>
+<p>converge casi seguramente a <span class="math inline">\(\mathbb{E}[g(\boldsymbol{\theta}) \mid \mathbf{Y}]\)</span> cuando <span class="math inline">\(T \to \infty\)</span>, por la ley fuerte de los grandes números para cadenas de Markov ergódicas. La tasa de convergencia depende de la correlación entre muestras consecutivas: cadenas con alta autocorrelación requieren mayor número de iteraciones para alcanzar la misma precisión que cadenas con baja autocorrelación.</p>
+<p>Los métodos de Metropolis-Hastings y sus variantes, que dominaron la práctica bayesiana computacional desde la década de 1990, generan cadenas cuya eficiencia decrece rápidamente con la dimensión del espacio paramétrico. En modelos de alta dimensión como el Poisson-lognormal aplicado a miles de segmentos censales, la exploración aleatoria del espacio parametral produce cadenas altamente correlacionadas que requieren un número prohibitivo de iteraciones para converger. El algoritmo HMC resuelve este problema de manera fundamental al incorporar información de gradiente para guiar la exploración del espacio paramétrico <span class="citation">(<a href="references.html#ref-Neal2011">Neal 2011</a>)</span>.</p>
+</div>
+<div id="monte-carlo-hamiltoniano-y-el-algoritmo-nuts" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Monte Carlo Hamiltoniano y el algoritmo NUTS<a href="inferencia-bayesiana-e-implementación-computacional.html#monte-carlo-hamiltoniano-y-el-algoritmo-nuts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El Monte Carlo Hamiltoniano fue introducido originalmente en el contexto de la física de partículas bajo el nombre de <em>Hybrid Monte Carlo</em> <span class="citation">(<a href="references.html#ref-Duane1987">Duane et al. 1987</a>)</span> y adaptado a la estadística bayesiana por <span class="citation">Neal (<a href="references.html#ref-Neal2011">2011</a>)</span>. La idea central es transformar el problema de muestreo de la distribución posterior en un problema de simulación de dinámica hamiltoniana. El espacio parametral se interpreta como un espacio de posición, y se introduce un vector de momento <span class="math inline">\(\boldsymbol{p}\)</span> del mismo tamaño que <span class="math inline">\(\boldsymbol{\theta}\)</span>. La energía del sistema se define como la función hamiltoniana:</p>
+<p><span class="math display">\[
+H(\boldsymbol{\theta}, \boldsymbol{p}) = -\log p(\boldsymbol{\theta} \mid \mathbf{Y}) + \frac{1}{2}\boldsymbol{p}^{\top}M^{-1}\boldsymbol{p}
+\]</span></p>
+<p>donde <span class="math inline">\(M\)</span> es una matriz de masa que actúa como precondicionador. La dinámica hamiltoniana conserva <span class="math inline">\(H\)</span> y genera trayectorias que exploran regiones de alta densidad posterior de manera mucho más eficiente que los saltos aleatorios, ya que el gradiente de <span class="math inline">\(\log p(\boldsymbol{\theta} \mid \mathbf{Y})\)</span> guía al sistema hacia regiones de mayor probabilidad.</p>
+<p>En la práctica, la dinámica hamiltoniana se simula discretizando el tiempo con el integrador leapfrog, que alterna actualizaciones de la posición y el momento mediante pasos de tamaño <span class="math inline">\(\varepsilon\)</span>:</p>
+<p><span class="math display">\[
+\boldsymbol{p}^{(t+\varepsilon/2)} = \boldsymbol{p}^{(t)} + \frac{\varepsilon}{2}\nabla_{\boldsymbol{\theta}} \log p(\boldsymbol{\theta}^{(t)} \mid \mathbf{Y})
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{\theta}^{(t+\varepsilon)} = \boldsymbol{\theta}^{(t)} + \varepsilon\, M^{-1}\boldsymbol{p}^{(t+\varepsilon/2)}
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{p}^{(t+\varepsilon)} = \boldsymbol{p}^{(t+\varepsilon/2)} + \frac{\varepsilon}{2}\nabla_{\boldsymbol{\theta}} \log p(\boldsymbol{\theta}^{(t+\varepsilon)} \mid \mathbf{Y})
+\]</span></p>
+<p>Una introducción conceptual accesible a la mecánica de HMC, orientada a la práctica estadística bayesiana, puede encontrarse en <span class="citation">Betancourt (<a href="references.html#ref-Betancourt2017">2017</a>)</span>. El análisis más detallado de las propiedades teóricas del método y su implementación en el contexto de modelos jerárquicos se encuentra en <span class="citation">Neal (<a href="references.html#ref-Neal2011">2011</a>)</span> y en el capítulo 12 de <span class="citation">Gelman et al. (<a href="references.html#ref-Gelman2013">2013</a>)</span>.</p>
+<p>El algoritmo NUTS <span class="citation">(<a href="references.html#ref-Hoffman2014">Hoffman y Gelman 2014</a>)</span> resuelve el problema de elegir automáticamente el número de pasos leapfrog en cada iteración. La selección manual de este hiperparámetro en HMC estándar requiere ajuste fino; NUTS elimina esta necesidad mediante un criterio de parada automático que detiene la simulación cuando la trayectoria empieza a retroceder —a hacer un <em>U-turn</em> en el espacio parametral—, indicando que continuar la trayectoria no aportaría información adicional sobre la distribución posterior. El tamaño de paso <span class="math inline">\(\varepsilon\)</span> se ajusta automáticamente durante la fase de calentamiento mediante un algoritmo de tipo dual-averaging para alcanzar una tasa de aceptación objetivo en torno al 65–80%.</p>
+<p>Las ventajas de HMC-NUTS sobre los métodos clásicos son decisivas para modelos de alta dimensión. En tanto que los métodos tipo Gibbs o Metropolis-Hastings presentan un tamaño efectivo de muestra que crece aproximadamente como <span class="math inline">\(T/\sqrt{d}\)</span> con <span class="math inline">\(d\)</span> dimensiones, HMC-NUTS escala mucho más favorablemente —en ciertos regímenes aproximadamente como <span class="math inline">\(T/d^{1/4}\)</span>— lo que hace factible la inferencia en modelos con miles de parámetros latentes como los que surgen en el contexto de la estimación subnacional de población <span class="citation">(<a href="references.html#ref-Betancourt2017">Betancourt 2017</a>)</span>. Esta propiedad ha sido un factor determinante en la adopción de Stan como plataforma de estimación en los proyectos de estimación censal de CEPAL descritos en la sección <a href="inferencia-bayesiana-e-implementación-computacional.html#stan-implementacion">5.1.3</a>.</p>
+</div>
+<div id="stan-implementacion" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Implementación en Stan<a href="inferencia-bayesiana-e-implementación-computacional.html#stan-implementacion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Stan es un lenguaje de programación probabilística que compila modelos en código C++ optimizado e implementa HMC-NUTS con calibración automática de hiperparámetros <span class="citation">(<a href="references.html#ref-Carpenter2017">Carpenter et al. 2017</a>)</span>. La interfaz con R se realiza a través del paquete <code>rstan</code> <span class="citation">(<a href="references.html#ref-rstan2023">Stan Development Team 2023</a>)</span>, que permite especificar el modelo en el lenguaje propio de Stan y gestionar la compilación, ejecución y extracción de resultados desde R.</p>
+<p>Un programa Stan se organiza en bloques con funciones específicas. El bloque <code>data</code> declara las cantidades conocidas que se pasan desde R al modelo. El bloque <code>parameters</code> declara los parámetros desconocidos sobre los que se realiza la inferencia. El bloque <code>transformed parameters</code> define cantidades deterministas calculadas a partir de los parámetros. El bloque <code>model</code> define la distribución posterior a través de sus componentes log-verosimilitud y log-prior. El bloque <code>generated quantities</code> define cantidades que se calculan a partir de las muestras posteriores una vez completado el muestreo, incluyendo predicciones para nuevas observaciones.</p>
+<p>El código Stan del modelo Poisson-lognormal, desarrollado en el marco de los proyectos de asistencia técnica de CEPAL y aplicado en Costa Rica, Barbados, Jamaica, Dominica y República Dominicana, tiene la siguiente estructura:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stan"><code class="sourceCode stan"><span id="cb1-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-1" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb1-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-2" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; D_obs;                  <span class="co">// Segmentos observados en el censo</span></span>
+<span id="cb1-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-3" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; D_tot;                  <span class="co">// Total de segmentos en el país</span></span>
+<span id="cb1-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-4" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; P;                      <span class="co">// Número de covariables</span></span>
+<span id="cb1-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-5" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; Q;                      <span class="co">// Número de efectos aleatorios</span></span>
+<span id="cb1-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-6" tabindex="-1"></a>  <span class="dt">array</span>[D_obs] <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; Y_obs;     <span class="co">// Conteos poblacionales observados</span></span>
+<span id="cb1-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-7" tabindex="-1"></a>  <span class="dt">array</span>[D_obs] <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; V_obs;     <span class="co">// Estructuras en segmentos observados</span></span>
+<span id="cb1-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-8" tabindex="-1"></a>  <span class="dt">array</span>[D_tot] <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; V_tot;     <span class="co">// Estructuras en todos los segmentos</span></span>
+<span id="cb1-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-9" tabindex="-1"></a>  <span class="dt">matrix</span>[D_obs, P] X_obs;              <span class="co">// Covariables en segmentos observados</span></span>
+<span id="cb1-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-10" tabindex="-1"></a>  <span class="dt">matrix</span>[D_tot, P] X_tot;              <span class="co">// Covariables en todos los segmentos</span></span>
+<span id="cb1-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-11" tabindex="-1"></a>  <span class="dt">matrix</span>[D_obs, Q] Z_obs;              <span class="co">// Indicadores de efectos aleatorios (observadas)</span></span>
+<span id="cb1-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-12" tabindex="-1"></a>  <span class="dt">matrix</span>[D_tot, Q] Z_tot;              <span class="co">// Indicadores de efectos aleatorios (todas)</span></span>
+<span id="cb1-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-13" tabindex="-1"></a>}</span>
+<span id="cb1-14"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-15" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb1-16"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-16" tabindex="-1"></a>  <span class="dt">vector</span>[P]           beta;     <span class="co">// Coeficientes de efectos fijos</span></span>
+<span id="cb1-17"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-17" tabindex="-1"></a>  <span class="dt">vector</span>[Q]           gamma;    <span class="co">// Coeficientes de efectos aleatorios</span></span>
+<span id="cb1-18"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-18" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt;       sigma;    <span class="co">// Escala de la distribución log-normal</span></span>
+<span id="cb1-19"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-19" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt;       sigmaU;   <span class="co">// Escala de los efectos aleatorios</span></span>
+<span id="cb1-20"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-20" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt;[D_obs] densidad; <span class="co">// Densidades latentes en segmentos observados</span></span>
+<span id="cb1-21"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-21" tabindex="-1"></a>}</span>
+<span id="cb1-22"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-22" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-23" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb1-24"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-24" tabindex="-1"></a>  <span class="dt">vector</span>[D_obs]        lp;      <span class="co">// Predictor lineal</span></span>
+<span id="cb1-25"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-25" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt;[D_obs] lambda; <span class="co">// Parámetro Poisson</span></span>
+<span id="cb1-26"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-26" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-27" tabindex="-1"></a>  lp = X_obs * beta + Z_obs * gamma;</span>
+<span id="cb1-28"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-28" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-29" tabindex="-1"></a>  <span class="cf">for</span> (d <span class="cf">in</span> <span class="dv">1</span>:D_obs)</span>
+<span id="cb1-30"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-30" tabindex="-1"></a>    lambda[d] = fmin(fmax(<span class="dv">1</span>, densidad[d] * V_obs[d]), <span class="dv">10000000</span>);</span>
+<span id="cb1-31"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-31" tabindex="-1"></a>}</span>
+<span id="cb1-32"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-32" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-33" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb1-34"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-34" tabindex="-1"></a>  <span class="co">// Distribuciones previas</span></span>
+<span id="cb1-35"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-35" tabindex="-1"></a>  beta   ~ normal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb1-36"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-36" tabindex="-1"></a>  gamma  ~ normal(<span class="dv">0</span>, sigmaU);</span>
+<span id="cb1-37"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-37" tabindex="-1"></a>  sigma  ~ cauchy(<span class="dv">0</span>, <span class="fl">2.5</span>);</span>
+<span id="cb1-38"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-38" tabindex="-1"></a>  sigmaU ~ normal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb1-39"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-39" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-40" tabindex="-1"></a>  <span class="co">// Verosimilitud</span></span>
+<span id="cb1-41"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-41" tabindex="-1"></a>  Y_obs    ~ poisson(lambda);</span>
+<span id="cb1-42"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-42" tabindex="-1"></a>  densidad ~ lognormal(lp, sigma);</span>
+<span id="cb1-43"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-43" tabindex="-1"></a>}</span>
+<span id="cb1-44"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-44" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-45" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
+<span id="cb1-46"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-46" tabindex="-1"></a>  <span class="dt">vector</span>[D_tot]           lp_tot;</span>
+<span id="cb1-47"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-47" tabindex="-1"></a>  <span class="dt">array</span>[D_tot] <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; densidad_hat;</span>
+<span id="cb1-48"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-48" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt;[D_tot]  lambda2;</span>
+<span id="cb1-49"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-49" tabindex="-1"></a>  <span class="dt">array</span>[D_tot] <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; Y_tot;</span>
+<span id="cb1-50"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-50" tabindex="-1"></a>  <span class="dt">vector</span>[D_obs]           log_lik;      <span class="co">// Log-verosimilitud puntual (LOO/WAIC)</span></span>
+<span id="cb1-51"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-51" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-52" tabindex="-1"></a>  lp_tot = X_tot * beta + Z_tot * gamma;</span>
+<span id="cb1-53"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-53" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-54" tabindex="-1"></a>  <span class="cf">for</span> (d <span class="cf">in</span> <span class="dv">1</span>:D_tot) {</span>
+<span id="cb1-55"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-55" tabindex="-1"></a>    densidad_hat[d] = lognormal_rng(lp_tot[d], sigma);</span>
+<span id="cb1-56"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-56" tabindex="-1"></a>    lambda2[d]      = fmin(fmax(<span class="dv">1</span>, densidad_hat[d] * V_tot[d]), <span class="dv">10000000</span>);</span>
+<span id="cb1-57"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-57" tabindex="-1"></a>    Y_tot[d]        = poisson_rng(lambda2[d]);</span>
+<span id="cb1-58"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-58" tabindex="-1"></a>  }</span>
+<span id="cb1-59"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-59" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-60" tabindex="-1"></a>  <span class="cf">for</span> (d <span class="cf">in</span> <span class="dv">1</span>:D_obs)</span>
+<span id="cb1-61"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-61" tabindex="-1"></a>    log_lik[d] = poisson_lpmf(Y_obs[d] | lambda[d]);</span>
+<span id="cb1-62"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb1-62" tabindex="-1"></a>}</span></code></pre></div>
+<p>Cada bloque cumple una función precisa en relación con la especificación matemática del capítulo anterior. El bloque <code>data</code> recibe las ocho matrices y vectores que constituyen los insumos del modelo: dimensiones del problema (<span class="math inline">\(D_{obs}\)</span>, <span class="math inline">\(D_{tot}\)</span>, <span class="math inline">\(P\)</span>, <span class="math inline">\(Q\)</span>), conteos y estructuras observados, y las matrices de diseño para efectos fijos y aleatorios. El bloque <code>parameters</code> declara los cinco grupos de parámetros desconocidos <span class="math inline">\(\{\boldsymbol{\beta}, \boldsymbol{\gamma}, \sigma, \sigma_U, \boldsymbol{\delta}\}\)</span>; la restricción <code>lower=0</code> en <code>sigma</code>, <code>sigmaU</code> y <code>densidad</code> garantiza que Stan opere en el espacio transformado correspondiente, con la transformación logarítmica aplicada automáticamente durante el muestreo.</p>
+<p>En el bloque <code>transformed parameters</code> se calcula el predictor lineal <span class="math inline">\(\mathbf{lp} = \mathbf{X}_{obs}\boldsymbol{\beta} + \mathbf{Z}_{obs}\boldsymbol{\gamma}\)</span> y se construye el parámetro de intensidad Poisson <span class="math inline">\(\lambda_d = \delta_d \cdot V_d\)</span>. La función <code>fmin(fmax(1, ...), 10000000)</code> implementa la restricción de la intensidad a un rango numéricamente estable: impide intensidades menores que uno y previene desbordamientos aritméticos en segmentos con predictor lineal muy alto.</p>
+<p>El bloque <code>model</code> transcribe directamente las especificaciones probabilísticas del capítulo anterior. La línea <code>Y_obs ~ poisson(lambda)</code> acumula la log-verosimilitud de Poisson; <code>densidad ~ lognormal(lp, sigma)</code> acumula la contribución log-normal de las densidades latentes incluyendo el jacobiano correspondiente; y las distribuciones previas reflejan las elecciones no informativas discutidas en la Sección <a href="cap-conteos.html#distribuciones-previas">4.1.3</a> del capítulo anterior, siguiendo las recomendaciones de <span class="citation">Gelman et al. (<a href="references.html#ref-Gelman2013">2013</a>)</span> y <span class="citation">McElreath (<a href="references.html#ref-McElreath2020">2020</a>)</span> para modelos jerárquicos.</p>
+<p>El bloque <code>generated quantities</code> implementa la predicción fuera de muestra. Para cada segmento del conjunto completo <span class="math inline">\(\mathcal{S}\)</span> se calcula el predictor lineal con las covariables de todos los segmentos, se genera una muestra de la densidad predictiva <span class="math inline">\(\tilde{\delta}_d \sim \text{LogNormal}(\text{lp\_tot}_d, \sigma)\)</span> y se genera un conteo predictivo <span class="math inline">\(\tilde{Y}_d \sim \text{Poisson}(\tilde{\delta}_d \cdot V_d)\)</span>. Este bloque se ejecuta una vez por muestra de la distribución posterior, de modo que la colección de matrices <code>Y_tot</code> y <code>densidad_hat</code> a lo largo de las <span class="math inline">\(T\)</span> iteraciones constituye directamente la distribución predictiva posterior. Adicionalmente, el bloque calcula el vector <code>log_lik</code> con la log-verosimilitud puntual de Poisson evaluada en cada segmento observado —<span class="math inline">\(\log p(Y_i \mid \delta_i, V_i)\)</span> para <span class="math inline">\(i \in \mathcal{S}_{obs}\)</span>—, requerido posteriormente para el cálculo de los criterios LOO y WAIC.</p>
+</div>
+<div id="configuración-de-cadenas-muestras-e-iteraciones" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Configuración de cadenas, muestras e iteraciones<a href="inferencia-bayesiana-e-implementación-computacional.html#configuraci%C3%B3n-de-cadenas-muestras-e-iteraciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La ejecución del modelo Stan desde R requiere configurar cuatro parámetros principales: el número de cadenas, el número de iteraciones totales, el número de iteraciones de calentamiento y los parámetros de control del algoritmo <span class="citation">(<a href="references.html#ref-Gelman2013">Gelman et al. 2013, cap. 11</a>)</span>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb2-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
+<span id="cb2-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(loo)</span>
+<span id="cb2-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-5" tabindex="-1"></a><span class="co"># Habilitar paralelización y caché de modelos compilados</span></span>
+<span id="cb2-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-6" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
+<span id="cb2-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-7" tabindex="-1"></a>rstan<span class="sc">::</span><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-9" tabindex="-1"></a><span class="co"># Ajustar el modelo</span></span>
+<span id="cb2-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-10" tabindex="-1"></a>stan_model <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">stan</span>(</span>
+<span id="cb2-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-11" tabindex="-1"></a>  <span class="at">file    =</span> <span class="st">&quot;00_function/Modelo_ECLAC_V02_fin.stan&quot;</span>,</span>
+<span id="cb2-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-12" tabindex="-1"></a>  <span class="at">data    =</span> list_par,</span>
+<span id="cb2-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-13" tabindex="-1"></a>  <span class="at">iter    =</span> <span class="dv">2000</span>,</span>
+<span id="cb2-14"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-14" tabindex="-1"></a>  <span class="at">warmup  =</span> <span class="dv">1500</span>,</span>
+<span id="cb2-15"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-15" tabindex="-1"></a>  <span class="at">chains  =</span> <span class="dv">4</span>,</span>
+<span id="cb2-16"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-16" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">max_treedepth =</span> <span class="dv">15</span>)</span>
+<span id="cb2-17"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb2-17" tabindex="-1"></a>)</span></code></pre></div>
+<p>El parámetro <code>iter</code> fija el número total de iteraciones por cadena, incluyendo el calentamiento. De las 2 000 iteraciones totales por cadena, 1 500 corresponden a la fase de calentamiento y 500 a la fase de inferencia. Con 4 cadenas en paralelo, el conjunto de muestras útiles comprende <span class="math inline">\(4 \times 500 = 2\,000\)</span> muestras de la distribución posterior. En aplicaciones censales con alta dimensión latente —<span class="math inline">\(D_{obs}\)</span> del orden de miles de segmentos— esta configuración es un punto de partida razonable que puede refinarse en función de los diagnósticos de convergencia descritos en el capítulo siguiente.</p>
+<p>El uso de múltiples cadenas independientes, iniciadas desde puntos dispersos del espacio paramétrico, es una práctica estándar en inferencia MCMC <span class="citation">(<a href="references.html#ref-Gelman1992">Gelman y Rubin 1992</a>)</span>. La comparación entre cadenas permite detectar problemas de convergencia que una cadena única no puede revelar: si todas las cadenas convergen a la misma región de alta densidad posterior, existe mayor confianza en que están explorando adecuadamente la distribución objetivo. El diagnóstico formal basado en la comparación de varianza entre cadenas e intra-cadena, el estadístico <span class="math inline">\(\hat{R}\)</span> <span class="citation">(<a href="references.html#ref-Gelman1992">Gelman y Rubin 1992</a>; <a href="references.html#ref-Vehtari2021">Vehtari et al. 2021</a>)</span>, cuyo fundamento matemático se documenta en dichas referencias, se reporta de forma sistemática junto con el tamaño efectivo de muestra en el resumen posterior presentado en la sección siguiente.</p>
+<p>La fase de calentamiento cumple tres funciones en Stan. Primera: el algoritmo NUTS ajusta adaptativamente el tamaño de paso <span class="math inline">\(\varepsilon\)</span> para alcanzar la tasa de aceptación objetivo. Segunda: se estima la matriz de masa <span class="math inline">\(M\)</span> que actúa como métrica del espacio parametral; Stan utiliza por defecto una métrica euclidiana diagonal cuyos elementos se estiman a partir de la varianza empírica de las muestras de calentamiento. Tercera: la cadena se aproxima a la región de alta densidad posterior, descartando las muestras iniciales que pueden estar lejos del modo. Las muestras de la fase de calentamiento no son utilizables para inferencia porque los hiperparámetros del algoritmo aún están siendo ajustados.</p>
+<p>El parámetro <code>max_treedepth = 15</code> controla la profundidad máxima del árbol binomial que construye NUTS en cada iteración. Un árbol de profundidad <span class="math inline">\(L\)</span> equivale a <span class="math inline">\(2^L\)</span> evaluaciones del leapfrog, lo que permite trayectorias de gran alcance en distribuciones posteriores con geometría compleja. El valor por defecto en Stan es 10; aumentarlo a 15 es recomendable en modelos con alta dimensionalidad latente o correlaciones posteriores fuertes, al costo de mayor tiempo de cómputo por iteración. Si durante la ejecución Stan registra advertencias de tipo <code>maximum treedepth exceeded</code>, se debe aumentar este parámetro o revisar la parametrización del modelo.</p>
+</div>
+<div id="paralelización-y-eficiencia-computacional" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Paralelización y eficiencia computacional<a href="inferencia-bayesiana-e-implementación-computacional.html#paralelizaci%C3%B3n-y-eficiencia-computacional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La línea <code>options(mc.cores = parallel::detectCores())</code> configura la ejecución de las cuatro cadenas en paralelo, utilizando tantos núcleos del procesador como estén disponibles. La opción <code>rstan_options(auto_write = TRUE)</code> permite que Stan almacene en disco el modelo compilado en C++, de modo que sucesivas ejecuciones del mismo modelo reutilizan el código compilado y evitan el tiempo de compilación —que puede ser de 30 a 90 segundos según la complejidad del modelo— en cada llamada a <code>stan()</code>.</p>
+<p>En aplicaciones con <span class="math inline">\(D_{obs}\)</span> del orden de varios miles de segmentos, el costo computacional dominante por iteración proviene de la evaluación del gradiente del logaritmo de la distribución conjunta respecto a los parámetros latentes <span class="math inline">\(\boldsymbol{\delta}\)</span>. Stan calcula estos gradientes mediante diferenciación automática sobre el grafo computacional del modelo <span class="citation">(<a href="references.html#ref-Carpenter2017">Carpenter et al. 2017</a>)</span>, lo que garantiza gradientes exactos al costo de un factor constante —típicamente entre 2 y 5— sobre el tiempo de evaluación de la log-densidad.</p>
+<p>El manejo de memoria es relevante cuando el bloque <code>generated quantities</code> genera matrices de predicción de dimensión <span class="math inline">\(D_{tot} \times T\)</span>. Es recomendable guardar el objeto Stan en disco inmediatamente tras la ejecución para evitar recomputaciones:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb3-1" tabindex="-1"></a><span class="co"># Guardar el objeto ajustado</span></span>
+<span id="cb3-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb3-2" tabindex="-1"></a><span class="fu">saveRDS</span>(stan_model,</span>
+<span id="cb3-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb3-3" tabindex="-1"></a>        <span class="at">file =</span> <span class="st">&quot;Data/modelo/fit_pob_bayes_lognormal.rds&quot;</span>)</span>
+<span id="cb3-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb3-5" tabindex="-1"></a><span class="co"># Cargar para análisis posteriores sin reejecutar el modelo</span></span>
+<span id="cb3-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb3-6" tabindex="-1"></a>stan_model <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/modelo/fit_pob_bayes_lognormal.rds&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="distribución-posterior-y-estimaciones" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Distribución posterior y estimaciones<a href="inferencia-bayesiana-e-implementación-computacional.html#distribuci%C3%B3n-posterior-y-estimaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estimaciones-puntuales-y-resumen-posterior" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Estimaciones puntuales y resumen posterior<a href="inferencia-bayesiana-e-implementación-computacional.html#estimaciones-puntuales-y-resumen-posterior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez obtenidas las muestras de la distribución posterior, el objeto <code>stan_model</code> generado por <code>rstan::stan()</code> concentra toda la información inferencial del modelo. La función <code>summary()</code> extrae para cada parámetro las estadísticas de resumen posterior más relevantes: media, error estándar de Monte Carlo, desviación estándar, percentiles y los diagnósticos de convergencia <span class="math inline">\(\hat{R}\)</span> <span class="citation">(<a href="references.html#ref-Vehtari2021">Vehtari et al. 2021</a>)</span> y tamaño efectivo de muestra <span class="citation">(<a href="references.html#ref-Gelman1992">Gelman y Rubin 1992</a>)</span>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-1" tabindex="-1"></a><span class="co"># Resumen de todos los parámetros</span></span>
+<span id="cb4-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-2" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">summary</span>(stan_model)<span class="sc">$</span>summary</span>
+<span id="cb4-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-4" tabindex="-1"></a><span class="co"># Resumen específico de parámetros de interés</span></span>
+<span id="cb4-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-5" tabindex="-1"></a>densidad_obs  <span class="ot">&lt;-</span> <span class="fu">summary</span>(stan_model, <span class="at">pars =</span> <span class="st">&quot;densidad&quot;</span>)<span class="sc">$</span>summary</span>
+<span id="cb4-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-6" tabindex="-1"></a>densidad_pred <span class="ot">&lt;-</span> <span class="fu">summary</span>(stan_model, <span class="at">pars =</span> <span class="st">&quot;densidad_hat&quot;</span>)<span class="sc">$</span>summary</span>
+<span id="cb4-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb4-7" tabindex="-1"></a>Y_tot_pred    <span class="ot">&lt;-</span> <span class="fu">summary</span>(stan_model, <span class="at">pars =</span> <span class="st">&quot;Y_tot&quot;</span>)<span class="sc">$</span>summary</span></code></pre></div>
+<p>Cada fila de estas matrices de resumen corresponde a un parámetro o cantidad generada, y las columnas reportan las siguientes estadísticas:</p>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Columna</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>mean</code></td>
+<td>Media posterior <span class="math inline">\(\hat{\theta} = \mathbb{E}[\theta \mid \mathbf{Y}]\)</span></td>
+</tr>
+<tr class="even">
+<td><code>se_mean</code></td>
+<td>Error estándar de Monte Carlo <span class="math inline">\(\hat{\sigma}_\theta / \sqrt{n_{eff}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>sd</code></td>
+<td>Desviación estándar posterior</td>
+</tr>
+<tr class="even">
+<td><code>2.5%</code>, <code>97.5%</code></td>
+<td>Intervalo de credibilidad al 95%</td>
+</tr>
+<tr class="odd">
+<td><code>50%</code></td>
+<td>Mediana posterior</td>
+</tr>
+<tr class="even">
+<td><code>n_eff</code></td>
+<td>Tamaño efectivo de muestra</td>
+</tr>
+<tr class="odd">
+<td><code>Rhat</code></td>
+<td>Estadístico de convergencia <span class="math inline">\(\hat{R}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Para los conteos predichos <code>Y_tot</code>, la media posterior y la mediana posterior constituyen las dos estimaciones puntuales naturales. La media es el estimador de Bayes bajo pérdida cuadrática y suele preferirse para agregaciones. La mediana es el estimador de Bayes bajo pérdida absoluta y es más robusta a colas pesadas de la distribución predictiva <span class="citation">(<a href="references.html#ref-Gelman2013">Gelman et al. 2013</a>)</span>. La diferencia entre ambas estimaciones a nivel nacional —obtenida con <code>sum(Y_tot_pred[, "mean"])</code> y <code>sum(Y_tot_pred[, "50%"])</code> respectivamente— cuantifica la asimetría agregada de la distribución predictiva y debe documentarse en los reportes técnicos.</p>
+</div>
+<div id="extracción-de-muestras-e-intervalos-de-credibilidad" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Extracción de muestras e intervalos de credibilidad<a href="inferencia-bayesiana-e-implementación-computacional.html#extracci%C3%B3n-de-muestras-e-intervalos-de-credibilidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función <code>rstan::extract()</code> extrae las muestras brutas de la distribución posterior en forma de arreglos, lo que permite calcular cualquier funcional que no esté incluido en el resumen estándar:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-1" tabindex="-1"></a><span class="co"># Extraer muestras posteriores de los parámetros de interés</span></span>
+<span id="cb5-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-2" tabindex="-1"></a>posterior_samples <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">extract</span>(</span>
+<span id="cb5-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-3" tabindex="-1"></a>  stan_model,</span>
+<span id="cb5-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-4" tabindex="-1"></a>  <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;densidad&quot;</span>, <span class="st">&quot;Y_tot&quot;</span>, <span class="st">&quot;densidad_hat&quot;</span>)</span>
+<span id="cb5-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-5" tabindex="-1"></a>)</span>
+<span id="cb5-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-7" tabindex="-1"></a><span class="co"># densidad_post: matriz de dimensión T × D_obs</span></span>
+<span id="cb5-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-8" tabindex="-1"></a>densidad_post <span class="ot">&lt;-</span> posterior_samples<span class="sc">$</span>densidad</span>
+<span id="cb5-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-9" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-10" tabindex="-1"></a><span class="co"># Y_tot_samp: matriz de dimensión T × D_tot</span></span>
+<span id="cb5-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb5-11" tabindex="-1"></a>Y_tot_samp <span class="ot">&lt;-</span> posterior_samples<span class="sc">$</span>Y_tot</span></code></pre></div>
+<p>El intervalo de credibilidad al 95% para el conteo del segmento <span class="math inline">\(d\)</span> se calcula como:</p>
+<p><span class="math display">\[
+\text{IC}_{95\%}(Y_d) = \left[F_{Y_d}^{-1}(0{,}025),\; F_{Y_d}^{-1}(0{,}975)\right]
+\]</span></p>
+<p>donde <span class="math inline">\(F_{Y_d}^{-1}\)</span> denota el cuantil empírico de las <span class="math inline">\(T\)</span> muestras de <code>Y_tot_samp[, d]</code>. A diferencia de los intervalos de confianza frecuentistas, el intervalo de credibilidad tiene una interpretación probabilística directa: dada la información observada y el modelo, la probabilidad posterior de que <span class="math inline">\(Y_d\)</span> caiga en ese intervalo es 0.95 <span class="citation">(<a href="references.html#ref-Gelman2013">Gelman et al. 2013</a>)</span>. Esta propiedad facilita la comunicación de la incertidumbre a usuarios institucionales no especializados en estadística.</p>
+</div>
+<div id="estimaciones-a-nivel-de-segmento-censal" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Estimaciones a nivel de segmento censal<a href="inferencia-bayesiana-e-implementación-computacional.html#estimaciones-a-nivel-de-segmento-censal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La predicción del conteo poblacional para cada segmento del país combina la información directa del censo con las predicciones del modelo según el estado de cobertura del operativo censal:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-3" tabindex="-1"></a><span class="co"># Extraer predicciones como data frame</span></span>
+<span id="cb6-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-4" tabindex="-1"></a>df_y_pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(Y_tot_samp))</span>
+<span id="cb6-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-5" tabindex="-1"></a><span class="fu">colnames</span>(df_y_pred) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;pred_cont_&quot;</span>, <span class="fu">seq_len</span>(<span class="fu">ncol</span>(df_y_pred)))</span>
+<span id="cb6-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-7" tabindex="-1"></a><span class="co"># Unir con metadatos del segmento</span></span>
+<span id="cb6-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-8" tabindex="-1"></a>df_y_pred <span class="ot">&lt;-</span> data_model <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-9" tabindex="-1"></a>  <span class="fu">select</span>(ED<span class="sc">:</span>Status) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-10" tabindex="-1"></a>  <span class="fu">bind_cols</span>(df_y_pred)</span>
+<span id="cb6-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-11" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-12" tabindex="-1"></a>pred_cols <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;^pred_cont_&quot;</span>, <span class="fu">names</span>(df_y_pred), <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-13" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-14" tabindex="-1"></a><span class="co"># Calcular estimación puntual y medidas de incertidumbre por segmento</span></span>
+<span id="cb6-15"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-15" tabindex="-1"></a>estimaciones_segmento <span class="ot">&lt;-</span> df_y_pred <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-16" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-17"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-17" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-18"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-18" tabindex="-1"></a>    <span class="at">pob_media  =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols))),</span>
+<span id="cb6-19"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-19" tabindex="-1"></a>    <span class="at">pob_mediana =</span> <span class="fu">median</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols))),</span>
+<span id="cb6-20"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-20" tabindex="-1"></a>    <span class="at">pob_sd     =</span> <span class="fu">sd</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols))),</span>
+<span id="cb6-21"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-21" tabindex="-1"></a>    <span class="at">pob_li_95  =</span> <span class="fu">quantile</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols)), <span class="fl">0.025</span>),</span>
+<span id="cb6-22"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-22" tabindex="-1"></a>    <span class="at">pob_ls_95  =</span> <span class="fu">quantile</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols)), <span class="fl">0.975</span>)</span>
+<span id="cb6-23"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-23" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-24"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb6-24" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<p>La estimación definitiva del conteo de cada segmento aplica la siguiente regla según el estado de cobertura:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-1" tabindex="-1"></a>estimaciones_segmento <span class="ot">&lt;-</span> estimaciones_segmento <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-3" tabindex="-1"></a>    <span class="at">pob_final =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-4" tabindex="-1"></a>      <span class="co"># Cobertura completa: se usa directamente el conteo censal</span></span>
+<span id="cb7-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-5" tabindex="-1"></a>      Status <span class="sc">==</span> <span class="st">&quot;Completed-full&quot;</span>  <span class="sc">~</span> T_pers,</span>
+<span id="cb7-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-6" tabindex="-1"></a>      <span class="co"># Sin cobertura: se usa la predicción del modelo</span></span>
+<span id="cb7-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-7" tabindex="-1"></a>      Status <span class="sc">==</span> <span class="st">&quot;Not Attempted&quot;</span>   <span class="sc">~</span> pob_media,</span>
+<span id="cb7-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-8" tabindex="-1"></a>      <span class="co"># Cobertura parcial con subenumeración: se usa la predicción</span></span>
+<span id="cb7-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-9" tabindex="-1"></a>      Status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Completed-with refusals&quot;</span>, <span class="st">&quot;Completed-partial&quot;</span>) <span class="sc">&amp;</span></span>
+<span id="cb7-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-10" tabindex="-1"></a>        T_pers <span class="sc">&lt;</span> pob_media        <span class="sc">~</span> pob_media,</span>
+<span id="cb7-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-11" tabindex="-1"></a>      <span class="co"># Cobertura parcial sin subenumeración evidente: se mantiene el observado</span></span>
+<span id="cb7-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-12" tabindex="-1"></a>      Status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Completed-with refusals&quot;</span>, <span class="st">&quot;Completed-partial&quot;</span>) <span class="sc">&amp;</span></span>
+<span id="cb7-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-13" tabindex="-1"></a>        T_pers <span class="sc">&gt;=</span> pob_media       <span class="sc">~</span> T_pers,</span>
+<span id="cb7-14"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-14" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span></span>
+<span id="cb7-15"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-15" tabindex="-1"></a>    )</span>
+<span id="cb7-16"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb7-16" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Esta regla garantiza coherencia operativa y refleja la naturaleza unidireccional del error de cobertura: la omisión genera subenumeración, no sobreconteo. Los segmentos con cobertura completa no son modificados por el modelo; los no abordados reciben íntegramente la predicción bayesiana; los parcialmente cubiertos son tratados según el principio de dominancia descrito en <span class="citation">Mercer et al. (<a href="references.html#ref-Mercer2015">2015</a>)</span> para contextos similares de integración de múltiples fuentes.</p>
+</div>
+<div id="agregación-a-niveles-geográficos-superiores" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Agregación a niveles geográficos superiores<a href="inferencia-bayesiana-e-implementación-computacional.html#agregaci%C3%B3n-a-niveles-geogr%C3%A1ficos-superiores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La distribución posterior del total de población en cualquier unidad geográfica de nivel superior se obtiene sumando los conteos de los segmentos que la componen a través de cada muestra de la distribución predictiva. Esta propiedad de coherencia por agregación es una de las ventajas del enfoque probabilístico respecto a los métodos de estimación directa <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-1" tabindex="-1"></a><span class="co"># Agregación a nivel parroquial con intervalo de credibilidad</span></span>
+<span id="cb8-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-2" tabindex="-1"></a>estimaciones_parroquia <span class="ot">&lt;-</span> df_y_pred <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-3" tabindex="-1"></a>  <span class="fu">group_by</span>(parish) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-4" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-5" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">all_of</span>(pred_cols), sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-6" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb8-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-8" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-9" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-10" tabindex="-1"></a>    <span class="at">tot_pob_media =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols))),</span>
+<span id="cb8-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-11" tabindex="-1"></a>    <span class="at">tot_pob_sd    =</span> <span class="fu">sd</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols))),</span>
+<span id="cb8-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-12" tabindex="-1"></a>    <span class="at">tot_pob_li_95 =</span> <span class="fu">quantile</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols)), <span class="fl">0.025</span>),</span>
+<span id="cb8-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-13" tabindex="-1"></a>    <span class="at">tot_pob_ls_95 =</span> <span class="fu">quantile</span>(<span class="fu">c_across</span>(<span class="fu">all_of</span>(pred_cols)), <span class="fl">0.975</span>),</span>
+<span id="cb8-14"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-14" tabindex="-1"></a>    <span class="at">len_ic        =</span> tot_pob_ls_95 <span class="sc">-</span> tot_pob_li_95</span>
+<span id="cb8-15"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-15" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-16" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-17"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-17" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-18" tabindex="-1"></a><span class="co"># Total nacional con intervalo de credibilidad</span></span>
+<span id="cb8-19"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-19" tabindex="-1"></a>estimacion_nacional <span class="ot">&lt;-</span> df_y_pred <span class="sc">%&gt;%</span></span>
+<span id="cb8-20"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-20" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(pred_cols), sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-21"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-21" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;iteracion&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;total_pob&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-22"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-22" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-23"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-23" tabindex="-1"></a>    <span class="at">media   =</span> <span class="fu">mean</span>(total_pob),</span>
+<span id="cb8-24"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-24" tabindex="-1"></a>    <span class="at">sd      =</span> <span class="fu">sd</span>(total_pob),</span>
+<span id="cb8-25"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-25" tabindex="-1"></a>    <span class="at">li_95   =</span> <span class="fu">quantile</span>(total_pob, <span class="fl">0.025</span>),</span>
+<span id="cb8-26"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-26" tabindex="-1"></a>    <span class="at">ls_95   =</span> <span class="fu">quantile</span>(total_pob, <span class="fl">0.975</span>),</span>
+<span id="cb8-27"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-27" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(total_pob)</span>
+<span id="cb8-28"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb8-28" tabindex="-1"></a>  )</span></code></pre></div>
+<p>La amplitud del intervalo de credibilidad del total nacional refleja simultáneamente la incertidumbre sobre los parámetros del modelo y la variabilidad estocástica del proceso de Poisson en cada segmento. En aplicaciones prácticas, este intervalo es usualmente estrecho en comparación con el total estimado porque la mayor parte de la variabilidad individual se cancela en la suma; pero puede ser sustancialmente amplio para unidades geográficas con pocos segmentos y baja cobertura censal.</p>
+</div>
+<div id="verificación-predictiva-posterior" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Verificación predictiva posterior<a href="inferencia-bayesiana-e-implementación-computacional.html#verificaci%C3%B3n-predictiva-posterior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La verificación de la capacidad del modelo para reproducir los patrones observados en los datos se realiza mediante la comparación de la distribución predictiva posterior con los datos observados <span class="citation">(<a href="references.html#ref-Gabry2019">Gabry et al. 2019</a>)</span>. En el contexto del modelo Poisson-lognormal, es más informativo verificar la capacidad predictiva sobre la densidad <span class="math inline">\(\delta_i = Y_i/V_i\)</span> que directamente sobre los conteos, ya que la densidad es la cantidad central del modelo y su distribución no depende del número de estructuras:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-1" tabindex="-1"></a><span class="co"># Subconjunto aleatorio de muestras de densidad</span></span>
+<span id="cb9-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-2" tabindex="-1"></a>densidad_post <span class="ot">&lt;-</span> posterior_samples<span class="sc">$</span>densidad</span>
+<span id="cb9-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-3" tabindex="-1"></a>idx_muestra   <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(densidad_post), <span class="dv">500</span>)</span>
+<span id="cb9-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-4" tabindex="-1"></a>densidad_rep  <span class="ot">&lt;-</span> densidad_post[idx_muestra, ]</span>
+<span id="cb9-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-6" tabindex="-1"></a><span class="co"># Gráfico de verificación predictiva posterior</span></span>
+<span id="cb9-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-7" tabindex="-1"></a>ppc_dens <span class="ot">&lt;-</span> bayesplot<span class="sc">::</span><span class="fu">ppc_dens_overlay</span>(</span>
+<span id="cb9-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-8" tabindex="-1"></a>  <span class="at">y    =</span> <span class="fu">as.numeric</span>(Y_obs <span class="sc">/</span> V_obs),</span>
+<span id="cb9-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-9" tabindex="-1"></a>  <span class="at">yrep =</span> densidad_rep</span>
+<span id="cb9-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-10" tabindex="-1"></a>)</span>
+<span id="cb9-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-12" tabindex="-1"></a><span class="co"># Verificación sobre los conteos brutos</span></span>
+<span id="cb9-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-13" tabindex="-1"></a>ppc_pers <span class="ot">&lt;-</span> bayesplot<span class="sc">::</span><span class="fu">ppc_dens_overlay</span>(</span>
+<span id="cb9-14"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-14" tabindex="-1"></a>  <span class="at">y    =</span> <span class="fu">as.numeric</span>(Y_obs),</span>
+<span id="cb9-15"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-15" tabindex="-1"></a>  <span class="at">yrep =</span> <span class="fu">t</span>(<span class="fu">t</span>(densidad_rep) <span class="sc">*</span> V_obs)</span>
+<span id="cb9-16"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-16" tabindex="-1"></a>)</span>
+<span id="cb9-17"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-17" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb9-18" tabindex="-1"></a>ppc_dens <span class="sc">|</span> ppc_pers</span></code></pre></div>
+<p>En este gráfico <span class="citation">(<a href="references.html#ref-bayesplot2022">Gabry y Mahr 2022</a>)</span>, la línea sólida corresponde a la distribución empírica de los datos observados y las líneas semitransparentes representan las distribuciones predictivas generadas por las muestras posteriores. Un modelo bien especificado produce líneas predictivas que envuelven razonablemente bien la distribución observada sin exceso ni defecto sistemático. Desviaciones importantes señalan limitaciones del modelo que pueden orientar la reformulación del predictor lineal o el cambio de la distribución de la densidad latente <span class="citation">(<a href="references.html#ref-Gabry2019">Gabry et al. 2019</a>)</span>.</p>
+</div>
+<div id="criterios-de-información-loo-y-waic" class="section level3 hasAnchor" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> Criterios de información LOO y WAIC<a href="inferencia-bayesiana-e-implementación-computacional.html#criterios-de-informaci%C3%B3n-loo-y-waic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los criterios de comparación de modelos permiten seleccionar entre especificaciones alternativas sin recurrir a validación cruzada explícita <span class="citation">(<a href="references.html#ref-Vehtari2017">Vehtari et al. 2017</a>)</span>. El criterio LOO-CV y el WAIC <span class="citation">(<a href="references.html#ref-Watanabe2010">Watanabe 2010</a>)</span> se calculan a partir de la log-verosimilitud evaluada en cada muestra posterior:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-1" tabindex="-1"></a><span class="co"># Extraer log-verosimilitud puntual (una columna por segmento observado)</span></span>
+<span id="cb10-2"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-2" tabindex="-1"></a>log_lik_mat <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">extract_log_lik</span>(stan_model,</span>
+<span id="cb10-3"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-3" tabindex="-1"></a>                                     <span class="at">parameter_name =</span> <span class="st">&quot;log_lik&quot;</span>)</span>
+<span id="cb10-4"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-5" tabindex="-1"></a><span class="co"># WAIC y LOO-CV</span></span>
+<span id="cb10-6"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-6" tabindex="-1"></a>waic_result <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">waic</span>(log_lik_mat)</span>
+<span id="cb10-7"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-7" tabindex="-1"></a>loo_result  <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">loo</span>(log_lik_mat)</span>
+<span id="cb10-8"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-9" tabindex="-1"></a><span class="fu">print</span>(waic_result)</span>
+<span id="cb10-10"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-10" tabindex="-1"></a><span class="fu">print</span>(loo_result)</span>
+<span id="cb10-11"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-12" tabindex="-1"></a><span class="co"># Comparar dos especificaciones alternativas</span></span>
+<span id="cb10-13"><a href="inferencia-bayesiana-e-implementación-computacional.html#cb10-13" tabindex="-1"></a>loo<span class="sc">::</span><span class="fu">loo_compare</span>(loo_modelo_1, loo_modelo_2)</span></code></pre></div>
+<p>Valores más altos de elpd-LOO (<em>expected log predictive density</em>) indican mejor capacidad predictiva fuera de muestra <span class="citation">(<a href="references.html#ref-Vehtari2017">Vehtari et al. 2017</a>)</span>. En la comparación entre modelos, una diferencia en elpd superior al doble de su error estándar se interpreta como evidencia de diferencia predictiva sustancial. La comparación entre LOO y WAIC en presencia de observaciones influyentes —frecuentes en segmentos con conteos extremos— se discute en <span class="citation">Piironen y Vehtari (<a href="references.html#ref-Piironen2017">2017</a>)</span>, que concluye que LOO es más robusto en esos contextos y debe ser el criterio principal para selección del modelo final.</p>
+</div>
+</div>
+<div id="resumen" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Resumen<a href="inferencia-bayesiana-e-implementación-computacional.html#resumen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Este capítulo describió el ciclo completo de inferencia computacional para el modelo Poisson-lognormal: desde los fundamentos del algoritmo HMC-NUTS <span class="citation">(<a href="references.html#ref-Hoffman2014">Hoffman y Gelman 2014</a>; <a href="references.html#ref-Betancourt2017">Betancourt 2017</a>)</span>, pasando por la implementación en Stan <span class="citation">(<a href="references.html#ref-Carpenter2017">Carpenter et al. 2017</a>)</span> con los cinco bloques del programa, hasta el procedimiento de extracción de estimaciones puntuales, intervalos de credibilidad y agregaciones territoriales en R mediante <code>rstan</code> <span class="citation">(<a href="references.html#ref-rstan2023">Stan Development Team 2023</a>)</span>, <code>bayesplot</code> <span class="citation">(<a href="references.html#ref-bayesplot2022">Gabry y Mahr 2022</a>)</span> y <code>loo</code> <span class="citation">(<a href="references.html#ref-loo2022">Vehtari et al. 2022</a>, <a href="references.html#ref-Vehtari2017">2017</a>)</span>. Las aplicaciones en Costa Rica, Barbados, Jamaica, Dominica y República Dominicana ilustraron cómo los parámetros de implementación —selección de covariables, fuente del offset, umbral de densidad y configuración MCMC— se adaptan al contexto de cada operativo censal sin alterar la especificación estadística del modelo. El capítulo incluyó además el diagnóstico de convergencia mediante los estadísticos <span class="math inline">\(\hat{R}\)</span> y ESS <span class="citation">(<a href="references.html#ref-Vehtari2021">Vehtari et al. 2021</a>; <a href="references.html#ref-Gelman1992">Gelman y Rubin 1992</a>)</span>, la validación predictiva posterior <span class="citation">(<a href="references.html#ref-Gabry2019">Gabry et al. 2019</a>)</span> y la selección entre modelos alternativos mediante los criterios LOO y WAIC <span class="citation">(<a href="references.html#ref-Vehtari2017">Vehtari et al. 2017</a>; <a href="references.html#ref-Watanabe2010">Watanabe 2010</a>)</span>. El capítulo siguiente profundiza en estos diagnósticos —trazas, autocorrelación y diagnósticos específicos de HMC, residuos bayesianos y calibración, criterios formales de aceptación de modelos— y añade la validación externa frente a proyecciones demográficas, registros administrativos independientes y coherencia geoespacial, como verificación final antes de la publicación de estimaciones oficiales.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cap-conteos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "serif",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["MBP-ALC.pdf", "MBP-ALC.docx"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

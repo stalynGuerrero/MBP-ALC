@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Integración de Fuentes de Información | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Integración de Fuentes de Información | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="github-repo" content="psirusteam/MBP-ALC" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Integración de Fuentes de Información | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  
+  <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cap-modelos-poblacion.html"/>
+<link rel="next" href="cap-insumos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li>
+  <a href="./" style="display:block; padding: 16px 15px 6px; text-decoration:none;">
+    <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:1.05rem; color:#E2E8F0; display:block; line-height:1.3;">
+      MBP-ALC
+    </span>
+    <span style="font-family:'Inter',sans-serif; font-size:0.82rem; color:#94A3B8; display:block; padding-top:4px; line-height:1.55;">
+      Modelos Bayesianos de Población<br>América Latina y el Caribe
+    </span>
+  </a>
+</li>
+<li><hr style="border-color:rgba(255,255,255,0.12); margin:6px 15px 10px;"></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-de-conteos-censales"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#indicadores-de-inter%C3%A9s"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#subcobertura-omision"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cap-integracion.html"><a href="cap-integracion.html"><i class="fa fa-check"></i><b>2</b> Integración de Fuentes de Información</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cap-integracion.html"><a href="cap-integracion.html#principios-de-modelamiento"><i class="fa fa-check"></i><b>2.1</b> Principios de modelamiento</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="cap-integracion.html"><a href="cap-integracion.html#modelos-de-conteo"><i class="fa fa-check"></i><b>2.1.1</b> Modelos de conteo</a></li>
+<li class="chapter" data-level="2.1.2" data-path="cap-integracion.html"><a href="cap-integracion.html#requerimientos-de-estimaci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>2.1.2</b> Requerimientos de estimación subnacional</a></li>
+<li class="chapter" data-level="2.1.3" data-path="cap-integracion.html"><a href="cap-integracion.html#justificaci%C3%B3n-del-enfoque-bayesiano"><i class="fa fa-check"></i><b>2.1.3</b> Justificación del enfoque bayesiano</a></li>
+<li class="chapter" data-level="2.1.4" data-path="cap-integracion.html"><a href="cap-integracion.html#integracion-multiples-fuentes"><i class="fa fa-check"></i><b>2.1.4</b> Integración de múltiples fuentes</a></li>
+<li class="chapter" data-level="2.1.5" data-path="cap-integracion.html"><a href="cap-integracion.html#relaci%C3%B3n-con-small-area-estimation-sae"><i class="fa fa-check"></i><b>2.1.5</b> Relación con <em>Small Area Estimation</em> (SAE)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="cap-integracion.html"><a href="cap-integracion.html#identificacion-fuentes"><i class="fa fa-check"></i><b>2.2</b> Identificación de fuentes</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cap-integracion.html"><a href="cap-integracion.html#medicion-cobertura"><i class="fa fa-check"></i><b>2.2.1</b> Medición de cobertura a nivel de segmento</a></li>
+<li class="chapter" data-level="2.2.2" data-path="cap-integracion.html"><a href="cap-integracion.html#preconteos-segmentacion"><i class="fa fa-check"></i><b>2.2.2</b> Preconteos y segmentación</a></li>
+<li class="chapter" data-level="2.2.3" data-path="cap-integracion.html"><a href="cap-integracion.html#registros-administrativos"><i class="fa fa-check"></i><b>2.2.3</b> Registros administrativos</a></li>
+<li class="chapter" data-level="2.2.4" data-path="cap-integracion.html"><a href="cap-integracion.html#fuentes-satelitales"><i class="fa fa-check"></i><b>2.2.4</b> Fuentes satelitales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-explicativas"><i class="fa fa-check"></i><b>2.3</b> Variables explicativas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-socioecon%C3%B3micas"><i class="fa fa-check"></i><b>2.3.1</b> Variables socioeconómicas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-espaciales"><i class="fa fa-check"></i><b>2.3.2</b> Variables espaciales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap-insumos.html"><a href="cap-insumos.html"><i class="fa fa-check"></i><b>3</b> Preparación de Insumos para Modelamiento</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cap-insumos.html"><a href="cap-insumos.html#estandarizaci%C3%B3n-de-fuentes"><i class="fa fa-check"></i><b>3.1</b> Estandarización de fuentes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cap-insumos.html"><a href="cap-insumos.html#homologaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>3.1.1</b> Homologación de variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cap-insumos.html"><a href="cap-insumos.html#normalizaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>3.1.2</b> Normalización de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cap-insumos.html"><a href="cap-insumos.html#evaluacion-cobertura"><i class="fa fa-check"></i><b>3.2</b> Evaluación de cobertura</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cap-insumos.html"><a href="cap-insumos.html#clasificacion-segmentos"><i class="fa fa-check"></i><b>3.2.1</b> Clasificación de segmentos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cap-insumos.html"><a href="cap-insumos.html#construcci%C3%B3n-de-la-variable-dependiente"><i class="fa fa-check"></i><b>3.3</b> Construcción de la variable dependiente</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cap-insumos.html"><a href="cap-insumos.html#densidad-poblacional"><i class="fa fa-check"></i><b>3.3.1</b> Densidad poblacional</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cap-insumos.html"><a href="cap-insumos.html#n%C3%BAmero-promedio-de-personas-por-hogar"><i class="fa fa-check"></i><b>3.3.2</b> Número promedio de personas por hogar</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cap-insumos.html"><a href="cap-insumos.html#definici%C3%B3n-de-poblaci%C3%B3n-base"><i class="fa fa-check"></i><b>3.3.3</b> Definición de población base</a></li>
+<li class="chapter" data-level="3.3.4" data-path="cap-insumos.html"><a href="cap-insumos.html#variable-de-exposici%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> Variable de exposición</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cap-insumos.html"><a href="cap-insumos.html#diagn%C3%B3stico-exploratorio"><i class="fa fa-check"></i><b>3.4</b> Diagnóstico exploratorio</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cap-insumos.html"><a href="cap-insumos.html#distribuci%C3%B3n-de-conteos"><i class="fa fa-check"></i><b>3.4.1</b> Distribución de conteos</a></li>
+<li class="chapter" data-level="3.4.2" data-path="cap-insumos.html"><a href="cap-insumos.html#outliers"><i class="fa fa-check"></i><b>3.4.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.4.3" data-path="cap-insumos.html"><a href="cap-insumos.html#relacion-variables"><i class="fa fa-check"></i><b>3.4.3</b> Relación entre variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cap-conteos.html"><a href="cap-conteos.html"><i class="fa fa-check"></i><b>4</b> Modelo para Conteos Poblacionales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cap-conteos.html"><a href="cap-conteos.html#modelo-poisson-lognormal"><i class="fa fa-check"></i><b>4.1</b> Modelo Poisson-lognormal</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definicion-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funcion-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
+<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-previas"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones previas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribucion-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
+<li class="chapter" data-level="4.1.5" data-path="cap-conteos.html"><a href="cap-conteos.html#interpretaci%C3%B3n-de-par%C3%A1metros"><i class="fa fa-check"></i><b>4.1.5</b> Interpretación de parámetros</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="cap-conteos.html"><a href="cap-conteos.html#componentes-del-modelo"><i class="fa fa-check"></i><b>4.2</b> Componentes del modelo</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-fijos"><i class="fa fa-check"></i><b>4.2.1</b> Efectos fijos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-aleatorios"><i class="fa fa-check"></i><b>4.2.2</b> Efectos aleatorios</a></li>
+<li class="chapter" data-level="4.2.3" data-path="cap-conteos.html"><a href="cap-conteos.html#interacciones"><i class="fa fa-check"></i><b>4.2.3</b> Interacciones</a></li>
+<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersion-offset"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión y offset</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html"><i class="fa fa-check"></i><b>5</b> Inferencia Bayesiana e Implementación Computacional</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#m%C3%A9todos-de-simulaci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Métodos de simulación</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#cadenas-de-markov-monte-carlo"><i class="fa fa-check"></i><b>5.1.1</b> Cadenas de Markov Monte Carlo</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#monte-carlo-hamiltoniano-y-el-algoritmo-nuts"><i class="fa fa-check"></i><b>5.1.2</b> Monte Carlo Hamiltoniano y el algoritmo NUTS</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#stan-implementacion"><i class="fa fa-check"></i><b>5.1.3</b> Implementación en Stan</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#configuraci%C3%B3n-de-cadenas-muestras-e-iteraciones"><i class="fa fa-check"></i><b>5.1.4</b> Configuración de cadenas, muestras e iteraciones</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#paralelizaci%C3%B3n-y-eficiencia-computacional"><i class="fa fa-check"></i><b>5.1.5</b> Paralelización y eficiencia computacional</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#distribuci%C3%B3n-posterior-y-estimaciones"><i class="fa fa-check"></i><b>5.2</b> Distribución posterior y estimaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#estimaciones-puntuales-y-resumen-posterior"><i class="fa fa-check"></i><b>5.2.1</b> Estimaciones puntuales y resumen posterior</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#extracci%C3%B3n-de-muestras-e-intervalos-de-credibilidad"><i class="fa fa-check"></i><b>5.2.2</b> Extracción de muestras e intervalos de credibilidad</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#estimaciones-a-nivel-de-segmento-censal"><i class="fa fa-check"></i><b>5.2.3</b> Estimaciones a nivel de segmento censal</a></li>
+<li class="chapter" data-level="5.2.4" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#agregaci%C3%B3n-a-niveles-geogr%C3%A1ficos-superiores"><i class="fa fa-check"></i><b>5.2.4</b> Agregación a niveles geográficos superiores</a></li>
+<li class="chapter" data-level="5.2.5" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#verificaci%C3%B3n-predictiva-posterior"><i class="fa fa-check"></i><b>5.2.5</b> Verificación predictiva posterior</a></li>
+<li class="chapter" data-level="5.2.6" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#criterios-de-informaci%C3%B3n-loo-y-waic"><i class="fa fa-check"></i><b>5.2.6</b> Criterios de información LOO y WAIC</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="inferencia-bayesiana-e-implementación-computacional.html"><a href="inferencia-bayesiana-e-implementación-computacional.html#resumen"><i class="fa fa-check"></i><b>5.3</b> Resumen</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+  <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+    © CEPAL 2025 — CC BY-NC-SA 4.0
+  </small>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cap-integracion" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Integración de Fuentes de Información<a href="cap-integracion.html#cap-integracion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La estimación de conteos poblacionales en unidades territoriales pequeñas requiere combinar información proveniente de diversas fuentes que describen, de manera complementaria, la distribución espacial de la población. Cuando el operativo censal presenta omisiones de cobertura, segmentos no observados o limitaciones para representar adecuadamente la heterogeneidad territorial, los datos censales por sí solos resultan insuficientes para reconstruir la distribución completa de la población.</p>
+<p>Los avances recientes en disponibilidad de imágenes satelitales, productos derivados de sensores remotos, registros geoespaciales, modelos digitales del terreno, infraestructura, redes viales y otras fuentes de información auxiliar han ampliado significativamente la capacidad para caracterizar el territorio y explicar los patrones de asentamiento humano. Integrar estas fuentes dentro de un marco estadístico coherente permite aprovechar la información contenida en cada una de ellas para mejorar la predicción de los conteos poblacionales.</p>
+<p>Este capítulo presenta los fundamentos conceptuales de la integración de fuentes de información en el contexto de los modelos bayesianos de población. Se describen las principales fuentes de información disponibles para América Latina y el Caribe, sus características, cobertura, resolución, calidad y principales limitaciones. Asimismo, se presentan los criterios para la construcción, transformación y selección de variables auxiliares derivadas de estas fuentes, así como los principios para su integración dentro de un marco estadístico coherente. Estas variables constituyen la base de los modelos utilizados para predecir los conteos poblacionales en unidades territoriales de interés y complementar la información proveniente de los censos de población.</p>
+<div id="principios-de-modelamiento" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Principios de modelamiento<a href="cap-integracion.html#principios-de-modelamiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los modelos estadísticos empleados para la estimación de conteos poblacionales relacionan los conteos observados con un conjunto de covariables auxiliares, con el fin de explicar las diferencias en magnitud poblacional entre unidades de análisis y predecir los conteos en aquellas donde la información censal es incompleta o no está disponible.</p>
+<p>El desarrollo de estos modelos debe satisfacer cuatro principios fundamentales: respetar la naturaleza discreta y no negativa de los conteos poblacionales mediante distribuciones de probabilidad apropiadas para este tipo de variable respuesta; incorporar de forma coherente información auxiliar proveniente de fuentes heterogéneas en resolución y calidad; producir estimaciones consistentes con los totales poblacionales disponibles y coherentes entre niveles de agregación territorial; y cuantificar la incertidumbre de las predicciones de forma que respalde su uso en procesos de toma de decisiones.</p>
+<p>Estos principios constituyen la base para la selección de la familia distribucional, la especificación de la estructura del predictor y la adopción del marco inferencial bayesiano que se desarrolla en los capítulos siguientes.</p>
+<div id="modelos-de-conteo" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Modelos de conteo<a href="cap-integracion.html#modelos-de-conteo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conteos poblacionales son variables aleatorias discretas no negativas. Esta naturaleza fundamental distingue el problema de estimación subnacional de los problemas de regresión con variables continuas y exige el uso de modelos de probabilidad apropiados para datos de conteo.</p>
+<p>La distribución de Poisson constituye el punto de partida canónico para el modelamiento de conteos. Si <span class="math inline">\(Y_i\)</span> denota el conteo observado en el segmento <span class="math inline">\(i\)</span>, el modelo de Poisson establece:</p>
+<p><span class="math display">\[
+Y_i \mid \lambda_i \sim \text{Poisson}(\lambda_i)
+\]</span></p>
+<p>donde <span class="math inline">\(\lambda_i &gt; 0\)</span> es el parámetro de intensidad, que representa simultáneamente la media y la varianza de la distribución. La función de probabilidad es:</p>
+<p><span class="math display">\[
+P(Y_i = y \mid \lambda_i) = \frac{e^{-\lambda_i}\, \lambda_i^y}{y!}, \qquad y = 0, 1, 2, \ldots
+\]</span></p>
+<p>La parametrización log-lineal del modelo relaciona el logaritmo de la intensidad con un predictor lineal de covariables:</p>
+<p><span class="math display">\[
+\log(\lambda_i) = \mathbf{x}_i^{\top} \boldsymbol{\beta} + \mathbf{z}_i^{\top} \boldsymbol{\gamma}
+\]</span></p>
+<p>donde <span class="math inline">\(\mathbf{x}_i\)</span> es el vector de covariables auxiliares del segmento <span class="math inline">\(i\)</span> con coeficientes de efectos fijos <span class="math inline">\(\boldsymbol{\beta}\)</span>, y <span class="math inline">\(\mathbf{z}_i^{\top}\boldsymbol{\gamma}\)</span> es el efecto aleatorio territorial que captura la variabilidad no explicada por las covariables, con <span class="math inline">\(\gamma_j \sim \mathcal{N}(0, \sigma_U^2)\)</span> para cada unidad territorial <span class="math inline">\(j\)</span>. Esta notación —<span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\mathbf{z}_i^{\top}\boldsymbol{\gamma}\)</span>, <span class="math inline">\(\sigma_U\)</span>— es la que se emplea en la especificación completa del modelo de conteos poblacionales del Capítulo <a href="cap-conteos.html#cap-conteos">4</a>.</p>
+<p>Un supuesto fundamental del modelo de Poisson es la equidispersión: <span class="math inline">\(\mathbb{E}[Y_i \mid \lambda_i] = \text{Var}(Y_i \mid \lambda_i) = \lambda_i\)</span>. En la práctica, los conteos poblacionales suelen exhibir sobredispersión, es decir, una varianza observada mayor a la media. Este fenómeno puede originarse en heterogeneidad no observada entre segmentos, clustering espacial o errores de especificación del predictor.</p>
+<p>Para tratar la sobredispersión sin abandonar la familia Poisson, se introduce un multiplicador aleatorio en la intensidad: <span class="math inline">\(\lambda_i = \mu_i \cdot \exp(\varepsilon_i)\)</span> con <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span>. La distribución marginal de <span class="math inline">\(Y_i\)</span> ya no tiene forma cerrada, pero <span class="math inline">\(\exp(\varepsilon_i)\)</span> conserva una interpretación directa como factor multiplicativo que amplifica o reduce la intensidad esperada en cada segmento, capturando la variabilidad extra-Poisson no explicada por las covariables ni por el efecto aleatorio territorial. Esta es la especificación —denominada Poisson-lognormal— adoptada en el modelo de conteos poblacionales, donde <span class="math inline">\(\mu_i\)</span> se especifica precisamente como <span class="math inline">\(\mathbf{x}_i^{\top}\boldsymbol{\beta} + \mathbf{z}_i^{\top}\boldsymbol{\gamma}\)</span> y <span class="math inline">\(\varepsilon_i\)</span> se convierte en la densidad latente log-normal.</p>
+<p>En contextos de modelamiento jerárquico, la necesidad de este componente adicional debe fundamentarse en el diagnóstico de sobredispersión: una especificación más rica de covariables puede reducir la sobredispersión aparente al explicar parte de la heterogeneidad entre segmentos, y solo el remanente no explicado justifica la inclusión del término log-normal.</p>
+</div>
+<div id="requerimientos-de-estimación-subnacional" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Requerimientos de estimación subnacional<a href="cap-integracion.html#requerimientos-de-estimaci%C3%B3n-subnacional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estimación de conteos en niveles territoriales pequeños impone requerimientos adicionales que van más allá de la simple elección de una distribución de probabilidad. Estos requerimientos se derivan de la naturaleza jerárquica del problema y de las condiciones operativas en las que se producen los datos.</p>
+<p><strong>Coherencia jerárquica.</strong> Las estimaciones en niveles inferiores deben ser consistentes con los totales conocidos o estimados en niveles superiores. Si <span class="math inline">\(\hat{N}_k^{(3)}\)</span> denota la estimación del municipio <span class="math inline">\(k\)</span> y <span class="math inline">\(\hat{N}_j^{(2)}\)</span> la del departamento <span class="math inline">\(j\)</span>, la coherencia exige:</p>
+<p><span class="math display">\[
+\hat{N}_j^{(2)} = \sum_{k \,:\, k \subset j} \hat{N}_k^{(3)}
+\]</span></p>
+<p>Esta restricción de coherencia entre niveles es fundamental para garantizar la consistencia interna del sistema estadístico y constituye un criterio de validación esencial de cualquier modelo de estimación subnacional.</p>
+<p><strong>Estimación en unidades con cobertura incompleta.</strong> La estimación de conteos poblacionales solo es necesaria en aquellas unidades territoriales donde el operativo censal no logró observar la totalidad de la población o donde los conteos disponibles presentan deficiencias de cobertura o calidad. En estos casos, la información observada resulta insuficiente para determinar directamente el número de habitantes, por lo que es necesario complementar los datos censales mediante información auxiliar proveniente de múltiples fuentes. El modelo estadístico combina ambas fuentes de información para predecir los conteos poblacionales faltantes y reconstruir una distribución poblacional consistente con la información disponible.</p>
+<p><strong>Propagación de incertidumbre.</strong> Toda predicción de conteos poblacionales debe acompañarse de una medida de incertidumbre que refleje la información disponible y la variabilidad asociada al proceso de estimación. La incertidumbre depende, entre otros factores, de la cantidad y calidad de la información observada, de la capacidad explicativa de las covariables y de la incertidumbre inherente al modelo estadístico. Su cuantificación es indispensable para evaluar la confiabilidad de las predicciones y apoyar su utilización en la producción de estadísticas oficiales y en la toma de decisiones.</p>
+</div>
+<div id="justificación-del-enfoque-bayesiano" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Justificación del enfoque bayesiano<a href="cap-integracion.html#justificaci%C3%B3n-del-enfoque-bayesiano" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estimación de conteos poblacionales en unidades territoriales con cobertura censal incompleta requiere un marco inferencial capaz de integrar información proveniente de múltiples fuentes, representar explícitamente la incertidumbre asociada a las predicciones y modelar la heterogeneidad inherente a la distribución de la población. El enfoque bayesiano proporciona una formulación natural para abordar estos desafíos, al combinar la evidencia observada con información previa dentro de un modelo probabilístico coherente. Esta formulación permite incorporar estructuras jerárquicas, compartir información entre unidades territoriales relacionadas y obtener distribuciones posteriores para todos los parámetros y cantidades de interés, facilitando tanto la predicción de conteos poblacionales como la cuantificación de la incertidumbre asociada a dichas predicciones. Estas características convierten al enfoque bayesiano en un marco particularmente adecuado para el desarrollo de los modelos de población presentados en este libro.</p>
+<p><strong>Representación explícita de la incertidumbre.</strong> En el paradigma bayesiano, todos los parámetros desconocidos se tratan como variables aleatorias cuya incertidumbre se cuantifica mediante distribuciones de probabilidad. En el modelo de conteos poblacionales desarrollado en este libro, el vector de parámetros estructurales es <span class="math inline">\(\boldsymbol{\theta} = \{\boldsymbol{\beta}, \boldsymbol{\gamma}, \sigma, \sigma_U\}\)</span>: <span class="math inline">\(\boldsymbol{\beta}\)</span> son los coeficientes de efectos fijos asociados a las covariables auxiliares, <span class="math inline">\(\boldsymbol{\gamma}\)</span> son los efectos aleatorios territoriales, <span class="math inline">\(\sigma\)</span> es la escala de la densidad poblacional latente y <span class="math inline">\(\sigma_U\)</span> es el hiperparámetro que controla la variabilidad de <span class="math inline">\(\boldsymbol{\gamma}\)</span> entre unidades territoriales. La distribución posterior <span class="math inline">\(p(\boldsymbol{\theta} \mid \mathbf{Y})\)</span> encapsula el estado de conocimiento sobre estos parámetros —y, a través de ellos, sobre la población en cada segmento— dado el vector de conteos observados <span class="math inline">\(\mathbf{Y}\)</span>:</p>
+<p><span class="math display">\[
+p(\boldsymbol{\theta} \mid \mathbf{Y}) \propto p(\mathbf{Y} \mid \boldsymbol{\theta})\, p(\boldsymbol{\theta})
+\]</span></p>
+<p>Esta representación permite calcular intervalos de credibilidad, probabilidades de excedencia y cualquier otra cantidad de interés derivada de la distribución posterior.</p>
+<p><strong>Incorporación de información previa.</strong> El enfoque bayesiano permite incorporar conocimiento previo mediante distribuciones a priori asignadas a los parámetros del modelo. Estas distribuciones pueden representar restricciones derivadas del problema de estudio o reflejar información disponible antes de observar los datos. La combinación de esta información con la evidencia aportada por los datos da lugar a la distribución posterior, que constituye la base de la inferencia bayesiana.</p>
+<p><strong>Modelamiento jerárquico.</strong> Los modelos bayesianos permiten organizar los distintos componentes del problema mediante estructuras jerárquicas, facilitando la integración de información proveniente de múltiples fuentes y el intercambio de información entre unidades territoriales. Esta característica produce estimaciones más estables en aquellas unidades con información limitada, sin perder la capacidad de representar la heterogeneidad observada entre territorios.</p>
+<p>En modelos jerárquicos de alta complejidad, la distribución posterior rara vez admite una expresión analítica, por lo que su aproximación requiere métodos numéricos de simulación. En este libro, la inferencia bayesiana se realiza mediante técnicas de Monte Carlo por cadenas de Markov (MCMC) <span class="citation">(<a href="references.html#ref-Tierney1994">Tierney 1994</a>)</span>, utilizando el algoritmo Hamiltonian Monte Carlo (HMC) y el muestreador No-U-Turn (NUTS) implementados en Stan <span class="citation">(<a href="references.html#ref-Duane1987">Duane et al. 1987</a>; <a href="references.html#ref-Neal2011">Neal 2011</a>; <a href="references.html#ref-Betancourt2017">Betancourt 2017</a>; <a href="references.html#ref-Hoffman2014">Hoffman y Gelman 2014</a>; <a href="references.html#ref-Carpenter2017">Carpenter et al. 2017</a>)</span>. Los fundamentos de estos algoritmos y su aplicación al modelo propuesto se presentan en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a>.</p>
+</div>
+<div id="integracion-multiples-fuentes" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Integración de múltiples fuentes<a href="cap-integracion.html#integracion-multiples-fuentes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uno de los principales retos en la modelación de población consiste en aprovechar la información disponible en fuentes de naturaleza heterogénea. Además de los conteos provenientes del censo, actualmente existe una amplia variedad de fuentes auxiliares que describen características demográficas, ambientales, físicas y socioeconómicas del territorio, como registros administrativos, imágenes satelitales, productos de observación de la Tierra, cartografía temática e infraestructura geoespacial <span class="citation">(<a href="references.html#ref-CEPAL2023">CEPAL 2023</a>)</span>. Aunque estas fuentes no constituyen mediciones directas de la población, contienen información que puede utilizarse para explicar su distribución y mejorar la capacidad predictiva de los modelos.</p>
+<p>El enfoque bayesiano proporciona un marco probabilístico coherente para integrar esta información dentro de un único modelo <span class="citation">(<a href="references.html#ref-BryantZhang2018">Bryant y Zhang 2018</a>)</span>. En la metodología desarrollada en este libro, la integración se realiza principalmente mediante la incorporación de variables auxiliares derivadas de las distintas fuentes en el vector de covariables <span class="math inline">\(\mathbf{x}_i = (x_{i1}, x_{i2}, \ldots, x_{ip})^{\top}\)</span> del predictor log-lineal <span class="math inline">\(\log(\lambda_i) = \mathbf{x}_i^{\top}\boldsymbol{\beta} + \mathbf{z}_i^{\top}\boldsymbol{\gamma}\)</span> presentado en la Sección <a href="cap-integracion.html#modelos-de-conteo">2.1.1</a>. Cada componente de <span class="math inline">\(\mathbf{x}_i\)</span> puede provenir de una fuente distinta, y de esta forma la información contenida en múltiples fuentes contribuye conjuntamente a explicar la intensidad poblacional y a mejorar las predicciones en las unidades donde la cobertura censal es incompleta.</p>
+<p>La integración de fuentes requiere un proceso previo de armonización para garantizar que las variables auxiliares sean comparables entre sí y consistentes con la unidad territorial de análisis. Este proceso comprende la transformación de escalas espaciales, la agregación o desagregación de información, el tratamiento de valores faltantes, la estandarización de definiciones y la evaluación de la calidad de cada fuente. Estos aspectos se desarrollan en las secciones siguientes del capítulo.</p>
+<p>En la literatura también existen modelos que integran múltiples mediciones directas de la población mediante funciones de verosimilitud específicas para cada fuente de información <span class="citation">(<a href="references.html#ref-BryantGraham2013">Bryant y Graham 2013</a>; <a href="references.html#ref-Wheldon2013">Wheldon et al. 2013</a>)</span>. Aunque este enfoque resulta apropiado cuando se dispone de varias observaciones comparables del mismo fenómeno, en este libro se adopta una estrategia diferente: utilizar una única variable respuesta —el conteo poblacional observado— y complementar su información mediante covariables derivadas de múltiples fuentes auxiliares, en la línea de los modelos de área de la Estimación en Áreas Pequeñas <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>; <a href="references.html#ref-Mercer2015">Mercer et al. 2015</a>)</span>. Esta formulación permite aprovechar la riqueza de la información disponible sin requerir que todas las fuentes midan directamente la población bajo un mismo esquema de observación.</p>
+</div>
+<div id="relación-con-small-area-estimation-sae" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Relación con <em>Small Area Estimation</em> (SAE)<a href="cap-integracion.html#relaci%C3%B3n-con-small-area-estimation-sae" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los modelos presentados en este libro guardan una estrecha relación conceptual con la metodología de Estimación en Áreas Pequeñas (<em>Small Area Estimation</em>, SAE), en cuanto ambos buscan producir estimaciones confiables para unidades territoriales donde la información disponible es insuficiente para responder directamente al problema de interés <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>. En ambos enfoques, las variables auxiliares desempeñan un papel fundamental al complementar la información observada mediante modelos estadísticos que permiten mejorar la precisión de las estimaciones.</p>
+<p>No obstante, el problema abordado en este libro difiere del planteamiento clásico de SAE. En los modelos tradicionales, el objetivo consiste en estimar parámetros poblacionales —como medias, proporciones o totales— a partir de encuestas probabilísticas cuyos tamaños muestrales son insuficientes en determinados dominios de estudio. En consecuencia, el modelo se construye sobre estimadores directos o sobre observaciones individuales provenientes del diseño muestral, incorporando explícitamente el error de muestreo como parte de la especificación estadística.</p>
+<p>En contraste, los modelos bayesianos de población desarrollados en este libro utilizan como variable respuesta el conteo poblacional observado durante el operativo censal y recurren a fuentes auxiliares para predecir la población únicamente en aquellas unidades territoriales donde la cobertura censal es incompleta o la información disponible resulta insuficiente. En este contexto, la incertidumbre proviene principalmente del modelo de predicción y de la calidad de las fuentes de información utilizadas, más que del error de muestreo asociado a un diseño probabilístico.</p>
+<p>Desde el punto de vista metodológico, ambos enfoques comparten el uso de modelos jerárquicos, efectos aleatorios y variables auxiliares para combinar información de diferentes orígenes. Sin embargo, difieren en la naturaleza de la variable de interés, en el mecanismo que genera la incertidumbre y en la formulación del modelo estadístico. Mientras que la metodología SAE clásica se desarrolla principalmente para parámetros derivados de encuestas, el enfoque presentado en este libro se orienta a la reconstrucción y predicción de conteos poblacionales mediante modelos bayesianos de conteo que integran información proveniente de múltiples fuentes.</p>
+</div>
+</div>
+<div id="identificacion-fuentes" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Identificación de fuentes<a href="cap-integracion.html#identificacion-fuentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La calidad de los modelos bayesianos de estimación subnacional depende críticamente de la disponibilidad y pertinencia de las fuentes de información auxiliar incorporadas. En América Latina y el Caribe, el conjunto de fuentes disponibles varía considerablemente entre países, pero puede organizarse en cuatro categorías principales: medición de cobertura censal, preconteos operativos, registros administrativos y fuentes satelitales.</p>
+<div id="medicion-cobertura" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Medición de cobertura a nivel de segmento<a href="cap-integracion.html#medicion-cobertura" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La cobertura censal constituye el primer aspecto que debe evaluarse antes de emprender cualquier proceso de estimación poblacional subnacional. La cobertura representa la proporción de la población real que fue efectivamente enumerada durante el operativo censal, mientras que su complemento, la tasa de omisión censal, cuantifica la fracción de la población que no fue observada.</p>
+<p>Sea <span class="math inline">\(N_i\)</span> la población verdadera del segmento <span class="math inline">\(i\)</span> y <span class="math inline">\(Y_i^{(C)}\)</span> el conteo registrado durante el censo. La tasa de cobertura del segmento se define como</p>
+<p><span class="math display">\[
+c_i=\frac{Y_i^{(C)}}{N_i},
+\]</span></p>
+<p>mientras que la tasa de omisión correspondiente es</p>
+<p><span class="math display">\[
+\omega_i=1-c_i.
+\]</span></p>
+<p>Dado que la población verdadera <span class="math inline">\(N_i\)</span> no es directamente observable, la cobertura no puede calcularse de manera exacta y debe estimarse a partir de información independiente del operativo censal.</p>
+<p>En la práctica, la evaluación de la cobertura se basa principalmente en tres tipos de fuentes. La primera corresponde a las encuestas postcensales de cobertura, diseñadas específicamente para medir la omisión mediante un operativo de campo independiente. La segunda comprende los métodos de conciliación demográfica, que contrastan los resultados censales con estimaciones derivadas de estadísticas vitales y proyecciones de población. La tercera utiliza técnicas de captura-recaptura que combinan la información del censo con registros administrativos para estimar la población no observada.</p>
+<p>La cobertura censal presenta una marcada heterogeneidad territorial. En general, los menores niveles de cobertura se concentran en áreas rurales dispersas, asentamientos informales, territorios indígenas, zonas de difícil acceso y sectores urbanos con elevada movilidad residencial. Estas diferencias reflejan las condiciones operativas del levantamiento censal y constituyen uno de los principales factores que justifican la incorporación de información auxiliar en los modelos de estimación poblacional.</p>
+<p>En la metodología propuesta, la cobertura de cada segmento se aproxima mediante un estimador</p>
+<p><span class="math display">\[
+\hat{c}_i=\frac{Y_i^{(C)}}{\widehat{N}_i},
+\]</span></p>
+<p>donde <span class="math inline">\(\widehat{N}_i\)</span> representa una referencia externa obtenida a partir de una encuesta postcensal, una conciliación demográfica, un procedimiento de captura-recaptura o un preconteo operativo ajustado —este último se retoma en la Sección <a href="cap-integracion.html#preconteos-segmentacion">2.2.2</a>—. <strong>Nota de notación.</strong> A partir de aquí, el acento ancho <span class="math inline">\(\widehat{N}_i\)</span> (comando LaTeX <code>\widehat</code>) se reserva exclusivamente para referencias poblacionales externas al modelo, como la empleada en este estimador de cobertura. El acento angosto <span class="math inline">\(\hat{N}\)</span> (<code>\hat</code>), utilizado más arriba en esta misma sección para la coherencia jerárquica y retomado en los Capítulos <a href="cap-conteos.html#cap-conteos">4</a>, <a href="#cap-diagnostico"><strong>??</strong></a> y <a href="#cap-calibracion"><strong>??</strong></a>, denota en cambio la propia estimación agregada del modelo bayesiano —la cantidad que en el Capítulo <a href="#cap-calibracion"><strong>??</strong></a> se calibra frente a un total de control externo—. Ambas cantidades son conceptualmente distintas —una es insumo para evaluar cobertura, la otra es un resultado del modelo— y no deben confundirse pese a la similitud visual del símbolo. Este estimador se utiliza para clasificar los segmentos según su nivel de cobertura y definir el tratamiento que recibirán en las etapas posteriores del modelamiento: los segmentos con cobertura completa (<span class="math inline">\(\hat{c}_i=1\)</span>) utilizan directamente el conteo censal; los segmentos con cobertura parcial (<span class="math inline">\(0&lt;\hat{c}_i&lt;1\)</span>) combinan el conteo observado con la predicción del modelo para la población omitida; y los segmentos con cobertura nula (<span class="math inline">\(\hat{c}_i=0\)</span>) se estiman íntegramente mediante las covariables auxiliares y la estructura jerárquica del modelo. Esta clasificación se formaliza en la Sección <a href="cap-insumos.html#evaluacion-cobertura">3.2</a> del Capítulo <a href="cap-insumos.html#cap-insumos">3</a>.</p>
+<p>Es importante señalar que la metodología no busca estimar ni corregir explícitamente la omisión censal dentro del modelo bayesiano. La evaluación de la cobertura constituye una etapa previa cuyo propósito es determinar la calidad de la información disponible y establecer cómo participa cada segmento en el proceso de estimación.</p>
+</div>
+<div id="preconteos-segmentacion" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Preconteos y segmentación<a href="cap-integracion.html#preconteos-segmentacion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los preconteos operativos constituyen una de las fuentes auxiliares más directamente vinculadas a la estimación de la población en segmentos censales. Estas operaciones, realizadas durante la fase de actualización cartográfica previa al levantamiento censal, producen información sobre el número aproximado de viviendas o estructuras habitacionales presentes en cada unidad operativa.</p>
+<p>La segmentación censal es el proceso mediante el cual el territorio nacional se divide en unidades operativas de trabajo, denominadas segmentos o áreas de enumeración. Cada segmento es asignado a un censista y está diseñado para ser enumerable en el tiempo operativo disponible. Los criterios de segmentación varían entre países: algunos utilizan como criterio el número esperado de viviendas, otros priorizan continuidad espacial o accesibilidad geográfica.</p>
+<p>Sea <span class="math inline">\(V_i\)</span> el preconteo de viviendas o estructuras habitacionales registrado en el segmento <span class="math inline">\(i\)</span> durante la actualización cartográfica. El preconteo cumple un papel operativo central en la planeación del propio operativo censal: permite dimensionar la carga de trabajo de cada censista, estimar el número de enumeradores y el tiempo requerido para cubrir el territorio, anticipar necesidades presupuestarias y logísticas, y detectar segmentos cuyo crecimiento habitacional exige una resegmentación antes del levantamiento. La segmentación, a su vez, garantiza que esta planeación cubra la totalidad del territorio nacional sin traslapes ni vacíos entre unidades operativas.</p>
+<p>El preconteo es especialmente valioso en contextos donde el operativo censal no logró cobertura completa, dado que provee una señal anticipada sobre la magnitud poblacional esperada que es independiente del proceso de enumeración —la misma propiedad que permite emplearlo como referencia externa en el estimador de cobertura de la Sección <a href="cap-integracion.html#medicion-cobertura">2.2.1</a>—. Su principal limitación es la distancia temporal entre la actualización cartográfica y el momento censal: en contextos con crecimiento urbano acelerado, los preconteos pueden quedar desactualizados rápidamente.</p>
+</div>
+<div id="registros-administrativos" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Registros administrativos<a href="cap-integracion.html#registros-administrativos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los registros administrativos son bases de datos generadas por entidades gubernamentales como resultado de sus funciones institucionales. A diferencia de los censos, no tienen por objetivo la medición estadística de la población, sino la gestión de servicios, beneficios o trámites administrativos. Sin embargo, en la medida en que su cobertura es razonablemente alta y su definición territorial compatible con los segmentos censales, pueden utilizarse como variables proxy de la magnitud poblacional <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>.</p>
+<p>Entre los registros administrativos más utilizados en modelos de estimación subnacional en América Latina y el Caribe se encuentran:</p>
+<p><strong>Registros de afiliación a sistemas de salud y seguridad social.</strong> Los sistemas de salud pública o los registros de afiliación a la seguridad social contienen información sobre personas que acceden regularmente a servicios institucionales. Su cobertura depende del grado de formalidad laboral y del acceso efectivo a los servicios en cada territorio.</p>
+<p><strong>Registros o consumo de servicios públicos.</strong> Los registros de conexiones o consumo de electricidad, agua potable o gas domiciliario, administrados por las empresas prestadoras de servicios, proporcionan un conteo de usuarios activos o viviendas conectadas por unidad territorial. Su cobertura está condicionada por el grado de formalización de la vivienda y por la extensión de las redes de distribución, por lo que puede subestimar la población en asentamientos informales o en zonas rurales dispersas sin conexión a la red.</p>
+<p><strong>Registros de beneficiarios de programas sociales.</strong> Los padrones de beneficiarios de programas de transferencias condicionadas u otros programas sociales focalizados proporcionan información sobre hogares en situación de vulnerabilidad. Aunque su cobertura no es universal, pueden ser especialmente informativos en áreas con alta concentración de población en condición de pobreza.</p>
+</div>
+<div id="fuentes-satelitales" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Fuentes satelitales<a href="cap-integracion.html#fuentes-satelitales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las imágenes satelitales y los productos de percepción remota han ampliado considerablemente el conjunto de covariables disponibles para la estimación poblacional subnacional. Su principal ventaja es la cobertura territorial universal, la continuidad temporal y la independencia respecto a los sistemas estadísticos institucionales.</p>
+<p>Las fuentes satelitales más utilizadas en estimación poblacional pueden agruparse en las siguientes categorías:</p>
+<p><strong>Luminosidad nocturna.</strong> Los datos de radiancia nocturna capturados por sensores satelitales, como el producto VIIRS-DNB de la NOAA, permiten identificar áreas con presencia de iluminación artificial. La intensidad lumínica nocturna está correlacionada con la actividad económica y la densidad de asentamientos humanos permanentes.</p>
+<p><strong>Área construida y cobertura urbana.</strong> Los productos de clasificación de uso del suelo derivados de imágenes ópticas como Sentinel-2 o Landsat permiten estimar la proporción de área construida dentro de cada segmento. El producto Global Human Settlement Layer (GHSL) de la Comisión Europea ofrece estimaciones de área construida a resolución de 100 metros con cobertura global.</p>
+<p><strong>Índice de vegetación de diferencia normalizada (NDVI).</strong> El NDVI mide la densidad y vitalidad de la vegetación a partir de la reflectancia en bandas del infrarrojo cercano y el rojo visible. Valores bajos de NDVI en áreas no áridas generalmente indican presencia de infraestructura construida y asentamientos urbanos, mientras que valores altos corresponden a áreas con cobertura vegetal densa.</p>
+<p><strong>Temperatura superficial terrestre (LST).</strong> Las islas de calor urbano, reflejadas en valores elevados de temperatura superficial, constituyen un indicador indirecto de densidad de infraestructura y actividad humana.</p>
+<p><strong>Modelos digitales de elevación.</strong> La topografía del terreno condiciona la distribución espacial de la población. Los modelos de elevación digital como SRTM o ALOS permiten derivar variables como altitud media, pendiente y orientación del terreno, que están correlacionadas con la densidad y distribución de los asentamientos humanos.</p>
+<p>La integración de covariables satelitales en el modelo requiere procesar las imágenes hasta el nivel del segmento censal, lo que implica operaciones de reproyección, remuestreo y estadísticas zonales. La resolución espacial de las imágenes debe ser compatible con el tamaño de los segmentos: resoluciones muy gruesas pueden introducir errores de asignación en segmentos pequeños, mientras que resoluciones muy finas pueden aumentar el costo computacional sin beneficio estadístico apreciable.</p>
+<p>En la práctica, esta información satelital se extrae y se procesa a través de plataformas de computación geoespacial en la nube, como Google Earth Engine <span class="citation">(<a href="references.html#ref-Gorelick2017">Gorelick et al. 2017</a>)</span>, que alojan los catálogos de VIIRS-DNB, Sentinel-2, Landsat, GHSL y los modelos digitales de elevación descritos arriba, y permiten calcular directamente las estadísticas zonales por segmento sin necesidad de descargar las imágenes completas.</p>
+</div>
+</div>
+<div id="variables-explicativas" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Variables explicativas<a href="cap-integracion.html#variables-explicativas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mientras la Sección <a href="cap-integracion.html#identificacion-fuentes">2.2</a> identificó el origen institucional u operativo de cada fuente auxiliar, esta sección describe el paso siguiente del proceso: cómo esas fuentes se transforman en las covariables efectivamente incorporadas al predictor <span class="math inline">\(\mathbf{x}_i\)</span> del modelo. La calidad predictiva del modelo de estimación subnacional depende directamente de esta selección y construcción. Las covariables resultantes pueden organizarse en dos grandes grupos según su naturaleza conceptual: variables socioeconómicas y variables espaciales. Indicadores demográficos como la estructura por sexo y edad, la razón de masculinidad o el tamaño medio del hogar quedan excluidos de este conjunto: al derivarse de la propia tabulación censal por sexo y edad, no están disponibles de forma independiente en los segmentos con cobertura incompleta —que son precisamente aquellos donde se necesita una variable explicativa— y por tanto no cumplen el requisito de disponibilidad territorial exigido a toda covariable auxiliar.</p>
+<div id="variables-socioeconómicas" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Variables socioeconómicas<a href="cap-integracion.html#variables-socioecon%C3%B3micas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las condiciones socioeconómicas del territorio están correlacionadas con la densidad de población, la calidad de la enumeración censal y la cobertura de los registros administrativos. Su incorporación como covariables permite al modelo capturar parte de la heterogeneidad no observada entre segmentos.</p>
+<p><strong>Indicadores de acceso a servicios.</strong> A partir de los registros de conexión y consumo de servicios públicos descritos en la Sección <a href="cap-integracion.html#registros-administrativos">2.2.3</a>, se construye la proporción de viviendas del segmento conectadas a la red de electricidad, agua potable, alcantarillado o internet. Esta proporción está correlacionada tanto con la densidad poblacional como con la cobertura censal, y refleja el nivel de integración del territorio a la infraestructura formal del Estado.</p>
+<p><strong>Nivel educativo de la población.</strong> El nivel de instrucción promedio de la población adulta del segmento, derivado de censos anteriores o de registros de matrícula escolar, puede utilizarse como indicador proxy de características socioeconómicas del territorio.</p>
+<p><strong>Actividad económica predominante.</strong> La clasificación del segmento según la actividad económica predominante —agropecuaria, industrial, comercial, servicios— condiciona la estructura demográfica esperada y los patrones de movilidad residencial. Esta clasificación puede derivarse de cartografía censal o de imágenes satelitales.</p>
+</div>
+<div id="variables-espaciales" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Variables espaciales<a href="cap-integracion.html#variables-espaciales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las variables espaciales capturan la posición geográfica del segmento y sus relaciones de vecindad con el entorno territorial. Su incorporación permite al modelo aprovechar, a través de covariables observadas, la continuidad espacial de la distribución poblacional —sin que ello implique una estructura de dependencia espacial modelada explícitamente entre segmentos vecinos.</p>
+<p><strong>Distancia a centros urbanos.</strong> La distancia euclidiana o por red vial desde el centroide del segmento hasta el centro urbano más cercano es un predictor relevante de la densidad y tipo de asentamiento. Segmentos más próximos a centros urbanos tienden a presentar mayor densidad poblacional, mayor acceso a servicios y mayor cobertura de registros administrativos.</p>
+<p><strong>Accesibilidad y tiempos de desplazamiento.</strong> El tiempo de desplazamiento por carretera hasta el centro urbano o el hospital más cercano, derivado de modelos de redes viales, es un indicador de accesibilidad territorial con mayor valor predictivo que la distancia euclidiana en contextos con topografía compleja o infraestructura vial deficiente.</p>
+<p><strong>Altitud y topografía.</strong> A partir de los modelos digitales de elevación descritos en la Sección <a href="cap-integracion.html#fuentes-satelitales">2.2.4</a>, se calculan a nivel de segmento la altitud media, la pendiente del terreno y la variabilidad topográfica interna, que condicionan la viabilidad de asentamientos humanos y la densidad de población esperable. Estas variables son especialmente relevantes en países con territorios montañosos.</p>
+<p>El efecto aleatorio territorial <span class="math inline">\(\boldsymbol{\gamma}\)</span> del Capítulo <a href="cap-conteos.html#cap-conteos">4</a> —de especificación intercambiable (jerárquica) a nivel de unidad territorial superior, sin estructura de adyacencia entre segmentos vecinos— no debe interpretarse como un mecanismo de modelamiento de la omisión censal: su función es capturar heterogeneidad residual en la densidad poblacional una vez incluidas las covariables observadas, no compensar la subenumeración diferencial descrita en la Sección <a href="cap-integracion.html#medicion-cobertura">2.2.1</a>, que no se modela ni se corrige, sino que únicamente se utiliza para clasificar los segmentos según su nivel de cobertura.</p>
+<p>La selección final del conjunto de variables explicativas debe fundamentarse en criterios de disponibilidad territorial —las variables deben estar disponibles para todos los segmentos—, pertinencia conceptual, capacidad predictiva demostrada y ausencia de multicolinealidad severa entre predictores. Los capítulos siguientes presentan la especificación formal de los modelos que integran estas variables en un esquema bayesiano jerárquico orientado a la estimación de conteos poblacionales subnacionales.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cap-modelos-poblacion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cap-insumos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "serif",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["MBP-ALC.pdf", "MBP-ALC.docx"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
