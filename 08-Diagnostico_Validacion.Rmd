@@ -8,7 +8,7 @@ Este capítulo profundiza en esas tres líneas de verificación y añade una cua
 
 El diagnóstico de convergencia es la primera verificación que debe realizarse sobre cualquier ajuste MCMC, con prioridad sobre cualquier interpretación sustantiva de los parámetros. Si las cadenas no han convergido a la distribución posterior estacionaria, las muestras no son representativas de $p(\boldsymbol{\theta}, \boldsymbol{\delta} \mid \mathbf{Y}_{obs})$ y cualquier estimación puntual, intervalo de credibilidad o criterio de comparación de modelos calculado a partir de ellas carece de validez.
 
-### Estadístico R-hat
+### Estadístico R-hat {#estadistico-rhat}
 
 El estadístico $\hat{R}$, propuesto originalmente por @Gelman1992, compara la variabilidad entre cadenas con la variabilidad dentro de cada cadena. Sea $\theta_{t,j}$ la muestra $t$ de la cadena $j$, con $t = 1, \ldots, n$ e $j = 1, \ldots, m$, tras descartar el calentamiento. La varianza dentro de las cadenas se calcula como:
 
@@ -50,7 +50,7 @@ problematicos <- rhat_vals[rhat_vals > 1.01]
 length(problematicos)
 ```
 
-### Tamaño efectivo de muestra (ESS)
+### Tamaño efectivo de muestra (ESS) {#tamano-efectivo-muestra}
 
 Las muestras generadas por una cadena de Markov están autocorrelacionadas: muestras consecutivas son más similares entre sí que muestras independientes de la distribución posterior. El tamaño efectivo de muestra (*Effective Sample Size*, ESS) cuantifica cuántas muestras independientes equivalen, en términos de precisión de Monte Carlo, al conjunto de muestras autocorrelacionadas disponibles. Para una cantidad escalar $\theta$ con autocorrelación $\hat{\rho}_t$ en el retraso $t$, estimada combinando las $m$ cadenas, el tamaño efectivo de muestra se define como:
 

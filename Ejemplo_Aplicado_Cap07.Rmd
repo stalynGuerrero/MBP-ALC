@@ -1,0 +1,271 @@
+<!--
+BORRADOR — no incluido en _bookdown.yml todavía.
+
+Propósito: sección "## Aplicación con datos reales" para insertar en
+07-Inferencia_Bayesiana.Rmd, entre "### Criterios de información LOO y WAIC"
+y "## Resumen".
+
+Convención de ejecución de este archivo (a pedido explícito):
+  - Los chunks de R SÍ se ejecutan (eval=TRUE): leen objetos .rds ya
+    guardados de un ajuste real y producen tablas/figuras genuinas al
+    renderizar el libro. No se reejecuta ningún ajuste de Stan.
+  - Los chunks de R NO muestran su código (echo=FALSE): el lector ve
+    únicamente la tabla o la figura resultante, no el código que la lee
+    ni la produce.
+  - La única excepción es el programa Stan de referencia (cod-ejemplo-stan):
+    no es "código que lee resultados" sino el modelo mismo, documentado
+    como en el resto del capítulo, por lo que permanece visible dentro de
+    su caja ::: {.exercise}. Las tablas y figuras, al no mostrar código,
+    ya no van en cajas ::: {.exercise} (reservadas para código visible);
+    quedan numeradas como Tabla/Figura a través de knitr::kable(caption=...)
+    y fig.cap, siguiendo la convención multi-formato ya usada en el
+    Capítulo 5 (format explícito, kable_styling() solo fuera de "pipe").
+
+Insumos (ya versionados en el repo, ver Data/ejemplos_reales/README.md):
+  Data/ejemplos_reales/BRB_2024/Modelo_worldpop_V03.stan
+  Data/ejemplos_reales/BRB_2024/05_stan_summary.rds
+  Data/ejemplos_reales/BRB_2024/06_posterior_draws_core.rds
+  Data/ejemplos_reales/BRB_2024/03_prediccion_poblation_bayes.rds
+  Data/ejemplos_reales/BRB_2024/04_theta_group_age.rds
+
+Deliberadamente el país de origen de estos resultados no se menciona en la
+prosa (a pedido explícito); las rutas de archivo sí son literales, porque
+el código debe poder ejecutarse tal cual contra los .rds del repositorio.
+
+PENDIENTE ANTES DE FUSIONAR A 07-Inferencia_Bayesiana.Rmd:
+  1. Renderizar este archivo con R + rstan/bayesplot/posterior instalados
+     para confirmar que cada chunk corre sin errores contra los .rds reales
+     y que las tablas/figuras se ven como se espera.
+  2. Revisar que los nombres de columna asumidos (cont_pers, hh_2021,
+     parish_value, parish_label, densidad_pop, estimacion_mean,
+     estimacion_median, Sex, group_age, orden, theta, theta_sd) coincidan
+     exactamente con los .rds reales (se tomaron de Data/ejemplos_reales/
+     README.md, no se inspeccionaron los .rds directamente en este entorno).
+  3. Decidir si conviene mostrar la tabla de agregación territorial completa
+     o solo una parte (depende de cuántas unidades resulten).
+-->
+
+## Aplicación con datos reales
+
+Todos los ejemplos de código presentados hasta aquí en este capítulo son ilustrativos: reproducen la sintaxis y la lógica de cada paso, pero no están conectados a un ajuste real del modelo. Esta sección cierra esa brecha con un caso completo, de principio a fin, construido a partir de las salidas efectivamente producidas por un ajuste del modelo Poisson-lognormal sobre datos censales reales, en el marco de un proyecto de asistencia técnica de CEPAL de los descritos en la Sección \@ref(stan-implementacion). Las tablas y figuras que siguen se generan directamente a partir de objetos guardados de ese ajuste —el resumen posterior completo, las muestras posteriores de los parámetros estructurales y las predicciones finales por unidad de área—, sin necesidad de instalar `rstan` ni reejecutar el modelo; el código que las produce no se muestra, de modo que la atención quede en el resultado y no en la mecánica de lectura de archivos, ya cubierta en términos generales en la Sección \@ref(cap-inferencia). El país de origen de estos resultados no se identifica individualmente en el texto, en la misma línea en que el resto del capítulo se refiere de forma colectiva a los países donde se ha aplicado esta metodología.
+
+### El programa Stan efectivamente ajustado
+
+El Código \@ref(exr:cod-ejemplo-stan) reproduce, sin modificaciones, el programa Stan que produjo los resultados utilizados en esta sección. Su estructura es la misma desarrollada en la Sección \@ref(stan-implementacion) —los mismos cinco bloques, la misma notación $D_{obs}$/$D_{tot}$/$P$/$Q$—, con tres diferencias menores propias de una versión de producción algo anterior: declara los arreglos con la sintaxis `tipo variable[N]` en lugar de `array[N] tipo variable`; trunca la densidad predictiva directamente en `generated quantities` mediante `fmin(densidad_hat[d], 20)` —una instancia concreta de la restricción demográfica $\tilde{\delta}_i=\min(\delta_i^*,\delta_{\max})$ discutida en la Sección \@ref(sobredispersion-offset), aquí con $\delta_{\max}=20$ personas por estructura— en lugar de aplicarla como paso posterior; y no calcula `log_lik`, por lo que este ajuste en particular no admite los criterios LOO/WAIC de la Sección \@ref(stan-implementacion) sin volver a ejecutar el modelo.
+
+::: {.exercise #cod-ejemplo-stan name="Programa Stan de un ajuste real"}
+
+```stan
+data {
+  int<lower=1> D_obs; // Número de UGMs observadas en el censo
+  int<lower=1> D_tot; // Número de UGMs en el pais
+  int<lower=1> P; // Cantidad de regresores en los efectos fijos
+  int<lower=1> Q; // Cantidad de efectos aleatorios
+  int<lower=0> Y_obs[D_obs]; // Conteos de poblacion observada por UGM
+  int<lower=0> V_obs[D_obs]; // Número de estructuras observadas en la UGM
+  int<lower=0> V_tot[D_tot]; // Número de estructuras en la covariable satelital
+  matrix[D_obs, P] X_obs; // Matriz de covariables en las UGMs observadas
+  matrix[D_tot, P] X_tot; // Matriz de covariables en todas las UGMs del pais
+  matrix[D_obs, Q] Z_obs; // Matriz de dummies para los efectos aleatorios en las UGMs observadas
+  matrix[D_tot, Q] Z_tot; // Matriz de dummies para los efectos aleatorios en todas las UGMs del pais
+}
+
+parameters {
+  vector[P] beta; // Vector de coeficientes de regresión de los efectos fijos
+  vector[Q] gamma; // Vector de coeficientes de los efectos aleatorios
+  real<lower=0> sigma; // Desviación estándar para la distribución log-normal
+  real<lower=0> sigmaU; // Desviación estándar para los efectos aleatorios
+  vector<lower=0>[D_obs] densidad; // Densidad poblacional para las UGMs observadas
+}
+
+transformed parameters {
+  vector<lower=0>[D_obs] lambda; // Parámetro de la distribución Poisson
+  vector[D_obs] lp; // Parámetro lineal de la distribución log-normal
+
+  lp = X_obs * beta + Z_obs * gamma;
+
+  for (d in 1:D_obs) {
+    lambda[d] = densidad[d] * V_obs[d];
+  }
+
+}
+
+model {
+  // Priors
+  gamma ~ normal(0, sigmaU);
+  beta ~ normal(0, 1);
+  sigma ~ cauchy(0, 2.5);
+  sigmaU ~ normal(0, 1);
+  // Likelihood
+  Y_obs ~ poisson(lambda);
+
+  // Log-normal distribution for densidad
+  densidad ~ lognormal(lp, sigma);
+}
+
+generated quantities {
+  vector[D_tot] lp_tot;
+  real<lower=0> densidad_hat[D_tot]; // Predicción de la densidad de todas las UGMs del país
+  int<lower=0> Y_tot[D_tot]; // Conteos de población observada por UGM en todo el país
+
+  lp_tot = X_tot * beta + Z_tot * gamma;
+
+  for (d in 1:D_tot) {
+    densidad_hat[d] = lognormal_rng(lp_tot[d], sigma);
+    densidad_hat[d] = fmin(densidad_hat[d], 20);
+    Y_tot[d] = poisson_rng(densidad_hat[d] * V_tot[d]);
+    }
+}
+```
+
+:::
+
+```{r ejemplo-insumos, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(bayesplot)
+library(posterior)
+library(knitr)
+library(kableExtra)
+
+formato_tabla <- if (knitr::is_latex_output()) {
+  "latex"
+} else if (knitr::is_html_output()) {
+  "html"
+} else {
+  "pipe"
+}
+
+ruta_base <- "Data/ejemplos_reales/BRB_2024"
+
+# Resumen posterior completo (equivalente a summary(stan_model)$summary)
+stan_summary <- readRDS(file.path(ruta_base, "05_stan_summary.rds"))
+
+# Muestras posteriores por cadena para los parámetros estructurales
+# (equivalente a rstan::extract(stan_model, permuted = FALSE))
+draws_core <- readRDS(file.path(ruta_base, "06_posterior_draws_core.rds"))
+
+# Estimación final de población por unidad de área (ED)
+pred_area <- readRDS(file.path(ruta_base, "03_prediccion_poblation_bayes.rds"))
+
+# Estructura por grupo etario y sexo (theta), ligada a la notación del Capítulo 6
+theta_edad <- readRDS(file.path(ruta_base, "04_theta_group_age.rds"))
+```
+
+### Diagnóstico de convergencia con salidas reales
+
+El objeto que contiene el resumen posterior completo tiene la misma estructura que la matriz devuelta por `summary(stan_model)$summary` en la Sección \@ref(cap-inferencia): una fila por parámetro o cantidad generada —incluyendo, en este ajuste, todas las densidades latentes, intensidades y conteos predichos, no solo los parámetros estructurales— y las columnas `mean`, `se_mean`, `sd`, los cuantiles, `n_eff` y `Rhat` descritas en esa sección.
+
+```{r ejemplo-rhat-calculo, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+rhat_vals  <- stan_summary[, "Rhat"]
+n_eff_vals <- stan_summary[, "n_eff"]
+problematicos <- rhat_vals[rhat_vals > 1.01]
+```
+
+De los `r length(rhat_vals)` parámetros y cantidades generadas del ajuste, `r length(problematicos)` superan el umbral recomendado $\hat{R} < 1{,}01$ discutido en el Capítulo \@ref(cap-diagnostico); el tamaño efectivo de muestra osciló entre `r round(min(n_eff_vals, na.rm = TRUE))` y `r round(max(n_eff_vals, na.rm = TRUE))`, con una mediana de `r round(median(n_eff_vals, na.rm = TRUE))`. La Figura \@ref(fig:ejemplo-rhat-hist) muestra la distribución completa de $\hat{R}$.
+
+```{r ejemplo-rhat-hist, echo=FALSE, eval=TRUE, fig.cap="Distribución de Rhat sobre la totalidad de parámetros y cantidades generadas de un ajuste real."}
+bayesplot::mcmc_rhat_hist(rhat_vals)
+```
+
+Las muestras posteriores de los parámetros estructurales de baja dimensión ($\boldsymbol{\beta}$, $\boldsymbol{\gamma}$, $\sigma$, $\sigma_U$), organizadas como un arreglo iteración × cadena × parámetro —el mismo formato que produce `rstan::extract(stan_model, permuted = FALSE)`—, permiten inspeccionar visualmente la mezcla de las cadenas sin cargar el objeto `stanfit` completo. La Figura \@ref(fig:ejemplo-trace) reproduce los *trace plots* de la Sección \@ref(cap-diagnostico) sobre $\sigma$ y $\sigma_U$, y la Figura \@ref(fig:ejemplo-acf) su función de autocorrelación.
+
+```{r ejemplo-trace, echo=FALSE, eval=TRUE, fig.cap="Trace plots de sigma y sigmaU sobre las cuatro cadenas de un ajuste real."}
+bayesplot::mcmc_trace(draws_core, pars = c("sigma", "sigmaU"))
+```
+
+```{r ejemplo-acf, echo=FALSE, eval=TRUE, fig.cap="Autocorrelación de sigma y sigmaU sobre las cuatro cadenas de un ajuste real."}
+bayesplot::mcmc_acf(draws_core, pars = c("sigma", "sigmaU"), lags = 20)
+```
+
+Obsérvense ambos diagnósticos en conjunto: si el histograma de $\hat{R}$ se concentra por debajo de 1,01 y las trazas de $\sigma$ y $\sigma_U$ muestran el patrón de "oruga peluda" descrito en la Sección \@ref(cap-diagnostico), el ajuste puede considerarse convergido para los fines de este ejemplo. Como el objeto Stan original no fue conservado —solo estos resúmenes ya calculados, según se documenta en `Data/ejemplos_reales/README.md`—, no es posible recalcular aquí los diagnósticos específicos de HMC (divergencias, E-BFMI) ni los criterios LOO/WAIC, que requieren el `stanfit` completo o el vector `log_lik`, ausente en este programa Stan.
+
+### Estimaciones y agregación territorial con salidas reales
+
+La estimación final de población por unidad de área contiene, entre otras columnas, el conteo censal observado, el número de estructuras y las estimaciones puntuales —media y mediana posteriores— de la Sección \@ref(cap-inferencia). La Tabla \@ref(tab:ejemplo-totales) compara el total censal con el total estimado por el modelo, y la Tabla \@ref(tab:ejemplo-agregacion) agrega esas mismas estimaciones a la unidad territorial de nivel superior, siguiendo el mismo procedimiento de la Sección \@ref(cap-inferencia).
+
+```{r ejemplo-totales, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+totales_nacionales <- pred_area %>%
+  summarise(
+    `N.º de unidades`   = n(),
+    `Total censal`      = sum(cont_pers, na.rm = TRUE),
+    `Total (media)`     = sum(estimacion_mean, na.rm = TRUE),
+    `Total (mediana)`   = sum(estimacion_median, na.rm = TRUE)
+  )
+
+tabla_totales <- totales_nacionales %>%
+  knitr::kable(
+    format   = formato_tabla,
+    digits   = 0,
+    align    = "c",
+    booktabs = TRUE,
+    caption  = "Comparación entre el conteo censal y la estimación del modelo, agregados a nivel nacional."
+  )
+
+if (formato_tabla != "pipe") {
+  tabla_totales <- tabla_totales %>%
+    kableExtra::kable_styling(latex_options = "hold_position", full_width = FALSE)
+}
+
+tabla_totales
+```
+
+```{r ejemplo-agregacion, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+estimaciones_agregadas <- pred_area %>%
+  group_by(parish_value, parish_label) %>%
+  summarise(
+    `N.º de unidades`  = n(),
+    `Total censal`     = sum(cont_pers, na.rm = TRUE),
+    `Total (media)`    = sum(estimacion_mean, na.rm = TRUE),
+    `Densidad media`   = mean(densidad_pop, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(`Total (media)`)) %>%
+  rename(`Unidad territorial` = parish_label) %>%
+  select(-parish_value)
+
+tabla_agregacion <- estimaciones_agregadas %>%
+  knitr::kable(
+    format   = formato_tabla,
+    digits   = 1,
+    align    = "c",
+    booktabs = TRUE,
+    caption  = "Estimación de población agregada a la unidad territorial de nivel superior."
+  )
+
+if (formato_tabla != "pipe") {
+  tabla_agregacion <- tabla_agregacion %>%
+    kableExtra::kable_styling(latex_options = "hold_position", full_width = FALSE)
+}
+
+tabla_agregacion
+```
+
+La comparación entre el total censal y el total estimado a nivel nacional (Tabla \@ref(tab:ejemplo-totales)) cuantifica, con datos reales, la misma asimetría agregada discutida en la Sección \@ref(cap-inferencia) al comparar la media y la mediana posteriores; la Tabla \@ref(tab:ejemplo-agregacion) es la contraparte, con datos genuinos, del Código \@ref(exr:cod-agregacion-geografica).
+
+### Estructura por edad y sexo
+
+La Tabla \@ref(tab:ejemplo-theta) muestra un ejemplo real de salida para el vector $\boldsymbol{\theta}$ introducido en el Capítulo \@ref(cap-conteos): una proporción y su desviación estándar posterior por combinación de sexo y grupo etario.
+
+```{r ejemplo-theta, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+tabla_theta <- theta_edad %>%
+  arrange(Sex, orden) %>%
+  select(Sexo = Sex, `Grupo etario` = group_age, theta, theta_sd) %>%
+  knitr::kable(
+    format   = formato_tabla,
+    digits   = 3,
+    align    = "c",
+    booktabs = TRUE,
+    caption  = "Proporción posterior (theta) por sexo y grupo etario, de un ajuste real."
+  )
+
+if (formato_tabla != "pipe") {
+  tabla_theta <- tabla_theta %>%
+    kableExtra::kable_styling(latex_options = "hold_position", full_width = FALSE)
+}
+
+tabla_theta
+```
+
+### Síntesis
+
+Este ejemplo reunió, sobre un ajuste real, los mismos pasos desarrollados de forma ilustrativa a lo largo del capítulo: el programa Stan (Sección \@ref(stan-implementacion)), el resumen posterior y el diagnóstico de convergencia mediante $\hat{R}$ y ESS, la inspección visual de las cadenas, y la construcción de estimaciones puntuales agregadas a un nivel territorial superior. Las diferencias respecto al código ilustrativo —la ausencia de `log_lik`, la sintaxis de arreglos algo anterior, la restricción $\delta_{\max}=20$ aplicada dentro del propio programa Stan— son recordatorios de que, en la práctica, cada aplicación adapta la especificación general a las herramientas y los datos disponibles en el momento del ajuste, sin alterar la estructura estadística subyacente descrita en el Capítulo \@ref(cap-conteos). El Capítulo \@ref(cap-diagnostico) retoma varios de estos mismos objetos para completar los diagnósticos que aquí no pudieron reproducirse por no disponer del `stanfit` completo.
