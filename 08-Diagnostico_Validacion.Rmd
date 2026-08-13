@@ -310,8 +310,8 @@ $$
 donde $\hat{N}_j$ es la agregación de las predicciones posteriores del modelo para la unidad $j$ y $N_j^{proy}$ es la proyección demográfica oficial correspondiente. Discrepancias sistemáticas y de gran magnitud —convencionalmente, superiores al 5% en valor absoluto— ameritan investigación adicional: pueden reflejar un error genuino del modelo, pero también pueden señalar que la proyección demográfica de referencia está desactualizada respecto a la dinámica poblacional reciente del territorio, particularmente en contextos de migración interna acelerada.
 
 ```r
-discrepancia <- estimaciones_parroquia %>%
-  left_join(proyecciones_oficiales, by = "parish") %>%
+discrepancia <- estimaciones_dam %>%
+  left_join(proyecciones_oficiales, by = "DAM") %>%
   mutate(delta = (tot_pob_media - poblacion_proyectada) / poblacion_proyectada)
 
 discrepancia %>%

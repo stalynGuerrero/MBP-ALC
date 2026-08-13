@@ -217,10 +217,10 @@ El manejo de memoria es relevante, en particular, cuando el bloque `generated qu
 ```r
 # Guardar el objeto ajustado
 saveRDS(stan_model,
-        file = "Data/modelo/fit_pob_bayes_lognormal.rds")
+        file = "Data/rutinas/modelo/fit_pob.rds")
 
 # Cargar para análisis posteriores sin reejecutar el modelo
-stan_model <- readRDS("Data/modelo/fit_pob_bayes_lognormal.rds")
+stan_model <- readRDS("Data/rutinas/modelo/fit_pob.rds")
 ```
 
 :::
@@ -262,13 +262,13 @@ La función `summary()` resume tanto los parámetros del modelo como las cantida
 | `n_eff` | Tamaño efectivo de muestra. |
 | `Rhat` | Estadístico de convergencia potencial $\hat{R}$. |
 
-Table: (\#tab:resumen-posterior-columnas) Estadísticas reportadas por `summary(stan_model)$summary` para cada parámetro o cantidad generada.
+Table: (\#tab:resumen-posterior-columnas) Estadísticas reportadas por el `summary` para cada parámetro o cantidad generada.
 
-En los modelos desarrollados en este libro, las estimaciones de mayor interés corresponden a las densidades poblacionales (`densidad`, `densidad_hat`) y a los conteos poblacionales predichos (`Y_tot`). La media posterior constituye el estimador de Bayes bajo pérdida cuadrática y, por tanto, suele emplearse como estimación puntual cuando el objetivo es producir estimaciones y realizar agregaciones territoriales. La mediana posterior, en cambio, es el estimador de Bayes bajo pérdida absoluta y puede resultar preferible cuando la distribución posterior presenta una marcada asimetría o colas pesadas [@Gelman2013].
+En el contexto de los modelos de población desarrollados en este libro, las cantidades de mayor interés son las densidades poblacionales y los conteos poblacionales predichos para cada segmento censal. La media posterior constituye el estimador de Bayes bajo pérdida cuadrática y, por tanto, suele adoptarse como estimación puntual cuando el objetivo es producir estimaciones oficiales o realizar agregaciones territoriales. La mediana posterior, por su parte, es el estimador de Bayes bajo pérdida absoluta y puede resultar preferible cuando la distribución posterior presenta una marcada asimetría o colas pesadas [@Gelman2013].
 
-La diferencia entre ambas medidas resume el grado de asimetría de la distribución posterior. En el caso de los conteos predichos (`Y_tot`), esta diferencia puede evaluarse comparando los totales nacionales obtenidos mediante `sum(Y_tot_pred[, "mean"])` y `sum(Y_tot_pred[, "50%"])`. Aunque en muchas aplicaciones ambas estimaciones son similares, diferencias apreciables indican distribuciones predictivas asimétricas y conviene documentarlas en los reportes técnicos.
+La comparación entre la media y la mediana proporciona una medida sencilla del grado de asimetría de la distribución posterior. Cuando ambas estimaciones son similares, la distribución posterior suele ser aproximadamente simétrica; en cambio, diferencias apreciables indican distribuciones asimétricas y conviene documentarlas, especialmente si las estimaciones serán utilizadas para producir indicadores oficiales o agregaciones territoriales.
 
-Los estadísticos `Rhat` y `n_eff` permiten, además, evaluar la calidad del proceso de muestreo. Mientras la media, la mediana y los intervalos de credibilidad resumen la distribución posterior de los parámetros, estos diagnósticos indican si las cadenas de Markov convergieron adecuadamente y si el número de muestras efectivas es suficiente para sustentar las inferencias realizadas. Su interpretación se desarrolla en las Secciones \@ref(estadistico-rhat) y \@ref(tamano-efectivo-muestra) del capítulo siguiente.
+Además de resumir la distribución posterior mediante estimaciones puntuales e intervalos de credibilidad, es indispensable verificar la calidad del proceso de inferencia. Para ello se utilizan los estadísticos $\hat{R}$ y el tamaño efectivo de muestra ($n_{\mathrm{eff}}$), que permiten evaluar, respectivamente, la convergencia de las cadenas de Markov y la cantidad de información efectiva contenida en las muestras posteriores. Su interpretación se desarrolla en las Secciones \@ref(estadistico-rhat) y \@ref(tamano-efectivo-muestra) del capítulo siguiente.
 
 
 ### Extracción de muestras e intervalos de credibilidad
@@ -301,11 +301,11 @@ $$
 
 donde $F_{Y_d}^{-1}$ denota el cuantil empírico de las $T$ muestras de `Y_tot_samp[, d]`. A diferencia de los intervalos de confianza frecuentistas, el intervalo de credibilidad tiene una interpretación probabilística directa: dada la información observada y el modelo, la probabilidad posterior de que $Y_d$ caiga en ese intervalo es 0,95 [@Gelman2013]. Esta propiedad facilita la comunicación de la incertidumbre a usuarios institucionales no especializados en estadística.
 
-### Estimaciones a nivel de segmento censal
+### Estimaciones a nivel de segmento censal {#estimaciones-segmento-censal}
 
-El mismo mecanismo de extracción de muestras permite ir un paso más allá del intervalo de credibilidad genérico y construir la estimación final de población que efectivamente se reporta en la producción estadística, la cual depende del estado de cobertura censal de cada segmento. La predicción del conteo poblacional para cada segmento del país combina, en efecto, la información directa del censo con las predicciones del modelo según ese estado de cobertura. El objeto `data_model` es el data frame de segmentos censales construido durante la preparación de insumos (Capítulo \@ref(cap-insumos)), con una fila por segmento; incluye el identificador operativo del segmento (`ED`, *enumeration district*), el conteo de personas efectivamente registrado en el censo (`T_pers`) y el estado de cobertura del operativo (`Status`). Siguiendo la terminología operativa de los censos del Caribe anglófono en los que se aplicó este modelo (Barbados, Jamaica, Dominica), `Status` distingue cuatro situaciones: cobertura completa (`"Completed-full"`), segmento no abordado (`"Not Attempted"`), y dos formas de cobertura parcial —con rechazos (`"Completed-with refusals"`) o incompleta por otras razones (`"Completed-partial"`)—, como se muestra en el Código \@ref(exr:cod-estimaciones-segmento):
+El mismo mecanismo de extracción de muestras permite ir un paso más allá del intervalo de credibilidad genérico y construir la estimación final de población que efectivamente se reporta en la producción estadística, aplicando directamente la clasificación de segmentos según su nivel de cobertura introducida en la Sección \@ref(clasificacion-segmentos). El objeto `data_model` es el data frame de segmentos censales construido durante la preparación de insumos (Capítulo \@ref(cap-insumos)), con una fila por segmento; incluye el identificador operativo del segmento (`ED`, *enumeration district*), el conteo de personas efectivamente registrado en el censo (`T_pers`) y el estado de cobertura del segmento (`Status`), que toma directamente los tres valores de esa clasificación: `"Completa"` ($\hat{c}_i = 1$), `"Nula"` ($\hat{c}_i = 0$) y `"Parcial"` ($0 < \hat{c}_i < 1$), como se muestra en el Código \@ref(exr:cod-estimaciones-segmento):
 
-::: {.exercise #cod-estimaciones-segmento name="Estimación puntual e incertidumbre por segmento censal"}
+::: {.exercise #cod-estimaciones-segmento name="Extracción de las muestras predictivas por segmento censal"}
 
 ```r
 library(tidyverse)
@@ -320,59 +320,57 @@ df_y_pred <- data_model %>%
   bind_cols(df_y_pred)
 
 pred_cols <- grep("^pred_cont_", names(df_y_pred), value = TRUE)
+```
 
-# Calcular estimación puntual y medidas de incertidumbre por segmento
-estimaciones_segmento <- df_y_pred %>%
+:::
+
+Las $T$ columnas de `pred_cols` son la predicción incondicional del modelo para cada segmento, obtenida únicamente a partir de las covariables, sin incorporar todavía el conteo censal observado ni el estado de cobertura. Resumirlas directamente —o agregarlas tal cual en la sección siguiente— ignoraría que en los segmentos con cobertura completa el conteo verdadero ya se conoce con certeza, y sobreestimaría artificialmente la incertidumbre de la estimación final. El Código \@ref(exr:cod-regla-cobertura) corrige esto muestra por muestra, aplicando en cada una de las $T$ columnas la regla que corresponde al estado de cobertura del segmento:
+
+::: {.exercise #cod-regla-cobertura name="Corrección de las muestras posteriores según el estado de cobertura"}
+
+```r
+# Corregir cada muestra posterior según el estado de cobertura del segmento
+df_y_final <- df_y_pred %>%
+  mutate(
+    across(
+      all_of(pred_cols),
+      ~ case_when(
+        # Cobertura completa: el conteo censal es exacto en cada muestra
+        Status == "Completa" ~ T_pers,
+        # Cobertura nula: se conserva íntegramente la predicción del modelo
+        Status == "Nula"     ~ .x,
+        # Cobertura parcial: dominancia entre el conteo observado y la
+        # predicción del modelo, aplicada en cada muestra.
+        Status == "Parcial"  ~ pmax(T_pers, .x)
+      )
+    )
+  )
+
+# Estimación puntual e intervalo de credibilidad ya corregidos por cobertura
+estimaciones_segmento <- df_y_final %>%
   rowwise() %>%
   mutate(
-    pob_media  = mean(c_across(all_of(pred_cols))),
-    pob_mediana = median(c_across(all_of(pred_cols))),
-    pob_sd     = sd(c_across(all_of(pred_cols))),
-    pob_li_95  = quantile(c_across(all_of(pred_cols)), 0.025),
-    pob_ls_95  = quantile(c_across(all_of(pred_cols)), 0.975)
+    pob_final = mean(c_across(all_of(pred_cols))),
+    pob_li_95 = quantile(c_across(all_of(pred_cols)), 0.025),
+    pob_ls_95 = quantile(c_across(all_of(pred_cols)), 0.975)
   ) %>%
   ungroup()
 ```
 
 :::
 
-La estimación definitiva del conteo de cada segmento aplica la regla del Código \@ref(exr:cod-regla-cobertura) según el estado de cobertura:
-
-::: {.exercise #cod-regla-cobertura name="Regla de estimación final según el estado de cobertura"}
-
-```r
-estimaciones_segmento <- estimaciones_segmento %>%
-  mutate(
-    pob_final = case_when(
-      # Cobertura completa: se usa directamente el conteo censal
-      Status == "Completed-full"  ~ T_pers,
-      # Sin cobertura: se usa la predicción del modelo
-      Status == "Not Attempted"   ~ pob_media,
-      # Cobertura parcial con subenumeración: se usa la predicción
-      Status %in% c("Completed-with refusals", "Completed-partial") &
-        T_pers < pob_media        ~ pob_media,
-      # Cobertura parcial sin subenumeración evidente: se mantiene el observado
-      Status %in% c("Completed-with refusals", "Completed-partial") &
-        T_pers >= pob_media       ~ T_pers,
-      TRUE ~ NA_real_
-    )
-  )
-```
-
-:::
-
-Esta regla garantiza coherencia operativa y refleja la naturaleza unidireccional del error de cobertura: la omisión genera subenumeración, no sobreconteo. Los segmentos con cobertura completa no son modificados por el modelo; los no abordados reciben íntegramente la predicción bayesiana; los parcialmente cubiertos son tratados según el principio de dominancia descrito en @Mercer2015 para contextos similares de integración de múltiples fuentes.
+Esta corrección se aplica muestra por muestra, no solo sobre la estimación puntual, y refleja la naturaleza unidireccional del error de cobertura: la omisión genera subenumeración, no sobreconteo. Los segmentos con cobertura completa quedan sin incertidumbre en `df_y_final` —`pob_li_95` y `pob_ls_95` coinciden con `T_pers`—, porque su conteo es exacto en las $T$ muestras; los de cobertura nula conservan íntegramente la incertidumbre predictiva del modelo; y los de cobertura parcial retienen, en cada muestra, el mayor valor entre el conteo observado y la predicción. Esta regla de dominancia, propuesta en este libro como solución operativa al problema de cobertura parcial, impone en cada muestra posterior la restricción lógica de que la estimación final de un segmento no puede ser inferior al conteo que el censo ya registró directamente en él, dado el carácter unidireccional del error de cobertura recién señalado. Es `df_y_final`, y no `df_y_pred`, el objeto que debe agregarse hacia niveles geográficos superiores: agregar directamente las predicciones brutas ignoraría el estado de cobertura de cada segmento y sobreestimaría la incertidumbre en todos los niveles de agregación.
 
 ### Agregación a niveles geográficos superiores
 
-Resuelta la estimación en la unidad mínima de análisis —el segmento censal—, el paso siguiente consiste en agregar esas estimaciones hacia los niveles geográficos que efectivamente se publican: municipios, provincias o el total nacional. La distribución posterior del total de población en cualquier unidad geográfica de nivel superior se obtiene sumando los conteos de los segmentos que la componen a través de cada muestra de la distribución predictiva. Esta propiedad de coherencia por agregación es una de las ventajas del enfoque probabilístico respecto a los métodos de estimación directa [@Rao2015]. El ejemplo siguiente agrega a nivel de `parish` —la unidad administrativa de nivel superior en los países del Caribe anglófono referidos en este capítulo (Barbados, Jamaica, Dominica); en Costa Rica o República Dominicana el mismo procedimiento se aplicaría agrupando por cantón o provincia, respectivamente—, como en el Código \@ref(exr:cod-agregacion-geografica):
+Resuelta la estimación en la unidad mínima de análisis —el segmento censal—, el paso siguiente consiste en agregar esas estimaciones hacia los niveles geográficos que efectivamente se publican: municipios, provincias o el total nacional. La distribución posterior del total de población en cualquier unidad geográfica de nivel superior se obtiene sumando, para cada una de las $T$ muestras, los conteos ya corregidos por estado de cobertura (`df_y_final`, Código \@ref(exr:cod-regla-cobertura)) de los segmentos que la componen; agregar en su lugar las columnas `pred_cols` de `df_y_pred`, sin corregir, ignoraría que los segmentos con cobertura completa no aportan incertidumbre y sobreestimaría el intervalo resultante en cualquier nivel de agregación. Esta propiedad de coherencia por agregación es una consecuencia directa de ajustar un único modelo conjunto sobre todos los segmentos censales: como cualquier nivel geográfico se calcula sumando las mismas $T$ muestras posteriores de sus segmentos componentes, los totales de distintos niveles son automáticamente consistentes entre sí, sin necesidad de un paso adicional de conciliación. A continuación se ilustra la agregación en dos niveles: primero hacia `DAM` (División Administrativa Mayor), la unidad administrativa de nivel superior utilizada en este ejemplo —el mismo procedimiento se aplicaría agrupando por cualquier otra división administrativa disponible, como la división administrativa menor, un distrito o una provincia—, y luego hacia el total nacional.
 
-::: {.exercise #cod-agregacion-geografica name="Agregación territorial con intervalos de credibilidad"}
+::: {.exercise #cod-agregacion-dam name="Agregación territorial a nivel de DAM con intervalos de credibilidad"}
 
 ```r
-# Agregación a nivel parroquial con intervalo de credibilidad
-estimaciones_parroquia <- df_y_pred %>%
-  group_by(parish) %>%
+# Agregación a nivel de DAM con intervalo de credibilidad
+estimaciones_dam <- df_y_final %>%
+  group_by(DAM) %>%
   summarise(
     across(all_of(pred_cols), sum, na.rm = TRUE),
     .groups = "drop"
@@ -386,9 +384,17 @@ estimaciones_parroquia <- df_y_pred %>%
     len_ic        = tot_pob_ls_95 - tot_pob_li_95
   ) %>%
   ungroup()
+```
 
+:::
+
+El Código \@ref(exr:cod-agregacion-dam) opera en dos etapas. La primera, `group_by(DAM) %>% summarise(across(all_of(pred_cols), sum))`, colapsa los segmentos dentro de cada DAM: para cada una de las $T$ columnas de `pred_cols` suma los valores de todos los segmentos que pertenecen a esa unidad, de modo que el resultado conserva las $T$ muestras posteriores, ahora agregadas a nivel de DAM en lugar de segmento. La segunda etapa, con `rowwise()` y `c_across()`, resume esas $T$ muestras —una fila por DAM— en un punto y un intervalo de credibilidad, exactamente como se hizo antes por segmento en el Código \@ref(exr:cod-regla-cobertura).
+
+::: {.exercise #cod-agregacion-nacional name="Agregación territorial a nivel nacional con intervalo de credibilidad"}
+
+```r
 # Total nacional con intervalo de credibilidad
-estimacion_nacional <- df_y_pred %>%
+estimacion_nacional <- df_y_final %>%
   summarise(across(all_of(pred_cols), sum, na.rm = TRUE)) %>%
   pivot_longer(everything(), names_to = "iteracion", values_to = "total_pob") %>%
   summarise(
@@ -402,11 +408,13 @@ estimacion_nacional <- df_y_pred %>%
 
 :::
 
+El total nacional es el caso límite en que toda la agregación anterior colapsa en una única unidad geográfica, y el Código \@ref(exr:cod-agregacion-nacional) se simplifica en consecuencia: al omitir `group_by()`, el primer `summarise(across(...))` produce una sola fila con las $T$ sumas nacionales, una por columna de `pred_cols`. Con una única fila ya no tiene sentido resumir por `rowwise()` y `c_across()` como en el caso de la DAM; en su lugar, `pivot_longer()` convierte esas $T$ columnas en $T$ filas de una sola variable (`total_pob`), sobre la cual el `summarise()` final calcula media, desviación estándar, mediana y los percentiles del intervalo de credibilidad con las funciones estándar de R, sin necesidad de `c_across()`.
+
 La amplitud del intervalo de credibilidad del total nacional refleja simultáneamente la incertidumbre sobre los parámetros del modelo y la variabilidad estocástica del proceso de Poisson en cada segmento. En aplicaciones prácticas, este intervalo es usualmente estrecho en comparación con el total estimado porque la mayor parte de la variabilidad individual se cancela en la suma; pero puede ser sustancialmente amplio para unidades geográficas con pocos segmentos y baja cobertura censal.
 
 ### Verificación predictiva posterior
 
-Las estimaciones puntuales y sus intervalos de credibilidad, calculados hasta aquí en todos los niveles de agregación, son tan confiables como lo sea el modelo del que provienen. Antes de dar por válidas estas cifras corresponde, entonces, verificar la calidad del ajuste comparando los datos observados con réplicas generadas por el propio modelo [@Gabry2019]. En el contexto del modelo Poisson-lognormal, es más informativo verificar la capacidad predictiva sobre la densidad $\delta_i = Y_i/V_i$ que directamente sobre los conteos, ya que la densidad es la cantidad central del modelo y su distribución no depende del número de estructuras, según el Código \@ref(exr:cod-ppc-densidad):
+Las estimaciones puntuales y sus intervalos de credibilidad, calculados hasta aquí en todos los niveles de agregación, son tan confiables como lo sea el modelo del que provienen. Antes de dar por válidas estas cifras corresponde, entonces, verificar la calidad del ajuste comparando los datos observados con réplicas generadas por el propio modelo [@Gabry2019]. En el contexto del modelo Poisson-lognormal, es más informativo verificar la capacidad predictiva sobre la densidad $\delta_i = Y_i/V_i$ que directamente sobre los conteos, ya que la densidad es la cantidad central del modelo y su distribución no depende del número de estructuras. El Código \@ref(exr:cod-ppc-densidad) calcula ambas verificaciones —densidad y conteos brutos— a partir del mismo subconjunto de réplicas posteriores:
 
 ::: {.exercise #cod-ppc-densidad name="Verificación predictiva posterior de la densidad"}
 
@@ -433,7 +441,9 @@ ppc_dens | ppc_pers
 
 :::
 
-En este gráfico [@bayesplot2022], la línea sólida corresponde a la distribución empírica de los datos observados y las líneas semitransparentes representan las distribuciones predictivas generadas por las muestras posteriores. Un modelo bien especificado produce líneas predictivas que envuelven razonablemente bien la distribución observada sin exceso ni defecto sistemático. Desviaciones importantes señalan limitaciones del modelo que pueden orientar la reformulación del predictor lineal o el cambio de la distribución de la densidad latente [@Gabry2019].
+En este gráfico [@bayesplot2022], la línea sólida corresponde a la distribución empírica de los datos observados y las líneas semitransparentes representan las distribuciones predictivas generadas por las muestras posteriores; `ppc_dens` compara ambas en la escala de densidad y `ppc_pers`, reponderando cada réplica por el número de estructuras observado (`V_obs`), en la escala de conteos brutos. Un modelo bien especificado produce líneas predictivas que envuelven razonablemente bien la distribución observada en ambas escalas, sin exceso ni defecto sistemático; desviaciones importantes —por ejemplo, réplicas sistemáticamente más concentradas o más dispersas que los datos observados— señalan limitaciones del modelo que pueden orientar la reformulación del predictor lineal o el cambio de la distribución de la densidad latente [@Gabry2019].
+
+La Sección \@ref(aplicacion-datos-reales), al cierre de este capítulo, aplica este mismo código sobre un ajuste con datos reales y muestra su salida efectiva.
 
 ### Criterios de información LOO y WAIC
 
@@ -450,8 +460,6 @@ log_lik_mat <- loo::extract_log_lik(stan_model,
 waic_result <- loo::waic(log_lik_mat)
 loo_result  <- loo::loo(log_lik_mat)
 
-print(waic_result)
-print(loo_result)
 
 # Comparar dos especificaciones alternativas
 loo::loo_compare(loo_modelo_1, loo_modelo_2)
@@ -461,7 +469,3 @@ loo::loo_compare(loo_modelo_1, loo_modelo_2)
 
 Valores más altos de elpd-LOO (*expected log predictive density*) indican mejor capacidad predictiva fuera de muestra [@Vehtari2017]. En la comparación entre modelos, una diferencia en elpd superior al doble de su error estándar se interpreta como evidencia de diferencia predictiva sustancial. La comparación entre LOO y WAIC en presencia de observaciones influyentes —frecuentes en segmentos con conteos extremos— se discute en @Piironen2017, que concluye que LOO es más robusto en esos contextos y debe ser el criterio principal para la selección del modelo final.
 
-
-## Resumen
-
-Este capítulo describió el ciclo completo de inferencia computacional para el modelo Poisson-lognormal: desde los fundamentos del algoritmo HMC-NUTS [@Hoffman2014; @Betancourt2017], pasando por la implementación en Stan [@Carpenter2017] con los cinco bloques del programa, hasta el procedimiento de extracción de estimaciones puntuales, intervalos de credibilidad y agregaciones territoriales en R mediante `rstan` [@rstan2023], `bayesplot` [@bayesplot2022] y `loo` [@loo2022; @Vehtari2017]. Las aplicaciones desarrolladas en esos cinco países del Caribe y América Latina ilustraron cómo los parámetros de implementación —selección de covariables, fuente del offset, umbral de densidad y configuración MCMC— se adaptan al contexto de cada operativo censal sin alterar la especificación estadística del modelo. El capítulo incluyó además el diagnóstico de convergencia mediante los estadísticos $\hat{R}$ y ESS [@Vehtari2021; @Gelman1992], la validación predictiva posterior [@Gabry2019] y la selección entre modelos alternativos mediante los criterios LOO y WAIC [@Vehtari2017; @Watanabe2010]. El capítulo siguiente profundiza en estos diagnósticos —trazas, autocorrelación y diagnósticos específicos de HMC, residuos bayesianos y calibración, criterios formales de aceptación de modelos— y añade la validación externa frente a proyecciones demográficas, registros administrativos independientes y coherencia geoespacial, como verificación final antes de la publicación de estimaciones oficiales.
