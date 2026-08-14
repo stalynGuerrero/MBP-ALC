@@ -51,7 +51,7 @@ tabla_descriptivo
 
 La Figura \@ref(fig:ejemplo-densidad-insumo) resume la base de entrada en dos paneles: arriba, la relación entre el número de estructuras/viviendas y las personas censadas por unidad censal, con su recta de tendencia; abajo, la densidad de la densidad poblacional por unidad censal, $\delta_i$, la magnitud que el modelo Poisson-lognormal busca reproducir.
 
-```{r ejemplo-densidad-insumo, echo=FALSE, fig.cap="Relación entre estructuras/viviendas y personas censadas (arriba) y densidad (kernel) de la densidad poblacional por unidad censal (abajo), en la base de entrada."}
+```{r ejemplo-densidad-insumo, echo=FALSE, fig.cap="Relación entre estructuras/viviendas y personas censadas (arriba) y densidad (kernel) de la densidad poblacional por unidad censal (abajo), en la base de entrada.", out.width = "70%" , fig.align="center"}
 knitr::include_graphics("images/cap_07/00_densidad_insumo.png")
 ```
 
@@ -74,7 +74,7 @@ Una particularidad de la implementación utilizada en este ajuste se encuentra e
 
 En el bloque de cantidades generadas se obtiene, para cada muestra posterior, una realización de la densidad predictiva para todas las unidades y, a partir de ella, una realización del conteo poblacional, reproduciendo la distribución predictiva posterior descrita en la Sección \@ref(distribucion-posterior). La colección de estas realizaciones es la base sobre la que se construyen, más adelante en este capítulo, las estimaciones puntuales de la Sección \@ref(estimaciones-segmento-censal), sus intervalos de credibilidad y las agregaciones territoriales.
 
-El ajuste conserva además la log-verosimilitud puntual para las unidades observadas, tal como declara el vector `log_lik` del Código \@ref(exr:cod-stan-poisson-lognormal). Esta cantidad no interviene en la estimación del modelo, pero permite realizar posteriormente las evaluaciones basadas en los criterios LOO y WAIC del Código \@ref(exr:cod-loo-waic). Más adelante en esta sección se indica si estas medidas pueden calcularse a partir de las salidas disponibles para este ajuste.
+El ajuste conserva además la log-verosimilitud puntual para las unidades observadas, tal como declara el vector `log_lik` del Código \@ref(exr:cod-stan-generated-quantities). Esta cantidad no interviene en la estimación del modelo, pero permite realizar posteriormente las evaluaciones basadas en los criterios LOO y WAIC del Código \@ref(exr:cod-loo-waic). Más adelante en esta sección se indica si estas medidas pueden calcularse a partir de las salidas disponibles para este ajuste.
 
 
 ```{r ejemplo-insumos, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
@@ -102,26 +102,26 @@ El tamaño efectivo de muestra se situó entre 1.198 y aproximadamente 10.898, c
 
 En conjunto, la inspección de $\hat{R}$ y del tamaño efectivo proporciona evidencia sobre la calidad del muestreo y permite identificar las cantidades que requieren una revisión adicional. El valor atípico observado en $\hat{R}$ merece especial atención, por lo que en la siguiente etapa se examinan las cadenas correspondientes para determinar si se trata de una inestabilidad localizada o de un problema que compromete el ajuste completo.
 
-```{r ejemplo-rhat-hist, echo=FALSE, fig.cap="Estadístico Rhat de todos los parámetros y cantidades generadas de un ajuste real."}
+```{r ejemplo-rhat-hist, echo=FALSE, fig.cap="Estadístico Rhat de todos los parámetros y cantidades generadas de un ajuste real.", out.width = "70%" , fig.align="center"}
 knitr::include_graphics("images/cap_07/02_rhat_pers.png")
 ```
 
 Las muestras posteriores de los parámetros estructurales permiten complementar el diagnóstico global de convergencia mediante la inspección de las cadenas y de su autocorrelación. Las Figuras \@ref(fig:ejemplo-trace-sigma) y \@ref(fig:ejemplo-trace-sigmaU) muestran la distribución posterior, los intervalos de credibilidad y las trazas de $\sigma$ y $\sigma_U$ para las cuatro cadenas del ajuste.
 
-```{r ejemplo-trace-sigma, echo=FALSE, fig.cap="Densidad, intervalo y traza posterior de sigma sobre las cuatro cadenas de un ajuste real."}
+```{r ejemplo-trace-sigma, echo=FALSE, fig.cap="Densidad, intervalo y traza posterior de sigma sobre las cuatro cadenas de un ajuste real." ,   out.width = "70%" , fig.align="center"}
 knitr::include_graphics("images/cap_07/03_trace_sigma.png")
 ```
 
 En el caso de $\sigma$, las cuatro cadenas presentan una superposición estrecha y estable a lo largo de las iteraciones, sin tendencias sistemáticas ni cambios persistentes en su nivel. La distribución posterior se concentra alrededor de 0,19 y presenta una dispersión relativamente reducida. El comportamiento de $\sigma_U$ es similar en términos de mezcla entre cadenas, aunque su distribución posterior muestra una mayor dispersión y una asimetría hacia valores altos. En ambos casos, las trazas oscilan alrededor de un nivel estable durante todo el proceso de muestreo, sin evidencia visual de deriva o separación entre cadenas.
 
-```{r ejemplo-trace-sigmaU, echo=FALSE, fig.cap="Densidad, intervalo y traza posterior de sigmaU sobre las cuatro cadenas de un ajuste real."}
+```{r ejemplo-trace-sigmaU, echo=FALSE, fig.cap="Densidad, intervalo y traza posterior de sigmaU sobre las cuatro cadenas de un ajuste real." ,   out.width = "70%" , fig.align="center"}
 knitr::include_graphics("images/cap_07/03_trace_sigmaU.png")
 ```
 
 La autocorrelación proporciona información complementaria sobre la dependencia entre muestras consecutivas. La Figura \@ref(fig:ejemplo-acf) muestra que ambos parámetros presentan una autocorrelación elevada en los primeros rezagos, característica esperable en cadenas obtenidas mediante MCMC, pero esta disminuye rápidamente y se aproxima a cero después de los primeros rezagos. No se observan patrones persistentes de autocorrelación a lo largo de la cadena.
 
 
-```{r ejemplo-acf, echo=FALSE, fig.cap="Autocorrelación de sigma y sigmaU sobre las cuatro cadenas de un ajuste real, calculada sobre las muestras posteriores guardadas."}
+```{r ejemplo-acf, echo=FALSE, fig.cap="Autocorrelación de sigma y sigmaU sobre las cuatro cadenas de un ajuste real, calculada sobre las muestras posteriores guardadas." ,   out.width = "70%" , fig.align="center"}
 # Figura generada por Data/rutinas/07_ejemplo_aplicado/04_acf_sigma.R
 knitr::include_graphics("images/cap_07/04_acf_sigma.png")
 ```
@@ -133,7 +133,7 @@ En conjunto, los diagnósticos basados en $\hat{R}$, las trazas y la autocorrela
 Una vez evaluada la convergencia de las cadenas, el siguiente paso consiste en verificar si el modelo reproduce adecuadamente las principales características de los datos observados. La verificación predictiva posterior compara la distribución de los datos observados con las distribuciones obtenidas a partir de réplicas generadas bajo el modelo ajustado. La Figura \@ref(fig:ejemplo-ppc-densidad) presenta esta comparación para la densidad poblacional y para los conteos de personas censadas.
 
 
-```{r ejemplo-ppc-densidad, echo=FALSE, fig.cap="Verificación predictiva posterior de la densidad (izquierda) y de los conteos brutos (derecha), salida real del Código de verificación predictiva posterior sobre un ajuste efectivo."}
+```{r ejemplo-ppc-densidad, echo=FALSE, fig.cap="Verificación predictiva posterior de la densidad (izquierda) y de los conteos brutos (derecha), salida real del Código de verificación predictiva posterior sobre un ajuste efectivo.",   out.width = "70%" , fig.align="center"}
 knitr::include_graphics("images/cap_07/01_densidad_pers.png")
 ```
 

@@ -68,9 +68,9 @@ Una vez descritos los principios de HMC y NUTS, es posible abordar su implementa
 
 Un programa en Stan se organiza en bloques, cada uno con una función específica dentro del proceso de inferencia. El bloque `data` declara la información conocida que se suministra desde R; `parameters` define los parámetros desconocidos del modelo; `transformed parameters` calcula cantidades deterministas derivadas de esos parámetros; `model` especifica la verosimilitud y las distribuciones previas que definen la distribución posterior; y `generated quantities` calcula cantidades derivadas de las muestras posteriores, como predicciones para nuevas observaciones. Esta secuencia no es arbitraria: reproduce, en el mismo orden, la construcción del modelo presentada en el capítulo anterior, desde los datos observados hasta las predicciones derivadas de la distribución posterior.
 
-El Código \@ref(exr:cod-stan-poisson-lognormal) presenta la implementación en Stan del modelo Poisson-lognormal utilizada en las asistencias técnicas de la CEPAL para la estimación de población:
+El Código \@ref(exr:cod-stan-poisson-lognormal) presenta la implementación en Stan del modelo Poisson-lognormal utilizada en las asistencias técnicas de la CEPAL para la estimación de población. Por su extensión, el programa se muestra en dos partes: primero los bloques `data`, `parameters`, `transformed parameters` y `model`, que especifican el modelo y su ajuste; luego, en el Código \@ref(exr:cod-stan-generated-quantities), el bloque `generated quantities`, que produce las predicciones y la log-verosimilitud puntual. Ambos fragmentos forman un único programa Stan.
 
-::: {.exercise #cod-stan-poisson-lognormal name="Modelo Poisson-lognormal en Stan"}
+::: {.exercise #cod-stan-poisson-lognormal name="Modelo Poisson-lognormal en Stan: especificación y ajuste"}
 
 ```stan
 data {
@@ -116,7 +116,15 @@ model {
   Y_obs    ~ poisson(lambda);
   densidad ~ lognormal(lp, sigma);
 }
+```
 
+:::
+
+El Código \@ref(exr:cod-stan-generated-quantities) continúa el mismo programa con el bloque `generated quantities`, que reutiliza las muestras posteriores de `beta`, `gamma` y `sigma` para generar, sobre la totalidad de los `D_tot` segmentos del país, la densidad predictiva y el conteo poblacional asociado, además de la log-verosimilitud puntual de los segmentos observados:
+
+::: {.exercise #cod-stan-generated-quantities name="Modelo Poisson-lognormal en Stan: cantidades generadas"}
+
+```stan
 generated quantities {
   vector[D_tot]           lp_tot;
   array[D_tot] real<lower=0> densidad_hat;

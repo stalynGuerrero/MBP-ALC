@@ -50,8 +50,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -286,7 +284,33 @@ div.csl-indent {
 <li class="chapter" data-level="5.3.6" data-path="cap-inferencia.html"><a href="cap-inferencia.html#estimaciones-y-agregaci%C3%B3n-territorial"><i class="fa fa-check"></i><b>5.3.6</b> Estimaciones y agregación territorial</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="6" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html"><i class="fa fa-check"></i><b>6</b> Diagnóstico y Validación del Modelo</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#diagn%C3%B3stico-de-convergencia-mcmc"><i class="fa fa-check"></i><b>6.1</b> Diagnóstico de convergencia MCMC</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#estadistico-rhat"><i class="fa fa-check"></i><b>6.1.1</b> Estadístico R-hat</a></li>
+<li class="chapter" data-level="6.1.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#tamano-efectivo-muestra"><i class="fa fa-check"></i><b>6.1.2</b> Tamaño efectivo de muestra (ESS)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#trace-plots-autocorrelaci%C3%B3n-y-diagn%C3%B3sticos-espec%C3%ADficos-de-hmc"><i class="fa fa-check"></i><b>6.1.3</b> Trace plots, autocorrelación y diagnósticos específicos de HMC</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#validaci%C3%B3n-predictiva-posterior"><i class="fa fa-check"></i><b>6.2</b> Validación predictiva posterior</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#posterior-predictive-checks-ppc"><i class="fa fa-check"></i><b>6.2.1</b> Posterior predictive checks (PPC)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#residuos-bayesianos"><i class="fa fa-check"></i><b>6.2.2</b> Residuos bayesianos</a></li>
+<li class="chapter" data-level="6.2.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#comparaci%C3%B3n-con-conteos-observados-y-calibraci%C3%B3n"><i class="fa fa-check"></i><b>6.2.3</b> Comparación con conteos observados y calibración</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#selecci%C3%B3n-y-comparaci%C3%B3n-de-modelos"><i class="fa fa-check"></i><b>6.3</b> Selección y comparación de modelos</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#criterio-leave-one-out-loo-cv-y-diagn%C3%B3stico-de-pareto-k"><i class="fa fa-check"></i><b>6.3.1</b> Criterio Leave-One-Out (LOO-CV) y diagnóstico de Pareto k</a></li>
+<li class="chapter" data-level="6.3.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#widely-applicable-information-criterion-waic"><i class="fa fa-check"></i><b>6.3.2</b> Widely Applicable Information Criterion (WAIC)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#criterio-de-elecci%C3%B3n-del-modelo-final"><i class="fa fa-check"></i><b>6.3.3</b> Criterio de elección del modelo final</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#validaci%C3%B3n-externa"><i class="fa fa-check"></i><b>6.4</b> Validación externa</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#consistencia-con-proyecciones-demogr%C3%A1ficas"><i class="fa fa-check"></i><b>6.4.1</b> Consistencia con proyecciones demográficas</a></li>
+<li class="chapter" data-level="6.4.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#comparaci%C3%B3n-con-registros-administrativos-independientes"><i class="fa fa-check"></i><b>6.4.2</b> Comparación con registros administrativos independientes</a></li>
+<li class="chapter" data-level="6.4.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#evaluaci%C3%B3n-de-coherencia-geoespacial"><i class="fa fa-check"></i><b>6.4.3</b> Evaluación de coherencia geoespacial</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
   <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
@@ -451,72 +475,15 @@ Y_i^{(C)}+\widehat{Y}_i^{(M)}, &amp; 0&lt;\hat{c}_i&lt;1,
 <span id="cb1-14"><a href="cap-insumos.html#cb1-14" tabindex="-1"></a>  <span class="at">indice_disp =</span> <span class="fu">var</span>(Y) <span class="sc">/</span> <span class="fu">mean</span>(Y)</span>
 <span id="cb1-15"><a href="cap-insumos.html#cb1-15" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:dist-conteos-tabla">Tabla 3.1: </span>Resumen descriptivo de los conteos observados por segmento
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-N.º segmentos
-</th>
-<th style="text-align:center;">
-Media
-</th>
-<th style="text-align:center;">
-Mediana
-</th>
-<th style="text-align:center;">
-Desv. estándar
-</th>
-<th style="text-align:center;">
-Asimetría
-</th>
-<th style="text-align:center;">
-Curtosis
-</th>
-<th style="text-align:center;">
-Índice de dispersión
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-500
-</td>
-<td style="text-align:center;">
-54.29
-</td>
-<td style="text-align:center;">
-51
-</td>
-<td style="text-align:center;">
-28.9
-</td>
-<td style="text-align:center;">
-6.92
-</td>
-<td style="text-align:center;">
-65.11
-</td>
-<td style="text-align:center;">
-15.38
-</td>
-</tr>
-</tbody>
-</table>
-<p>La Tabla <a href="cap-insumos.html#tab:dist-conteos-tabla">3.1</a> resume los estadísticos descriptivos calculados sobre los 500 segmentos. El índice de dispersión es 15.38, muy por encima de 1, lo que confirma la sobredispersión de los conteos y respalda la especificación jerárquica con densidad latente log-normal desarrollada en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a>. El coeficiente de asimetría (6.92) señala una distribución con cola derecha pesada, mientras que la curtosis (65.11) evidencia un comportamiento leptocúrtico respecto a la distribución normal (<span class="math inline">\(\text{curtosis}=3\)</span>). Este patrón es característico de los conteos poblacionales por segmento, donde la mayoría de las unidades presenta valores moderados y un número reducido de segmentos concentra valores extremos.</p>
+<p>La Tabla <a href="#tab:dist-conteos-tabla"><strong>??</strong></a> resume los estadísticos descriptivos calculados sobre los 500 segmentos. El índice de dispersión es 15.38, muy por encima de 1, lo que confirma la sobredispersión de los conteos y respalda la especificación jerárquica con densidad latente log-normal desarrollada en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a>. El coeficiente de asimetría (6.92) señala una distribución con cola derecha pesada, mientras que la curtosis (65.11) evidencia un comportamiento leptocúrtico respecto a la distribución normal (<span class="math inline">\(\text{curtosis}=3\)</span>). Este patrón es característico de los conteos poblacionales por segmento, donde la mayoría de las unidades presenta valores moderados y un número reducido de segmentos concentra valores extremos.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="cap-insumos.html#cb2-1" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">log_Y =</span> <span class="fu">log</span>(Y <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="cap-insumos.html#cb2-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> log_Y)) <span class="sc">+</span></span>
 <span id="cb2-3"><a href="cap-insumos.html#cb2-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">&quot;#CBD5E1&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb2-4"><a href="cap-insumos.html#cb2-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;log(conteo + 1)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frecuencia&quot;</span>) <span class="sc">+</span></span>
 <span id="cb2-5"><a href="cap-insumos.html#cb2-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:dist-conteos-hist"></span>
-<img src="05-InsumosModelamiento_files/figure-html/dist-conteos-hist-1.svg" alt="Distribución de log(Y + 1) por segmento" width="672" />
-<p class="caption">
-Figura 3.1: Distribución de log(Y + 1) por segmento
-</p>
+<div class="float"><span style="display:block;" id="fig:dist-conteos-hist"></span>
+<embed src="05-InsumosModelamiento_files/figure-latex/dist-conteos-hist-1.pdf" />
+<div class="figcaption">Figura 3.1: Distribución de log(Y + 1) por segmento</div>
 </div>
 <p>La visualización de la distribución debe realizarse tanto en escala original como en escala logarítmica. En la escala original, la distribución suele ser fuertemente asimétrica con cola derecha pesada; en la escala logarítmica, la distribución es más simétrica y permite evaluar si la especificación log-lineal es adecuada.</p>
 <p>La proporción de ceros en los conteos es otro indicador relevante. Un exceso de ceros respecto a lo esperado bajo el modelo de Poisson puede indicar la presencia de segmentos genuinamente deshabitados, problemas de cobertura en áreas con baja densidad, o la necesidad de incorporar un componente de inflación de ceros en el modelo.</p>
@@ -546,11 +513,9 @@ d_i^2 = (\mathbf{x}_i - \bar{\mathbf{x}})^{\top} \hat{\boldsymbol{\Sigma}}^{-1} 
 <span id="cb3-7"><a href="cap-insumos.html#cb3-7" tabindex="-1"></a>p_valor <span class="ot">&lt;-</span> <span class="fu">pchisq</span>(d2_mah, <span class="at">df =</span> <span class="fu">ncol</span>(X_mat), <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb3-8"><a href="cap-insumos.html#cb3-8" tabindex="-1"></a>outliers_multivariados <span class="ot">&lt;-</span> <span class="fu">which</span>(p_valor <span class="sc">&lt;</span> <span class="fl">0.025</span>)</span></code></pre></div>
 </div>
-<div class="figure"><span style="display:block;" id="fig:outliers-grafico"></span>
-<img src="05-InsumosModelamiento_files/figure-html/outliers-grafico-1.svg" alt="Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis" width="672" />
-<p class="caption">
-Figura 3.2: Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis
-</p>
+<div class="float"><span style="display:block;" id="fig:outliers-grafico"></span>
+<embed src="05-InsumosModelamiento_files/figure-latex/outliers-grafico-1.pdf" />
+<div class="figcaption">Figura 3.2: Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis</div>
 </div>
 <p>La Figura <a href="cap-insumos.html#fig:outliers-grafico">3.2</a> ubica a cada uno de los 500 segmentos en el plano definido por el residuo de Pearson del modelo nulo y la distancia de Mahalanobis sobre las covariables auxiliares, con líneas punteadas que marcan los respectivos umbrales de decisión (<span class="math inline">\(|r_i^P| = 3\)</span> y el percentil 97.5 de <span class="math inline">\(\chi^2_p\)</span>). De ellos, 48 segmentos superan el umbral del residuo de Pearson (categoría “Residuo de Pearson”, en azul), 16 superan el umbral de la distancia de Mahalanobis (categoría “Mahalanobis”, en naranja), y 3 son señalados simultáneamente por los dos criterios (categoría “Ambos criterios”, en rojo).</p>
 <p>Los segmentos marcados en rojo constituyen los candidatos prioritarios de revisión, ya que combinan un conteo discordante con el nivel general de la muestra y una combinación inusual de covariables auxiliares. Los segmentos señalados por un solo criterio —ya sea un conteo extremo sin covariables atípicas, o covariables atípicas con un conteo dentro del rango esperado— requieren un análisis más detallado antes de decidir su tratamiento, pues cada criterio captura una forma distinta de atipicidad: el residuo de Pearson detecta conteos discordantes con el nivel medio de la muestra, mientras que la distancia de Mahalanobis detecta combinaciones inusuales en el espacio de las covariables, independientemente del valor del conteo. Una vez identificadas, las observaciones atípicas deben revisarse para determinar si corresponden a errores de procesamiento, a características genuinas del territorio o a problemas de cobertura del operativo. La decisión sobre su tratamiento —corrección, exclusión o inclusión con peso reducido— debe documentarse explícitamente.</p>
@@ -577,55 +542,8 @@ Figura 3.2: Segmentos atípicos según residuo de Pearson y distancia de Mahalan
 <span id="cb4-7"><a href="cap-insumos.html#cb4-7" tabindex="-1"></a>  <span class="at">VIF        =</span> car<span class="sc">::</span><span class="fu">vif</span>(modelo_ols)</span>
 <span id="cb4-8"><a href="cap-insumos.html#cb4-8" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:relacion-variables-vif-tabla">Tabla 3.2: </span>Factores de inflación de varianza (VIF) de las covariables auxiliares
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-Covariable
-</th>
-<th style="text-align:center;">
-VIF
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-luminosidad
-</td>
-<td style="text-align:center;">
-1.01
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-area_construida
-</td>
-<td style="text-align:center;">
-1.01
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-dist_urbano
-</td>
-<td style="text-align:center;">
-1.00
-</td>
-</tr>
-</tbody>
-</table>
-<p>La Tabla <a href="cap-insumos.html#tab:relacion-variables-vif-tabla">3.2</a> reporta el VIF de cada covariable. El valor máximo observado es 1.01, muy por debajo del umbral de 10, por lo que no se evidencia multicolinealidad problemática entre las covariables auxiliares.</p>
-<div class="figure"><span style="display:block;" id="fig:relacion-variables-heatmap"></span>
-<img src="05-InsumosModelamiento_files/figure-html/relacion-variables-heatmap-1.svg" alt="Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares" width="70%" />
-<p class="caption">
-Figura 3.3: Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares
-</p>
-</div>
-<p>La Figura <a href="cap-insumos.html#fig:relacion-variables-heatmap">3.3</a> muestra la matriz de correlación entre <span class="math inline">\(\log(Y_i + 1)\)</span> y las covariables estandarizadas, en una escala divergente (rojo = correlación negativa, azul = correlación positiva) que facilita distinguir la dirección y magnitud de cada asociación de un vistazo.</p>
+<p>La Tabla <a href="#tab:relacion-variables-vif-tabla"><strong>??</strong></a> reporta el VIF de cada covariable. El valor máximo observado es 1.01, muy por debajo del umbral de 10, por lo que no se evidencia multicolinealidad problemática entre las covariables auxiliares.</p>
+<p>La Figura <a href="#fig:relacion-variables-heatmap"><strong>??</strong></a> muestra la matriz de correlación entre <span class="math inline">\(\log(Y_i + 1)\)</span> y las covariables estandarizadas, en una escala divergente (rojo = correlación negativa, azul = correlación positiva) que facilita distinguir la dirección y magnitud de cada asociación de un vistazo.</p>
 <p>En un modelo de propósito predictivo, la presencia de correlaciones elevadas entre la variable dependiente y las covariables no constituye por sí sola un criterio suficiente para seleccionar o descartar predictores, ni una correlación baja implica necesariamente ausencia de valor predictivo una vez consideradas las demás covariables. De igual forma, la multicolinealidad detectada mediante el VIF no necesariamente deteriora la capacidad predictiva del modelo, especialmente en el enfoque bayesiano adoptado en este libro, donde la regularización inducida por las distribuciones a priori contribuye a estabilizar las estimaciones ante covariables correlacionadas. Por esta razón, los diagnósticos de esta sección deben interpretarse como herramientas para comprender la estructura de los datos y detectar redundancias, y no como reglas automáticas de inclusión o exclusión de covariables.</p>
 <p>La documentación sistemática de los resultados del diagnóstico exploratorio es un insumo esencial para la especificación del modelo. Las decisiones sobre transformaciones, exclusión de covariables, tratamiento de outliers y estratificación del análisis deben fundamentarse en este diagnóstico y quedar registradas para garantizar la reproducibilidad de las estimaciones finales.</p>
 

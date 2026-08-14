@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+Siempre tienes que llamarme por mi nombre Stalyn cuando des una respuesta y responde en español. 
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview

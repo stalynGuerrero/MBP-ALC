@@ -1,6 +1,19 @@
+# Diagnóstico y Validación de los Modelos de Población {#cap-diagnostico}
+
+El Capítulo @ref(cap-inferencia) estableció el procedimiento de estimación de los modelos de población mediante HMC-NUTS y presentó los principales elementos para evaluar la calidad de la inferencia obtenida. En este contexto, la validación no se limita a verificar que el algoritmo de estimación haya convergido, sino que debe determinar si el modelo proporciona una representación adecuada de la población en las áreas o segmentos de interés y si las estimaciones obtenidas son consistentes con la información disponible.
+
+Para los modelos de población, esta evaluación adquiere particular importancia debido a que el objetivo no es únicamente reproducir los datos utilizados durante el ajuste, sino generar estimaciones para áreas en las que la información censal puede ser incompleta, presentar problemas de cobertura o no estar disponible. Por esta razón, la evaluación debe considerar tanto el comportamiento estadístico del modelo como su capacidad para reproducir las características observadas de la población y su consistencia con fuentes de información independientes.
+
+La validación se desarrolla en cuatro componentes complementarios. El primero corresponde al diagnóstico de convergencia y eficiencia de las cadenas MCMC, necesario para establecer que las distribuciones posteriores utilizadas para inferir la población han sido adecuadamente exploradas. El segundo corresponde a la validación predictiva posterior, mediante la cual se evalúa si el modelo puede reproducir las características relevantes de los conteos o tamaños de población observados. El tercero comprende la selección y comparación de especificaciones alternativas, considerando su capacidad para representar adecuadamente la estructura de la población y su comportamiento predictivo. Finalmente, la validación externa contrasta las estimaciones de población con fuentes independientes de los datos empleados en la estimación.
+
+Estas dimensiones permiten evaluar el modelo desde perspectivas diferentes. Una adecuada convergencia de las cadenas garantiza la calidad computacional de la inferencia, pero no demuestra que el modelo represente correctamente la población. De igual forma, un modelo puede reproducir adecuadamente los datos utilizados para su estimación y presentar limitaciones al aplicarse en áreas no observadas o al contrastarse con fuentes externas. Por ello, la validación de los modelos de población debe considerar conjuntamente la estabilidad de la inferencia, la capacidad predictiva y la coherencia de las estimaciones con información externa.
+
+El propósito de este capítulo es establecer criterios explícitos para determinar cuándo un modelo de población puede considerarse suficientemente confiable para generar estimaciones en áreas o segmentos con información censal incompleta o afectada por problemas operativos. La evaluación permitirá identificar especificaciones adecuadas, detectar problemas que requieran reformulación del modelo y establecer evidencia suficiente para sustentar el uso de las estimaciones en la producción estadística.
+
+
 # Diagnóstico y Validación del Modelo {#cap-diagnostico}
 
-El capítulo anterior estableció el procedimiento de estimación del modelo Poisson-lognormal mediante HMC-NUTS en Stan y presentó, de forma introductoria, tres herramientas de verificación: el estadístico $\hat{R}$ y el tamaño efectivo de muestra reportados por `summary()`, la verificación predictiva posterior mediante superposición de densidades y los criterios de información LOO y WAIC. Ninguna estimación bayesiana debe considerarse válida por el solo hecho de haber sido producida por el muestreador: las muestras posteriores pueden provenir de cadenas que no convergieron a la distribución objetivo, el modelo puede ajustar razonablemente la media de los datos pero fallar en reproducir su variabilidad o su forma, y una especificación puede superar los diagnósticos internos de ajuste y, sin embargo, ser inconsistente con fuentes de información externas al propio modelo.
+El Capítulo \@ref(cap-inferencia) estableció el procedimiento de estimación del modelo Poisson-lognormal mediante HMC-NUTS en Stan y presentó, de forma introductoria, tres herramientas de verificación: el estadístico $\hat{R}$ y el tamaño efectivo de muestra reportados por `summary()`, la verificación predictiva posterior mediante superposición de densidades y los criterios de información LOO y WAIC. Ninguna estimación bayesiana debe considerarse válida por el solo hecho de haber sido producida por el muestreador: las muestras posteriores pueden provenir de cadenas que no convergieron a la distribución objetivo, el modelo puede ajustar razonablemente la media de los datos pero fallar en reproducir su variabilidad o su forma, y una especificación puede superar los diagnósticos internos de ajuste y, sin embargo, ser inconsistente con fuentes de información externas al propio modelo.
 
 Este capítulo profundiza en esas tres líneas de verificación y añade una cuarta, ausente en el capítulo anterior: la validación externa, que contrasta las estimaciones del modelo con fuentes independientes de los datos utilizados en la estimación. La estructura se organiza en cuatro secciones: diagnóstico de convergencia MCMC, validación predictiva posterior, selección y comparación de modelos, y validación externa. El objetivo transversal es establecer criterios explícitos y reproducibles para decidir cuándo un modelo puede considerarse adecuado para su uso en la producción de estimaciones oficiales de población, y cuándo debe ser reformulado.
 
@@ -58,7 +71,7 @@ $$
 n_{eff} = \frac{mn}{1 + 2\sum_{t=1}^{\infty} \hat{\rho}_t}
 $$
 
-donde $mn$ es el número total de muestras disponibles tras el calentamiento. Cuanto mayor es la autocorrelación, menor es $n_{eff}$ en relación con $mn$, y mayor es el error estándar de Monte Carlo de cualquier estimación basada en esas muestras, tal como refleja la columna `se_mean` del resumen posterior introducida en el capítulo anterior.
+donde $mn$ es el número total de muestras disponibles tras el calentamiento. Cuanto mayor es la autocorrelación, menor es $n_{eff}$ en relación con $mn$, y mayor es el error estándar de Monte Carlo de cualquier estimación basada en esas muestras, tal como refleja la columna `se_mean` del resumen posterior introducida en la Tabla \@ref(tab:resumen-posterior-columnas) del Capítulo \@ref(cap-inferencia).
 
 Al igual que con $\hat{R}$, @Vehtari2021 muestra que un único valor de ESS puede ser engañoso cuando la distribución posterior es asimétrica o de colas pesadas, dado que la mezcla de la cadena puede ser buena en el centro de la distribución y deficiente en las colas. Por esta razón se recomienda reportar dos cantidades: el **Bulk-ESS**, que mide la eficiencia de muestreo en la región central de la distribución (relevante para la estimación de medias y medianas), y el **Tail-ESS**, que mide la eficiencia en las colas (relevante para la estimación de los cuantiles 2.5% y 97.5% que definen los intervalos de credibilidad). Un modelo puede tener un Bulk-ESS adecuado y, simultáneamente, un Tail-ESS insuficiente para reportar intervalos de credibilidad confiables.
 
@@ -149,7 +162,7 @@ $$
 
 Valores de $p_B$ cercanos a 0 o a 1 indican que el estadístico observado se ubica en una región de baja densidad predictiva, evidenciando una discrepancia sistemática entre el modelo y los datos en la dimensión capturada por $T(\cdot)$.
 
-Más allá de la superposición de densidades presentada en el capítulo anterior, resulta informativo evaluar estadísticos de prueba específicos mediante `bayesplot::ppc_stat()`:
+Más allá de la superposición de densidades del Código \@ref(exr:cod-ppc-densidad), resulta informativo evaluar estadísticos de prueba específicos mediante `bayesplot::ppc_stat()`:
 
 ```r
 library(bayesplot)
@@ -167,7 +180,7 @@ ppc_stat(y = Y_obs, yrep = Y_rep,
           stat = function(y) mean(y == 0))
 ```
 
-La verificación desagregada por subgrupos —segmentos urbanos frente a rurales, o segmentos clasificados según el nivel de cobertura definido en el capítulo de preparación de insumos— es particularmente relevante en el contexto censal, dado que un modelo puede ajustar adecuadamente el comportamiento agregado de los conteos y, sin embargo, subestimar sistemáticamente la variabilidad en un subconjunto específico de segmentos con características territoriales particulares:
+La verificación desagregada por subgrupos —segmentos urbanos frente a rurales, o segmentos clasificados según el nivel de cobertura definido en la Sección \@ref(clasificacion-segmentos)— es particularmente relevante en el contexto censal, dado que un modelo puede ajustar adecuadamente el comportamiento agregado de los conteos y, sin embargo, subestimar sistemáticamente la variabilidad en un subconjunto específico de segmentos con características territoriales particulares:
 
 ```r
 ppc_stat_grouped(
@@ -179,7 +192,7 @@ ppc_stat_grouped(
 
 ### Residuos bayesianos
 
-El análisis de residuos permite identificar segmentos individuales cuyo conteo observado es inconsistente con la predicción del modelo. A diferencia de los residuos de Pearson utilizados en el diagnóstico exploratorio del capítulo de preparación de insumos —que se basan en un único valor ajustado sin incertidumbre—, el residuo bayesiano incorpora la distribución predictiva posterior completa. Para el segmento $i$, el residuo estandarizado se define como:
+El análisis de residuos permite identificar segmentos individuales cuyo conteo observado es inconsistente con la predicción del modelo. A diferencia de los residuos de Pearson utilizados en el diagnóstico exploratorio de valores atípicos del Capítulo \@ref(cap-insumos) —que se basan en un único valor ajustado sin incertidumbre—, el residuo bayesiano incorpora la distribución predictiva posterior completa. Para el segmento $i$, el residuo estandarizado se define como:
 
 $$
 r_i = \frac{Y_i - \mathbb{E}\!\left[\tilde{Y}_i \mid \mathbf{Y}_{obs}\right]}{\sqrt{\text{Var}\!\left(\tilde{Y}_i \mid \mathbf{Y}_{obs}\right)}}
@@ -219,7 +232,7 @@ Una cobertura empírica sustancialmente inferior al 95% indica que los intervalo
 
 ## Selección y comparación de modelos
 
-Cuando existen especificaciones alternativas del modelo —distintos subconjuntos de covariables, distintas estructuras de efectos aleatorios o distribuciones alternativas para la sobredispersión, como las discutidas en el capítulo de especificación del modelo—, es necesario un criterio formal para seleccionar la especificación final.
+Cuando existen especificaciones alternativas del modelo —distintos subconjuntos de covariables, distintas estructuras de efectos aleatorios (Sección \@ref(efectos-aleatorios)) o distintos supuestos sobre el mecanismo de sobredispersión (Sección \@ref(sobredispersion-offset))—, es necesario un criterio formal para seleccionar la especificación final.
 
 ### Criterio Leave-One-Out (LOO-CV) y diagnóstico de Pareto k
 
@@ -283,7 +296,7 @@ comparacion <- loo::loo_compare(loo_modelo_1, loo_modelo_2)
 print(comparacion)
 ```
 
-Como se estableció en el capítulo anterior, una diferencia en elpd superior en magnitud al doble de su error estándar (`elpd_diff` frente a `se_diff`) se interpreta como evidencia de una diferencia predictiva sustancial entre modelos. Este criterio debe aplicarse únicamente cuando el diagnóstico de Pareto $\hat{k}$ indica que la comparación es confiable para la mayoría de las observaciones; si un número apreciable de segmentos presenta $\hat{k}_i > 0.7$ en cualquiera de los modelos comparados, la diferencia estimada debe interpretarse con cautela.
+Como se estableció en el Código \@ref(exr:cod-loo-waic), una diferencia en elpd superior en magnitud al doble de su error estándar (`elpd_diff` frente a `se_diff`) se interpreta como evidencia de una diferencia predictiva sustancial entre modelos. Este criterio debe aplicarse únicamente cuando el diagnóstico de Pareto $\hat{k}$ indica que la comparación es confiable para la mayoría de las observaciones; si un número apreciable de segmentos presenta $\hat{k}_i > 0.7$ en cualquiera de los modelos comparados, la diferencia estimada debe interpretarse con cautela.
 
 Como complemento a los criterios de información —que evalúan el ajuste global de la distribución predictiva— es recomendable evaluar una regla de puntuación propia (*proper scoring rule*) orientada específicamente a la calidad de las predicciones puntuales para conteos, como el *ranked probability score* [@Gneiting2007]:
 
@@ -323,7 +336,7 @@ Las recomendaciones de CEPAL para los censos de la ronda 2020 [@CEPAL2023] enfat
 
 ### Comparación con registros administrativos independientes
 
-Cuando el modelo incorpora registros administrativos como covariables —padrones electorales, afiliación a salud, programas sociales, según lo descrito en el capítulo de integración de fuentes—, dichos registros no pueden emplearse simultáneamente como fuente de validación externa, dado que ya forman parte de la información utilizada en la estimación. Sin embargo, es habitual que existan registros administrativos adicionales, no incorporados como covariables por razones de cobertura parcial, actualización deficiente o disponibilidad tardía, que pueden reservarse específicamente para la validación externa del modelo.
+Cuando el modelo incorpora registros administrativos como covariables —afiliación a salud, consumo de servicios públicos, programas sociales, según lo descrito en la Sección \@ref(registros-administrativos)—, dichos registros no pueden emplearse simultáneamente como fuente de validación externa, dado que ya forman parte de la información utilizada en la estimación. Sin embargo, es habitual que existan registros administrativos adicionales, no incorporados como covariables por razones de cobertura parcial, actualización deficiente o disponibilidad tardía, que pueden reservarse específicamente para la validación externa del modelo.
 
 La comparación se realiza mediante la razón entre la predicción del modelo y el conteo del registro reservado:
 
@@ -335,7 +348,7 @@ donde $Y_i^{(A_{val})}$ es el conteo del registro administrativo reservado para 
 
 ### Evaluación de coherencia geoespacial
 
-La distribución espacial de la población presenta continuidad territorial: segmentos geográficamente próximos tienden a presentar características demográficas similares, tal como se discutió en el capítulo de integración de fuentes al introducir los efectos espaciales aleatorios de tipo CAR [@Banerjee2015]. Un modelo correctamente especificado debe capturar esta continuidad a través de sus covariables y efectos aleatorios territoriales, de modo que los residuos bayesianos no exhiban autocorrelación espacial remanente.
+La distribución espacial de la población presenta continuidad territorial: segmentos geográficamente próximos tienden a presentar características demográficas similares. El modelo desarrollado en este libro captura esta continuidad únicamente de manera indirecta: a través de las covariables espaciales de la Sección \@ref(variables-espaciales) —distancia a centros urbanos, accesibilidad, topografía— y del efecto aleatorio territorial $\boldsymbol{\gamma}$ de la Sección \@ref(efectos-aleatorios), que es intercambiable (jerárquico) y no impone una estructura de adyacencia entre segmentos vecinos [@Banerjee2015]. Un modelo correctamente especificado debe capturar la continuidad espacial a través de estos elementos, de modo que los residuos bayesianos no exhiban autocorrelación espacial remanente.
 
 El índice de Moran cuantifica la autocorrelación espacial de los residuos $r_i$ definidos en la sección de validación predictiva posterior:
 
@@ -354,6 +367,6 @@ pesos   <- nb2listw(vecinos, style = "W", zero.policy = TRUE)
 moran.test(residuos_bayes, listw = pesos, zero.policy = TRUE)
 ```
 
-Cuando el índice de Moran señala autocorrelación espacial residual relevante, las alternativas de especificación incluyen la incorporación de efectos aleatorios espacialmente estructurados de tipo CAR en el predictor lineal —en lugar de, o adicionalmente a, los efectos aleatorios no estructurados por unidad territorial definidos en el capítulo de especificación del modelo—, o la inclusión de covariables adicionales capaces de explicar el patrón espacial observado en los residuos.
+Cuando el índice de Moran señala autocorrelación espacial residual relevante, las alternativas de especificación incluyen la incorporación de efectos aleatorios espacialmente estructurados de tipo CAR en el predictor lineal —en lugar de, o adicionalmente a, los efectos aleatorios no estructurados por unidad territorial definidos en la Sección \@ref(efectos-aleatorios)—, o la inclusión de covariables adicionales capaces de explicar el patrón espacial observado en los residuos.
 
 
