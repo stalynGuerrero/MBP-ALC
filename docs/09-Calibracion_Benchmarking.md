@@ -1,0 +1,229 @@
+# Calibración y Benchmarking Subnacional {#cap-calibracion}
+
+El capítulo anterior estableció los criterios de convergencia, validación predictiva y validación externa que un modelo Poisson-lognormal debe satisfacer antes de que sus estimaciones puedan utilizarse en la producción de estadísticas oficiales de población. Sin embargo, la validación de un modelo no resuelve por sí sola un problema adicional, frecuente en la práctica institucional: los organismos nacionales de estadística suelen requerir que las estimaciones subnacionales, al agregarse, coincidan exactamente con totales de referencia fijados de manera independiente al modelo —un total nacional publicado oficialmente, una cifra departamental proveniente de un recuento preliminar de mayor confiabilidad, o una proyección demográfica considerada autoridad institucional para efectos de asignación presupuestaria—. Este capítulo desarrolla el conjunto de técnicas conocidas como calibración o *benchmarking*, orientadas a conciliar las estimaciones del modelo con dichos totales de control, preservando en la mayor medida posible la información distribucional aportada por el modelo bayesiano.
+
+La estructura del capítulo comprende tres secciones. La primera examina por qué surge la necesidad de calibración y distingue formalmente la coherencia jerárquica interna del modelo —ya garantizada por construcción, según se estableció en el capítulo de especificación del modelo— de la coherencia externa frente a totales de control, que no está garantizada y constituye el objeto propio del benchmarking. La segunda presenta los métodos de calibración: el ajuste proporcional clásico, el ajuste ponderado por precisión y su extensión aditiva a la distribución posterior completa, junto con su aplicación práctica en jerarquías territoriales anidadas. La tercera evalúa el impacto de la calibración sobre las estimaciones puntuales y sobre los intervalos de credibilidad.
+
+## Benchmarking con proyecciones poblacionales
+
+### Necesidad de coherencia entre niveles geográficos
+
+Los organismos nacionales de estadística no publican estimaciones de población de manera aislada: cada nueva cifra se inserta en un sistema de referencias previamente establecidas —conteos censales anteriores, proyecciones demográficas oficiales, cifras utilizadas en la asignación de recursos fiscales o en la delimitación de circunscripciones electorales—. Cuando el total nacional o departamental implícito en las estimaciones de un modelo bayesiano de estimación subnacional difiere de estas cifras de referencia, la discrepancia genera un problema que trasciende lo estrictamente estadístico: dos totales distintos y no reconciliados para la misma población generan confusión institucional, erosionan la confianza pública en las estadísticas oficiales y pueden ser incompatibles con compromisos legales o presupuestarios previamente adquiridos sobre la base de la cifra de referencia.
+
+Esta necesidad de coherencia con totales externos es un problema clásico dentro de la Estimación en Áreas Pequeñas [@Rao2015], habitualmente abordado bajo el término *benchmarking*. La particularidad del enfoque bayesiano desarrollado en este libro es que dicho ajuste debe realizarse preservando la coherencia probabilística de las estimaciones: no solo el valor puntual, sino la distribución posterior completa, incluidos los intervalos de credibilidad, deben ajustarse de manera consistente con el nuevo total exigido.
+
+### Restricciones de consistencia jerárquica
+
+Es necesario distinguir dos nociones de coherencia que, aunque relacionadas, tienen naturaleza distinta. La primera es la **coherencia jerárquica interna** del modelo, definida formalmente en el capítulo de modelo para conteos poblacionales: dado que las predicciones $\tilde{Y}_i^{(t)}$ para cada segmento se generan dentro de la misma muestra posterior $t$, su agregación es automáticamente consistente entre niveles geográficos para cualquier muestra individual:
+
+$$
+\hat{N}_k^{(3),(t)} = \sum_{i \,\in\, \mathcal{S}_k} \tilde{Y}_i^{(t)}, \qquad \hat{N}_j^{(2),(t)} = \sum_{k \,:\, k \subset j} \hat{N}_k^{(3),(t)}
+$$
+
+Esta propiedad no requiere ningún procedimiento adicional: es una consecuencia directa de sumar predicciones generadas conjuntamente a partir del mismo vector de parámetros $\boldsymbol{\theta}^{(t)}$, y se mantiene exactamente en cada una de las $T$ muestras posteriores.
+
+La segunda noción es la **coherencia externa** frente a un total de control $N_j^*$ que no proviene del modelo —una cifra oficial, una proyección demográfica institucional o un recuento independiente—. En general, el total implícito en el modelo:
+
+$$
+\hat{N}_{j,+} = \mathbb{E}\!\left[\hat{N}_j^{(2)} \mid \mathbf{Y}_{obs}\right] \approx \frac{1}{T}\sum_{t=1}^{T} \hat{N}_j^{(2),(t)}
+$$
+
+no coincide exactamente con $N_j^*$, y no existe razón estadística para esperar que lo haga: el modelo y el total de control son, casi siempre, dos estimaciones distintas de la misma cantidad, obtenidas por procedimientos independientes. Es esta segunda forma de incoherencia —y no la primera, que ya está resuelta por construcción— la que constituye el objeto del benchmarking. Un aspecto crítico que se retoma en la sección de aplicación práctica es que la calibración externa, al modificar los totales de un nivel geográfico, puede romper la coherencia jerárquica interna con los niveles adyacentes si no se propaga de manera consistente a través de la jerarquía territorial.
+
+### Relación entre estimaciones locales y totales conocidos
+
+Formalmente, sea $N^{*}$ el total de control conocido para un conjunto de $K$ unidades geográficas de un mismo nivel —departamentos dentro de un país, municipios dentro de un departamento— y sean $\hat{N}_1, \ldots, \hat{N}_K$ las estimaciones puntuales del modelo para cada unidad, con $\hat{N}_{+} = \sum_{j=1}^{K} \hat{N}_j$ su suma —se indexa con $j$, siguiendo la convención del Capítulo \@ref(cap-modelos-poblacion) para unidades de agregación territorial, y no con $k$, reservado allí para el nivel de municipio y en el Capítulo \@ref(cap-conteos) para el índice de covariables—. La discrepancia de benchmarking se define como:
+
+$$
+\Delta = N^{*} - \hat{N}_{+}
+$$
+
+El problema de calibración consiste en construir un conjunto de estimaciones ajustadas $\hat{N}_1^{bench}, \ldots, \hat{N}_K^{bench}$ que satisfagan exactamente la restricción de suma $\sum_{j=1}^{K} \hat{N}_j^{bench} = N^{*}$, minimizando simultáneamente la distorsión introducida sobre la información distribucional original del modelo. La forma en que se distribuye $\Delta$ entre las $K$ unidades —de manera uniforme, proporcional al tamaño de cada unidad, o proporcional a su incertidumbre— es precisamente lo que distingue a los distintos métodos de benchmarking desarrollados en la sección siguiente.
+
+## Métodos de benchmarking
+
+### Benchmarking proporcional
+
+El método más simple y de mayor tradición en la práctica de oficinas de estadística es el ajuste proporcional (*ratio benchmarking*), que distribuye la discrepancia $\Delta$ en proporción al tamaño relativo de cada unidad. El factor de ajuste se define como:
+
+$$
+\phi = \frac{N^{*}}{\hat{N}_{+}}
+$$
+
+y la estimación calibrada de cada unidad es:
+
+$$
+\hat{N}_j^{bench} = \hat{N}_j \cdot \phi = \hat{N}_j \cdot \frac{N^{*}}{\hat{N}_{+}}
+$$
+
+Por construcción, $\sum_{j=1}^{K} \hat{N}_j^{bench} = \phi \sum_{j=1}^{K} \hat{N}_j = \phi \, \hat{N}_{+} = N^{*}$, de modo que la restricción de suma se satisface exactamente. El método preserva las proporciones relativas entre unidades —si $\hat{N}_a / \hat{N}_b = 2$ antes del ajuste, la misma razón se mantiene después—, lo que lo hace fácil de comunicar e implementar. Su principal limitación es que aplica el mismo factor multiplicativo $\phi$ a todas las unidades, sin distinguir entre aquellas cuya estimación es precisa —con posterior concentrada y $\text{Var}(\hat{N}_j \mid \mathbf{Y}_{obs})$ pequeña, típicamente unidades con buena cobertura censal directa— y aquellas cuya estimación depende casi enteramente de la estructura jerárquica del modelo, con incertidumbre considerablemente mayor. El ajuste proporcional penaliza a ambos tipos de unidad por igual, en contraste con el principio de que la información más incierta debería absorber una proporción mayor de cualquier corrección externa.
+
+```r
+benchmarking_proporcional <- function(N_hat, N_control) {
+  phi <- N_control / sum(N_hat)
+  N_hat * phi
+}
+
+N_bench_prop <- benchmarking_proporcional(
+  N_hat     = estimaciones_departamento$tot_pob_media,
+  N_control = total_oficial_pais
+)
+```
+
+### Benchmarking por razones de ajuste
+
+El benchmarking ponderado por precisión corrige la limitación anterior distribuyendo la discrepancia $\Delta$ en proporción a la incertidumbre relativa de cada unidad, en lugar de en proporción a su tamaño. Formalmente, la estimación calibrada se obtiene como solución al problema de minimización:
+
+$$
+\min_{\hat{N}_1^{bench}, \ldots, \hat{N}_K^{bench}} \; \sum_{j=1}^{K} \frac{\left(\hat{N}_j^{bench} - \hat{N}_j\right)^2}{w_j} \quad \text{sujeto a} \quad \sum_{j=1}^{K} \hat{N}_j^{bench} = N^{*}
+$$
+
+donde $w_j > 0$ es un peso que refleja la incertidumbre de la estimación de la unidad $j$. La solución, obtenida mediante multiplicadores de Lagrange, es:
+
+$$
+\hat{N}_j^{bench} = \hat{N}_j + w_j \cdot \frac{\Delta}{\sum_{j'=1}^{K} w_{j'}}
+$$
+
+En el marco bayesiano desarrollado en este libro, el peso natural es la varianza posterior de la predicción de cada unidad, directamente disponible a partir de las muestras MCMC sin necesidad de aproximaciones asintóticas externas, a diferencia del enfoque frecuentista clásico de SAE:
+
+$$
+w_j = \text{Var}\!\left(\hat{N}_j \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{T-1}\sum_{t=1}^{T} \left(\hat{N}_j^{(t)} - \hat{N}_j\right)^2
+$$
+
+Bajo esta especificación, las unidades con mayor incertidumbre posterior —típicamente aquellas con menor cobertura censal directa y mayor dependencia de la estructura jerárquica del modelo— absorben una proporción mayor de la discrepancia $\Delta$, mientras que las unidades con estimaciones precisas se modifican mínimamente. Dos casos particulares merecen mención: si $w_j \propto \hat{N}_j$, la fórmula se reduce aproximadamente al ajuste proporcional de la subsección anterior; si $w_j = 1$ para todo $j$, la discrepancia se distribuye en partes iguales entre las unidades, independientemente de su tamaño o precisión.
+
+```r
+benchmarking_ponderado <- function(N_hat, N_control, pesos) {
+  delta <- N_control - sum(N_hat)
+  N_hat + pesos * (delta / sum(pesos))
+}
+
+# Pesos basados en la varianza posterior de cada unidad
+varianzas_post <- apply(N_hat_samples, 2, var)
+
+N_bench_pond <- benchmarking_ponderado(
+  N_hat     = estimaciones_departamento$tot_pob_media,
+  N_control = total_oficial_pais,
+  pesos     = varianzas_post
+)
+```
+
+### Benchmarking aditivo con restricciones de suma
+
+Los dos métodos anteriores calibran únicamente la estimación puntual, dejando sin ajustar la distribución posterior completa. Esto es insuficiente en un marco bayesiano: si solo se recalibra la media posterior y los intervalos de credibilidad se calculan sobre las muestras originales sin ajustar, la incertidumbre reportada resulta inconsistente con la estimación puntual calibrada. La extensión adecuada consiste en aplicar el ajuste a cada una de las $T$ muestras de la distribución predictiva posterior, de manera que la restricción de suma se satisfaga en cada muestra individual y no solo en la media.
+
+El ajuste proporcional por muestra se define como:
+
+$$
+\tilde{N}_j^{bench,(t)} = \tilde{N}_j^{(t)} \cdot \frac{N^{*}}{\sum_{j'=1}^{K} \tilde{N}_{j'}^{(t)}}, \qquad t = 1, \ldots, T
+$$
+
+Nótese que el factor de ajuste $\phi^{(t)} = N^{*} / \sum_{j'} \tilde{N}_{j'}^{(t)}$ varía entre muestras, dado que el total agregado del modelo fluctúa de una muestra posterior a otra como consecuencia del proceso de Poisson subyacente. Esta variación del factor de ajuste entre muestras es precisamente lo que permite que la incertidumbre del proceso de calibración se propague correctamente hacia los intervalos de credibilidad calibrados.
+
+El ajuste aditivo ponderado por muestra sigue la misma lógica que el benchmarking por razones de ajuste, aplicado ahora sobre cada muestra individual:
+
+$$
+\tilde{N}_j^{bench,(t)} = \tilde{N}_j^{(t)} + w_j \cdot \frac{N^{*} - \sum_{j'=1}^{K} \tilde{N}_{j'}^{(t)}}{\sum_{j'=1}^{K} w_{j'}}, \qquad t = 1, \ldots, T
+$$
+
+```r
+# Matriz de muestras posteriores: T filas x K columnas (unidades geográficas)
+calibrar_muestras_proporcional <- function(N_samples, N_control) {
+  totales_muestra <- rowSums(N_samples)
+  phi_t <- N_control / totales_muestra
+  N_samples * phi_t
+}
+
+calibrar_muestras_aditivo <- function(N_samples, N_control, pesos) {
+  totales_muestra <- rowSums(N_samples)
+  delta_t <- N_control - totales_muestra
+  ajuste_t <- outer(delta_t, pesos / sum(pesos))
+  N_samples + ajuste_t
+}
+
+N_bench_samples <- calibrar_muestras_aditivo(
+  N_samples = N_hat_samples,
+  N_control = total_oficial_pais,
+  pesos     = varianzas_post
+)
+```
+
+### Aplicación práctica a distintos niveles geográficos
+
+En aplicaciones reales, los totales de control suelen estar disponibles en más de un nivel geográfico simultáneamente —un total nacional legalmente establecido y, en algunos países, totales departamentales derivados de recuentos preliminares independientes—. Calibrar cada nivel de manera aislada, sin coordinación, reintroduce el problema de incoherencia jerárquica que la agregación conjunta de muestras posteriores había resuelto automáticamente: si los municipios se calibran contra sus propios totales departamentales de control y, por separado, los departamentos se calibran contra el total nacional de control, no hay garantía de que la suma de los municipios calibrados coincida con el departamento ya calibrado.
+
+La solución consiste en aplicar la calibración de manera secuencial y descendente a través de la jerarquía territorial: primero se calibra el nivel más agregado disponible frente a su total de control —típicamente el nacional—; a continuación, dentro de cada unidad de ese nivel ya calibrada, se calibran sus unidades subordinadas de manera que sumen exactamente al valor recién calibrado del nivel superior, y así sucesivamente hasta el nivel de segmento censal. De esta manera, la coherencia jerárquica interna, temporalmente alterada por la calibración externa del nivel superior, se restablece en cada paso descendente:
+
+```r
+library(tidyverse)
+
+calibracion_jerarquica <- function(df_segmentos, total_nacional) {
+
+  # Paso 1: calibrar departamentos contra el total nacional
+  dptos <- df_segmentos %>%
+    group_by(departamento) %>%
+    summarise(N_hat = sum(pob_media), .groups = "drop") %>%
+    mutate(
+      phi_dpto  = total_nacional / sum(N_hat),
+      N_dpto_bench = N_hat * phi_dpto
+    )
+
+  # Paso 2: calibrar municipios contra el total departamental ya calibrado
+  df_segmentos %>%
+    left_join(dptos %>% select(departamento, N_dpto_bench), by = "departamento") %>%
+    group_by(departamento, municipio) %>%
+    mutate(N_mun_hat = sum(pob_media)) %>%
+    group_by(departamento) %>%
+    mutate(phi_mun = N_dpto_bench / sum(N_mun_hat)) %>%
+    ungroup() %>%
+    mutate(pob_bench = pob_media * phi_mun)
+}
+```
+
+Este procedimiento garantiza que, tras la calibración, los conteos de segmento sumen exactamente a sus municipios, los municipios a sus departamentos y los departamentos al total nacional de control, restableciendo la coherencia jerárquica completa del sistema de estimaciones bajo la restricción externa impuesta.
+
+## Evaluación del impacto del benchmarking
+
+La calibración modifica las estimaciones producidas por un modelo previamente validado, y esta modificación debe documentarse y evaluarse explícitamente, tanto en su efecto sobre las estimaciones puntuales como sobre la incertidumbre reportada.
+
+### Cambio en estimaciones puntuales
+
+El cambio relativo introducido por la calibración en la unidad $j$ se define como:
+
+$$
+\eta_j = \frac{\hat{N}_j^{bench} - \hat{N}_j}{\hat{N}_j}
+$$
+
+Bajo el ajuste proporcional, $\eta_j = \phi - 1$ es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, $\eta_j$ varía sistemáticamente entre unidades: se espera una relación positiva entre $\eta_j$ y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de $\eta_j$ cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:
+
+```r
+cambio_relativo <- estimaciones_departamento %>%
+  mutate(
+    eta_prop = (N_bench_prop - tot_pob_media) / tot_pob_media,
+    eta_pond = (N_bench_pond - tot_pob_media) / tot_pob_media
+  )
+
+# Relación entre el cambio relativo y la incertidumbre posterior
+ggplot(cambio_relativo, aes(x = tot_pob_sd / tot_pob_media, y = eta_pond)) +
+  geom_point() +
+  labs(x = "Coeficiente de variación posterior",
+       y = "Cambio relativo tras calibración ponderada")
+```
+
+Un patrón en el que las unidades con mayor coeficiente de variación posterior muestran mayores valores de $|\eta_j|$ confirma que el ajuste ponderado está operando de acuerdo con el principio que lo motiva: concentrar la corrección donde la información propia del modelo es más débil. La ausencia de este patrón —o su presencia inversa, con grandes correcciones sobre unidades de alta precisión— señala que los pesos utilizados no reflejan adecuadamente la incertidumbre relativa de las unidades y debe revisarse su especificación.
+
+### Intervalos de credibilidad post-calibración
+
+Cuando la calibración se aplica a cada muestra de la distribución posterior, según el procedimiento descrito en la sección de benchmarking aditivo, los intervalos de credibilidad calibrados se obtienen directamente de los cuantiles empíricos de las muestras ajustadas $\tilde{N}_j^{bench,(t)}$:
+
+```r
+ic_bench <- apply(N_bench_samples, 2, quantile, probs = c(0.025, 0.975))
+```
+
+El efecto de la calibración sobre la amplitud de los intervalos depende de la fuente de incertidumbre del total de control. Cuando $N^{*}$ se trata como una constante exactamente conocida y sin incertidumbre propia —el caso más frecuente en la práctica, dado que suele tratarse de una cifra oficial fijada administrativamente—, la calibración desplaza la localización de la distribución de cada unidad sin alterar sustancialmente su dispersión relativa, dado que el factor de ajuste $\phi^{(t)}$ o el término aditivo se aplican de manera común a través de las unidades dentro de cada muestra $t$, preservando en gran medida la estructura de covarianza entre unidades capturada por el modelo original. La longitud relativa del intervalo calibrado respecto al original constituye un indicador simple de este efecto:
+
+$$
+\text{Longitud relativa}_j = \frac{\text{IC}^{bench}_{97.5\%,j} - \text{IC}^{bench}_{2.5\%,j}}{\text{IC}_{97.5\%,j} - \text{IC}_{2.5\%,j}}
+$$
+
+Valores cercanos a uno indican que la calibración no distorsiona significativamente la incertidumbre relativa entre unidades; valores sistemáticamente distintos de uno, particularmente si se concentran en unidades específicas, ameritan una revisión de los pesos de calibración utilizados. Es importante notar que la calibración no puede, ni debe, entenderse como un mecanismo para reducir artificialmente la incertidumbre reportada: cualquier intervalo de credibilidad calculado a partir de una recalibración exclusivamente sobre la estimación puntual —sin propagar el ajuste a través de las muestras de la distribución posterior completa, como se advirtió en la sección de benchmarking aditivo— produce una subestimación espuria de la incertidumbre y debe evitarse. La calibración correctamente implementada conserva, en la medida de lo posible, las propiedades de calibración probabilística —cobertura empírica cercana al nivel nominal— evaluadas para el modelo original en el capítulo de diagnóstico y validación, y esta propiedad debe verificarse nuevamente sobre las estimaciones calibradas antes de su publicación.

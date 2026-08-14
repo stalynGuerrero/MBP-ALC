@@ -1,21 +1,14 @@
 # Diagnóstico y Validación de los Modelos de Población {#cap-diagnostico}
 
-El Capítulo @ref(cap-inferencia) estableció el procedimiento de estimación de los modelos de población mediante HMC-NUTS y presentó los principales elementos para evaluar la calidad de la inferencia obtenida. En este contexto, la validación no se limita a verificar que el algoritmo de estimación haya convergido, sino que debe determinar si el modelo proporciona una representación adecuada de la población en las áreas o segmentos de interés y si las estimaciones obtenidas son consistentes con la información disponible.
+El Capítulo \@ref(cap-inferencia) estableció el procedimiento de estimación de los modelos de población mediante HMC-NUTS. En este capítulo se evalúa si las estimaciones obtenidas son estadísticamente confiables y si el modelo representa adecuadamente la población en las áreas o segmentos de interés, particularmente cuando la información censal es incompleta o presenta problemas de cobertura.
 
-Para los modelos de población, esta evaluación adquiere particular importancia debido a que el objetivo no es únicamente reproducir los datos utilizados durante el ajuste, sino generar estimaciones para áreas en las que la información censal puede ser incompleta, presentar problemas de cobertura o no estar disponible. Por esta razón, la evaluación debe considerar tanto el comportamiento estadístico del modelo como su capacidad para reproducir las características observadas de la población y su consistencia con fuentes de información independientes.
+La validación comprende tres componentes. El primero corresponde al diagnóstico de convergencia y eficiencia de las cadenas MCMC. El segundo evalúa, mediante la distribución predictiva posterior, la capacidad del modelo para reproducir los conteos y tamaños de población observados. El tercero comprende la comparación de especificaciones alternativas, con el fin de identificar aquellas que presentan un mejor ajuste y comportamiento predictivo.
 
-La validación se desarrolla en cuatro componentes complementarios. El primero corresponde al diagnóstico de convergencia y eficiencia de las cadenas MCMC, necesario para establecer que las distribuciones posteriores utilizadas para inferir la población han sido adecuadamente exploradas. El segundo corresponde a la validación predictiva posterior, mediante la cual se evalúa si el modelo puede reproducir las características relevantes de los conteos o tamaños de población observados. El tercero comprende la selección y comparación de especificaciones alternativas, considerando su capacidad para representar adecuadamente la estructura de la población y su comportamiento predictivo. Finalmente, la validación externa contrasta las estimaciones de población con fuentes independientes de los datos empleados en la estimación.
+De manera complementaria, podrá considerarse la comparación de las estimaciones con ejercicios demográficos o estimaciones de población previamente disponibles. Este contraste permitiría evaluar la coherencia de los resultados con otras aproximaciones de estimación, especialmente en contextos donde no existen observaciones censales completas para realizar una validación directa.
 
-Estas dimensiones permiten evaluar el modelo desde perspectivas diferentes. Una adecuada convergencia de las cadenas garantiza la calidad computacional de la inferencia, pero no demuestra que el modelo represente correctamente la población. De igual forma, un modelo puede reproducir adecuadamente los datos utilizados para su estimación y presentar limitaciones al aplicarse en áreas no observadas o al contrastarse con fuentes externas. Por ello, la validación de los modelos de población debe considerar conjuntamente la estabilidad de la inferencia, la capacidad predictiva y la coherencia de las estimaciones con información externa.
-
-El propósito de este capítulo es establecer criterios explícitos para determinar cuándo un modelo de población puede considerarse suficientemente confiable para generar estimaciones en áreas o segmentos con información censal incompleta o afectada por problemas operativos. La evaluación permitirá identificar especificaciones adecuadas, detectar problemas que requieran reformulación del modelo y establecer evidencia suficiente para sustentar el uso de las estimaciones en la producción estadística.
+En conjunto, estos elementos permiten establecer criterios para determinar la suficiencia del modelo, identificar posibles problemas de especificación y sustentar el uso de las estimaciones de población en áreas afectadas por limitaciones del operativo censal.
 
 
-# Diagnóstico y Validación del Modelo {#cap-diagnostico}
-
-El Capítulo \@ref(cap-inferencia) estableció el procedimiento de estimación del modelo Poisson-lognormal mediante HMC-NUTS en Stan y presentó, de forma introductoria, tres herramientas de verificación: el estadístico $\hat{R}$ y el tamaño efectivo de muestra reportados por `summary()`, la verificación predictiva posterior mediante superposición de densidades y los criterios de información LOO y WAIC. Ninguna estimación bayesiana debe considerarse válida por el solo hecho de haber sido producida por el muestreador: las muestras posteriores pueden provenir de cadenas que no convergieron a la distribución objetivo, el modelo puede ajustar razonablemente la media de los datos pero fallar en reproducir su variabilidad o su forma, y una especificación puede superar los diagnósticos internos de ajuste y, sin embargo, ser inconsistente con fuentes de información externas al propio modelo.
-
-Este capítulo profundiza en esas tres líneas de verificación y añade una cuarta, ausente en el capítulo anterior: la validación externa, que contrasta las estimaciones del modelo con fuentes independientes de los datos utilizados en la estimación. La estructura se organiza en cuatro secciones: diagnóstico de convergencia MCMC, validación predictiva posterior, selección y comparación de modelos, y validación externa. El objetivo transversal es establecer criterios explícitos y reproducibles para decidir cuándo un modelo puede considerarse adecuado para su uso en la producción de estimaciones oficiales de población, y cuándo debe ser reformulado.
 
 ## Diagnóstico de convergencia MCMC
 
@@ -23,19 +16,19 @@ El diagnóstico de convergencia es la primera verificación que debe realizarse 
 
 ### Estadístico R-hat {#estadistico-rhat}
 
-El estadístico $\hat{R}$, propuesto originalmente por @Gelman1992, compara la variabilidad entre cadenas con la variabilidad dentro de cada cadena. Sea $\theta_{t,j}$ la muestra $t$ de la cadena $j$, con $t = 1, \ldots, n$ e $j = 1, \ldots, m$, tras descartar el calentamiento. La varianza dentro de las cadenas se calcula como:
+El estadístico $\hat{R}$, propuesto por @Gelman1992, evalúa la convergencia de las cadenas comparando la variabilidad entre cadenas con la variabilidad dentro de cada cadena. Sea $\theta_{t,c}$ la muestra $t$ de la cadena $c$, con $t = 1, \ldots, n$ y $c = 1, \ldots, m$ —el índice $c$ de cadena no debe confundirse con el índice $j$ de unidad territorial introducido en el Capítulo \@ref(cap-conteos)—, después de descartar el período de calentamiento. La varianza promedio dentro de las cadenas se calcula como:
 
 $$
-W = \frac{1}{m} \sum_{j=1}^{m} s_j^2, \qquad s_j^2 = \frac{1}{n-1}\sum_{t=1}^{n}\left(\theta_{t,j} - \bar{\theta}_{\cdot j}\right)^2
+W = \frac{1}{m} \sum_{c=1}^{m} s_c^2, \qquad s_c^2 = \frac{1}{n-1}\sum_{t=1}^{n}\left(\theta_{t,c} - \bar{\theta}_{\cdot c}\right)^2
 $$
 
-donde $\bar{\theta}_{\cdot j}$ es la media de la cadena $j$. La varianza entre cadenas se calcula como:
+donde $\bar{\theta}_{\cdot c}$ es la media de la cadena $c$. La varianza entre cadenas se calcula como:
 
 $$
-B = \frac{n}{m-1}\sum_{j=1}^{m}\left(\bar{\theta}_{\cdot j} - \bar{\theta}_{\cdot \cdot}\right)^2
+B = \frac{n}{m-1}\sum_{c=1}^{m}\left(\bar{\theta}_{\cdot c} - \bar{\theta}_{\cdot \cdot}\right)^2
 $$
 
-donde $\bar{\theta}_{\cdot \cdot} = \frac{1}{m}\sum_j \bar{\theta}_{\cdot j}$ es la media global. La varianza marginal posterior se estima combinando ambas fuentes:
+donde $\bar{\theta}_{\cdot \cdot} = \frac{1}{m}\sum_c \bar{\theta}_{\cdot c}$ es la media global. La varianza marginal posterior se estima combinando ambas fuentes:
 
 $$
 \hat{V} = \frac{n-1}{n}W + \frac{1}{n}B
@@ -49,98 +42,46 @@ $$
 
 Cuando las cadenas han convergido a la misma distribución estacionaria, $\hat{V}$ y $W$ estiman la misma cantidad y $\hat{R} \to 1$. Valores de $\hat{R}$ sustancialmente mayores que 1 indican que las cadenas todavía exploran regiones distintas del espacio parametral y que se requieren más iteraciones, una reparametrización del modelo o una revisión de las distribuciones a priori.
 
-La versión clásica de $\hat{R}$ presenta limitaciones cuando la distribución posterior tiene colas pesadas o es asimétrica, dado que la varianza puede no converger de forma estable. @Vehtari2021 propone una versión mejorada, el $\hat{R}$ ranking-normalizado y plegado (*rank-normalized, folded* $\hat{R}$), que transforma las muestras a rangos normalizados antes de aplicar la fórmula anterior y calcula el diagnóstico por separado sobre las muestras originales y sobre su versión plegada respecto a la mediana, con el fin de detectar simultáneamente problemas de convergencia en la localización y en la escala de la distribución. Esta es la versión implementada por defecto en versiones recientes de Stan y del paquete `posterior`, y es la que reporta `summary()` sobre un objeto `stanfit`.
+La versión clásica de $\hat{R}$ presenta limitaciones cuando las distribuciones posteriores tienen colas pesadas o varianzas no finitas, ya que la comparación basada en momentos puede perder sensibilidad ante problemas de convergencia. @Vehtari2021 propone una versión mejorada basada en la normalización por rangos (*rank-normalized $\hat{R}$*) y el plegamiento (*folded $\hat{R}$*). Esta estrategia permite evaluar por separado la convergencia de la localización y de la escala de la distribución, y reporta como diagnóstico el mayor de ambos valores. La versión resultante es la utilizada actualmente por Stan y por el paquete `posterior`.
 
-El umbral tradicionalmente utilizado en la práctica ha sido $\hat{R} < 1.1$; sin embargo, @Vehtari2021 recomienda un criterio más estricto, $\hat{R} < 1.01$, dado que el diagnóstico ranking-normalizado es más sensible a problemas de convergencia residuales que la versión clásica. En aplicaciones censales con miles de densidades latentes $\delta_i$, es recomendable exigir que la totalidad de los parámetros —no solo los estructurales $\boldsymbol{\beta}$, $\boldsymbol{\gamma}$, $\sigma$ y $\sigma_U$— satisfagan este umbral antes de proceder al análisis de resultados:
+El valor $\hat{R}=1$ corresponde a una convergencia ideal entre las cadenas. Aunque el umbral de $1.1$ fue utilizado tradicionalmente, @Vehtari2021 recomienda adoptar un criterio más estricto de $\hat{R}<1.01$. Este valor es también el umbral recomendado actualmente en la documentación de Stan para considerar confiables las muestras posteriores.
 
-```r
-library(posterior)
-
-rhat_vals <- summary(stan_model)$summary[, "Rhat"]
-
-# Parámetros que no satisfacen el umbral recomendado
-problematicos <- rhat_vals[rhat_vals > 1.01]
-length(problematicos)
-```
+En los modelos de población considerados en este libro, el criterio debe verificarse para la totalidad de los parámetros monitoreados, incluyendo tanto los parámetros estructurales como las densidades latentes $\delta_i$. No basta con comprobar la convergencia de $\boldsymbol{\beta}$, $\boldsymbol{\gamma}$, $\sigma$ y $\sigma_U$, ya que problemas de convergencia en las cantidades latentes pueden afectar directamente las estimaciones de población en los dominios de interés.
 
 ### Tamaño efectivo de muestra (ESS) {#tamano-efectivo-muestra}
 
-Las muestras generadas por una cadena de Markov están autocorrelacionadas: muestras consecutivas son más similares entre sí que muestras independientes de la distribución posterior. El tamaño efectivo de muestra (*Effective Sample Size*, ESS) cuantifica cuántas muestras independientes equivalen, en términos de precisión de Monte Carlo, al conjunto de muestras autocorrelacionadas disponibles. Para una cantidad escalar $\theta$ con autocorrelación $\hat{\rho}_t$ en el retraso $t$, estimada combinando las $m$ cadenas, el tamaño efectivo de muestra se define como:
+Las muestras generadas por una cadena de Markov presentan autocorrelación, por lo que no contienen la misma información que un conjunto equivalente de muestras independientes. El tamaño efectivo de muestra (*Effective Sample Size*, ESS) cuantifica cuántas observaciones independientes serían necesarias para alcanzar una precisión de Monte Carlo equivalente. Para una cantidad escalar $\theta$, se define como:
 
 $$
-n_{eff} = \frac{mn}{1 + 2\sum_{t=1}^{\infty} \hat{\rho}_t}
+n_{\mathrm{eff}} =
+\frac{mn}
+{1 + 2\sum_{t=1}^{\infty}\hat{\rho}_t},
 $$
 
-donde $mn$ es el número total de muestras disponibles tras el calentamiento. Cuanto mayor es la autocorrelación, menor es $n_{eff}$ en relación con $mn$, y mayor es el error estándar de Monte Carlo de cualquier estimación basada en esas muestras, tal como refleja la columna `se_mean` del resumen posterior introducida en la Tabla \@ref(tab:resumen-posterior-columnas) del Capítulo \@ref(cap-inferencia).
+donde $mn$ es el número total de muestras posteriores y $\hat{\rho}_t$ representa la autocorrelación estimada en el retraso $t$. Una mayor autocorrelación implica un menor ESS y, por tanto, una mayor incertidumbre asociada al error de Monte Carlo.
 
-Al igual que con $\hat{R}$, @Vehtari2021 muestra que un único valor de ESS puede ser engañoso cuando la distribución posterior es asimétrica o de colas pesadas, dado que la mezcla de la cadena puede ser buena en el centro de la distribución y deficiente en las colas. Por esta razón se recomienda reportar dos cantidades: el **Bulk-ESS**, que mide la eficiencia de muestreo en la región central de la distribución (relevante para la estimación de medias y medianas), y el **Tail-ESS**, que mide la eficiencia en las colas (relevante para la estimación de los cuantiles 2.5% y 97.5% que definen los intervalos de credibilidad). Un modelo puede tener un Bulk-ESS adecuado y, simultáneamente, un Tail-ESS insuficiente para reportar intervalos de credibilidad confiables.
+@Vehtari2021 distinguen dos medidas complementarias: el *Bulk-ESS*, que evalúa la eficiencia de muestreo en la región central de la distribución posterior, y el *Tail-ESS*, que evalúa su eficiencia en las colas. Esta distinción es particularmente importante para los intervalos de credibilidad, cuyos límites dependen de los cuantiles de la distribución posterior. Un modelo puede presentar un Bulk-ESS adecuado y, simultáneamente, un Tail-ESS insuficiente.
 
-Como regla práctica, se recomienda un ESS mínimo de 400 muestras efectivas —tanto Bulk como Tail— por cada cantidad de interés, independientemente del número de cadenas o iteraciones totales utilizadas:
+Como criterio práctico, se recomienda disponer de al menos 400 muestras efectivas tanto para Bulk-ESS como para Tail-ESS por cada cantidad de interés. Cuando este criterio no se cumple, puede ser necesario aumentar el número de iteraciones posteriores al calentamiento, revisar la parametrización del modelo o evaluar posibles problemas de identificación.
 
-```r
-library(posterior)
-
-draws_array <- as_draws_array(stan_model)
-
-ess_bulk <- apply(draws_array, 3, ess_bulk)
-ess_tail <- apply(draws_array, 3, ess_tail)
-
-# Parámetros con ESS insuficiente
-which(ess_bulk < 400 | ess_tail < 400)
-```
-
-Cuando el ESS es insuficiente, las alternativas incluyen aumentar el número de iteraciones post-calentamiento, mejorar la parametrización del modelo —por ejemplo, mediante la parametrización no centrada de los efectos aleatorios jerárquicos, que suele reducir sustancialmente la autocorrelación cuando $\sigma_U$ es pequeño— o revisar si el modelo está correctamente identificado.
+En los modelos de población, este diagnóstico debe evaluarse tanto para los parámetros estructurales como para las cantidades latentes que intervienen directamente en las estimaciones de población.
 
 ### Trace plots, autocorrelación y diagnósticos específicos de HMC
 
-La inspección visual complementa los diagnósticos numéricos y permite detectar patrones de no convergencia que un estadístico agregado puede no capturar completamente. El *trace plot* representa la secuencia de valores muestreados de un parámetro a lo largo de las iteraciones, superponiendo las distintas cadenas:
+La inspección visual de las cadenas complementa los diagnósticos numéricos y permite identificar patrones de no convergencia o mezcla deficiente. El *trace plot* representa los valores muestreados de un parámetro a lo largo de las iteraciones para las distintas cadenas. Un comportamiento adecuado se caracteriza por cadenas que oscilan alrededor de una distribución común, sin tendencias sistemáticas, períodos prolongados de estancamiento o separación persistente entre cadenas. Este patrón suele describirse informalmente como *fat hairy caterpillar*. La Figura \@ref(fig:trace-hmc) muestra este comportamiento para los parámetros $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ en un ajuste del modelo Poisson-lognormal aplicado a datos censales de Barbados (2024).
 
-```r
-library(bayesplot)
-
-mcmc_trace(
-  as.array(stan_model),
-  pars = c("sigma", "sigmaU", "beta[1]", "beta[2]")
-)
+```{r trace-hmc, echo=FALSE, fig.cap="Trace plot de $\\sigma$, $\\sigma_U$, $\\beta_1$ y $\\beta_2$ sobre las cuatro cadenas.", out.width="70%"}
+knitr::include_graphics("images/cap_08/01_trace_hmc.png")
 ```
 
-Un patrón de convergencia adecuado se caracteriza por cadenas que oscilan establemente alrededor de un valor común, sin tendencias sistemáticas ni saltos entre regiones distintas del espacio parametral —el patrón informalmente descrito como *"fat hairy caterpillar"* (oruga peluda y gruesa)—. Cadenas que exhiben tendencias, que permanecen estancadas en un valor durante tramos prolongados, o que exploran regiones claramente distintas entre sí, son indicativas de no convergencia y deben acompañarse de $\hat{R} > 1.01$ en el diagnóstico numérico correspondiente.
+La autocorrelación evalúa la dependencia entre muestras separadas por distintos retrasos (*lags*). Una disminución rápida de la autocorrelación hacia cero indica una mezcla eficiente, mientras que valores elevados durante numerosos retrasos señalan una fuerte dependencia entre muestras y, por tanto, un ESS reducido.
 
-La función de autocorrelación (ACF) cuantifica la correlación entre muestras separadas por $t$ iteraciones:
+Los algoritmos HMC-NUTS incorporan además diagnósticos específicos de su dinámica. Las **transiciones divergentes** indican que el integrador numérico no ha podido resolver adecuadamente la dinámica hamiltoniana en determinadas regiones de la distribución posterior [@Betancourt2017]. Su presencia puede comprometer la validez de las estimaciones y requiere revisar la parametrización del modelo, pudiendo ser necesario incrementar `adapt_delta` o adoptar una parametrización alternativa.
 
-```r
-mcmc_acf(
-  as.array(stan_model),
-  pars = c("sigma", "sigmaU"),
-  lags = 20
-)
-```
+Otro diagnóstico es el **E-BFMI** (*Energy Bayesian Fraction of Missing Information*), que evalúa la eficiencia con la que las cadenas exploran la distribución de energía del sistema hamiltoniano. Valores inferiores a 0.2 sugieren una exploración deficiente y requieren atención, incluso cuando otros diagnósticos, como $\hat{R}$, no presentan problemas [@Betancourt2017].
 
-Una autocorrelación que decae rápidamente hacia cero es deseable; una autocorrelación que permanece alta incluso a retrasos grandes indica una cadena con mezcla deficiente, consistente con un ESS bajo.
+En conjunto, los *trace plots*, la autocorrelación, las divergencias y el E-BFMI complementan $\hat{R}$ y ESS. Ningún diagnóstico aislado garantiza la convergencia; la evaluación debe considerar conjuntamente la evidencia proporcionada por todos ellos antes de utilizar las distribuciones posteriores para obtener estimaciones de población.
 
-Más allá de los diagnósticos genéricos de MCMC, el algoritmo HMC-NUTS provee diagnósticos adicionales específicos de su mecánica interna que deben revisarse sistemáticamente. Las **transiciones divergentes** ocurren cuando el integrador leapfrog introduce un error numérico excesivo durante la simulación de la dinámica hamiltoniana, típicamente en regiones de la distribución posterior con curvatura muy pronunciada [@Betancourt2017]. Un número elevado de divergencias señala que el muestreador no está explorando correctamente esas regiones, lo que puede sesgar sistemáticamente las estimaciones asociadas:
-
-```r
-rstan::check_hmc_diagnostics(stan_model)
-
-# Número de transiciones divergentes por cadena
-rstan::get_num_divergent(stan_model)
-
-# Iteraciones que alcanzaron la profundidad máxima del árbol
-rstan::get_num_max_treedepth(stan_model)
-```
-
-En el modelo Poisson-lognormal, las divergencias tienden a concentrarse en segmentos con densidad latente $\delta_i$ extrema —conteos muy bajos combinados con un número reducido de estructuras, o viceversa— donde la verosimilitud es poco informativa y la distribución a priori log-normal domina localmente la geometría posterior. Cuando el número de divergencias es elevado, las estrategias de mitigación incluyen aumentar el parámetro `adapt_delta` de Stan por encima de su valor por defecto (0.8), lo que reduce el tamaño de paso $\varepsilon$ y mejora la precisión numérica del integrador a costa de mayor tiempo de cómputo, o reparametrizar el modelo para reducir la curvatura de la posterior.
-
-Un segundo diagnóstico específico de HMC es la fracción de información faltante basada en energía (E-BFMI, *Energy Bayesian Fraction of Missing Information*), que evalúa si la distribución marginal de la energía hamiltoniana explorada por la cadena es consistente con una exploración eficiente [@Betancourt2017]. Valores de E-BFMI inferiores a 0.2 son indicativos de una exploración deficiente de las colas de la distribución posterior, incluso en ausencia de divergencias o de valores altos de $\hat{R}$.
-
-Finalmente, como complemento a $\hat{R}$ y al ESS, @Geweke1992 propone un diagnóstico de convergencia aplicable a una única cadena, basado en la comparación de las medias estimadas en dos segmentos no superpuestos de la secuencia —típicamente el primer 10% y el último 50% de las iteraciones post-calentamiento—. Bajo convergencia, ambos segmentos deben estimar la misma cantidad, y el estadístico:
-
-$$
-Z_G = \frac{\bar{\theta}_A - \bar{\theta}_B}{\sqrt{\widehat{\text{Var}}(\bar{\theta}_A) + \widehat{\text{Var}}(\bar{\theta}_B)}}
-$$
-
-—donde $\bar{\theta}_A$ y $\bar{\theta}_B$ son las medias muestrales de cada segmento y sus varianzas se estiman mediante métodos espectrales que corrigen por autocorrelación— se distribuye aproximadamente $\mathcal{N}(0,1)$ si la cadena ha alcanzado su distribución estacionaria. Aunque ha sido en gran medida desplazado por $\hat{R}$ y el ESS en la práctica moderna con múltiples cadenas, el diagnóstico de Geweke resulta útil como verificación adicional de estacionariedad dentro de cada cadena individual.
 
 ## Validación predictiva posterior
 
@@ -148,70 +89,39 @@ Un modelo puede satisfacer todos los diagnósticos de convergencia y, sin embarg
 
 ### Posterior predictive checks (PPC)
 
-El principio general de la verificación predictiva posterior [@Gelman2013] consiste en comparar los datos observados $\mathbf{Y}_{obs}$ con réplicas $\mathbf{Y}^{rep}$ generadas a partir de la distribución predictiva posterior:
+La verificación predictiva posterior (*Posterior Predictive Checks*, PPC) evalúa si el modelo es capaz de reproducir características relevantes de los datos observados [@Gelman2013]. Para ello, se generan réplicas $\mathbf{Y}^{rep}$ a partir de la distribución predictiva posterior:
 
 $$
-p(\mathbf{Y}^{rep} \mid \mathbf{Y}_{obs}) = \int p(\mathbf{Y}^{rep} \mid \boldsymbol{\theta}) \, p(\boldsymbol{\theta} \mid \mathbf{Y}_{obs}) \, d\boldsymbol{\theta}
+p(\mathbf{Y}^{rep} \mid \mathbf{Y}_{obs}) =
+\int p(\mathbf{Y}^{rep} \mid \boldsymbol{\theta})
+p(\boldsymbol{\theta} \mid \mathbf{Y}_{obs})d\boldsymbol{\theta}.
 $$
 
-Para una función de prueba $T(\cdot)$ —una media, una desviación estándar, una proporción de ceros o cualquier estadístico relevante para el problema—, el valor predictivo posterior se estima como la proporción de réplicas cuyo estadístico iguala o supera al observado:
+La comparación puede realizarse mediante una función de prueba $T(\cdot)$ que represente alguna característica relevante de los conteos, como la media, la desviación estándar, la proporción de ceros o determinados cuantiles. La discrepancia entre los valores observados y los obtenidos en las réplicas permite identificar dimensiones en las que el modelo no reproduce adecuadamente los datos.
 
-$$
-p_B = \Pr\!\left(T(\mathbf{Y}^{rep}) \geq T(\mathbf{Y}_{obs}) \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{T}\sum_{t=1}^{T} \mathbb{1}\!\left\{T\!\left(\mathbf{Y}^{rep,(t)}\right) \geq T(\mathbf{Y}_{obs})\right\}
-$$
+En los modelos de población, los PPC deben considerar tanto el comportamiento global como posibles diferencias entre tipos de segmentos. Por ejemplo, resulta relevante evaluar por separado segmentos urbanos y rurales o grupos definidos según sus características de cobertura. Un modelo puede reproducir adecuadamente la distribución agregada de los conteos y, al mismo tiempo, presentar deficiencias sistemáticas en determinados grupos de segmentos.
 
-Valores de $p_B$ cercanos a 0 o a 1 indican que el estadístico observado se ubica en una región de baja densidad predictiva, evidenciando una discrepancia sistemática entre el modelo y los datos en la dimensión capturada por $T(\cdot)$.
-
-Más allá de la superposición de densidades del Código \@ref(exr:cod-ppc-densidad), resulta informativo evaluar estadísticos de prueba específicos mediante `bayesplot::ppc_stat()`:
-
-```r
-library(bayesplot)
-
-lambda_post <- rstan::extract(stan_model, pars = "lambda")$lambda
-Y_rep <- matrix(
-  rpois(length(lambda_post), lambda = as.numeric(lambda_post)),
-  nrow = nrow(lambda_post)
-)
-
-# Verificación de la media, la desviación estándar y la proporción de ceros
-ppc_stat(y = Y_obs, yrep = Y_rep, stat = "mean")
-ppc_stat(y = Y_obs, yrep = Y_rep, stat = "sd")
-ppc_stat(y = Y_obs, yrep = Y_rep,
-          stat = function(y) mean(y == 0))
-```
-
-La verificación desagregada por subgrupos —segmentos urbanos frente a rurales, o segmentos clasificados según el nivel de cobertura definido en la Sección \@ref(clasificacion-segmentos)— es particularmente relevante en el contexto censal, dado que un modelo puede ajustar adecuadamente el comportamiento agregado de los conteos y, sin embargo, subestimar sistemáticamente la variabilidad en un subconjunto específico de segmentos con características territoriales particulares:
-
-```r
-ppc_stat_grouped(
-  y = Y_obs, yrep = Y_rep,
-  group = data_model$area_tipo,
-  stat = "mean"
-)
-```
+Por tanto, los PPC constituyen una herramienta para identificar deficiencias en la distribución predictiva del modelo y orientar la revisión de su especificación. La evaluación no debe limitarse a un único estadístico, sino considerar varias características de los conteos que sean relevantes para la estimación de población.
 
 ### Residuos bayesianos
 
-El análisis de residuos permite identificar segmentos individuales cuyo conteo observado es inconsistente con la predicción del modelo. A diferencia de los residuos de Pearson utilizados en el diagnóstico exploratorio de valores atípicos del Capítulo \@ref(cap-insumos) —que se basan en un único valor ajustado sin incertidumbre—, el residuo bayesiano incorpora la distribución predictiva posterior completa. Para el segmento $i$, el residuo estandarizado se define como:
+El análisis de residuos permite identificar segmentos cuyo conteo observado presenta una discrepancia importante respecto de la distribución predictiva del modelo. A diferencia de los residuos de Pearson utilizados en el diagnóstico exploratorio del Capítulo \@ref(cap-insumos), los residuos bayesianos [@Chaloner1988] incorporan la incertidumbre asociada a la predicción posterior. Para el segmento $i$, puede definirse el residuo predictivo estandarizado como:
 
 $$
-r_i = \frac{Y_i - \mathbb{E}\!\left[\tilde{Y}_i \mid \mathbf{Y}_{obs}\right]}{\sqrt{\text{Var}\!\left(\tilde{Y}_i \mid \mathbf{Y}_{obs}\right)}}
+r_i =
+\frac{
+Y_i-\mathbb{E}[\tilde{Y}_i\mid\mathbf{Y}_{obs}]
+}{
+\sqrt{\operatorname{Var}(\tilde{Y}_i\mid\mathbf{Y}_{obs})}
+},
 $$
 
-donde $\mathbb{E}[\tilde{Y}_i \mid \mathbf{Y}_{obs}]$ y $\text{Var}(\tilde{Y}_i \mid \mathbf{Y}_{obs})$ se estiman empíricamente a partir de las columnas correspondientes de la matriz `Y_rep` generada en la sección anterior:
+donde la media y la varianza predictivas se obtienen a partir de las réplicas posteriores de $\tilde{Y}_i$.
 
-```r
-residuos_bayes <- (Y_obs - colMeans(Y_rep)) / apply(Y_rep, 2, sd)
+Valores absolutos elevados de $r_i$ indican segmentos en los que el conteo observado se encuentra alejado del comportamiento esperado bajo el modelo. Sin embargo, estos valores deben interpretarse como indicadores de discrepancia y no como pruebas formales de atipicidad, particularmente porque la distribución predictiva de los conteos puede ser asimétrica.
 
-# Segmentos con residuo estandarizado de magnitud considerable
-segmentos_atipicos <- which(abs(residuos_bayes) > 3)
+En los modelos de población, resulta especialmente relevante examinar la distribución de estos residuos según características territoriales y operativas. Una concentración sistemática de residuos positivos o negativos en determinados tipos de segmentos puede indicar que el modelo no está capturando adecuadamente alguna fuente de heterogeneidad, lo que puede motivar la incorporación de covariables, efectos aleatorios o una reformulación de la estructura del modelo.
 
-hist(residuos_bayes, breaks = 40,
-     main = "Distribución de residuos bayesianos estandarizados",
-     xlab = "Residuo estandarizado")
-```
-
-Bajo un modelo correctamente especificado, la distribución de $r_i$ debe aproximarse a una distribución normal estándar. Concentraciones sistemáticas de residuos positivos o negativos en determinados estratos territoriales —por ejemplo, subestimación sistemática en segmentos de baja cobertura censal— señalan una falla de especificación que puede requerir la incorporación de covariables adicionales o de efectos aleatorios de nivel más desagregado.
 
 ### Comparación con conteos observados y calibración
 
@@ -221,13 +131,6 @@ $$
 \text{Cobertura}_{95\%} = \frac{1}{D_{obs}}\sum_{i \in \mathcal{S}_{obs}} \mathbb{1}\!\left\{Y_i \in \left[\text{IC}_{2.5\%,i},\; \text{IC}_{97.5\%,i}\right]\right\}
 $$
 
-```r
-ic_inferior <- apply(Y_rep, 2, quantile, probs = 0.025)
-ic_superior <- apply(Y_rep, 2, quantile, probs = 0.975)
-
-cobertura_95 <- mean(Y_obs >= ic_inferior & Y_obs <= ic_superior)
-```
-
 Una cobertura empírica sustancialmente inferior al 95% indica que los intervalos de credibilidad son demasiado estrechos —el modelo subestima la incertidumbre real— mientras que una cobertura muy superior al 95% indica intervalos excesivamente anchos, que si bien no son incorrectos, resultan poco informativos para la toma de decisiones. Esta noción de calibración debe complementarse con la de nitidez (*sharpness*): entre dos modelos igualmente calibrados, se prefiere aquel cuyas distribuciones predictivas sean más concentradas [@Gneiting2007]. El objetivo de la validación predictiva no es, por tanto, maximizar la amplitud de los intervalos para garantizar cobertura, sino maximizar la nitidez sujeta a calibración adecuada —principio conocido como *maximización de la nitidez sujeta a calibración* [@Gneiting2007]—, que constituye el criterio rector tanto de la validación predictiva posterior como de los criterios de información desarrollados en la sección siguiente.
 
 ## Selección y comparación de modelos
@@ -236,26 +139,14 @@ Cuando existen especificaciones alternativas del modelo —distintos subconjunto
 
 ### Criterio Leave-One-Out (LOO-CV) y diagnóstico de Pareto k
 
-El criterio de validación cruzada dejando uno fuera (*Leave-One-Out Cross-Validation*, LOO-CV) estima la capacidad predictiva del modelo sobre datos no utilizados en su ajuste, aproximando el reajuste exacto del modelo sin la observación $i$ mediante muestreo por importancia con suavizado de Pareto (PSIS) [@Vehtari2017]:
+El criterio *Leave-One-Out Cross-Validation* (LOO-CV) evalúa la capacidad predictiva del modelo sobre observaciones que no participaron en su ajuste. Para cada segmento, se estima qué tan bien el modelo puede predecir su conteo cuando este se excluye del proceso de estimación. De esta forma, LOO permite evaluar la capacidad predictiva fuera de muestra y comparar diferentes especificaciones del modelo [@Vehtari2017].
 
-$$
-\widehat{\text{elpd}}_{loo} = \sum_{i \in \mathcal{S}_{obs}} \log\left(\frac{\sum_{t=1}^{T} w_i^{(t)}\, p\!\left(Y_i \mid \boldsymbol{\theta}^{(t)}\right)}{\sum_{t=1}^{T} w_i^{(t)}}\right)
-$$
+El cálculo exacto de LOO requeriría ajustar nuevamente el modelo tantas veces como observaciones existan. Para evitar este procedimiento, PSIS-LOO (*Pareto Smoothed Importance Sampling*) aproxima estos ajustes mediante las muestras de la distribución posterior obtenida con el modelo completo. La calidad de esta aproximación se evalúa mediante el parámetro $\hat{k}$ de la distribución generalizada de Pareto, calculado para cada observación.
 
-donde $w_i^{(t)}$ son los pesos de importancia suavizados para la observación $i$ en la muestra $t$. El procedimiento PSIS ajusta una distribución de Pareto generalizada a la cola de los pesos de importancia brutos y utiliza el parámetro de forma estimado $\hat{k}_i$ como diagnóstico de la fiabilidad de la aproximación para cada observación:
+Valores pequeños de $\hat{k}$ indican que la aproximación mediante muestreo por importancia es estable. Valores elevados indican que una observación tiene una influencia considerable sobre la distribución posterior y que la aproximación LOO puede ser poco fiable. Estas observaciones requieren una revisión particular y, cuando sea necesario, pueden evaluarse mediante un reajuste exacto del modelo excluyendo directamente la observación correspondiente [@Vehtari2017; @Vehtari2024].
 
-```r
-log_lik_mat <- loo::extract_log_lik(stan_model, parameter_name = "log_lik")
-loo_result  <- loo::loo(log_lik_mat)
+En los modelos de población, $\hat{k}$ permite identificar segmentos cuya información tiene una influencia particularmente alta sobre el ajuste. Estos segmentos pueden coincidir con conteos extremos o con situaciones territoriales poco representadas en los datos, por lo que su identificación constituye tanto un diagnóstico de la validación predictiva como una herramienta para revisar la especificación del modelo.
 
-print(loo_result)
-loo::pareto_k_table(loo_result)
-
-# Segmentos con aproximación PSIS poco confiable
-loo::pareto_k_ids(loo_result, threshold = 0.7)
-```
-
-Valores $\hat{k}_i < 0.5$ indican una aproximación fiable; valores entre 0.5 y 0.7 son aceptables pero con mayor varianza de estimación; valores $\hat{k}_i > 0.7$ indican que la aproximación de importancia no es confiable para esa observación, típicamente porque su exclusión modificaría sustancialmente la distribución posterior [@Vehtari2017]. En el modelo Poisson-lognormal, los segmentos con $\hat{k}_i$ elevado suelen coincidir con los residuos bayesianos atípicos identificados en la sección anterior. Cuando el número de observaciones con $\hat{k}_i > 0.7$ es reducido, se recomienda recalcular el ajuste exacto de validación cruzada únicamente para esas observaciones mediante refit directo del modelo, en lugar de descartar el diagnóstico LOO en su totalidad.
 
 ### Widely Applicable Information Criterion (WAIC)
 
@@ -277,26 +168,17 @@ $$
 \text{WAIC} = -2\left(\text{lpd} - p_{WAIC}\right)
 $$
 
-```r
-waic_result <- loo::waic(log_lik_mat)
-print(waic_result)
-```
-
 @Piironen2017 muestra que, en presencia de observaciones influyentes —frecuentes en modelos de conteo con segmentos de intensidad extrema, como los que surgen en el modelo Poisson-lognormal—, el LOO-CV mediante PSIS es más robusto que el WAIC, cuya estimación de $p_{WAIC}$ puede ser inestable cuando la varianza posterior de la log-verosimilitud puntual es elevada. En consecuencia, el LOO-CV debe considerarse el criterio principal, reportando el WAIC como verificación complementaria y no como criterio primario de decisión.
 
 ### Criterio de elección del modelo final
 
-La comparación entre especificaciones alternativas se realiza mediante la diferencia en elpd estimado y su error estándar:
+La comparación entre dos especificaciones alternativas, denotadas genéricamente $(1)$ y $(2)$, se realiza mediante la diferencia entre sus valores de elpd estimados por LOO-CV,
 
-```r
-loo_modelo_1 <- loo::loo(log_lik_mat_1)
-loo_modelo_2 <- loo::loo(log_lik_mat_2)
+$$
+\widehat{\text{elpd}}_{diff} = \widehat{\text{elpd}}_{loo}^{(1)} - \widehat{\text{elpd}}_{loo}^{(2)},
+$$
 
-comparacion <- loo::loo_compare(loo_modelo_1, loo_modelo_2)
-print(comparacion)
-```
-
-Como se estableció en el Código \@ref(exr:cod-loo-waic), una diferencia en elpd superior en magnitud al doble de su error estándar (`elpd_diff` frente a `se_diff`) se interpreta como evidencia de una diferencia predictiva sustancial entre modelos. Este criterio debe aplicarse únicamente cuando el diagnóstico de Pareto $\hat{k}$ indica que la comparación es confiable para la mayoría de las observaciones; si un número apreciable de segmentos presenta $\hat{k}_i > 0.7$ en cualquiera de los modelos comparados, la diferencia estimada debe interpretarse con cautela.
+y el error estándar de esa diferencia, $\widehat{\text{se}}_{diff}$, estimado a partir de la variabilidad de las diferencias puntuales entre los segmentos observados. Como se estableció en el Código \@ref(exr:cod-loo-waic), una diferencia cuya magnitud supera el doble de su error estándar ($|\widehat{\text{elpd}}_{diff}| > 2\,\widehat{\text{se}}_{diff}$) se interpreta como evidencia de una diferencia predictiva sustancial entre modelos. Este criterio debe aplicarse únicamente cuando el diagnóstico de Pareto $\hat{k}$ indica que la comparación es confiable para la mayoría de las observaciones; si un número apreciable de segmentos presenta $\hat{k}_i > 0.7$ en cualquiera de los modelos comparados, la diferencia estimada debe interpretarse con cautela.
 
 Como complemento a los criterios de información —que evalúan el ajuste global de la distribución predictiva— es recomendable evaluar una regla de puntuación propia (*proper scoring rule*) orientada específicamente a la calidad de las predicciones puntuales para conteos, como el *ranked probability score* [@Gneiting2007]:
 
@@ -322,17 +204,8 @@ $$
 
 donde $\hat{N}_j$ es la agregación de las predicciones posteriores del modelo para la unidad $j$ y $N_j^{proy}$ es la proyección demográfica oficial correspondiente. Discrepancias sistemáticas y de gran magnitud —convencionalmente, superiores al 5% en valor absoluto— ameritan investigación adicional: pueden reflejar un error genuino del modelo, pero también pueden señalar que la proyección demográfica de referencia está desactualizada respecto a la dinámica poblacional reciente del territorio, particularmente en contextos de migración interna acelerada.
 
-```r
-discrepancia <- estimaciones_dam %>%
-  left_join(proyecciones_oficiales, by = "DAM") %>%
-  mutate(delta = (tot_pob_media - poblacion_proyectada) / poblacion_proyectada)
+Las recomendaciones de la CEPAL para los censos de la ronda 2020 [@CEPAL2023] enfatizan la importancia de analizar la coherencia de los resultados censales con las proyecciones demográficas oficiales, documentando las discrepancias identificadas y sus posibles causas. En este marco, las estimaciones obtenidas mediante los modelos de población pueden contrastarse con dichas proyecciones como una fuente independiente de referencia. Este contraste permite evaluar la coherencia de los resultados a nivel de los dominios para los que ambas fuentes sean comparables, considerando las diferencias en el período de referencia, la definición geográfica y los supuestos metodológicos de cada estimación.
 
-discrepancia %>%
-  filter(abs(delta) > 0.05) %>%
-  arrange(desc(abs(delta)))
-```
-
-Las recomendaciones de CEPAL para los censos de la ronda 2020 [@CEPAL2023] enfatizan la necesidad de conciliar los resultados censales —y, por extensión, cualquier estimación derivada de ellos mediante modelamiento— con las proyecciones demográficas oficiales del país, documentando explícitamente las discrepancias identificadas y sus posibles causas metodológicas u operativas. La validación cruzada entre estimaciones basadas en modelos y proyecciones demográficas independientes ha sido aplicada con enfoques metodológicos afines en otros contextos de estimación en áreas pequeñas con relevancia demográfica y sanitaria, como la estimación espaciotemporal de la mortalidad infantil en contextos de datos limitados [@Wakefield2019], donde la comparación sistemática con fuentes externas independientes constituye igualmente un componente central del proceso de validación.
 
 ### Comparación con registros administrativos independientes
 
@@ -346,27 +219,13 @@ $$
 
 donde $Y_i^{(A_{val})}$ es el conteo del registro administrativo reservado para el segmento $i$ —siguiendo la misma convención de superíndices por fuente $Y^{(A)}$ del Capítulo \@ref(cap-insumos), con el subíndice adicional $val$ para distinguirlo de los registros administrativos ya incorporados como covariables—. Dado que ningún registro administrativo captura la totalidad de la población —su tasa de cobertura relativa $c_{i,r}$ es, por construcción, menor o igual a uno—, se espera que $\rho_i$ se ubique sistemáticamente por encima de uno y dentro de un rango plausible determinado por la naturaleza del registro utilizado; valores de $\rho_i$ inferiores a uno, o con una dispersión territorial inconsistente con la cobertura esperada del registro, señalan posibles problemas de especificación del modelo o de calidad del registro de referencia.
 
-### Evaluación de coherencia geoespacial
+### Evaluación de coherencia territorial y demográfica
 
-La distribución espacial de la población presenta continuidad territorial: segmentos geográficamente próximos tienden a presentar características demográficas similares. El modelo desarrollado en este libro captura esta continuidad únicamente de manera indirecta: a través de las covariables espaciales de la Sección \@ref(variables-espaciales) —distancia a centros urbanos, accesibilidad, topografía— y del efecto aleatorio territorial $\boldsymbol{\gamma}$ de la Sección \@ref(efectos-aleatorios), que es intercambiable (jerárquico) y no impone una estructura de adyacencia entre segmentos vecinos [@Banerjee2015]. Un modelo correctamente especificado debe capturar la continuidad espacial a través de estos elementos, de modo que los residuos bayesianos no exhiban autocorrelación espacial remanente.
+Las estimaciones de población obtenidas mediante el modelo deben presentar un comportamiento territorial y demográfico coherente con las características conocidas de las áreas estimadas. Esta evaluación no busca imponer una estructura espacial al modelo ni realizar un análisis espacial del proceso poblacional, sino verificar que los patrones obtenidos sean plausibles a la luz del conocimiento disponible sobre el territorio y su dinámica demográfica.
 
-El índice de Moran cuantifica la autocorrelación espacial de los residuos $r_i$ definidos en la sección de validación predictiva posterior:
+La revisión debe considerar aspectos como las diferencias esperadas entre áreas urbanas y rurales, los cambios en el tamaño de la población, los procesos de expansión o concentración urbana y los patrones conocidos de movilidad y migración. También resulta relevante identificar cambios abruptos o comportamientos atípicos entre segmentos o áreas que requieran una explicación específica.
 
-$$
-I = \frac{D_{obs}}{\sum_{i}\sum_{j} w_{ij}} \cdot \frac{\sum_{i}\sum_{j} w_{ij}\left(r_i - \bar{r}\right)\left(r_j - \bar{r}\right)}{\sum_{i}\left(r_i - \bar{r}\right)^2}
-$$
+Esta evaluación debe realizarse con participación de expertos de las instituciones estadísticas y demográficas del país, quienes pueden aportar información contextual sobre procesos territoriales, dinámicas migratorias, crecimiento o pérdida de población y transformaciones recientes que no necesariamente están representadas de manera explícita en las fuentes utilizadas por el modelo. La identificación de un patrón espacial particular no constituye, por sí misma, evidencia de un problema de especificación; su interpretación debe considerar el contexto demográfico y operativo del territorio.
 
-donde $w_{ij}$ es un peso de vecindad —típicamente igual a uno si los segmentos $i$ y $j$ son geográficamente contiguos y cero en caso contrario— y $\bar{r}$ es la media de los residuos sobre los segmentos observados. Valores de $I$ cercanos a cero son consistentes con ausencia de autocorrelación espacial residual; valores positivos y estadísticamente significativos indican que segmentos vecinos comparten errores sistemáticos del modelo no capturados por las covariables ni por los efectos aleatorios territoriales incluidos:
-
-```r
-library(spdep)
-
-vecinos <- poly2nb(segmentos_sf)
-pesos   <- nb2listw(vecinos, style = "W", zero.policy = TRUE)
-
-moran.test(residuos_bayes, listw = pesos, zero.policy = TRUE)
-```
-
-Cuando el índice de Moran señala autocorrelación espacial residual relevante, las alternativas de especificación incluyen la incorporación de efectos aleatorios espacialmente estructurados de tipo CAR en el predictor lineal —en lugar de, o adicionalmente a, los efectos aleatorios no estructurados por unidad territorial definidos en la Sección \@ref(efectos-aleatorios)—, o la inclusión de covariables adicionales capaces de explicar el patrón espacial observado en los residuos.
-
+Cuando las estimaciones presenten comportamientos que se aparten de lo esperado, el análisis experto permitirá determinar si estos corresponden a procesos poblacionales plausibles, a características particulares de las fuentes de información o a posibles problemas de especificación del modelo. De esta manera, la revisión territorial y demográfica constituye un componente complementario de la validación estadística y contribuye a sustentar la plausibilidad de las estimaciones antes de su utilización en la producción de resultados de población.
 

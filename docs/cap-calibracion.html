@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 Calibración y Benchmarking Subnacional | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 Calibración y Benchmarking Subnacional | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  <meta name="github-repo" content="psirusteam/MBP-ALC" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 Calibración y Benchmarking Subnacional | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  
+  <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cap-diagnostico.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li>
+  <a href="./" style="display:block; padding: 16px 15px 6px; text-decoration:none;">
+    <span style="font-family:'Inter',sans-serif; font-weight:700; font-size:1.05rem; color:#E2E8F0; display:block; line-height:1.3;">
+      MBP-ALC
+    </span>
+    <span style="font-family:'Inter',sans-serif; font-size:0.82rem; color:#94A3B8; display:block; padding-top:4px; line-height:1.55;">
+      Modelos Bayesianos de Población<br>América Latina y el Caribe
+    </span>
+  </a>
+</li>
+<li><hr style="border-color:rgba(255,255,255,0.12); margin:6px 15px 10px;"></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html"><i class="fa fa-check"></i><b>1</b> Enfoque General de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-de-conteos-censales"><i class="fa fa-check"></i><b>1.1</b> Producción de conteos censales</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#producci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>1.1.1</b> Producción subnacional</a></li>
+<li class="chapter" data-level="1.1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#desagregaci%C3%B3n-por-sexo-y-edad"><i class="fa fa-check"></i><b>1.1.2</b> Desagregación por sexo y edad</a></li>
+<li class="chapter" data-level="1.1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#uso-en-marcos-muestrales"><i class="fa fa-check"></i><b>1.1.3</b> Uso en marcos muestrales</a></li>
+<li class="chapter" data-level="1.1.4" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#definici%C3%B3n-de-dominios"><i class="fa fa-check"></i><b>1.1.4</b> Definición de dominios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#indicadores-de-inter%C3%A9s"><i class="fa fa-check"></i><b>1.2</b> Indicadores de interés</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#conteos-poblacionales"><i class="fa fa-check"></i><b>1.2.1</b> Conteos poblacionales</a></li>
+<li class="chapter" data-level="1.2.2" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#tasas-derivadas"><i class="fa fa-check"></i><b>1.2.2</b> Tasas derivadas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#estructuras-etarias"><i class="fa fa-check"></i><b>1.2.3</b> Estructuras etarias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="cap-modelos-poblacion.html"><a href="cap-modelos-poblacion.html#subcobertura-omision"><i class="fa fa-check"></i><b>1.3</b> Formulación del problema de subcobertura, no respuesta y omisión censal</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cap-integracion.html"><a href="cap-integracion.html"><i class="fa fa-check"></i><b>2</b> Integración de Fuentes de Información</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cap-integracion.html"><a href="cap-integracion.html#principios-de-modelamiento"><i class="fa fa-check"></i><b>2.1</b> Principios de modelamiento</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="cap-integracion.html"><a href="cap-integracion.html#modelos-de-conteo"><i class="fa fa-check"></i><b>2.1.1</b> Modelos de conteo</a></li>
+<li class="chapter" data-level="2.1.2" data-path="cap-integracion.html"><a href="cap-integracion.html#requerimientos-de-estimaci%C3%B3n-subnacional"><i class="fa fa-check"></i><b>2.1.2</b> Requerimientos de estimación subnacional</a></li>
+<li class="chapter" data-level="2.1.3" data-path="cap-integracion.html"><a href="cap-integracion.html#justificaci%C3%B3n-del-enfoque-bayesiano"><i class="fa fa-check"></i><b>2.1.3</b> Justificación del enfoque bayesiano</a></li>
+<li class="chapter" data-level="2.1.4" data-path="cap-integracion.html"><a href="cap-integracion.html#integracion-multiples-fuentes"><i class="fa fa-check"></i><b>2.1.4</b> Integración de múltiples fuentes</a></li>
+<li class="chapter" data-level="2.1.5" data-path="cap-integracion.html"><a href="cap-integracion.html#relaci%C3%B3n-con-small-area-estimation-sae"><i class="fa fa-check"></i><b>2.1.5</b> Relación con <em>Small Area Estimation</em> (SAE)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="cap-integracion.html"><a href="cap-integracion.html#identificacion-fuentes"><i class="fa fa-check"></i><b>2.2</b> Identificación de fuentes</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cap-integracion.html"><a href="cap-integracion.html#medicion-cobertura"><i class="fa fa-check"></i><b>2.2.1</b> Medición de cobertura a nivel de segmento</a></li>
+<li class="chapter" data-level="2.2.2" data-path="cap-integracion.html"><a href="cap-integracion.html#preconteos-segmentacion"><i class="fa fa-check"></i><b>2.2.2</b> Preconteos y segmentación</a></li>
+<li class="chapter" data-level="2.2.3" data-path="cap-integracion.html"><a href="cap-integracion.html#registros-administrativos"><i class="fa fa-check"></i><b>2.2.3</b> Registros administrativos</a></li>
+<li class="chapter" data-level="2.2.4" data-path="cap-integracion.html"><a href="cap-integracion.html#fuentes-satelitales"><i class="fa fa-check"></i><b>2.2.4</b> Fuentes satelitales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-explicativas"><i class="fa fa-check"></i><b>2.3</b> Variables explicativas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-socioecon%C3%B3micas"><i class="fa fa-check"></i><b>2.3.1</b> Variables socioeconómicas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="cap-integracion.html"><a href="cap-integracion.html#variables-espaciales"><i class="fa fa-check"></i><b>2.3.2</b> Variables espaciales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap-insumos.html"><a href="cap-insumos.html"><i class="fa fa-check"></i><b>3</b> Preparación de Insumos para Modelamiento</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cap-insumos.html"><a href="cap-insumos.html#estandarizaci%C3%B3n-de-fuentes"><i class="fa fa-check"></i><b>3.1</b> Estandarización de fuentes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cap-insumos.html"><a href="cap-insumos.html#homologaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>3.1.1</b> Homologación de variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cap-insumos.html"><a href="cap-insumos.html#normalizaci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>3.1.2</b> Normalización de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cap-insumos.html"><a href="cap-insumos.html#evaluacion-cobertura"><i class="fa fa-check"></i><b>3.2</b> Evaluación de cobertura</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cap-insumos.html"><a href="cap-insumos.html#clasificacion-segmentos"><i class="fa fa-check"></i><b>3.2.1</b> Clasificación de segmentos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cap-insumos.html"><a href="cap-insumos.html#construcci%C3%B3n-de-la-variable-dependiente"><i class="fa fa-check"></i><b>3.3</b> Construcción de la variable dependiente</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cap-insumos.html"><a href="cap-insumos.html#densidad-poblacional"><i class="fa fa-check"></i><b>3.3.1</b> Densidad poblacional</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cap-insumos.html"><a href="cap-insumos.html#n%C3%BAmero-promedio-de-personas-por-hogar"><i class="fa fa-check"></i><b>3.3.2</b> Número promedio de personas por hogar</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cap-insumos.html"><a href="cap-insumos.html#definici%C3%B3n-de-poblaci%C3%B3n-base"><i class="fa fa-check"></i><b>3.3.3</b> Definición de población base</a></li>
+<li class="chapter" data-level="3.3.4" data-path="cap-insumos.html"><a href="cap-insumos.html#variable-de-exposici%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> Variable de exposición</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cap-insumos.html"><a href="cap-insumos.html#diagn%C3%B3stico-exploratorio"><i class="fa fa-check"></i><b>3.4</b> Diagnóstico exploratorio</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cap-insumos.html"><a href="cap-insumos.html#distribuci%C3%B3n-de-conteos"><i class="fa fa-check"></i><b>3.4.1</b> Distribución de conteos</a></li>
+<li class="chapter" data-level="3.4.2" data-path="cap-insumos.html"><a href="cap-insumos.html#outliers"><i class="fa fa-check"></i><b>3.4.2</b> Outliers</a></li>
+<li class="chapter" data-level="3.4.3" data-path="cap-insumos.html"><a href="cap-insumos.html#relacion-variables"><i class="fa fa-check"></i><b>3.4.3</b> Relación entre variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cap-conteos.html"><a href="cap-conteos.html"><i class="fa fa-check"></i><b>4</b> Modelo para Conteos Poblacionales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cap-conteos.html"><a href="cap-conteos.html#modelo-poisson-lognormal"><i class="fa fa-check"></i><b>4.1</b> Modelo Poisson-lognormal</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="cap-conteos.html"><a href="cap-conteos.html#definicion-formal"><i class="fa fa-check"></i><b>4.1.1</b> Definición formal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="cap-conteos.html"><a href="cap-conteos.html#funcion-verosimilitud"><i class="fa fa-check"></i><b>4.1.2</b> Función de verosimilitud</a></li>
+<li class="chapter" data-level="4.1.3" data-path="cap-conteos.html"><a href="cap-conteos.html#distribuciones-previas"><i class="fa fa-check"></i><b>4.1.3</b> Distribuciones previas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="cap-conteos.html"><a href="cap-conteos.html#distribucion-posterior"><i class="fa fa-check"></i><b>4.1.4</b> Distribución posterior</a></li>
+<li class="chapter" data-level="4.1.5" data-path="cap-conteos.html"><a href="cap-conteos.html#interpretaci%C3%B3n-de-par%C3%A1metros"><i class="fa fa-check"></i><b>4.1.5</b> Interpretación de parámetros</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="cap-conteos.html"><a href="cap-conteos.html#componentes-del-modelo"><i class="fa fa-check"></i><b>4.2</b> Componentes del modelo</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-fijos"><i class="fa fa-check"></i><b>4.2.1</b> Efectos fijos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="cap-conteos.html"><a href="cap-conteos.html#efectos-aleatorios"><i class="fa fa-check"></i><b>4.2.2</b> Efectos aleatorios</a></li>
+<li class="chapter" data-level="4.2.3" data-path="cap-conteos.html"><a href="cap-conteos.html#interacciones"><i class="fa fa-check"></i><b>4.2.3</b> Interacciones</a></li>
+<li class="chapter" data-level="4.2.4" data-path="cap-conteos.html"><a href="cap-conteos.html#sobredispersion-offset"><i class="fa fa-check"></i><b>4.2.4</b> Sobredispersión y offset</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cap-inferencia.html"><a href="cap-inferencia.html"><i class="fa fa-check"></i><b>5</b> Inferencia Bayesiana e Implementación Computacional</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="cap-inferencia.html"><a href="cap-inferencia.html#m%C3%A9todos-de-simulaci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Métodos de simulación</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="cap-inferencia.html"><a href="cap-inferencia.html#cadenas-de-markov-monte-carlo"><i class="fa fa-check"></i><b>5.1.1</b> Cadenas de Markov Monte Carlo</a></li>
+<li class="chapter" data-level="5.1.2" data-path="cap-inferencia.html"><a href="cap-inferencia.html#monte-carlo-hamiltoniano-y-el-algoritmo-nuts"><i class="fa fa-check"></i><b>5.1.2</b> Monte Carlo Hamiltoniano y el algoritmo NUTS</a></li>
+<li class="chapter" data-level="5.1.3" data-path="cap-inferencia.html"><a href="cap-inferencia.html#stan-implementacion"><i class="fa fa-check"></i><b>5.1.3</b> Implementación en Stan</a></li>
+<li class="chapter" data-level="5.1.4" data-path="cap-inferencia.html"><a href="cap-inferencia.html#configuraci%C3%B3n-de-cadenas-muestras-e-iteraciones"><i class="fa fa-check"></i><b>5.1.4</b> Configuración de cadenas, muestras e iteraciones</a></li>
+<li class="chapter" data-level="5.1.5" data-path="cap-inferencia.html"><a href="cap-inferencia.html#paralelizaci%C3%B3n-y-eficiencia-computacional"><i class="fa fa-check"></i><b>5.1.5</b> Paralelización y eficiencia computacional</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="cap-inferencia.html"><a href="cap-inferencia.html#distribuci%C3%B3n-posterior-y-estimaciones"><i class="fa fa-check"></i><b>5.2</b> Distribución posterior y estimaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="cap-inferencia.html"><a href="cap-inferencia.html#estimaciones-puntuales-y-resumen-posterior"><i class="fa fa-check"></i><b>5.2.1</b> Estimaciones puntuales y resumen posterior</a></li>
+<li class="chapter" data-level="5.2.2" data-path="cap-inferencia.html"><a href="cap-inferencia.html#extracci%C3%B3n-de-muestras-e-intervalos-de-credibilidad"><i class="fa fa-check"></i><b>5.2.2</b> Extracción de muestras e intervalos de credibilidad</a></li>
+<li class="chapter" data-level="5.2.3" data-path="cap-inferencia.html"><a href="cap-inferencia.html#estimaciones-segmento-censal"><i class="fa fa-check"></i><b>5.2.3</b> Estimaciones a nivel de segmento censal</a></li>
+<li class="chapter" data-level="5.2.4" data-path="cap-inferencia.html"><a href="cap-inferencia.html#agregaci%C3%B3n-a-niveles-geogr%C3%A1ficos-superiores"><i class="fa fa-check"></i><b>5.2.4</b> Agregación a niveles geográficos superiores</a></li>
+<li class="chapter" data-level="5.2.5" data-path="cap-inferencia.html"><a href="cap-inferencia.html#verificaci%C3%B3n-predictiva-posterior"><i class="fa fa-check"></i><b>5.2.5</b> Verificación predictiva posterior</a></li>
+<li class="chapter" data-level="5.2.6" data-path="cap-inferencia.html"><a href="cap-inferencia.html#criterios-de-informaci%C3%B3n-loo-y-waic"><i class="fa fa-check"></i><b>5.2.6</b> Criterios de información LOO y WAIC</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="cap-inferencia.html"><a href="cap-inferencia.html#aplicacion-datos-reales"><i class="fa fa-check"></i><b>5.3</b> Aplicación con datos reales</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="cap-inferencia.html"><a href="cap-inferencia.html#datos-utilizados-en-la-aplicaci%C3%B3n"><i class="fa fa-check"></i><b>5.3.1</b> Datos utilizados en la aplicación</a></li>
+<li class="chapter" data-level="5.3.2" data-path="cap-inferencia.html"><a href="cap-inferencia.html#especificaci%C3%B3n-utilizada-en-el-ajuste"><i class="fa fa-check"></i><b>5.3.2</b> Especificación utilizada en el ajuste</a></li>
+<li class="chapter" data-level="5.3.3" data-path="cap-inferencia.html"><a href="cap-inferencia.html#diagn%C3%B3stico-de-convergencia-con-salidas-reales"><i class="fa fa-check"></i><b>5.3.3</b> Diagnóstico de convergencia con salidas reales</a></li>
+<li class="chapter" data-level="5.3.4" data-path="cap-inferencia.html"><a href="cap-inferencia.html#verificaci%C3%B3n-predictiva-posterior-con-datos-reales"><i class="fa fa-check"></i><b>5.3.4</b> Verificación predictiva posterior con datos reales</a></li>
+<li class="chapter" data-level="5.3.5" data-path="cap-inferencia.html"><a href="cap-inferencia.html#criterios-loo-y-waic"><i class="fa fa-check"></i><b>5.3.5</b> Criterios LOO y WAIC</a></li>
+<li class="chapter" data-level="5.3.6" data-path="cap-inferencia.html"><a href="cap-inferencia.html#estimaciones-y-agregaci%C3%B3n-territorial"><i class="fa fa-check"></i><b>5.3.6</b> Estimaciones y agregación territorial</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html"><i class="fa fa-check"></i><b>6</b> Diagnóstico y Validación de los Modelos de Población</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#diagn%C3%B3stico-de-convergencia-mcmc"><i class="fa fa-check"></i><b>6.1</b> Diagnóstico de convergencia MCMC</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#estadistico-rhat"><i class="fa fa-check"></i><b>6.1.1</b> Estadístico R-hat</a></li>
+<li class="chapter" data-level="6.1.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#tamano-efectivo-muestra"><i class="fa fa-check"></i><b>6.1.2</b> Tamaño efectivo de muestra (ESS)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#trace-plots-autocorrelaci%C3%B3n-y-diagn%C3%B3sticos-espec%C3%ADficos-de-hmc"><i class="fa fa-check"></i><b>6.1.3</b> Trace plots, autocorrelación y diagnósticos específicos de HMC</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#validaci%C3%B3n-predictiva-posterior"><i class="fa fa-check"></i><b>6.2</b> Validación predictiva posterior</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#posterior-predictive-checks-ppc"><i class="fa fa-check"></i><b>6.2.1</b> Posterior predictive checks (PPC)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#residuos-bayesianos"><i class="fa fa-check"></i><b>6.2.2</b> Residuos bayesianos</a></li>
+<li class="chapter" data-level="6.2.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#comparaci%C3%B3n-con-conteos-observados-y-calibraci%C3%B3n"><i class="fa fa-check"></i><b>6.2.3</b> Comparación con conteos observados y calibración</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#selecci%C3%B3n-y-comparaci%C3%B3n-de-modelos"><i class="fa fa-check"></i><b>6.3</b> Selección y comparación de modelos</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#criterio-leave-one-out-loo-cv-y-diagn%C3%B3stico-de-pareto-k"><i class="fa fa-check"></i><b>6.3.1</b> Criterio Leave-One-Out (LOO-CV) y diagnóstico de Pareto k</a></li>
+<li class="chapter" data-level="6.3.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#widely-applicable-information-criterion-waic"><i class="fa fa-check"></i><b>6.3.2</b> Widely Applicable Information Criterion (WAIC)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#criterio-de-elecci%C3%B3n-del-modelo-final"><i class="fa fa-check"></i><b>6.3.3</b> Criterio de elección del modelo final</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#validaci%C3%B3n-externa"><i class="fa fa-check"></i><b>6.4</b> Validación externa</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#consistencia-con-proyecciones-demogr%C3%A1ficas"><i class="fa fa-check"></i><b>6.4.1</b> Consistencia con proyecciones demográficas</a></li>
+<li class="chapter" data-level="6.4.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#comparaci%C3%B3n-con-registros-administrativos-independientes"><i class="fa fa-check"></i><b>6.4.2</b> Comparación con registros administrativos independientes</a></li>
+<li class="chapter" data-level="6.4.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#evaluaci%C3%B3n-de-coherencia-territorial-y-demogr%C3%A1fica"><i class="fa fa-check"></i><b>6.4.3</b> Evaluación de coherencia territorial y demográfica</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cap-calibracion.html"><a href="cap-calibracion.html"><i class="fa fa-check"></i><b>7</b> Calibración y Benchmarking Subnacional</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-con-proyecciones-poblacionales"><i class="fa fa-check"></i><b>7.1</b> Benchmarking con proyecciones poblacionales</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#necesidad-de-coherencia-entre-niveles-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>7.1.1</b> Necesidad de coherencia entre niveles geográficos</a></li>
+<li class="chapter" data-level="7.1.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#restricciones-de-consistencia-jer%C3%A1rquica"><i class="fa fa-check"></i><b>7.1.2</b> Restricciones de consistencia jerárquica</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#relaci%C3%B3n-entre-estimaciones-locales-y-totales-conocidos"><i class="fa fa-check"></i><b>7.1.3</b> Relación entre estimaciones locales y totales conocidos</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#m%C3%A9todos-de-benchmarking"><i class="fa fa-check"></i><b>7.2</b> Métodos de benchmarking</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-proporcional"><i class="fa fa-check"></i><b>7.2.1</b> Benchmarking proporcional</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-por-razones-de-ajuste"><i class="fa fa-check"></i><b>7.2.2</b> Benchmarking por razones de ajuste</a></li>
+<li class="chapter" data-level="7.2.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-aditivo-con-restricciones-de-suma"><i class="fa fa-check"></i><b>7.2.3</b> Benchmarking aditivo con restricciones de suma</a></li>
+<li class="chapter" data-level="7.2.4" data-path="cap-calibracion.html"><a href="cap-calibracion.html#aplicaci%C3%B3n-pr%C3%A1ctica-a-distintos-niveles-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>7.2.4</b> Aplicación práctica a distintos niveles geográficos</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#evaluaci%C3%B3n-del-impacto-del-benchmarking"><i class="fa fa-check"></i><b>7.3</b> Evaluación del impacto del benchmarking</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#cambio-en-estimaciones-puntuales"><i class="fa fa-check"></i><b>7.3.1</b> Cambio en estimaciones puntuales</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#intervalos-de-credibilidad-post-calibraci%C3%B3n"><i class="fa fa-check"></i><b>7.3.2</b> Intervalos de credibilidad post-calibración</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
+  <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
+    © CEPAL 2025 — CC BY-NC-SA 4.0
+  </small>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Bayesianos de Población para América Latina y el Caribe</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cap-calibracion" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capítulo 7</span> Calibración y Benchmarking Subnacional<a href="cap-calibracion.html#cap-calibracion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El capítulo anterior estableció los criterios de convergencia, validación predictiva y validación externa que un modelo Poisson-lognormal debe satisfacer antes de que sus estimaciones puedan utilizarse en la producción de estadísticas oficiales de población. Sin embargo, la validación de un modelo no resuelve por sí sola un problema adicional, frecuente en la práctica institucional: los organismos nacionales de estadística suelen requerir que las estimaciones subnacionales, al agregarse, coincidan exactamente con totales de referencia fijados de manera independiente al modelo —un total nacional publicado oficialmente, una cifra departamental proveniente de un recuento preliminar de mayor confiabilidad, o una proyección demográfica considerada autoridad institucional para efectos de asignación presupuestaria—. Este capítulo desarrolla el conjunto de técnicas conocidas como calibración o <em>benchmarking</em>, orientadas a conciliar las estimaciones del modelo con dichos totales de control, preservando en la mayor medida posible la información distribucional aportada por el modelo bayesiano.</p>
+<p>La estructura del capítulo comprende tres secciones. La primera examina por qué surge la necesidad de calibración y distingue formalmente la coherencia jerárquica interna del modelo —ya garantizada por construcción, según se estableció en el capítulo de especificación del modelo— de la coherencia externa frente a totales de control, que no está garantizada y constituye el objeto propio del benchmarking. La segunda presenta los métodos de calibración: el ajuste proporcional clásico, el ajuste ponderado por precisión y su extensión aditiva a la distribución posterior completa, junto con su aplicación práctica en jerarquías territoriales anidadas. La tercera evalúa el impacto de la calibración sobre las estimaciones puntuales y sobre los intervalos de credibilidad.</p>
+<div id="benchmarking-con-proyecciones-poblacionales" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Benchmarking con proyecciones poblacionales<a href="cap-calibracion.html#benchmarking-con-proyecciones-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="necesidad-de-coherencia-entre-niveles-geográficos" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Necesidad de coherencia entre niveles geográficos<a href="cap-calibracion.html#necesidad-de-coherencia-entre-niveles-geogr%C3%A1ficos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los organismos nacionales de estadística no publican estimaciones de población de manera aislada: cada nueva cifra se inserta en un sistema de referencias previamente establecidas —conteos censales anteriores, proyecciones demográficas oficiales, cifras utilizadas en la asignación de recursos fiscales o en la delimitación de circunscripciones electorales—. Cuando el total nacional o departamental implícito en las estimaciones de un modelo bayesiano de estimación subnacional difiere de estas cifras de referencia, la discrepancia genera un problema que trasciende lo estrictamente estadístico: dos totales distintos y no reconciliados para la misma población generan confusión institucional, erosionan la confianza pública en las estadísticas oficiales y pueden ser incompatibles con compromisos legales o presupuestarios previamente adquiridos sobre la base de la cifra de referencia.</p>
+<p>Esta necesidad de coherencia con totales externos es un problema clásico dentro de la Estimación en Áreas Pequeñas <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>, habitualmente abordado bajo el término <em>benchmarking</em>. La particularidad del enfoque bayesiano desarrollado en este libro es que dicho ajuste debe realizarse preservando la coherencia probabilística de las estimaciones: no solo el valor puntual, sino la distribución posterior completa, incluidos los intervalos de credibilidad, deben ajustarse de manera consistente con el nuevo total exigido.</p>
+</div>
+<div id="restricciones-de-consistencia-jerárquica" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Restricciones de consistencia jerárquica<a href="cap-calibracion.html#restricciones-de-consistencia-jer%C3%A1rquica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es necesario distinguir dos nociones de coherencia que, aunque relacionadas, tienen naturaleza distinta. La primera es la <strong>coherencia jerárquica interna</strong> del modelo, definida formalmente en el capítulo de modelo para conteos poblacionales: dado que las predicciones <span class="math inline">\(\tilde{Y}_i^{(t)}\)</span> para cada segmento se generan dentro de la misma muestra posterior <span class="math inline">\(t\)</span>, su agregación es automáticamente consistente entre niveles geográficos para cualquier muestra individual:</p>
+<p><span class="math display">\[
+\hat{N}_k^{(3),(t)} = \sum_{i \,\in\, \mathcal{S}_k} \tilde{Y}_i^{(t)}, \qquad \hat{N}_j^{(2),(t)} = \sum_{k \,:\, k \subset j} \hat{N}_k^{(3),(t)}
+\]</span></p>
+<p>Esta propiedad no requiere ningún procedimiento adicional: es una consecuencia directa de sumar predicciones generadas conjuntamente a partir del mismo vector de parámetros <span class="math inline">\(\boldsymbol{\theta}^{(t)}\)</span>, y se mantiene exactamente en cada una de las <span class="math inline">\(T\)</span> muestras posteriores.</p>
+<p>La segunda noción es la <strong>coherencia externa</strong> frente a un total de control <span class="math inline">\(N_j^*\)</span> que no proviene del modelo —una cifra oficial, una proyección demográfica institucional o un recuento independiente—. En general, el total implícito en el modelo:</p>
+<p><span class="math display">\[
+\hat{N}_{j,+} = \mathbb{E}\!\left[\hat{N}_j^{(2)} \mid \mathbf{Y}_{obs}\right] \approx \frac{1}{T}\sum_{t=1}^{T} \hat{N}_j^{(2),(t)}
+\]</span></p>
+<p>no coincide exactamente con <span class="math inline">\(N_j^*\)</span>, y no existe razón estadística para esperar que lo haga: el modelo y el total de control son, casi siempre, dos estimaciones distintas de la misma cantidad, obtenidas por procedimientos independientes. Es esta segunda forma de incoherencia —y no la primera, que ya está resuelta por construcción— la que constituye el objeto del benchmarking. Un aspecto crítico que se retoma en la sección de aplicación práctica es que la calibración externa, al modificar los totales de un nivel geográfico, puede romper la coherencia jerárquica interna con los niveles adyacentes si no se propaga de manera consistente a través de la jerarquía territorial.</p>
+</div>
+<div id="relación-entre-estimaciones-locales-y-totales-conocidos" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Relación entre estimaciones locales y totales conocidos<a href="cap-calibracion.html#relaci%C3%B3n-entre-estimaciones-locales-y-totales-conocidos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Formalmente, sea <span class="math inline">\(N^{*}\)</span> el total de control conocido para un conjunto de <span class="math inline">\(K\)</span> unidades geográficas de un mismo nivel —departamentos dentro de un país, municipios dentro de un departamento— y sean <span class="math inline">\(\hat{N}_1, \ldots, \hat{N}_K\)</span> las estimaciones puntuales del modelo para cada unidad, con <span class="math inline">\(\hat{N}_{+} = \sum_{j=1}^{K} \hat{N}_j\)</span> su suma —se indexa con <span class="math inline">\(j\)</span>, siguiendo la convención del Capítulo <a href="cap-modelos-poblacion.html#cap-modelos-poblacion">1</a> para unidades de agregación territorial, y no con <span class="math inline">\(k\)</span>, reservado allí para el nivel de municipio y en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a> para el índice de covariables—. La discrepancia de benchmarking se define como:</p>
+<p><span class="math display">\[
+\Delta = N^{*} - \hat{N}_{+}
+\]</span></p>
+<p>El problema de calibración consiste en construir un conjunto de estimaciones ajustadas <span class="math inline">\(\hat{N}_1^{bench}, \ldots, \hat{N}_K^{bench}\)</span> que satisfagan exactamente la restricción de suma <span class="math inline">\(\sum_{j=1}^{K} \hat{N}_j^{bench} = N^{*}\)</span>, minimizando simultáneamente la distorsión introducida sobre la información distribucional original del modelo. La forma en que se distribuye <span class="math inline">\(\Delta\)</span> entre las <span class="math inline">\(K\)</span> unidades —de manera uniforme, proporcional al tamaño de cada unidad, o proporcional a su incertidumbre— es precisamente lo que distingue a los distintos métodos de benchmarking desarrollados en la sección siguiente.</p>
+</div>
+</div>
+<div id="métodos-de-benchmarking" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Métodos de benchmarking<a href="cap-calibracion.html#m%C3%A9todos-de-benchmarking" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="benchmarking-proporcional" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Benchmarking proporcional<a href="cap-calibracion.html#benchmarking-proporcional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El método más simple y de mayor tradición en la práctica de oficinas de estadística es el ajuste proporcional (<em>ratio benchmarking</em>), que distribuye la discrepancia <span class="math inline">\(\Delta\)</span> en proporción al tamaño relativo de cada unidad. El factor de ajuste se define como:</p>
+<p><span class="math display">\[
+\phi = \frac{N^{*}}{\hat{N}_{+}}
+\]</span></p>
+<p>y la estimación calibrada de cada unidad es:</p>
+<p><span class="math display">\[
+\hat{N}_j^{bench} = \hat{N}_j \cdot \phi = \hat{N}_j \cdot \frac{N^{*}}{\hat{N}_{+}}
+\]</span></p>
+<p>Por construcción, <span class="math inline">\(\sum_{j=1}^{K} \hat{N}_j^{bench} = \phi \sum_{j=1}^{K} \hat{N}_j = \phi \, \hat{N}_{+} = N^{*}\)</span>, de modo que la restricción de suma se satisface exactamente. El método preserva las proporciones relativas entre unidades —si <span class="math inline">\(\hat{N}_a / \hat{N}_b = 2\)</span> antes del ajuste, la misma razón se mantiene después—, lo que lo hace fácil de comunicar e implementar. Su principal limitación es que aplica el mismo factor multiplicativo <span class="math inline">\(\phi\)</span> a todas las unidades, sin distinguir entre aquellas cuya estimación es precisa —con posterior concentrada y <span class="math inline">\(\text{Var}(\hat{N}_j \mid \mathbf{Y}_{obs})\)</span> pequeña, típicamente unidades con buena cobertura censal directa— y aquellas cuya estimación depende casi enteramente de la estructura jerárquica del modelo, con incertidumbre considerablemente mayor. El ajuste proporcional penaliza a ambos tipos de unidad por igual, en contraste con el principio de que la información más incierta debería absorber una proporción mayor de cualquier corrección externa.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="cap-calibracion.html#cb17-1" tabindex="-1"></a>benchmarking_proporcional <span class="ot">&lt;-</span> <span class="cf">function</span>(N_hat, N_control) {</span>
+<span id="cb17-2"><a href="cap-calibracion.html#cb17-2" tabindex="-1"></a>  phi <span class="ot">&lt;-</span> N_control <span class="sc">/</span> <span class="fu">sum</span>(N_hat)</span>
+<span id="cb17-3"><a href="cap-calibracion.html#cb17-3" tabindex="-1"></a>  N_hat <span class="sc">*</span> phi</span>
+<span id="cb17-4"><a href="cap-calibracion.html#cb17-4" tabindex="-1"></a>}</span>
+<span id="cb17-5"><a href="cap-calibracion.html#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="cap-calibracion.html#cb17-6" tabindex="-1"></a>N_bench_prop <span class="ot">&lt;-</span> <span class="fu">benchmarking_proporcional</span>(</span>
+<span id="cb17-7"><a href="cap-calibracion.html#cb17-7" tabindex="-1"></a>  <span class="at">N_hat     =</span> estimaciones_departamento<span class="sc">$</span>tot_pob_media,</span>
+<span id="cb17-8"><a href="cap-calibracion.html#cb17-8" tabindex="-1"></a>  <span class="at">N_control =</span> total_oficial_pais</span>
+<span id="cb17-9"><a href="cap-calibracion.html#cb17-9" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="benchmarking-por-razones-de-ajuste" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Benchmarking por razones de ajuste<a href="cap-calibracion.html#benchmarking-por-razones-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El benchmarking ponderado por precisión corrige la limitación anterior distribuyendo la discrepancia <span class="math inline">\(\Delta\)</span> en proporción a la incertidumbre relativa de cada unidad, en lugar de en proporción a su tamaño. Formalmente, la estimación calibrada se obtiene como solución al problema de minimización:</p>
+<p><span class="math display">\[
+\min_{\hat{N}_1^{bench}, \ldots, \hat{N}_K^{bench}} \; \sum_{j=1}^{K} \frac{\left(\hat{N}_j^{bench} - \hat{N}_j\right)^2}{w_j} \quad \text{sujeto a} \quad \sum_{j=1}^{K} \hat{N}_j^{bench} = N^{*}
+\]</span></p>
+<p>donde <span class="math inline">\(w_j &gt; 0\)</span> es un peso que refleja la incertidumbre de la estimación de la unidad <span class="math inline">\(j\)</span>. La solución, obtenida mediante multiplicadores de Lagrange, es:</p>
+<p><span class="math display">\[
+\hat{N}_j^{bench} = \hat{N}_j + w_j \cdot \frac{\Delta}{\sum_{j&#39;=1}^{K} w_{j&#39;}}
+\]</span></p>
+<p>En el marco bayesiano desarrollado en este libro, el peso natural es la varianza posterior de la predicción de cada unidad, directamente disponible a partir de las muestras MCMC sin necesidad de aproximaciones asintóticas externas, a diferencia del enfoque frecuentista clásico de SAE:</p>
+<p><span class="math display">\[
+w_j = \text{Var}\!\left(\hat{N}_j \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{T-1}\sum_{t=1}^{T} \left(\hat{N}_j^{(t)} - \hat{N}_j\right)^2
+\]</span></p>
+<p>Bajo esta especificación, las unidades con mayor incertidumbre posterior —típicamente aquellas con menor cobertura censal directa y mayor dependencia de la estructura jerárquica del modelo— absorben una proporción mayor de la discrepancia <span class="math inline">\(\Delta\)</span>, mientras que las unidades con estimaciones precisas se modifican mínimamente. Dos casos particulares merecen mención: si <span class="math inline">\(w_j \propto \hat{N}_j\)</span>, la fórmula se reduce aproximadamente al ajuste proporcional de la subsección anterior; si <span class="math inline">\(w_j = 1\)</span> para todo <span class="math inline">\(j\)</span>, la discrepancia se distribuye en partes iguales entre las unidades, independientemente de su tamaño o precisión.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap-calibracion.html#cb18-1" tabindex="-1"></a>benchmarking_ponderado <span class="ot">&lt;-</span> <span class="cf">function</span>(N_hat, N_control, pesos) {</span>
+<span id="cb18-2"><a href="cap-calibracion.html#cb18-2" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> N_control <span class="sc">-</span> <span class="fu">sum</span>(N_hat)</span>
+<span id="cb18-3"><a href="cap-calibracion.html#cb18-3" tabindex="-1"></a>  N_hat <span class="sc">+</span> pesos <span class="sc">*</span> (delta <span class="sc">/</span> <span class="fu">sum</span>(pesos))</span>
+<span id="cb18-4"><a href="cap-calibracion.html#cb18-4" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="cap-calibracion.html#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="cap-calibracion.html#cb18-6" tabindex="-1"></a><span class="co"># Pesos basados en la varianza posterior de cada unidad</span></span>
+<span id="cb18-7"><a href="cap-calibracion.html#cb18-7" tabindex="-1"></a>varianzas_post <span class="ot">&lt;-</span> <span class="fu">apply</span>(N_hat_samples, <span class="dv">2</span>, var)</span>
+<span id="cb18-8"><a href="cap-calibracion.html#cb18-8" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="cap-calibracion.html#cb18-9" tabindex="-1"></a>N_bench_pond <span class="ot">&lt;-</span> <span class="fu">benchmarking_ponderado</span>(</span>
+<span id="cb18-10"><a href="cap-calibracion.html#cb18-10" tabindex="-1"></a>  <span class="at">N_hat     =</span> estimaciones_departamento<span class="sc">$</span>tot_pob_media,</span>
+<span id="cb18-11"><a href="cap-calibracion.html#cb18-11" tabindex="-1"></a>  <span class="at">N_control =</span> total_oficial_pais,</span>
+<span id="cb18-12"><a href="cap-calibracion.html#cb18-12" tabindex="-1"></a>  <span class="at">pesos     =</span> varianzas_post</span>
+<span id="cb18-13"><a href="cap-calibracion.html#cb18-13" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="benchmarking-aditivo-con-restricciones-de-suma" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Benchmarking aditivo con restricciones de suma<a href="cap-calibracion.html#benchmarking-aditivo-con-restricciones-de-suma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los dos métodos anteriores calibran únicamente la estimación puntual, dejando sin ajustar la distribución posterior completa. Esto es insuficiente en un marco bayesiano: si solo se recalibra la media posterior y los intervalos de credibilidad se calculan sobre las muestras originales sin ajustar, la incertidumbre reportada resulta inconsistente con la estimación puntual calibrada. La extensión adecuada consiste en aplicar el ajuste a cada una de las <span class="math inline">\(T\)</span> muestras de la distribución predictiva posterior, de manera que la restricción de suma se satisfaga en cada muestra individual y no solo en la media.</p>
+<p>El ajuste proporcional por muestra se define como:</p>
+<p><span class="math display">\[
+\tilde{N}_j^{bench,(t)} = \tilde{N}_j^{(t)} \cdot \frac{N^{*}}{\sum_{j&#39;=1}^{K} \tilde{N}_{j&#39;}^{(t)}}, \qquad t = 1, \ldots, T
+\]</span></p>
+<p>Nótese que el factor de ajuste <span class="math inline">\(\phi^{(t)} = N^{*} / \sum_{j&#39;} \tilde{N}_{j&#39;}^{(t)}\)</span> varía entre muestras, dado que el total agregado del modelo fluctúa de una muestra posterior a otra como consecuencia del proceso de Poisson subyacente. Esta variación del factor de ajuste entre muestras es precisamente lo que permite que la incertidumbre del proceso de calibración se propague correctamente hacia los intervalos de credibilidad calibrados.</p>
+<p>El ajuste aditivo ponderado por muestra sigue la misma lógica que el benchmarking por razones de ajuste, aplicado ahora sobre cada muestra individual:</p>
+<p><span class="math display">\[
+\tilde{N}_j^{bench,(t)} = \tilde{N}_j^{(t)} + w_j \cdot \frac{N^{*} - \sum_{j&#39;=1}^{K} \tilde{N}_{j&#39;}^{(t)}}{\sum_{j&#39;=1}^{K} w_{j&#39;}}, \qquad t = 1, \ldots, T
+\]</span></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap-calibracion.html#cb19-1" tabindex="-1"></a><span class="co"># Matriz de muestras posteriores: T filas x K columnas (unidades geográficas)</span></span>
+<span id="cb19-2"><a href="cap-calibracion.html#cb19-2" tabindex="-1"></a>calibrar_muestras_proporcional <span class="ot">&lt;-</span> <span class="cf">function</span>(N_samples, N_control) {</span>
+<span id="cb19-3"><a href="cap-calibracion.html#cb19-3" tabindex="-1"></a>  totales_muestra <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(N_samples)</span>
+<span id="cb19-4"><a href="cap-calibracion.html#cb19-4" tabindex="-1"></a>  phi_t <span class="ot">&lt;-</span> N_control <span class="sc">/</span> totales_muestra</span>
+<span id="cb19-5"><a href="cap-calibracion.html#cb19-5" tabindex="-1"></a>  N_samples <span class="sc">*</span> phi_t</span>
+<span id="cb19-6"><a href="cap-calibracion.html#cb19-6" tabindex="-1"></a>}</span>
+<span id="cb19-7"><a href="cap-calibracion.html#cb19-7" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="cap-calibracion.html#cb19-8" tabindex="-1"></a>calibrar_muestras_aditivo <span class="ot">&lt;-</span> <span class="cf">function</span>(N_samples, N_control, pesos) {</span>
+<span id="cb19-9"><a href="cap-calibracion.html#cb19-9" tabindex="-1"></a>  totales_muestra <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(N_samples)</span>
+<span id="cb19-10"><a href="cap-calibracion.html#cb19-10" tabindex="-1"></a>  delta_t <span class="ot">&lt;-</span> N_control <span class="sc">-</span> totales_muestra</span>
+<span id="cb19-11"><a href="cap-calibracion.html#cb19-11" tabindex="-1"></a>  ajuste_t <span class="ot">&lt;-</span> <span class="fu">outer</span>(delta_t, pesos <span class="sc">/</span> <span class="fu">sum</span>(pesos))</span>
+<span id="cb19-12"><a href="cap-calibracion.html#cb19-12" tabindex="-1"></a>  N_samples <span class="sc">+</span> ajuste_t</span>
+<span id="cb19-13"><a href="cap-calibracion.html#cb19-13" tabindex="-1"></a>}</span>
+<span id="cb19-14"><a href="cap-calibracion.html#cb19-14" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="cap-calibracion.html#cb19-15" tabindex="-1"></a>N_bench_samples <span class="ot">&lt;-</span> <span class="fu">calibrar_muestras_aditivo</span>(</span>
+<span id="cb19-16"><a href="cap-calibracion.html#cb19-16" tabindex="-1"></a>  <span class="at">N_samples =</span> N_hat_samples,</span>
+<span id="cb19-17"><a href="cap-calibracion.html#cb19-17" tabindex="-1"></a>  <span class="at">N_control =</span> total_oficial_pais,</span>
+<span id="cb19-18"><a href="cap-calibracion.html#cb19-18" tabindex="-1"></a>  <span class="at">pesos     =</span> varianzas_post</span>
+<span id="cb19-19"><a href="cap-calibracion.html#cb19-19" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="aplicación-práctica-a-distintos-niveles-geográficos" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Aplicación práctica a distintos niveles geográficos<a href="cap-calibracion.html#aplicaci%C3%B3n-pr%C3%A1ctica-a-distintos-niveles-geogr%C3%A1ficos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En aplicaciones reales, los totales de control suelen estar disponibles en más de un nivel geográfico simultáneamente —un total nacional legalmente establecido y, en algunos países, totales departamentales derivados de recuentos preliminares independientes—. Calibrar cada nivel de manera aislada, sin coordinación, reintroduce el problema de incoherencia jerárquica que la agregación conjunta de muestras posteriores había resuelto automáticamente: si los municipios se calibran contra sus propios totales departamentales de control y, por separado, los departamentos se calibran contra el total nacional de control, no hay garantía de que la suma de los municipios calibrados coincida con el departamento ya calibrado.</p>
+<p>La solución consiste en aplicar la calibración de manera secuencial y descendente a través de la jerarquía territorial: primero se calibra el nivel más agregado disponible frente a su total de control —típicamente el nacional—; a continuación, dentro de cada unidad de ese nivel ya calibrada, se calibran sus unidades subordinadas de manera que sumen exactamente al valor recién calibrado del nivel superior, y así sucesivamente hasta el nivel de segmento censal. De esta manera, la coherencia jerárquica interna, temporalmente alterada por la calibración externa del nivel superior, se restablece en cada paso descendente:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap-calibracion.html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-2"><a href="cap-calibracion.html#cb20-2" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="cap-calibracion.html#cb20-3" tabindex="-1"></a>calibracion_jerarquica <span class="ot">&lt;-</span> <span class="cf">function</span>(df_segmentos, total_nacional) {</span>
+<span id="cb20-4"><a href="cap-calibracion.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="cap-calibracion.html#cb20-5" tabindex="-1"></a>  <span class="co"># Paso 1: calibrar departamentos contra el total nacional</span></span>
+<span id="cb20-6"><a href="cap-calibracion.html#cb20-6" tabindex="-1"></a>  dptos <span class="ot">&lt;-</span> df_segmentos <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="cap-calibracion.html#cb20-7" tabindex="-1"></a>    <span class="fu">group_by</span>(departamento) <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href="cap-calibracion.html#cb20-8" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N_hat =</span> <span class="fu">sum</span>(pob_media), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href="cap-calibracion.html#cb20-9" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb20-10"><a href="cap-calibracion.html#cb20-10" tabindex="-1"></a>      <span class="at">phi_dpto  =</span> total_nacional <span class="sc">/</span> <span class="fu">sum</span>(N_hat),</span>
+<span id="cb20-11"><a href="cap-calibracion.html#cb20-11" tabindex="-1"></a>      <span class="at">N_dpto_bench =</span> N_hat <span class="sc">*</span> phi_dpto</span>
+<span id="cb20-12"><a href="cap-calibracion.html#cb20-12" tabindex="-1"></a>    )</span>
+<span id="cb20-13"><a href="cap-calibracion.html#cb20-13" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="cap-calibracion.html#cb20-14" tabindex="-1"></a>  <span class="co"># Paso 2: calibrar municipios contra el total departamental ya calibrado</span></span>
+<span id="cb20-15"><a href="cap-calibracion.html#cb20-15" tabindex="-1"></a>  df_segmentos <span class="sc">%&gt;%</span></span>
+<span id="cb20-16"><a href="cap-calibracion.html#cb20-16" tabindex="-1"></a>    <span class="fu">left_join</span>(dptos <span class="sc">%&gt;%</span> <span class="fu">select</span>(departamento, N_dpto_bench), <span class="at">by =</span> <span class="st">&quot;departamento&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-17"><a href="cap-calibracion.html#cb20-17" tabindex="-1"></a>    <span class="fu">group_by</span>(departamento, municipio) <span class="sc">%&gt;%</span></span>
+<span id="cb20-18"><a href="cap-calibracion.html#cb20-18" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">N_mun_hat =</span> <span class="fu">sum</span>(pob_media)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-19"><a href="cap-calibracion.html#cb20-19" tabindex="-1"></a>    <span class="fu">group_by</span>(departamento) <span class="sc">%&gt;%</span></span>
+<span id="cb20-20"><a href="cap-calibracion.html#cb20-20" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">phi_mun =</span> N_dpto_bench <span class="sc">/</span> <span class="fu">sum</span>(N_mun_hat)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-21"><a href="cap-calibracion.html#cb20-21" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-22"><a href="cap-calibracion.html#cb20-22" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pob_bench =</span> pob_media <span class="sc">*</span> phi_mun)</span>
+<span id="cb20-23"><a href="cap-calibracion.html#cb20-23" tabindex="-1"></a>}</span></code></pre></div>
+<p>Este procedimiento garantiza que, tras la calibración, los conteos de segmento sumen exactamente a sus municipios, los municipios a sus departamentos y los departamentos al total nacional de control, restableciendo la coherencia jerárquica completa del sistema de estimaciones bajo la restricción externa impuesta.</p>
+</div>
+</div>
+<div id="evaluación-del-impacto-del-benchmarking" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Evaluación del impacto del benchmarking<a href="cap-calibracion.html#evaluaci%C3%B3n-del-impacto-del-benchmarking" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La calibración modifica las estimaciones producidas por un modelo previamente validado, y esta modificación debe documentarse y evaluarse explícitamente, tanto en su efecto sobre las estimaciones puntuales como sobre la incertidumbre reportada.</p>
+<div id="cambio-en-estimaciones-puntuales" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Cambio en estimaciones puntuales<a href="cap-calibracion.html#cambio-en-estimaciones-puntuales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El cambio relativo introducido por la calibración en la unidad <span class="math inline">\(j\)</span> se define como:</p>
+<p><span class="math display">\[
+\eta_j = \frac{\hat{N}_j^{bench} - \hat{N}_j}{\hat{N}_j}
+\]</span></p>
+<p>Bajo el ajuste proporcional, <span class="math inline">\(\eta_j = \phi - 1\)</span> es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, <span class="math inline">\(\eta_j\)</span> varía sistemáticamente entre unidades: se espera una relación positiva entre <span class="math inline">\(\eta_j\)</span> y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de <span class="math inline">\(\eta_j\)</span> cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="cap-calibracion.html#cb21-1" tabindex="-1"></a>cambio_relativo <span class="ot">&lt;-</span> estimaciones_departamento <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="cap-calibracion.html#cb21-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-3"><a href="cap-calibracion.html#cb21-3" tabindex="-1"></a>    <span class="at">eta_prop =</span> (N_bench_prop <span class="sc">-</span> tot_pob_media) <span class="sc">/</span> tot_pob_media,</span>
+<span id="cb21-4"><a href="cap-calibracion.html#cb21-4" tabindex="-1"></a>    <span class="at">eta_pond =</span> (N_bench_pond <span class="sc">-</span> tot_pob_media) <span class="sc">/</span> tot_pob_media</span>
+<span id="cb21-5"><a href="cap-calibracion.html#cb21-5" tabindex="-1"></a>  )</span>
+<span id="cb21-6"><a href="cap-calibracion.html#cb21-6" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="cap-calibracion.html#cb21-7" tabindex="-1"></a><span class="co"># Relación entre el cambio relativo y la incertidumbre posterior</span></span>
+<span id="cb21-8"><a href="cap-calibracion.html#cb21-8" tabindex="-1"></a><span class="fu">ggplot</span>(cambio_relativo, <span class="fu">aes</span>(<span class="at">x =</span> tot_pob_sd <span class="sc">/</span> tot_pob_media, <span class="at">y =</span> eta_pond)) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="cap-calibracion.html#cb21-9" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-10"><a href="cap-calibracion.html#cb21-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Coeficiente de variación posterior&quot;</span>,</span>
+<span id="cb21-11"><a href="cap-calibracion.html#cb21-11" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cambio relativo tras calibración ponderada&quot;</span>)</span></code></pre></div>
+<p>Un patrón en el que las unidades con mayor coeficiente de variación posterior muestran mayores valores de <span class="math inline">\(|\eta_j|\)</span> confirma que el ajuste ponderado está operando de acuerdo con el principio que lo motiva: concentrar la corrección donde la información propia del modelo es más débil. La ausencia de este patrón —o su presencia inversa, con grandes correcciones sobre unidades de alta precisión— señala que los pesos utilizados no reflejan adecuadamente la incertidumbre relativa de las unidades y debe revisarse su especificación.</p>
+</div>
+<div id="intervalos-de-credibilidad-post-calibración" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Intervalos de credibilidad post-calibración<a href="cap-calibracion.html#intervalos-de-credibilidad-post-calibraci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando la calibración se aplica a cada muestra de la distribución posterior, según el procedimiento descrito en la sección de benchmarking aditivo, los intervalos de credibilidad calibrados se obtienen directamente de los cuantiles empíricos de las muestras ajustadas <span class="math inline">\(\tilde{N}_j^{bench,(t)}\)</span>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="cap-calibracion.html#cb22-1" tabindex="-1"></a>ic_bench <span class="ot">&lt;-</span> <span class="fu">apply</span>(N_bench_samples, <span class="dv">2</span>, quantile, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
+<p>El efecto de la calibración sobre la amplitud de los intervalos depende de la fuente de incertidumbre del total de control. Cuando <span class="math inline">\(N^{*}\)</span> se trata como una constante exactamente conocida y sin incertidumbre propia —el caso más frecuente en la práctica, dado que suele tratarse de una cifra oficial fijada administrativamente—, la calibración desplaza la localización de la distribución de cada unidad sin alterar sustancialmente su dispersión relativa, dado que el factor de ajuste <span class="math inline">\(\phi^{(t)}\)</span> o el término aditivo se aplican de manera común a través de las unidades dentro de cada muestra <span class="math inline">\(t\)</span>, preservando en gran medida la estructura de covarianza entre unidades capturada por el modelo original. La longitud relativa del intervalo calibrado respecto al original constituye un indicador simple de este efecto:</p>
+<p><span class="math display">\[
+\text{Longitud relativa}_j = \frac{\text{IC}^{bench}_{97.5\%,j} - \text{IC}^{bench}_{2.5\%,j}}{\text{IC}_{97.5\%,j} - \text{IC}_{2.5\%,j}}
+\]</span></p>
+<p>Valores cercanos a uno indican que la calibración no distorsiona significativamente la incertidumbre relativa entre unidades; valores sistemáticamente distintos de uno, particularmente si se concentran en unidades específicas, ameritan una revisión de los pesos de calibración utilizados. Es importante notar que la calibración no puede, ni debe, entenderse como un mecanismo para reducir artificialmente la incertidumbre reportada: cualquier intervalo de credibilidad calculado a partir de una recalibración exclusivamente sobre la estimación puntual —sin propagar el ajuste a través de las muestras de la distribución posterior completa, como se advirtió en la sección de benchmarking aditivo— produce una subestimación espuria de la incertidumbre y debe evitarse. La calibración correctamente implementada conserva, en la medida de lo posible, las propiedades de calibración probabilística —cobertura empírica cercana al nivel nominal— evaluadas para el modelo original en el capítulo de diagnóstico y validación, y esta propiedad debe verificarse nuevamente sobre las estimaciones calibradas antes de su publicación.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cap-diagnostico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "serif",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["MBP-ALC.pdf", "MBP-ALC.docx"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -12,6 +12,8 @@ link-citations: yes
 colorlinks: yes
 lot: yes
 lof: yes
+nocite: |
+  @R-base, @R-tidyverse, @R-kableExtra, @R-knitr, @R-rmarkdown, @R-bookdown, @R-posterior, @R-spdep, @R-car, @loo2022
 site: bookdown::bookdown_site
 github-repo: psirusteam/MBP-ALC
 description: >

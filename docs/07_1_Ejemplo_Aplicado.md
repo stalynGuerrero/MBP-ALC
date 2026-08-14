@@ -14,21 +14,35 @@ El conteo censal presenta valores faltantes en las unidades que no fueron cubier
 La Tabla \@ref(tab:ejemplo-descriptivo) resume las principales variables disponibles antes del ajuste del modelo.
 
 
-
-Table: (\#tab:ejemplo-descriptivo)Estadísticas descriptivas de la base de entrada por unidad censal, antes del ajuste del modelo.
-
-|               Descriptivo               | Resultado |
-|:---------------------------------------:|:---------:|
-|        N.º de unidades censales         |   609.0   |
-| N.º de unidades territoriales agregadas |   11.0    |
-|      Cobertura censal completa (%)      |   21.7    |
-|          Mediana conteo censal          |   229.0   |
-|      Mediana estructuras/viviendas      |   181.0   |
-|  Densidad media (personas/estructura)   |    2.5    |
+\begin{table}[!h]
+\centering
+\caption{(\#tab:ejemplo-descriptivo)Estadísticas descriptivas de la base de entrada por unidad censal, antes del ajuste del modelo.}
+\centering
+\begin{tabular}[t]{cc}
+\toprule
+Descriptivo & Resultado\\
+\midrule
+N.º de unidades censales & 609.0\\
+N.º de unidades territoriales agregadas & 11.0\\
+Cobertura censal completa (\%) & 21.7\\
+Mediana conteo censal & 229.0\\
+Mediana estructuras/viviendas & 181.0\\
+\addlinespace
+Densidad media (personas/estructura) & 2.5\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 La Figura \@ref(fig:ejemplo-densidad-insumo) resume la base de entrada en dos paneles: arriba, la relación entre el número de estructuras/viviendas y las personas censadas por unidad censal, con su recta de tendencia; abajo, la densidad de la densidad poblacional por unidad censal, $\delta_i$, la magnitud que el modelo Poisson-lognormal busca reproducir.
 
-![(\#fig:ejemplo-densidad-insumo)Relación entre estructuras/viviendas y personas censadas (arriba) y densidad (kernel) de la densidad poblacional por unidad censal (abajo), en la base de entrada.](images/cap_07/00_densidad_insumo.png){width=70%}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/cap_07/00_densidad_insumo} 
+
+}
+
+\caption{Relación entre estructuras/viviendas y personas censadas (arriba) y densidad (kernel) de la densidad poblacional por unidad censal (abajo), en la base de entrada.}(\#fig:ejemplo-densidad-insumo)
+\end{figure}
 
 Ambos paneles muestran una relación heterogénea entre el número de personas censadas y las estructuras o viviendas. En el panel superior se observa que, para un mismo número de estructuras, el número de personas censadas puede variar considerablemente. Esta dispersión aumenta especialmente en las unidades con mayor número de estructuras, por lo que el número de estructuras aporta información sobre el tamaño poblacional, pero no determina por sí solo la población de cada unidad.
 
@@ -65,20 +79,48 @@ El tamaño efectivo de muestra se situó entre 1.198 y aproximadamente 10.898, c
 
 En conjunto, la inspección de $\hat{R}$ y del tamaño efectivo proporciona evidencia sobre la calidad del muestreo y permite identificar las cantidades que requieren una revisión adicional. El valor atípico observado en $\hat{R}$ merece especial atención, por lo que en la siguiente etapa se examinan las cadenas correspondientes para determinar si se trata de una inestabilidad localizada o de un problema que compromete el ajuste completo.
 
-![(\#fig:ejemplo-rhat-hist)Estadístico Rhat de todos los parámetros y cantidades generadas de un ajuste real.](images/cap_07/02_rhat_pers.png){width=70%}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/cap_07/02_rhat_pers} 
+
+}
+
+\caption{Estadístico Rhat de todos los parámetros y cantidades generadas de un ajuste real.}(\#fig:ejemplo-rhat-hist)
+\end{figure}
 
 Las muestras posteriores de los parámetros estructurales permiten complementar el diagnóstico global de convergencia mediante la inspección de las cadenas y de su autocorrelación. Las Figuras \@ref(fig:ejemplo-trace-sigma) y \@ref(fig:ejemplo-trace-sigmaU) muestran la distribución posterior, los intervalos de credibilidad y las trazas de $\sigma$ y $\sigma_U$ para las cuatro cadenas del ajuste.
 
-![(\#fig:ejemplo-trace-sigma)Densidad, intervalo y traza posterior de sigma sobre las cuatro cadenas de un ajuste real.](images/cap_07/03_trace_sigma.png){width=70%}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/cap_07/03_trace_sigma} 
+
+}
+
+\caption{Densidad, intervalo y traza posterior de sigma sobre las cuatro cadenas de un ajuste real.}(\#fig:ejemplo-trace-sigma)
+\end{figure}
 
 En el caso de $\sigma$, las cuatro cadenas presentan una superposición estrecha y estable a lo largo de las iteraciones, sin tendencias sistemáticas ni cambios persistentes en su nivel. La distribución posterior se concentra alrededor de 0,19 y presenta una dispersión relativamente reducida. El comportamiento de $\sigma_U$ es similar en términos de mezcla entre cadenas, aunque su distribución posterior muestra una mayor dispersión y una asimetría hacia valores altos. En ambos casos, las trazas oscilan alrededor de un nivel estable durante todo el proceso de muestreo, sin evidencia visual de deriva o separación entre cadenas.
 
-![(\#fig:ejemplo-trace-sigmaU)Densidad, intervalo y traza posterior de sigmaU sobre las cuatro cadenas de un ajuste real.](images/cap_07/03_trace_sigmaU.png){width=70%}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/cap_07/03_trace_sigmaU} 
+
+}
+
+\caption{Densidad, intervalo y traza posterior de sigmaU sobre las cuatro cadenas de un ajuste real.}(\#fig:ejemplo-trace-sigmaU)
+\end{figure}
 
 La autocorrelación proporciona información complementaria sobre la dependencia entre muestras consecutivas. La Figura \@ref(fig:ejemplo-acf) muestra que ambos parámetros presentan una autocorrelación elevada en los primeros rezagos, característica esperable en cadenas obtenidas mediante MCMC, pero esta disminuye rápidamente y se aproxima a cero después de los primeros rezagos. No se observan patrones persistentes de autocorrelación a lo largo de la cadena.
 
 
-![(\#fig:ejemplo-acf)Autocorrelación de sigma y sigmaU sobre las cuatro cadenas de un ajuste real, calculada sobre las muestras posteriores guardadas.](images/cap_07/04_acf_sigma.png){width=70%}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/cap_07/04_acf_sigma} 
+
+}
+
+\caption{Autocorrelación de sigma y sigmaU sobre las cuatro cadenas de un ajuste real, calculada sobre las muestras posteriores guardadas.}(\#fig:ejemplo-acf)
+\end{figure}
 
 En conjunto, los diagnósticos basados en $\hat{R}$, las trazas y la autocorrelación proporcionan evidencia consistente con una adecuada convergencia y mezcla de las cadenas para los parámetros examinados. Esta evaluación debe interpretarse conjuntamente con los tamaños efectivos de muestra reportados anteriormente, ya que la convergencia de las cadenas y la cantidad de información efectiva son aspectos complementarios de la calidad del muestreo.
 
@@ -87,7 +129,14 @@ En conjunto, los diagnósticos basados en $\hat{R}$, las trazas y la autocorrela
 Una vez evaluada la convergencia de las cadenas, el siguiente paso consiste en verificar si el modelo reproduce adecuadamente las principales características de los datos observados. La verificación predictiva posterior compara la distribución de los datos observados con las distribuciones obtenidas a partir de réplicas generadas bajo el modelo ajustado. La Figura \@ref(fig:ejemplo-ppc-densidad) presenta esta comparación para la densidad poblacional y para los conteos de personas censadas.
 
 
-![(\#fig:ejemplo-ppc-densidad)Verificación predictiva posterior de la densidad (izquierda) y de los conteos brutos (derecha), salida real del Código de verificación predictiva posterior sobre un ajuste efectivo.](images/cap_07/01_densidad_pers.png){width=70%}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/cap_07/01_densidad_pers} 
+
+}
+
+\caption{Verificación predictiva posterior de la densidad (izquierda) y de los conteos brutos (derecha), salida real del Código de verificación predictiva posterior sobre un ajuste efectivo.}(\#fig:ejemplo-ppc-densidad)
+\end{figure}
 
 
 En el panel izquierdo, correspondiente a la densidad poblacional, las réplicas posteriores reproducen de manera estrecha la distribución observada. El modelo captura la concentración principal de las unidades, así como su dispersión y el comportamiento de las colas. La distribución observada se encuentra dentro del conjunto de distribuciones predictivas a lo largo de prácticamente todo su recorrido, sin evidenciar diferencias sistemáticas en su localización o amplitud.
@@ -106,25 +155,37 @@ La Tabla \@ref(tab:ejemplo-loo-waic) presenta los resultados obtenidos. El valor
 Estos valores deben interpretarse con cautela. LOO-CV y WAIC son criterios de comparación predictiva y su utilidad principal se encuentra en comparar especificaciones alternativas del modelo mediante el mismo criterio; por sí solos, sus valores absolutos no permiten establecer que un modelo sea adecuado. En particular, la calidad de la aproximación utilizada para calcular estos criterios debe evaluarse mediante sus diagnósticos específicos.
 
 
-
-Table: (\#tab:ejemplo-loo-waic)Criterios LOO-CV y WAIC calculados sobre un reajuste del modelo.
-
-| Criterio |  elpd   | SE(elpd) | p_efectivo | SE(p_efectivo) | Criterio (waic/looic) |  SE  |
-|:--------:|:-------:|:--------:|:----------:|:--------------:|:---------------------:|:----:|
-|   WAIC   | -2554.7 |   17.2   |   288.2    |      9.3       |        5109.3         | 34.5 |
-|  LOO-CV  | -2679.3 |   19.8   |   412.9    |      12.0      |        5358.7         | 39.7 |
+\begin{table}[!h]
+\centering
+\caption{(\#tab:ejemplo-loo-waic)Criterios LOO-CV y WAIC calculados sobre un reajuste del modelo.}
+\centering
+\begin{tabular}[t]{ccccccc}
+\toprule
+Criterio & elpd & SE(elpd) & p\_efectivo & SE(p\_efectivo) & Criterio (waic/looic) & SE\\
+\midrule
+WAIC & -2554.7 & 17.2 & 288.2 & 9.3 & 5109.3 & 34.5\\
+LOO-CV & -2679.3 & 19.8 & 412.9 & 12.0 & 5358.7 & 39.7\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 La Tabla \@ref(tab:ejemplo-pareto-k) muestra la distribución de los valores Pareto-$k$ asociados a la aproximación PSIS-LOO. Solo 184 de las 588 unidades censales observadas (31,3 %) presentan valores considerados buenos ($k\leq0,7$). Otras 322 unidades (54,8 %) se encuentran en el intervalo $0,7<k\leq1$, mientras que 82 unidades (13,9 %) presentan valores superiores a 1. En consecuencia, aproximadamente dos terceras partes de las observaciones presentan valores de $k$ que indican una aproximación potencialmente inestable.
 
-
-Table: (\#tab:ejemplo-pareto-k)Distribución de los diagnósticos Pareto-k de PSIS-LOO sobre las unidades censales observadas.
-
-|      Categoria      | N.º de observaciones | Porcentaje |
-|:-------------------:|:--------------------:|:----------:|
-|  Bueno (k <= 0,7)   |         184          |    31.3    |
-| Malo (0,7 < k <= 1) |         322          |    54.8    |
-|  Muy malo (k > 1)   |          82          |    13.9    |
+\begin{table}[!h]
+\centering
+\caption{(\#tab:ejemplo-pareto-k)Distribución de los diagnósticos Pareto-k de PSIS-LOO sobre las unidades censales observadas.}
+\centering
+\begin{tabular}[t]{ccc}
+\toprule
+Categoria & N.º de observaciones & Porcentaje\\
+\midrule
+Bueno (k <= 0,7) & 184 & 31.3\\
+Malo (0,7 < k <= 1) & 322 & 54.8\\
+Muy malo (k > 1) & 82 & 13.9\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 Esta situación limita la interpretación de los resultados de LOO-CV y WAIC para este ajuste. La presencia de numerosos valores elevados de Pareto-$k$ indica que las aproximaciones basadas en importancia pueden ser poco fiables para una proporción importante de las unidades observadas. Por tanto, los valores reportados no deben utilizarse como evidencia concluyente para seleccionar esta especificación frente a otras.
@@ -143,12 +204,18 @@ La cobertura censal permite distinguir las tres situaciones de la clasificación
 
 La Tabla \@ref(tab:ejemplo-totales) aplica esta corrección agregada a nivel nacional, siguiendo el mismo procedimiento de suma por muestra del Código \@ref(exr:cod-agregacion-nacional).
 
-
-Table: (\#tab:ejemplo-totales)Comparación entre el conteo censal y la estimación final del modelo (ya corregida por estado de cobertura), agregados a nivel nacional.
-
-| N.º de unidades | N.º con cobertura completa | Total censal | Total final (media) | Total final (mediana) |
-|:---------------:|:--------------------------:|:------------:|:-------------------:|:---------------------:|
-|       609       |            132             |    136349    |       282154        |        278137         |
+\begin{table}[!h]
+\centering
+\caption{(\#tab:ejemplo-totales)Comparación entre el conteo censal y la estimación final del modelo (ya corregida por estado de cobertura), agregados a nivel nacional.}
+\centering
+\begin{tabular}[t]{ccccc}
+\toprule
+N.º de unidades & N.º con cobertura completa & Total censal & Total final (media) & Total final (mediana)\\
+\midrule
+609 & 132 & 136349 & 282154 & 278137\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 La Tabla \@ref(tab:ejemplo-totales) muestra una diferencia importante entre el conteo censal y la estimación final. De las 609 unidades censales consideradas, únicamente 132 presentan cobertura completa. El conteo censal registra 136.349 personas, mientras que la estimación final alcanza 282.154 personas cuando se utiliza la media posterior y 278.137 cuando se utiliza la mediana.
 
@@ -158,22 +225,30 @@ La proximidad entre las estimaciones obtenidas mediante la media y la mediana po
 
 La estimación final puede agregarse posteriormente a unidades territoriales de mayor nivel, siguiendo el procedimiento del Código \@ref(exr:cod-agregacion-dam). La Tabla \@ref(tab:ejemplo-agregacion) presenta los resultados para las unidades territoriales consideradas en esta aplicación.
 
-
-Table: (\#tab:ejemplo-agregacion)Estimación final de población (ya corregida por estado de cobertura) agregada a la unidad territorial de nivel superior.
-
-| Unidad territorial | N.º de unidades | Total censal | Total final (media) | Densidad media |
-|:------------------:|:---------------:|:------------:|:-------------------:|:--------------:|
-|      Unidad 1      |       174       |    42193     |       76965.7       |      2.6       |
-|      Unidad 2      |       126       |    28368     |       56632.8       |      2.2       |
-|      Unidad 3      |       65        |    18569     |       29930.2       |      2.4       |
-|      Unidad 4      |       64        |     9046     |       28185.7       |      2.2       |
-|      Unidad 5      |       44        |    11233     |       23949.3       |      2.7       |
-|      Unidad 6      |       30        |     5068     |       16290.6       |      2.6       |
-|      Unidad 7      |       29        |     5892     |       12973.8       |      2.5       |
-|      Unidad 8      |       21        |     3581     |       11405.5       |      2.7       |
-|      Unidad 9      |       24        |     4917     |       10682.8       |      2.7       |
-|     Unidad 10      |       21        |     5539     |       9770.7        |      2.7       |
-|     Unidad 11      |       11        |     1943     |       5367.1        |      2.7       |
+\begin{table}[!h]
+\centering
+\caption{(\#tab:ejemplo-agregacion)Estimación final de población (ya corregida por estado de cobertura) agregada a la unidad territorial de nivel superior.}
+\centering
+\begin{tabular}[t]{ccccc}
+\toprule
+Unidad territorial & N.º de unidades & Total censal & Total final (media) & Densidad media\\
+\midrule
+Unidad 1 & 174 & 42193 & 76965.7 & 2.6\\
+Unidad 2 & 126 & 28368 & 56632.8 & 2.2\\
+Unidad 3 & 65 & 18569 & 29930.2 & 2.4\\
+Unidad 4 & 64 & 9046 & 28185.7 & 2.2\\
+Unidad 5 & 44 & 11233 & 23949.3 & 2.7\\
+\addlinespace
+Unidad 6 & 30 & 5068 & 16290.6 & 2.6\\
+Unidad 7 & 29 & 5892 & 12973.8 & 2.5\\
+Unidad 8 & 21 & 3581 & 11405.5 & 2.7\\
+Unidad 9 & 24 & 4917 & 10682.8 & 2.7\\
+Unidad 10 & 21 & 5539 & 9770.7 & 2.7\\
+\addlinespace
+Unidad 11 & 11 & 1943 & 5367.1 & 2.7\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 La agregación territorial permite apreciar diferencias importantes tanto en el tamaño de la población como en la magnitud de la corrección respecto del conteo censal. La Unidad 1, por ejemplo, pasa de 42.193 personas censadas a una estimación final de 76.965,7, mientras que la Unidad 4 pasa de 9.046 a 28.185,7 personas. Estas diferencias reflejan la combinación del tamaño de las unidades, el nivel de cobertura alcanzado durante el operativo y las características de las unidades censales que componen cada territorio.

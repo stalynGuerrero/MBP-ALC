@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 Diagnóstico y Validación del Modelo | Modelos Bayesianos de Población para América Latina y el Caribe</title>
+  <title>Capítulo 6 Diagnóstico y Validación de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe</title>
   <meta name="description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 Diagnóstico y Validación del Modelo | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta property="og:title" content="Capítulo 6 Diagnóstico y Validación de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
   <meta name="github-repo" content="psirusteam/MBP-ALC" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 Diagnóstico y Validación del Modelo | Modelos Bayesianos de Población para América Latina y el Caribe" />
+  <meta name="twitter:title" content="Capítulo 6 Diagnóstico y Validación de los Modelos de Población | Modelos Bayesianos de Población para América Latina y el Caribe" />
   
   <meta name="twitter:description" content="Libro técnico sobre modelos bayesianos jerárquicos para la estimación subnacional de población en América Latina y el Caribe, con énfasis en integración de múltiples fuentes de información y aplicación en institutos nacionales de estadística." />
   
@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="cap-inferencia.html"/>
-
+<link rel="next" href="cap-calibracion.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -284,7 +286,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.3.6" data-path="cap-inferencia.html"><a href="cap-inferencia.html#estimaciones-y-agregaci%C3%B3n-territorial"><i class="fa fa-check"></i><b>5.3.6</b> Estimaciones y agregación territorial</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html"><i class="fa fa-check"></i><b>6</b> Diagnóstico y Validación del Modelo</a>
+<li class="chapter" data-level="6" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html"><i class="fa fa-check"></i><b>6</b> Diagnóstico y Validación de los Modelos de Población</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#diagn%C3%B3stico-de-convergencia-mcmc"><i class="fa fa-check"></i><b>6.1</b> Diagnóstico de convergencia MCMC</a>
 <ul>
@@ -308,9 +310,31 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.4.1" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#consistencia-con-proyecciones-demogr%C3%A1ficas"><i class="fa fa-check"></i><b>6.4.1</b> Consistencia con proyecciones demográficas</a></li>
 <li class="chapter" data-level="6.4.2" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#comparaci%C3%B3n-con-registros-administrativos-independientes"><i class="fa fa-check"></i><b>6.4.2</b> Comparación con registros administrativos independientes</a></li>
-<li class="chapter" data-level="6.4.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#evaluaci%C3%B3n-de-coherencia-geoespacial"><i class="fa fa-check"></i><b>6.4.3</b> Evaluación de coherencia geoespacial</a></li>
+<li class="chapter" data-level="6.4.3" data-path="cap-diagnostico.html"><a href="cap-diagnostico.html#evaluaci%C3%B3n-de-coherencia-territorial-y-demogr%C3%A1fica"><i class="fa fa-check"></i><b>6.4.3</b> Evaluación de coherencia territorial y demográfica</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="cap-calibracion.html"><a href="cap-calibracion.html"><i class="fa fa-check"></i><b>7</b> Calibración y Benchmarking Subnacional</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-con-proyecciones-poblacionales"><i class="fa fa-check"></i><b>7.1</b> Benchmarking con proyecciones poblacionales</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#necesidad-de-coherencia-entre-niveles-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>7.1.1</b> Necesidad de coherencia entre niveles geográficos</a></li>
+<li class="chapter" data-level="7.1.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#restricciones-de-consistencia-jer%C3%A1rquica"><i class="fa fa-check"></i><b>7.1.2</b> Restricciones de consistencia jerárquica</a></li>
+<li class="chapter" data-level="7.1.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#relaci%C3%B3n-entre-estimaciones-locales-y-totales-conocidos"><i class="fa fa-check"></i><b>7.1.3</b> Relación entre estimaciones locales y totales conocidos</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#m%C3%A9todos-de-benchmarking"><i class="fa fa-check"></i><b>7.2</b> Métodos de benchmarking</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-proporcional"><i class="fa fa-check"></i><b>7.2.1</b> Benchmarking proporcional</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-por-razones-de-ajuste"><i class="fa fa-check"></i><b>7.2.2</b> Benchmarking por razones de ajuste</a></li>
+<li class="chapter" data-level="7.2.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-aditivo-con-restricciones-de-suma"><i class="fa fa-check"></i><b>7.2.3</b> Benchmarking aditivo con restricciones de suma</a></li>
+<li class="chapter" data-level="7.2.4" data-path="cap-calibracion.html"><a href="cap-calibracion.html#aplicaci%C3%B3n-pr%C3%A1ctica-a-distintos-niveles-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>7.2.4</b> Aplicación práctica a distintos niveles geográficos</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#evaluaci%C3%B3n-del-impacto-del-benchmarking"><i class="fa fa-check"></i><b>7.3</b> Evaluación del impacto del benchmarking</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#cambio-en-estimaciones-puntuales"><i class="fa fa-check"></i><b>7.3.1</b> Cambio en estimaciones puntuales</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#intervalos-de-credibilidad-post-calibraci%C3%B3n"><i class="fa fa-check"></i><b>7.3.2</b> Intervalos de credibilidad post-calibración</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li style="padding: 10px 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top:8px;">
   <small style="color:#64748B; font-family:'Inter',sans-serif; font-size:0.72rem;">
@@ -336,23 +360,25 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="cap-diagnostico" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Capítulo 6</span> Diagnóstico y Validación del Modelo<a href="cap-diagnostico.html#cap-diagnostico" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>El Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a> estableció el procedimiento de estimación del modelo Poisson-lognormal mediante HMC-NUTS en Stan y presentó, de forma introductoria, tres herramientas de verificación: el estadístico <span class="math inline">\(\hat{R}\)</span> y el tamaño efectivo de muestra reportados por <code>summary()</code>, la verificación predictiva posterior mediante superposición de densidades y los criterios de información LOO y WAIC. Ninguna estimación bayesiana debe considerarse válida por el solo hecho de haber sido producida por el muestreador: las muestras posteriores pueden provenir de cadenas que no convergieron a la distribución objetivo, el modelo puede ajustar razonablemente la media de los datos pero fallar en reproducir su variabilidad o su forma, y una especificación puede superar los diagnósticos internos de ajuste y, sin embargo, ser inconsistente con fuentes de información externas al propio modelo.</p>
-<p>Este capítulo profundiza en esas tres líneas de verificación y añade una cuarta, ausente en el capítulo anterior: la validación externa, que contrasta las estimaciones del modelo con fuentes independientes de los datos utilizados en la estimación. La estructura se organiza en cuatro secciones: diagnóstico de convergencia MCMC, validación predictiva posterior, selección y comparación de modelos, y validación externa. El objetivo transversal es establecer criterios explícitos y reproducibles para decidir cuándo un modelo puede considerarse adecuado para su uso en la producción de estimaciones oficiales de población, y cuándo debe ser reformulado.</p>
+<h1><span class="header-section-number">Capítulo 6</span> Diagnóstico y Validación de los Modelos de Población<a href="cap-diagnostico.html#cap-diagnostico" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a> estableció el procedimiento de estimación de los modelos de población mediante HMC-NUTS. En este capítulo se evalúa si las estimaciones obtenidas son estadísticamente confiables y si el modelo representa adecuadamente la población en las áreas o segmentos de interés, particularmente cuando la información censal es incompleta o presenta problemas de cobertura.</p>
+<p>La validación comprende tres componentes. El primero corresponde al diagnóstico de convergencia y eficiencia de las cadenas MCMC. El segundo evalúa, mediante la distribución predictiva posterior, la capacidad del modelo para reproducir los conteos y tamaños de población observados. El tercero comprende la comparación de especificaciones alternativas, con el fin de identificar aquellas que presentan un mejor ajuste y comportamiento predictivo.</p>
+<p>De manera complementaria, podrá considerarse la comparación de las estimaciones con ejercicios demográficos o estimaciones de población previamente disponibles. Este contraste permitiría evaluar la coherencia de los resultados con otras aproximaciones de estimación, especialmente en contextos donde no existen observaciones censales completas para realizar una validación directa.</p>
+<p>En conjunto, estos elementos permiten establecer criterios para determinar la suficiencia del modelo, identificar posibles problemas de especificación y sustentar el uso de las estimaciones de población en áreas afectadas por limitaciones del operativo censal.</p>
 <div id="diagnóstico-de-convergencia-mcmc" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Diagnóstico de convergencia MCMC<a href="cap-diagnostico.html#diagn%C3%B3stico-de-convergencia-mcmc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>El diagnóstico de convergencia es la primera verificación que debe realizarse sobre cualquier ajuste MCMC, con prioridad sobre cualquier interpretación sustantiva de los parámetros. Si las cadenas no han convergido a la distribución posterior estacionaria, las muestras no son representativas de <span class="math inline">\(p(\boldsymbol{\theta}, \boldsymbol{\delta} \mid \mathbf{Y}_{obs})\)</span> y cualquier estimación puntual, intervalo de credibilidad o criterio de comparación de modelos calculado a partir de ellas carece de validez.</p>
 <div id="estadistico-rhat" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Estadístico R-hat<a href="cap-diagnostico.html#estadistico-rhat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El estadístico <span class="math inline">\(\hat{R}\)</span>, propuesto originalmente por <span class="citation">Gelman y Rubin (<a href="cap-diagnostico.html#ref-Gelman1992">1992</a>)</span>, compara la variabilidad entre cadenas con la variabilidad dentro de cada cadena. Sea <span class="math inline">\(\theta_{t,j}\)</span> la muestra <span class="math inline">\(t\)</span> de la cadena <span class="math inline">\(j\)</span>, con <span class="math inline">\(t = 1, \ldots, n\)</span> e <span class="math inline">\(j = 1, \ldots, m\)</span>, tras descartar el calentamiento. La varianza dentro de las cadenas se calcula como:</p>
+<p>El estadístico <span class="math inline">\(\hat{R}\)</span>, propuesto por <span class="citation">Gelman y Rubin (<a href="references.html#ref-Gelman1992">1992</a>)</span>, evalúa la convergencia de las cadenas comparando la variabilidad entre cadenas con la variabilidad dentro de cada cadena. Sea <span class="math inline">\(\theta_{t,c}\)</span> la muestra <span class="math inline">\(t\)</span> de la cadena <span class="math inline">\(c\)</span>, con <span class="math inline">\(t = 1, \ldots, n\)</span> y <span class="math inline">\(c = 1, \ldots, m\)</span> —el índice <span class="math inline">\(c\)</span> de cadena no debe confundirse con el índice <span class="math inline">\(j\)</span> de unidad territorial introducido en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a>—, después de descartar el período de calentamiento. La varianza promedio dentro de las cadenas se calcula como:</p>
 <p><span class="math display">\[
-W = \frac{1}{m} \sum_{j=1}^{m} s_j^2, \qquad s_j^2 = \frac{1}{n-1}\sum_{t=1}^{n}\left(\theta_{t,j} - \bar{\theta}_{\cdot j}\right)^2
+W = \frac{1}{m} \sum_{c=1}^{m} s_c^2, \qquad s_c^2 = \frac{1}{n-1}\sum_{t=1}^{n}\left(\theta_{t,c} - \bar{\theta}_{\cdot c}\right)^2
 \]</span></p>
-<p>donde <span class="math inline">\(\bar{\theta}_{\cdot j}\)</span> es la media de la cadena <span class="math inline">\(j\)</span>. La varianza entre cadenas se calcula como:</p>
+<p>donde <span class="math inline">\(\bar{\theta}_{\cdot c}\)</span> es la media de la cadena <span class="math inline">\(c\)</span>. La varianza entre cadenas se calcula como:</p>
 <p><span class="math display">\[
-B = \frac{n}{m-1}\sum_{j=1}^{m}\left(\bar{\theta}_{\cdot j} - \bar{\theta}_{\cdot \cdot}\right)^2
+B = \frac{n}{m-1}\sum_{c=1}^{m}\left(\bar{\theta}_{\cdot c} - \bar{\theta}_{\cdot \cdot}\right)^2
 \]</span></p>
-<p>donde <span class="math inline">\(\bar{\theta}_{\cdot \cdot} = \frac{1}{m}\sum_j \bar{\theta}_{\cdot j}\)</span> es la media global. La varianza marginal posterior se estima combinando ambas fuentes:</p>
+<p>donde <span class="math inline">\(\bar{\theta}_{\cdot \cdot} = \frac{1}{m}\sum_c \bar{\theta}_{\cdot c}\)</span> es la media global. La varianza marginal posterior se estima combinando ambas fuentes:</p>
 <p><span class="math display">\[
 \hat{V} = \frac{n-1}{n}W + \frac{1}{n}B
 \]</span></p>
@@ -361,68 +387,36 @@ B = \frac{n}{m-1}\sum_{j=1}^{m}\left(\bar{\theta}_{\cdot j} - \bar{\theta}_{\cdo
 \hat{R} = \sqrt{\frac{\hat{V}}{W}}
 \]</span></p>
 <p>Cuando las cadenas han convergido a la misma distribución estacionaria, <span class="math inline">\(\hat{V}\)</span> y <span class="math inline">\(W\)</span> estiman la misma cantidad y <span class="math inline">\(\hat{R} \to 1\)</span>. Valores de <span class="math inline">\(\hat{R}\)</span> sustancialmente mayores que 1 indican que las cadenas todavía exploran regiones distintas del espacio parametral y que se requieren más iteraciones, una reparametrización del modelo o una revisión de las distribuciones a priori.</p>
-<p>La versión clásica de <span class="math inline">\(\hat{R}\)</span> presenta limitaciones cuando la distribución posterior tiene colas pesadas o es asimétrica, dado que la varianza puede no converger de forma estable. <span class="citation">Vehtari et al. (<a href="cap-diagnostico.html#ref-Vehtari2021">2021</a>)</span> propone una versión mejorada, el <span class="math inline">\(\hat{R}\)</span> ranking-normalizado y plegado (<em>rank-normalized, folded</em> <span class="math inline">\(\hat{R}\)</span>), que transforma las muestras a rangos normalizados antes de aplicar la fórmula anterior y calcula el diagnóstico por separado sobre las muestras originales y sobre su versión plegada respecto a la mediana, con el fin de detectar simultáneamente problemas de convergencia en la localización y en la escala de la distribución. Esta es la versión implementada por defecto en versiones recientes de Stan y del paquete <code>posterior</code>, y es la que reporta <code>summary()</code> sobre un objeto <code>stanfit</code>.</p>
-<p>El umbral tradicionalmente utilizado en la práctica ha sido <span class="math inline">\(\hat{R} &lt; 1.1\)</span>; sin embargo, <span class="citation">Vehtari et al. (<a href="cap-diagnostico.html#ref-Vehtari2021">2021</a>)</span> recomienda un criterio más estricto, <span class="math inline">\(\hat{R} &lt; 1.01\)</span>, dado que el diagnóstico ranking-normalizado es más sensible a problemas de convergencia residuales que la versión clásica. En aplicaciones censales con miles de densidades latentes <span class="math inline">\(\delta_i\)</span>, es recomendable exigir que la totalidad de los parámetros —no solo los estructurales <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\gamma}\)</span>, <span class="math inline">\(\sigma\)</span> y <span class="math inline">\(\sigma_U\)</span>— satisfagan este umbral antes de proceder al análisis de resultados:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="cap-diagnostico.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(posterior)</span>
-<span id="cb17-2"><a href="cap-diagnostico.html#cb17-2" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="cap-diagnostico.html#cb17-3" tabindex="-1"></a>rhat_vals <span class="ot">&lt;-</span> <span class="fu">summary</span>(stan_model)<span class="sc">$</span>summary[, <span class="st">&quot;Rhat&quot;</span>]</span>
-<span id="cb17-4"><a href="cap-diagnostico.html#cb17-4" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="cap-diagnostico.html#cb17-5" tabindex="-1"></a><span class="co"># Parámetros que no satisfacen el umbral recomendado</span></span>
-<span id="cb17-6"><a href="cap-diagnostico.html#cb17-6" tabindex="-1"></a>problematicos <span class="ot">&lt;-</span> rhat_vals[rhat_vals <span class="sc">&gt;</span> <span class="fl">1.01</span>]</span>
-<span id="cb17-7"><a href="cap-diagnostico.html#cb17-7" tabindex="-1"></a><span class="fu">length</span>(problematicos)</span></code></pre></div>
+<p>La versión clásica de <span class="math inline">\(\hat{R}\)</span> presenta limitaciones cuando las distribuciones posteriores tienen colas pesadas o varianzas no finitas, ya que la comparación basada en momentos puede perder sensibilidad ante problemas de convergencia. <span class="citation">Vehtari et al. (<a href="references.html#ref-Vehtari2021">2021</a>)</span> propone una versión mejorada basada en la normalización por rangos (<em>rank-normalized <span class="math inline">\(\hat{R}\)</span></em>) y el plegamiento (<em>folded <span class="math inline">\(\hat{R}\)</span></em>). Esta estrategia permite evaluar por separado la convergencia de la localización y de la escala de la distribución, y reporta como diagnóstico el mayor de ambos valores. La versión resultante es la utilizada actualmente por Stan y por el paquete <code>posterior</code>.</p>
+<p>El valor <span class="math inline">\(\hat{R}=1\)</span> corresponde a una convergencia ideal entre las cadenas. Aunque el umbral de <span class="math inline">\(1.1\)</span> fue utilizado tradicionalmente, <span class="citation">Vehtari et al. (<a href="references.html#ref-Vehtari2021">2021</a>)</span> recomienda adoptar un criterio más estricto de <span class="math inline">\(\hat{R}&lt;1.01\)</span>. Este valor es también el umbral recomendado actualmente en la documentación de Stan para considerar confiables las muestras posteriores.</p>
+<p>En los modelos de población considerados en este libro, el criterio debe verificarse para la totalidad de los parámetros monitoreados, incluyendo tanto los parámetros estructurales como las densidades latentes <span class="math inline">\(\delta_i\)</span>. No basta con comprobar la convergencia de <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\gamma}\)</span>, <span class="math inline">\(\sigma\)</span> y <span class="math inline">\(\sigma_U\)</span>, ya que problemas de convergencia en las cantidades latentes pueden afectar directamente las estimaciones de población en los dominios de interés.</p>
 </div>
 <div id="tamano-efectivo-muestra" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Tamaño efectivo de muestra (ESS)<a href="cap-diagnostico.html#tamano-efectivo-muestra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Las muestras generadas por una cadena de Markov están autocorrelacionadas: muestras consecutivas son más similares entre sí que muestras independientes de la distribución posterior. El tamaño efectivo de muestra (<em>Effective Sample Size</em>, ESS) cuantifica cuántas muestras independientes equivalen, en términos de precisión de Monte Carlo, al conjunto de muestras autocorrelacionadas disponibles. Para una cantidad escalar <span class="math inline">\(\theta\)</span> con autocorrelación <span class="math inline">\(\hat{\rho}_t\)</span> en el retraso <span class="math inline">\(t\)</span>, estimada combinando las <span class="math inline">\(m\)</span> cadenas, el tamaño efectivo de muestra se define como:</p>
+<p>Las muestras generadas por una cadena de Markov presentan autocorrelación, por lo que no contienen la misma información que un conjunto equivalente de muestras independientes. El tamaño efectivo de muestra (<em>Effective Sample Size</em>, ESS) cuantifica cuántas observaciones independientes serían necesarias para alcanzar una precisión de Monte Carlo equivalente. Para una cantidad escalar <span class="math inline">\(\theta\)</span>, se define como:</p>
 <p><span class="math display">\[
-n_{eff} = \frac{mn}{1 + 2\sum_{t=1}^{\infty} \hat{\rho}_t}
+n_{\mathrm{eff}} =
+\frac{mn}
+{1 + 2\sum_{t=1}^{\infty}\hat{\rho}_t},
 \]</span></p>
-<p>donde <span class="math inline">\(mn\)</span> es el número total de muestras disponibles tras el calentamiento. Cuanto mayor es la autocorrelación, menor es <span class="math inline">\(n_{eff}\)</span> en relación con <span class="math inline">\(mn\)</span>, y mayor es el error estándar de Monte Carlo de cualquier estimación basada en esas muestras, tal como refleja la columna <code>se_mean</code> del resumen posterior introducida en la Tabla <a href="cap-inferencia.html#tab:resumen-posterior-columnas">5.2</a> del Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a>.</p>
-<p>Al igual que con <span class="math inline">\(\hat{R}\)</span>, <span class="citation">Vehtari et al. (<a href="cap-diagnostico.html#ref-Vehtari2021">2021</a>)</span> muestra que un único valor de ESS puede ser engañoso cuando la distribución posterior es asimétrica o de colas pesadas, dado que la mezcla de la cadena puede ser buena en el centro de la distribución y deficiente en las colas. Por esta razón se recomienda reportar dos cantidades: el <strong>Bulk-ESS</strong>, que mide la eficiencia de muestreo en la región central de la distribución (relevante para la estimación de medias y medianas), y el <strong>Tail-ESS</strong>, que mide la eficiencia en las colas (relevante para la estimación de los cuantiles 2.5% y 97.5% que definen los intervalos de credibilidad). Un modelo puede tener un Bulk-ESS adecuado y, simultáneamente, un Tail-ESS insuficiente para reportar intervalos de credibilidad confiables.</p>
-<p>Como regla práctica, se recomienda un ESS mínimo de 400 muestras efectivas —tanto Bulk como Tail— por cada cantidad de interés, independientemente del número de cadenas o iteraciones totales utilizadas:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap-diagnostico.html#cb18-1" tabindex="-1"></a><span class="fu">library</span>(posterior)</span>
-<span id="cb18-2"><a href="cap-diagnostico.html#cb18-2" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="cap-diagnostico.html#cb18-3" tabindex="-1"></a>draws_array <span class="ot">&lt;-</span> <span class="fu">as_draws_array</span>(stan_model)</span>
-<span id="cb18-4"><a href="cap-diagnostico.html#cb18-4" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="cap-diagnostico.html#cb18-5" tabindex="-1"></a>ess_bulk <span class="ot">&lt;-</span> <span class="fu">apply</span>(draws_array, <span class="dv">3</span>, ess_bulk)</span>
-<span id="cb18-6"><a href="cap-diagnostico.html#cb18-6" tabindex="-1"></a>ess_tail <span class="ot">&lt;-</span> <span class="fu">apply</span>(draws_array, <span class="dv">3</span>, ess_tail)</span>
-<span id="cb18-7"><a href="cap-diagnostico.html#cb18-7" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="cap-diagnostico.html#cb18-8" tabindex="-1"></a><span class="co"># Parámetros con ESS insuficiente</span></span>
-<span id="cb18-9"><a href="cap-diagnostico.html#cb18-9" tabindex="-1"></a><span class="fu">which</span>(ess_bulk <span class="sc">&lt;</span> <span class="dv">400</span> <span class="sc">|</span> ess_tail <span class="sc">&lt;</span> <span class="dv">400</span>)</span></code></pre></div>
-<p>Cuando el ESS es insuficiente, las alternativas incluyen aumentar el número de iteraciones post-calentamiento, mejorar la parametrización del modelo —por ejemplo, mediante la parametrización no centrada de los efectos aleatorios jerárquicos, que suele reducir sustancialmente la autocorrelación cuando <span class="math inline">\(\sigma_U\)</span> es pequeño— o revisar si el modelo está correctamente identificado.</p>
+<p>donde <span class="math inline">\(mn\)</span> es el número total de muestras posteriores y <span class="math inline">\(\hat{\rho}_t\)</span> representa la autocorrelación estimada en el retraso <span class="math inline">\(t\)</span>. Una mayor autocorrelación implica un menor ESS y, por tanto, una mayor incertidumbre asociada al error de Monte Carlo.</p>
+<p><span class="citation">Vehtari et al. (<a href="references.html#ref-Vehtari2021">2021</a>)</span> distinguen dos medidas complementarias: el <em>Bulk-ESS</em>, que evalúa la eficiencia de muestreo en la región central de la distribución posterior, y el <em>Tail-ESS</em>, que evalúa su eficiencia en las colas. Esta distinción es particularmente importante para los intervalos de credibilidad, cuyos límites dependen de los cuantiles de la distribución posterior. Un modelo puede presentar un Bulk-ESS adecuado y, simultáneamente, un Tail-ESS insuficiente.</p>
+<p>Como criterio práctico, se recomienda disponer de al menos 400 muestras efectivas tanto para Bulk-ESS como para Tail-ESS por cada cantidad de interés. Cuando este criterio no se cumple, puede ser necesario aumentar el número de iteraciones posteriores al calentamiento, revisar la parametrización del modelo o evaluar posibles problemas de identificación.</p>
+<p>En los modelos de población, este diagnóstico debe evaluarse tanto para los parámetros estructurales como para las cantidades latentes que intervienen directamente en las estimaciones de población.</p>
 </div>
 <div id="trace-plots-autocorrelación-y-diagnósticos-específicos-de-hmc" class="section level3 hasAnchor" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> Trace plots, autocorrelación y diagnósticos específicos de HMC<a href="cap-diagnostico.html#trace-plots-autocorrelaci%C3%B3n-y-diagn%C3%B3sticos-espec%C3%ADficos-de-hmc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La inspección visual complementa los diagnósticos numéricos y permite detectar patrones de no convergencia que un estadístico agregado puede no capturar completamente. El <em>trace plot</em> representa la secuencia de valores muestreados de un parámetro a lo largo de las iteraciones, superponiendo las distintas cadenas:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap-diagnostico.html#cb19-1" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
-<span id="cb19-2"><a href="cap-diagnostico.html#cb19-2" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="cap-diagnostico.html#cb19-3" tabindex="-1"></a><span class="fu">mcmc_trace</span>(</span>
-<span id="cb19-4"><a href="cap-diagnostico.html#cb19-4" tabindex="-1"></a>  <span class="fu">as.array</span>(stan_model),</span>
-<span id="cb19-5"><a href="cap-diagnostico.html#cb19-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;sigma&quot;</span>, <span class="st">&quot;sigmaU&quot;</span>, <span class="st">&quot;beta[1]&quot;</span>, <span class="st">&quot;beta[2]&quot;</span>)</span>
-<span id="cb19-6"><a href="cap-diagnostico.html#cb19-6" tabindex="-1"></a>)</span></code></pre></div>
-<p>Un patrón de convergencia adecuado se caracteriza por cadenas que oscilan establemente alrededor de un valor común, sin tendencias sistemáticas ni saltos entre regiones distintas del espacio parametral —el patrón informalmente descrito como <em>“fat hairy caterpillar”</em> (oruga peluda y gruesa)—. Cadenas que exhiben tendencias, que permanecen estancadas en un valor durante tramos prolongados, o que exploran regiones claramente distintas entre sí, son indicativas de no convergencia y deben acompañarse de <span class="math inline">\(\hat{R} &gt; 1.01\)</span> en el diagnóstico numérico correspondiente.</p>
-<p>La función de autocorrelación (ACF) cuantifica la correlación entre muestras separadas por <span class="math inline">\(t\)</span> iteraciones:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap-diagnostico.html#cb20-1" tabindex="-1"></a><span class="fu">mcmc_acf</span>(</span>
-<span id="cb20-2"><a href="cap-diagnostico.html#cb20-2" tabindex="-1"></a>  <span class="fu">as.array</span>(stan_model),</span>
-<span id="cb20-3"><a href="cap-diagnostico.html#cb20-3" tabindex="-1"></a>  <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;sigma&quot;</span>, <span class="st">&quot;sigmaU&quot;</span>),</span>
-<span id="cb20-4"><a href="cap-diagnostico.html#cb20-4" tabindex="-1"></a>  <span class="at">lags =</span> <span class="dv">20</span></span>
-<span id="cb20-5"><a href="cap-diagnostico.html#cb20-5" tabindex="-1"></a>)</span></code></pre></div>
-<p>Una autocorrelación que decae rápidamente hacia cero es deseable; una autocorrelación que permanece alta incluso a retrasos grandes indica una cadena con mezcla deficiente, consistente con un ESS bajo.</p>
-<p>Más allá de los diagnósticos genéricos de MCMC, el algoritmo HMC-NUTS provee diagnósticos adicionales específicos de su mecánica interna que deben revisarse sistemáticamente. Las <strong>transiciones divergentes</strong> ocurren cuando el integrador leapfrog introduce un error numérico excesivo durante la simulación de la dinámica hamiltoniana, típicamente en regiones de la distribución posterior con curvatura muy pronunciada <span class="citation">(<a href="cap-diagnostico.html#ref-Betancourt2017">Betancourt 2017</a>)</span>. Un número elevado de divergencias señala que el muestreador no está explorando correctamente esas regiones, lo que puede sesgar sistemáticamente las estimaciones asociadas:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="cap-diagnostico.html#cb21-1" tabindex="-1"></a>rstan<span class="sc">::</span><span class="fu">check_hmc_diagnostics</span>(stan_model)</span>
-<span id="cb21-2"><a href="cap-diagnostico.html#cb21-2" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="cap-diagnostico.html#cb21-3" tabindex="-1"></a><span class="co"># Número de transiciones divergentes por cadena</span></span>
-<span id="cb21-4"><a href="cap-diagnostico.html#cb21-4" tabindex="-1"></a>rstan<span class="sc">::</span><span class="fu">get_num_divergent</span>(stan_model)</span>
-<span id="cb21-5"><a href="cap-diagnostico.html#cb21-5" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="cap-diagnostico.html#cb21-6" tabindex="-1"></a><span class="co"># Iteraciones que alcanzaron la profundidad máxima del árbol</span></span>
-<span id="cb21-7"><a href="cap-diagnostico.html#cb21-7" tabindex="-1"></a>rstan<span class="sc">::</span><span class="fu">get_num_max_treedepth</span>(stan_model)</span></code></pre></div>
-<p>En el modelo Poisson-lognormal, las divergencias tienden a concentrarse en segmentos con densidad latente <span class="math inline">\(\delta_i\)</span> extrema —conteos muy bajos combinados con un número reducido de estructuras, o viceversa— donde la verosimilitud es poco informativa y la distribución a priori log-normal domina localmente la geometría posterior. Cuando el número de divergencias es elevado, las estrategias de mitigación incluyen aumentar el parámetro <code>adapt_delta</code> de Stan por encima de su valor por defecto (0.8), lo que reduce el tamaño de paso <span class="math inline">\(\varepsilon\)</span> y mejora la precisión numérica del integrador a costa de mayor tiempo de cómputo, o reparametrizar el modelo para reducir la curvatura de la posterior.</p>
-<p>Un segundo diagnóstico específico de HMC es la fracción de información faltante basada en energía (E-BFMI, <em>Energy Bayesian Fraction of Missing Information</em>), que evalúa si la distribución marginal de la energía hamiltoniana explorada por la cadena es consistente con una exploración eficiente <span class="citation">(<a href="cap-diagnostico.html#ref-Betancourt2017">Betancourt 2017</a>)</span>. Valores de E-BFMI inferiores a 0.2 son indicativos de una exploración deficiente de las colas de la distribución posterior, incluso en ausencia de divergencias o de valores altos de <span class="math inline">\(\hat{R}\)</span>.</p>
-<p>Finalmente, como complemento a <span class="math inline">\(\hat{R}\)</span> y al ESS, <span class="citation">Geweke (<a href="cap-diagnostico.html#ref-Geweke1992">1992</a>)</span> propone un diagnóstico de convergencia aplicable a una única cadena, basado en la comparación de las medias estimadas en dos segmentos no superpuestos de la secuencia —típicamente el primer 10% y el último 50% de las iteraciones post-calentamiento—. Bajo convergencia, ambos segmentos deben estimar la misma cantidad, y el estadístico:</p>
-<p><span class="math display">\[
-Z_G = \frac{\bar{\theta}_A - \bar{\theta}_B}{\sqrt{\widehat{\text{Var}}(\bar{\theta}_A) + \widehat{\text{Var}}(\bar{\theta}_B)}}
-\]</span></p>
-<p>—donde <span class="math inline">\(\bar{\theta}_A\)</span> y <span class="math inline">\(\bar{\theta}_B\)</span> son las medias muestrales de cada segmento y sus varianzas se estiman mediante métodos espectrales que corrigen por autocorrelación— se distribuye aproximadamente <span class="math inline">\(\mathcal{N}(0,1)\)</span> si la cadena ha alcanzado su distribución estacionaria. Aunque ha sido en gran medida desplazado por <span class="math inline">\(\hat{R}\)</span> y el ESS en la práctica moderna con múltiples cadenas, el diagnóstico de Geweke resulta útil como verificación adicional de estacionariedad dentro de cada cadena individual.</p>
+<p>La inspección visual de las cadenas complementa los diagnósticos numéricos y permite identificar patrones de no convergencia o mezcla deficiente. El <em>trace plot</em> representa los valores muestreados de un parámetro a lo largo de las iteraciones para las distintas cadenas. Un comportamiento adecuado se caracteriza por cadenas que oscilan alrededor de una distribución común, sin tendencias sistemáticas, períodos prolongados de estancamiento o separación persistente entre cadenas. Este patrón suele describirse informalmente como <em>fat hairy caterpillar</em>. La Figura <a href="cap-diagnostico.html#fig:trace-hmc">6.1</a> muestra este comportamiento para los parámetros <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\sigma_U\)</span>, <span class="math inline">\(\beta_1\)</span> y <span class="math inline">\(\beta_2\)</span> en un ajuste del modelo Poisson-lognormal aplicado a datos censales de Barbados (2024).</p>
+<div class="figure"><span style="display:block;" id="fig:trace-hmc"></span>
+<img src="images/cap_08/01_trace_hmc.png" alt="Trace plot de $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ sobre las cuatro cadenas." width="70%" />
+<p class="caption">
+Figura 6.1: Trace plot de <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\sigma_U\)</span>, <span class="math inline">\(\beta_1\)</span> y <span class="math inline">\(\beta_2\)</span> sobre las cuatro cadenas.
+</p>
+</div>
+<p>La autocorrelación evalúa la dependencia entre muestras separadas por distintos retrasos (<em>lags</em>). Una disminución rápida de la autocorrelación hacia cero indica una mezcla eficiente, mientras que valores elevados durante numerosos retrasos señalan una fuerte dependencia entre muestras y, por tanto, un ESS reducido.</p>
+<p>Los algoritmos HMC-NUTS incorporan además diagnósticos específicos de su dinámica. Las <strong>transiciones divergentes</strong> indican que el integrador numérico no ha podido resolver adecuadamente la dinámica hamiltoniana en determinadas regiones de la distribución posterior <span class="citation">(<a href="references.html#ref-Betancourt2017">Betancourt 2017</a>)</span>. Su presencia puede comprometer la validez de las estimaciones y requiere revisar la parametrización del modelo, pudiendo ser necesario incrementar <code>adapt_delta</code> o adoptar una parametrización alternativa.</p>
+<p>Otro diagnóstico es el <strong>E-BFMI</strong> (<em>Energy Bayesian Fraction of Missing Information</em>), que evalúa la eficiencia con la que las cadenas exploran la distribución de energía del sistema hamiltoniano. Valores inferiores a 0.2 sugieren una exploración deficiente y requieren atención, incluso cuando otros diagnósticos, como <span class="math inline">\(\hat{R}\)</span>, no presentan problemas <span class="citation">(<a href="references.html#ref-Betancourt2017">Betancourt 2017</a>)</span>.</p>
+<p>En conjunto, los <em>trace plots</em>, la autocorrelación, las divergencias y el E-BFMI complementan <span class="math inline">\(\hat{R}\)</span> y ESS. Ningún diagnóstico aislado garantiza la convergencia; la evaluación debe considerar conjuntamente la evidencia proporcionada por todos ellos antes de utilizar las distribuciones posteriores para obtener estimaciones de población.</p>
 </div>
 </div>
 <div id="validación-predictiva-posterior" class="section level2 hasAnchor" number="6.2">
@@ -430,52 +424,30 @@ Z_G = \frac{\bar{\theta}_A - \bar{\theta}_B}{\sqrt{\widehat{\text{Var}}(\bar{\th
 <p>Un modelo puede satisfacer todos los diagnósticos de convergencia y, sin embargo, ser inadecuado para describir los datos observados. La validación predictiva posterior evalúa esta segunda dimensión: la capacidad del modelo ajustado para generar datos simulados que se asemejen a los datos reales.</p>
 <div id="posterior-predictive-checks-ppc" class="section level3 hasAnchor" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Posterior predictive checks (PPC)<a href="cap-diagnostico.html#posterior-predictive-checks-ppc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El principio general de la verificación predictiva posterior <span class="citation">(<a href="cap-diagnostico.html#ref-Gelman2013">Gelman et al. 2013</a>)</span> consiste en comparar los datos observados <span class="math inline">\(\mathbf{Y}_{obs}\)</span> con réplicas <span class="math inline">\(\mathbf{Y}^{rep}\)</span> generadas a partir de la distribución predictiva posterior:</p>
+<p>La verificación predictiva posterior (<em>Posterior Predictive Checks</em>, PPC) evalúa si el modelo es capaz de reproducir características relevantes de los datos observados <span class="citation">(<a href="references.html#ref-Gelman2013">Gelman et al. 2013</a>)</span>. Para ello, se generan réplicas <span class="math inline">\(\mathbf{Y}^{rep}\)</span> a partir de la distribución predictiva posterior:</p>
 <p><span class="math display">\[
-p(\mathbf{Y}^{rep} \mid \mathbf{Y}_{obs}) = \int p(\mathbf{Y}^{rep} \mid \boldsymbol{\theta}) \, p(\boldsymbol{\theta} \mid \mathbf{Y}_{obs}) \, d\boldsymbol{\theta}
+p(\mathbf{Y}^{rep} \mid \mathbf{Y}_{obs}) =
+\int p(\mathbf{Y}^{rep} \mid \boldsymbol{\theta})
+p(\boldsymbol{\theta} \mid \mathbf{Y}_{obs})d\boldsymbol{\theta}.
 \]</span></p>
-<p>Para una función de prueba <span class="math inline">\(T(\cdot)\)</span> —una media, una desviación estándar, una proporción de ceros o cualquier estadístico relevante para el problema—, el valor predictivo posterior se estima como la proporción de réplicas cuyo estadístico iguala o supera al observado:</p>
-<p><span class="math display">\[
-p_B = \Pr\!\left(T(\mathbf{Y}^{rep}) \geq T(\mathbf{Y}_{obs}) \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{T}\sum_{t=1}^{T} \mathbb{1}\!\left\{T\!\left(\mathbf{Y}^{rep,(t)}\right) \geq T(\mathbf{Y}_{obs})\right\}
-\]</span></p>
-<p>Valores de <span class="math inline">\(p_B\)</span> cercanos a 0 o a 1 indican que el estadístico observado se ubica en una región de baja densidad predictiva, evidenciando una discrepancia sistemática entre el modelo y los datos en la dimensión capturada por <span class="math inline">\(T(\cdot)\)</span>.</p>
-<p>Más allá de la superposición de densidades del Código <a href="cap-inferencia.html#exr:cod-ppc-densidad">5.11</a>, resulta informativo evaluar estadísticos de prueba específicos mediante <code>bayesplot::ppc_stat()</code>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="cap-diagnostico.html#cb22-1" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
-<span id="cb22-2"><a href="cap-diagnostico.html#cb22-2" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="cap-diagnostico.html#cb22-3" tabindex="-1"></a>lambda_post <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">extract</span>(stan_model, <span class="at">pars =</span> <span class="st">&quot;lambda&quot;</span>)<span class="sc">$</span>lambda</span>
-<span id="cb22-4"><a href="cap-diagnostico.html#cb22-4" tabindex="-1"></a>Y_rep <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb22-5"><a href="cap-diagnostico.html#cb22-5" tabindex="-1"></a>  <span class="fu">rpois</span>(<span class="fu">length</span>(lambda_post), <span class="at">lambda =</span> <span class="fu">as.numeric</span>(lambda_post)),</span>
-<span id="cb22-6"><a href="cap-diagnostico.html#cb22-6" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(lambda_post)</span>
-<span id="cb22-7"><a href="cap-diagnostico.html#cb22-7" tabindex="-1"></a>)</span>
-<span id="cb22-8"><a href="cap-diagnostico.html#cb22-8" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="cap-diagnostico.html#cb22-9" tabindex="-1"></a><span class="co"># Verificación de la media, la desviación estándar y la proporción de ceros</span></span>
-<span id="cb22-10"><a href="cap-diagnostico.html#cb22-10" tabindex="-1"></a><span class="fu">ppc_stat</span>(<span class="at">y =</span> Y_obs, <span class="at">yrep =</span> Y_rep, <span class="at">stat =</span> <span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb22-11"><a href="cap-diagnostico.html#cb22-11" tabindex="-1"></a><span class="fu">ppc_stat</span>(<span class="at">y =</span> Y_obs, <span class="at">yrep =</span> Y_rep, <span class="at">stat =</span> <span class="st">&quot;sd&quot;</span>)</span>
-<span id="cb22-12"><a href="cap-diagnostico.html#cb22-12" tabindex="-1"></a><span class="fu">ppc_stat</span>(<span class="at">y =</span> Y_obs, <span class="at">yrep =</span> Y_rep,</span>
-<span id="cb22-13"><a href="cap-diagnostico.html#cb22-13" tabindex="-1"></a>          <span class="at">stat =</span> <span class="cf">function</span>(y) <span class="fu">mean</span>(y <span class="sc">==</span> <span class="dv">0</span>))</span></code></pre></div>
-<p>La verificación desagregada por subgrupos —segmentos urbanos frente a rurales, o segmentos clasificados según el nivel de cobertura definido en la Sección <a href="cap-insumos.html#clasificacion-segmentos">3.2.1</a>— es particularmente relevante en el contexto censal, dado que un modelo puede ajustar adecuadamente el comportamiento agregado de los conteos y, sin embargo, subestimar sistemáticamente la variabilidad en un subconjunto específico de segmentos con características territoriales particulares:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="cap-diagnostico.html#cb23-1" tabindex="-1"></a><span class="fu">ppc_stat_grouped</span>(</span>
-<span id="cb23-2"><a href="cap-diagnostico.html#cb23-2" tabindex="-1"></a>  <span class="at">y =</span> Y_obs, <span class="at">yrep =</span> Y_rep,</span>
-<span id="cb23-3"><a href="cap-diagnostico.html#cb23-3" tabindex="-1"></a>  <span class="at">group =</span> data_model<span class="sc">$</span>area_tipo,</span>
-<span id="cb23-4"><a href="cap-diagnostico.html#cb23-4" tabindex="-1"></a>  <span class="at">stat =</span> <span class="st">&quot;mean&quot;</span></span>
-<span id="cb23-5"><a href="cap-diagnostico.html#cb23-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>La comparación puede realizarse mediante una función de prueba <span class="math inline">\(T(\cdot)\)</span> que represente alguna característica relevante de los conteos, como la media, la desviación estándar, la proporción de ceros o determinados cuantiles. La discrepancia entre los valores observados y los obtenidos en las réplicas permite identificar dimensiones en las que el modelo no reproduce adecuadamente los datos.</p>
+<p>En los modelos de población, los PPC deben considerar tanto el comportamiento global como posibles diferencias entre tipos de segmentos. Por ejemplo, resulta relevante evaluar por separado segmentos urbanos y rurales o grupos definidos según sus características de cobertura. Un modelo puede reproducir adecuadamente la distribución agregada de los conteos y, al mismo tiempo, presentar deficiencias sistemáticas en determinados grupos de segmentos.</p>
+<p>Por tanto, los PPC constituyen una herramienta para identificar deficiencias en la distribución predictiva del modelo y orientar la revisión de su especificación. La evaluación no debe limitarse a un único estadístico, sino considerar varias características de los conteos que sean relevantes para la estimación de población.</p>
 </div>
 <div id="residuos-bayesianos" class="section level3 hasAnchor" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Residuos bayesianos<a href="cap-diagnostico.html#residuos-bayesianos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El análisis de residuos permite identificar segmentos individuales cuyo conteo observado es inconsistente con la predicción del modelo. A diferencia de los residuos de Pearson utilizados en el diagnóstico exploratorio de valores atípicos del Capítulo <a href="cap-insumos.html#cap-insumos">3</a> —que se basan en un único valor ajustado sin incertidumbre—, el residuo bayesiano incorpora la distribución predictiva posterior completa. Para el segmento <span class="math inline">\(i\)</span>, el residuo estandarizado se define como:</p>
+<p>El análisis de residuos permite identificar segmentos cuyo conteo observado presenta una discrepancia importante respecto de la distribución predictiva del modelo. A diferencia de los residuos de Pearson utilizados en el diagnóstico exploratorio del Capítulo <a href="cap-insumos.html#cap-insumos">3</a>, los residuos bayesianos <span class="citation">(<a href="references.html#ref-Chaloner1988">Chaloner y Brant 1988</a>)</span> incorporan la incertidumbre asociada a la predicción posterior. Para el segmento <span class="math inline">\(i\)</span>, puede definirse el residuo predictivo estandarizado como:</p>
 <p><span class="math display">\[
-r_i = \frac{Y_i - \mathbb{E}\!\left[\tilde{Y}_i \mid \mathbf{Y}_{obs}\right]}{\sqrt{\text{Var}\!\left(\tilde{Y}_i \mid \mathbf{Y}_{obs}\right)}}
+r_i =
+\frac{
+Y_i-\mathbb{E}[\tilde{Y}_i\mid\mathbf{Y}_{obs}]
+}{
+\sqrt{\operatorname{Var}(\tilde{Y}_i\mid\mathbf{Y}_{obs})}
+},
 \]</span></p>
-<p>donde <span class="math inline">\(\mathbb{E}[\tilde{Y}_i \mid \mathbf{Y}_{obs}]\)</span> y <span class="math inline">\(\text{Var}(\tilde{Y}_i \mid \mathbf{Y}_{obs})\)</span> se estiman empíricamente a partir de las columnas correspondientes de la matriz <code>Y_rep</code> generada en la sección anterior:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="cap-diagnostico.html#cb24-1" tabindex="-1"></a>residuos_bayes <span class="ot">&lt;-</span> (Y_obs <span class="sc">-</span> <span class="fu">colMeans</span>(Y_rep)) <span class="sc">/</span> <span class="fu">apply</span>(Y_rep, <span class="dv">2</span>, sd)</span>
-<span id="cb24-2"><a href="cap-diagnostico.html#cb24-2" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="cap-diagnostico.html#cb24-3" tabindex="-1"></a><span class="co"># Segmentos con residuo estandarizado de magnitud considerable</span></span>
-<span id="cb24-4"><a href="cap-diagnostico.html#cb24-4" tabindex="-1"></a>segmentos_atipicos <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">abs</span>(residuos_bayes) <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
-<span id="cb24-5"><a href="cap-diagnostico.html#cb24-5" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="cap-diagnostico.html#cb24-6" tabindex="-1"></a><span class="fu">hist</span>(residuos_bayes, <span class="at">breaks =</span> <span class="dv">40</span>,</span>
-<span id="cb24-7"><a href="cap-diagnostico.html#cb24-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de residuos bayesianos estandarizados&quot;</span>,</span>
-<span id="cb24-8"><a href="cap-diagnostico.html#cb24-8" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Residuo estandarizado&quot;</span>)</span></code></pre></div>
-<p>Bajo un modelo correctamente especificado, la distribución de <span class="math inline">\(r_i\)</span> debe aproximarse a una distribución normal estándar. Concentraciones sistemáticas de residuos positivos o negativos en determinados estratos territoriales —por ejemplo, subestimación sistemática en segmentos de baja cobertura censal— señalan una falla de especificación que puede requerir la incorporación de covariables adicionales o de efectos aleatorios de nivel más desagregado.</p>
+<p>donde la media y la varianza predictivas se obtienen a partir de las réplicas posteriores de <span class="math inline">\(\tilde{Y}_i\)</span>.</p>
+<p>Valores absolutos elevados de <span class="math inline">\(r_i\)</span> indican segmentos en los que el conteo observado se encuentra alejado del comportamiento esperado bajo el modelo. Sin embargo, estos valores deben interpretarse como indicadores de discrepancia y no como pruebas formales de atipicidad, particularmente porque la distribución predictiva de los conteos puede ser asimétrica.</p>
+<p>En los modelos de población, resulta especialmente relevante examinar la distribución de estos residuos según características territoriales y operativas. Una concentración sistemática de residuos positivos o negativos en determinados tipos de segmentos puede indicar que el modelo no está capturando adecuadamente alguna fuente de heterogeneidad, lo que puede motivar la incorporación de covariables, efectos aleatorios o una reformulación de la estructura del modelo.</p>
 </div>
 <div id="comparación-con-conteos-observados-y-calibración" class="section level3 hasAnchor" number="6.2.3">
 <h3><span class="header-section-number">6.2.3</span> Comparación con conteos observados y calibración<a href="cap-diagnostico.html#comparaci%C3%B3n-con-conteos-observados-y-calibraci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -483,11 +455,7 @@ r_i = \frac{Y_i - \mathbb{E}\!\left[\tilde{Y}_i \mid \mathbf{Y}_{obs}\right]}{\s
 <p><span class="math display">\[
 \text{Cobertura}_{95\%} = \frac{1}{D_{obs}}\sum_{i \in \mathcal{S}_{obs}} \mathbb{1}\!\left\{Y_i \in \left[\text{IC}_{2.5\%,i},\; \text{IC}_{97.5\%,i}\right]\right\}
 \]</span></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="cap-diagnostico.html#cb25-1" tabindex="-1"></a>ic_inferior <span class="ot">&lt;-</span> <span class="fu">apply</span>(Y_rep, <span class="dv">2</span>, quantile, <span class="at">probs =</span> <span class="fl">0.025</span>)</span>
-<span id="cb25-2"><a href="cap-diagnostico.html#cb25-2" tabindex="-1"></a>ic_superior <span class="ot">&lt;-</span> <span class="fu">apply</span>(Y_rep, <span class="dv">2</span>, quantile, <span class="at">probs =</span> <span class="fl">0.975</span>)</span>
-<span id="cb25-3"><a href="cap-diagnostico.html#cb25-3" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="cap-diagnostico.html#cb25-4" tabindex="-1"></a>cobertura_95 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y_obs <span class="sc">&gt;=</span> ic_inferior <span class="sc">&amp;</span> Y_obs <span class="sc">&lt;=</span> ic_superior)</span></code></pre></div>
-<p>Una cobertura empírica sustancialmente inferior al 95% indica que los intervalos de credibilidad son demasiado estrechos —el modelo subestima la incertidumbre real— mientras que una cobertura muy superior al 95% indica intervalos excesivamente anchos, que si bien no son incorrectos, resultan poco informativos para la toma de decisiones. Esta noción de calibración debe complementarse con la de nitidez (<em>sharpness</em>): entre dos modelos igualmente calibrados, se prefiere aquel cuyas distribuciones predictivas sean más concentradas <span class="citation">(<a href="cap-diagnostico.html#ref-Gneiting2007">Gneiting y Raftery 2007</a>)</span>. El objetivo de la validación predictiva no es, por tanto, maximizar la amplitud de los intervalos para garantizar cobertura, sino maximizar la nitidez sujeta a calibración adecuada —principio conocido como <em>maximización de la nitidez sujeta a calibración</em> <span class="citation">(<a href="cap-diagnostico.html#ref-Gneiting2007">Gneiting y Raftery 2007</a>)</span>—, que constituye el criterio rector tanto de la validación predictiva posterior como de los criterios de información desarrollados en la sección siguiente.</p>
+<p>Una cobertura empírica sustancialmente inferior al 95% indica que los intervalos de credibilidad son demasiado estrechos —el modelo subestima la incertidumbre real— mientras que una cobertura muy superior al 95% indica intervalos excesivamente anchos, que si bien no son incorrectos, resultan poco informativos para la toma de decisiones. Esta noción de calibración debe complementarse con la de nitidez (<em>sharpness</em>): entre dos modelos igualmente calibrados, se prefiere aquel cuyas distribuciones predictivas sean más concentradas <span class="citation">(<a href="references.html#ref-Gneiting2007">Gneiting y Raftery 2007</a>)</span>. El objetivo de la validación predictiva no es, por tanto, maximizar la amplitud de los intervalos para garantizar cobertura, sino maximizar la nitidez sujeta a calibración adecuada —principio conocido como <em>maximización de la nitidez sujeta a calibración</em> <span class="citation">(<a href="references.html#ref-Gneiting2007">Gneiting y Raftery 2007</a>)</span>—, que constituye el criterio rector tanto de la validación predictiva posterior como de los criterios de información desarrollados en la sección siguiente.</p>
 </div>
 </div>
 <div id="selección-y-comparación-de-modelos" class="section level2 hasAnchor" number="6.3">
@@ -495,24 +463,14 @@ r_i = \frac{Y_i - \mathbb{E}\!\left[\tilde{Y}_i \mid \mathbf{Y}_{obs}\right]}{\s
 <p>Cuando existen especificaciones alternativas del modelo —distintos subconjuntos de covariables, distintas estructuras de efectos aleatorios (Sección <a href="cap-conteos.html#efectos-aleatorios">4.2.2</a>) o distintos supuestos sobre el mecanismo de sobredispersión (Sección <a href="cap-conteos.html#sobredispersion-offset">4.2.4</a>)—, es necesario un criterio formal para seleccionar la especificación final.</p>
 <div id="criterio-leave-one-out-loo-cv-y-diagnóstico-de-pareto-k" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Criterio Leave-One-Out (LOO-CV) y diagnóstico de Pareto k<a href="cap-diagnostico.html#criterio-leave-one-out-loo-cv-y-diagn%C3%B3stico-de-pareto-k" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El criterio de validación cruzada dejando uno fuera (<em>Leave-One-Out Cross-Validation</em>, LOO-CV) estima la capacidad predictiva del modelo sobre datos no utilizados en su ajuste, aproximando el reajuste exacto del modelo sin la observación <span class="math inline">\(i\)</span> mediante muestreo por importancia con suavizado de Pareto (PSIS) <span class="citation">(<a href="cap-diagnostico.html#ref-Vehtari2017">Vehtari et al. 2017</a>)</span>:</p>
-<p><span class="math display">\[
-\widehat{\text{elpd}}_{loo} = \sum_{i \in \mathcal{S}_{obs}} \log\left(\frac{\sum_{t=1}^{T} w_i^{(t)}\, p\!\left(Y_i \mid \boldsymbol{\theta}^{(t)}\right)}{\sum_{t=1}^{T} w_i^{(t)}}\right)
-\]</span></p>
-<p>donde <span class="math inline">\(w_i^{(t)}\)</span> son los pesos de importancia suavizados para la observación <span class="math inline">\(i\)</span> en la muestra <span class="math inline">\(t\)</span>. El procedimiento PSIS ajusta una distribución de Pareto generalizada a la cola de los pesos de importancia brutos y utiliza el parámetro de forma estimado <span class="math inline">\(\hat{k}_i\)</span> como diagnóstico de la fiabilidad de la aproximación para cada observación:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="cap-diagnostico.html#cb26-1" tabindex="-1"></a>log_lik_mat <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">extract_log_lik</span>(stan_model, <span class="at">parameter_name =</span> <span class="st">&quot;log_lik&quot;</span>)</span>
-<span id="cb26-2"><a href="cap-diagnostico.html#cb26-2" tabindex="-1"></a>loo_result  <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">loo</span>(log_lik_mat)</span>
-<span id="cb26-3"><a href="cap-diagnostico.html#cb26-3" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="cap-diagnostico.html#cb26-4" tabindex="-1"></a><span class="fu">print</span>(loo_result)</span>
-<span id="cb26-5"><a href="cap-diagnostico.html#cb26-5" tabindex="-1"></a>loo<span class="sc">::</span><span class="fu">pareto_k_table</span>(loo_result)</span>
-<span id="cb26-6"><a href="cap-diagnostico.html#cb26-6" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="cap-diagnostico.html#cb26-7" tabindex="-1"></a><span class="co"># Segmentos con aproximación PSIS poco confiable</span></span>
-<span id="cb26-8"><a href="cap-diagnostico.html#cb26-8" tabindex="-1"></a>loo<span class="sc">::</span><span class="fu">pareto_k_ids</span>(loo_result, <span class="at">threshold =</span> <span class="fl">0.7</span>)</span></code></pre></div>
-<p>Valores <span class="math inline">\(\hat{k}_i &lt; 0.5\)</span> indican una aproximación fiable; valores entre 0.5 y 0.7 son aceptables pero con mayor varianza de estimación; valores <span class="math inline">\(\hat{k}_i &gt; 0.7\)</span> indican que la aproximación de importancia no es confiable para esa observación, típicamente porque su exclusión modificaría sustancialmente la distribución posterior <span class="citation">(<a href="cap-diagnostico.html#ref-Vehtari2017">Vehtari et al. 2017</a>)</span>. En el modelo Poisson-lognormal, los segmentos con <span class="math inline">\(\hat{k}_i\)</span> elevado suelen coincidir con los residuos bayesianos atípicos identificados en la sección anterior. Cuando el número de observaciones con <span class="math inline">\(\hat{k}_i &gt; 0.7\)</span> es reducido, se recomienda recalcular el ajuste exacto de validación cruzada únicamente para esas observaciones mediante refit directo del modelo, en lugar de descartar el diagnóstico LOO en su totalidad.</p>
+<p>El criterio <em>Leave-One-Out Cross-Validation</em> (LOO-CV) evalúa la capacidad predictiva del modelo sobre observaciones que no participaron en su ajuste. Para cada segmento, se estima qué tan bien el modelo puede predecir su conteo cuando este se excluye del proceso de estimación. De esta forma, LOO permite evaluar la capacidad predictiva fuera de muestra y comparar diferentes especificaciones del modelo <span class="citation">(<a href="references.html#ref-Vehtari2017">Vehtari et al. 2017</a>)</span>.</p>
+<p>El cálculo exacto de LOO requeriría ajustar nuevamente el modelo tantas veces como observaciones existan. Para evitar este procedimiento, PSIS-LOO (<em>Pareto Smoothed Importance Sampling</em>) aproxima estos ajustes mediante las muestras de la distribución posterior obtenida con el modelo completo. La calidad de esta aproximación se evalúa mediante el parámetro <span class="math inline">\(\hat{k}\)</span> de la distribución generalizada de Pareto, calculado para cada observación.</p>
+<p>Valores pequeños de <span class="math inline">\(\hat{k}\)</span> indican que la aproximación mediante muestreo por importancia es estable. Valores elevados indican que una observación tiene una influencia considerable sobre la distribución posterior y que la aproximación LOO puede ser poco fiable. Estas observaciones requieren una revisión particular y, cuando sea necesario, pueden evaluarse mediante un reajuste exacto del modelo excluyendo directamente la observación correspondiente <span class="citation">(<a href="references.html#ref-Vehtari2017">Vehtari et al. 2017</a>; <a href="#ref-Vehtari2024"><strong>Vehtari2024?</strong></a>)</span>.</p>
+<p>En los modelos de población, <span class="math inline">\(\hat{k}\)</span> permite identificar segmentos cuya información tiene una influencia particularmente alta sobre el ajuste. Estos segmentos pueden coincidir con conteos extremos o con situaciones territoriales poco representadas en los datos, por lo que su identificación constituye tanto un diagnóstico de la validación predictiva como una herramienta para revisar la especificación del modelo.</p>
 </div>
 <div id="widely-applicable-information-criterion-waic" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> Widely Applicable Information Criterion (WAIC)<a href="cap-diagnostico.html#widely-applicable-information-criterion-waic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El WAIC <span class="citation">(<a href="cap-diagnostico.html#ref-Watanabe2010">Watanabe 2010</a>)</span> constituye una alternativa asintóticamente equivalente al LOO-CV bajo condiciones de regularidad del modelo, calculada directamente a partir de la log-verosimilitud puntual sin requerir muestreo por importancia. Se compone de la densidad predictiva log puntual esperada:</p>
+<p>El WAIC <span class="citation">(<a href="references.html#ref-Watanabe2010">Watanabe 2010</a>)</span> constituye una alternativa asintóticamente equivalente al LOO-CV bajo condiciones de regularidad del modelo, calculada directamente a partir de la log-verosimilitud puntual sin requerir muestreo por importancia. Se compone de la densidad predictiva log puntual esperada:</p>
 <p><span class="math display">\[
 \text{lpd} = \sum_{i \in \mathcal{S}_{obs}} \log\left(\frac{1}{T}\sum_{t=1}^{T} p\!\left(Y_i \mid \boldsymbol{\theta}^{(t)}\right)\right)
 \]</span></p>
@@ -524,20 +482,16 @@ p_{WAIC} = \sum_{i \in \mathcal{S}_{obs}} \text{Var}_t\!\left(\log p\!\left(Y_i 
 <p><span class="math display">\[
 \text{WAIC} = -2\left(\text{lpd} - p_{WAIC}\right)
 \]</span></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="cap-diagnostico.html#cb27-1" tabindex="-1"></a>waic_result <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">waic</span>(log_lik_mat)</span>
-<span id="cb27-2"><a href="cap-diagnostico.html#cb27-2" tabindex="-1"></a><span class="fu">print</span>(waic_result)</span></code></pre></div>
-<p><span class="citation">Piironen y Vehtari (<a href="cap-diagnostico.html#ref-Piironen2017">2017</a>)</span> muestra que, en presencia de observaciones influyentes —frecuentes en modelos de conteo con segmentos de intensidad extrema, como los que surgen en el modelo Poisson-lognormal—, el LOO-CV mediante PSIS es más robusto que el WAIC, cuya estimación de <span class="math inline">\(p_{WAIC}\)</span> puede ser inestable cuando la varianza posterior de la log-verosimilitud puntual es elevada. En consecuencia, el LOO-CV debe considerarse el criterio principal, reportando el WAIC como verificación complementaria y no como criterio primario de decisión.</p>
+<p><span class="citation">Piironen y Vehtari (<a href="references.html#ref-Piironen2017">2017</a>)</span> muestra que, en presencia de observaciones influyentes —frecuentes en modelos de conteo con segmentos de intensidad extrema, como los que surgen en el modelo Poisson-lognormal—, el LOO-CV mediante PSIS es más robusto que el WAIC, cuya estimación de <span class="math inline">\(p_{WAIC}\)</span> puede ser inestable cuando la varianza posterior de la log-verosimilitud puntual es elevada. En consecuencia, el LOO-CV debe considerarse el criterio principal, reportando el WAIC como verificación complementaria y no como criterio primario de decisión.</p>
 </div>
 <div id="criterio-de-elección-del-modelo-final" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Criterio de elección del modelo final<a href="cap-diagnostico.html#criterio-de-elecci%C3%B3n-del-modelo-final" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La comparación entre especificaciones alternativas se realiza mediante la diferencia en elpd estimado y su error estándar:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="cap-diagnostico.html#cb28-1" tabindex="-1"></a>loo_modelo_1 <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">loo</span>(log_lik_mat_1)</span>
-<span id="cb28-2"><a href="cap-diagnostico.html#cb28-2" tabindex="-1"></a>loo_modelo_2 <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">loo</span>(log_lik_mat_2)</span>
-<span id="cb28-3"><a href="cap-diagnostico.html#cb28-3" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="cap-diagnostico.html#cb28-4" tabindex="-1"></a>comparacion <span class="ot">&lt;-</span> loo<span class="sc">::</span><span class="fu">loo_compare</span>(loo_modelo_1, loo_modelo_2)</span>
-<span id="cb28-5"><a href="cap-diagnostico.html#cb28-5" tabindex="-1"></a><span class="fu">print</span>(comparacion)</span></code></pre></div>
-<p>Como se estableció en el Código <a href="cap-inferencia.html#exr:cod-loo-waic">5.12</a>, una diferencia en elpd superior en magnitud al doble de su error estándar (<code>elpd_diff</code> frente a <code>se_diff</code>) se interpreta como evidencia de una diferencia predictiva sustancial entre modelos. Este criterio debe aplicarse únicamente cuando el diagnóstico de Pareto <span class="math inline">\(\hat{k}\)</span> indica que la comparación es confiable para la mayoría de las observaciones; si un número apreciable de segmentos presenta <span class="math inline">\(\hat{k}_i &gt; 0.7\)</span> en cualquiera de los modelos comparados, la diferencia estimada debe interpretarse con cautela.</p>
-<p>Como complemento a los criterios de información —que evalúan el ajuste global de la distribución predictiva— es recomendable evaluar una regla de puntuación propia (<em>proper scoring rule</em>) orientada específicamente a la calidad de las predicciones puntuales para conteos, como el <em>ranked probability score</em> <span class="citation">(<a href="cap-diagnostico.html#ref-Gneiting2007">Gneiting y Raftery 2007</a>)</span>:</p>
+<p>La comparación entre dos especificaciones alternativas, denotadas genéricamente <span class="math inline">\((1)\)</span> y <span class="math inline">\((2)\)</span>, se realiza mediante la diferencia entre sus valores de elpd estimados por LOO-CV,</p>
+<p><span class="math display">\[
+\widehat{\text{elpd}}_{diff} = \widehat{\text{elpd}}_{loo}^{(1)} - \widehat{\text{elpd}}_{loo}^{(2)},
+\]</span></p>
+<p>y el error estándar de esa diferencia, <span class="math inline">\(\widehat{\text{se}}_{diff}\)</span>, estimado a partir de la variabilidad de las diferencias puntuales entre los segmentos observados. Como se estableció en el Código <a href="cap-inferencia.html#exr:cod-loo-waic">5.12</a>, una diferencia cuya magnitud supera el doble de su error estándar (<span class="math inline">\(|\widehat{\text{elpd}}_{diff}| &gt; 2\,\widehat{\text{se}}_{diff}\)</span>) se interpreta como evidencia de una diferencia predictiva sustancial entre modelos. Este criterio debe aplicarse únicamente cuando el diagnóstico de Pareto <span class="math inline">\(\hat{k}\)</span> indica que la comparación es confiable para la mayoría de las observaciones; si un número apreciable de segmentos presenta <span class="math inline">\(\hat{k}_i &gt; 0.7\)</span> en cualquiera de los modelos comparados, la diferencia estimada debe interpretarse con cautela.</p>
+<p>Como complemento a los criterios de información —que evalúan el ajuste global de la distribución predictiva— es recomendable evaluar una regla de puntuación propia (<em>proper scoring rule</em>) orientada específicamente a la calidad de las predicciones puntuales para conteos, como el <em>ranked probability score</em> <span class="citation">(<a href="references.html#ref-Gneiting2007">Gneiting y Raftery 2007</a>)</span>:</p>
 <p><span class="math display">\[
 \text{RPS}_i = \sum_{k=0}^{K_{max}} \left(F_{\tilde{Y}_i}(k) - \mathbb{1}\{Y_i \leq k\}\right)^2
 \]</span></p>
@@ -555,14 +509,7 @@ p_{WAIC} = \sum_{i \in \mathcal{S}_{obs}} \text{Var}_t\!\left(\log p\!\left(Y_i 
 \Delta_j = \frac{\hat{N}_j - N_j^{proy}}{N_j^{proy}}
 \]</span></p>
 <p>donde <span class="math inline">\(\hat{N}_j\)</span> es la agregación de las predicciones posteriores del modelo para la unidad <span class="math inline">\(j\)</span> y <span class="math inline">\(N_j^{proy}\)</span> es la proyección demográfica oficial correspondiente. Discrepancias sistemáticas y de gran magnitud —convencionalmente, superiores al 5% en valor absoluto— ameritan investigación adicional: pueden reflejar un error genuino del modelo, pero también pueden señalar que la proyección demográfica de referencia está desactualizada respecto a la dinámica poblacional reciente del territorio, particularmente en contextos de migración interna acelerada.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="cap-diagnostico.html#cb29-1" tabindex="-1"></a>discrepancia <span class="ot">&lt;-</span> estimaciones_dam <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="cap-diagnostico.html#cb29-2" tabindex="-1"></a>  <span class="fu">left_join</span>(proyecciones_oficiales, <span class="at">by =</span> <span class="st">&quot;DAM&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="cap-diagnostico.html#cb29-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">delta =</span> (tot_pob_media <span class="sc">-</span> poblacion_proyectada) <span class="sc">/</span> poblacion_proyectada)</span>
-<span id="cb29-4"><a href="cap-diagnostico.html#cb29-4" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="cap-diagnostico.html#cb29-5" tabindex="-1"></a>discrepancia <span class="sc">%&gt;%</span></span>
-<span id="cb29-6"><a href="cap-diagnostico.html#cb29-6" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(delta) <span class="sc">&gt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb29-7"><a href="cap-diagnostico.html#cb29-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(delta)))</span></code></pre></div>
-<p>Las recomendaciones de CEPAL para los censos de la ronda 2020 <span class="citation">(<a href="cap-diagnostico.html#ref-CEPAL2023">CEPAL 2023</a>)</span> enfatizan la necesidad de conciliar los resultados censales —y, por extensión, cualquier estimación derivada de ellos mediante modelamiento— con las proyecciones demográficas oficiales del país, documentando explícitamente las discrepancias identificadas y sus posibles causas metodológicas u operativas. La validación cruzada entre estimaciones basadas en modelos y proyecciones demográficas independientes ha sido aplicada con enfoques metodológicos afines en otros contextos de estimación en áreas pequeñas con relevancia demográfica y sanitaria, como la estimación espaciotemporal de la mortalidad infantil en contextos de datos limitados <span class="citation">(<a href="cap-diagnostico.html#ref-Wakefield2019">Wakefield et al. 2019</a>)</span>, donde la comparación sistemática con fuentes externas independientes constituye igualmente un componente central del proceso de validación.</p>
+<p>Las recomendaciones de la CEPAL para los censos de la ronda 2020 <span class="citation">(<a href="references.html#ref-CEPAL2023">CEPAL 2023</a>)</span> enfatizan la importancia de analizar la coherencia de los resultados censales con las proyecciones demográficas oficiales, documentando las discrepancias identificadas y sus posibles causas. En este marco, las estimaciones obtenidas mediante los modelos de población pueden contrastarse con dichas proyecciones como una fuente independiente de referencia. Este contraste permite evaluar la coherencia de los resultados a nivel de los dominios para los que ambas fuentes sean comparables, considerando las diferencias en el período de referencia, la definición geográfica y los supuestos metodológicos de cada estimación.</p>
 </div>
 <div id="comparación-con-registros-administrativos-independientes" class="section level3 hasAnchor" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> Comparación con registros administrativos independientes<a href="cap-diagnostico.html#comparaci%C3%B3n-con-registros-administrativos-independientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -573,138 +520,23 @@ p_{WAIC} = \sum_{i \in \mathcal{S}_{obs}} \text{Var}_t\!\left(\log p\!\left(Y_i 
 \]</span></p>
 <p>donde <span class="math inline">\(Y_i^{(A_{val})}\)</span> es el conteo del registro administrativo reservado para el segmento <span class="math inline">\(i\)</span> —siguiendo la misma convención de superíndices por fuente <span class="math inline">\(Y^{(A)}\)</span> del Capítulo <a href="cap-insumos.html#cap-insumos">3</a>, con el subíndice adicional <span class="math inline">\(val\)</span> para distinguirlo de los registros administrativos ya incorporados como covariables—. Dado que ningún registro administrativo captura la totalidad de la población —su tasa de cobertura relativa <span class="math inline">\(c_{i,r}\)</span> es, por construcción, menor o igual a uno—, se espera que <span class="math inline">\(\rho_i\)</span> se ubique sistemáticamente por encima de uno y dentro de un rango plausible determinado por la naturaleza del registro utilizado; valores de <span class="math inline">\(\rho_i\)</span> inferiores a uno, o con una dispersión territorial inconsistente con la cobertura esperada del registro, señalan posibles problemas de especificación del modelo o de calidad del registro de referencia.</p>
 </div>
-<div id="evaluación-de-coherencia-geoespacial" class="section level3 hasAnchor" number="6.4.3">
-<h3><span class="header-section-number">6.4.3</span> Evaluación de coherencia geoespacial<a href="cap-diagnostico.html#evaluaci%C3%B3n-de-coherencia-geoespacial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La distribución espacial de la población presenta continuidad territorial: segmentos geográficamente próximos tienden a presentar características demográficas similares. El modelo desarrollado en este libro captura esta continuidad únicamente de manera indirecta: a través de las covariables espaciales de la Sección <a href="cap-integracion.html#variables-espaciales">2.3.2</a> —distancia a centros urbanos, accesibilidad, topografía— y del efecto aleatorio territorial <span class="math inline">\(\boldsymbol{\gamma}\)</span> de la Sección <a href="cap-conteos.html#efectos-aleatorios">4.2.2</a>, que es intercambiable (jerárquico) y no impone una estructura de adyacencia entre segmentos vecinos <span class="citation">(<a href="cap-diagnostico.html#ref-Banerjee2015">Banerjee et al. 2015</a>)</span>. Un modelo correctamente especificado debe capturar la continuidad espacial a través de estos elementos, de modo que los residuos bayesianos no exhiban autocorrelación espacial remanente.</p>
-<p>El índice de Moran cuantifica la autocorrelación espacial de los residuos <span class="math inline">\(r_i\)</span> definidos en la sección de validación predictiva posterior:</p>
-<p><span class="math display">\[
-I = \frac{D_{obs}}{\sum_{i}\sum_{j} w_{ij}} \cdot \frac{\sum_{i}\sum_{j} w_{ij}\left(r_i - \bar{r}\right)\left(r_j - \bar{r}\right)}{\sum_{i}\left(r_i - \bar{r}\right)^2}
-\]</span></p>
-<p>donde <span class="math inline">\(w_{ij}\)</span> es un peso de vecindad —típicamente igual a uno si los segmentos <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> son geográficamente contiguos y cero en caso contrario— y <span class="math inline">\(\bar{r}\)</span> es la media de los residuos sobre los segmentos observados. Valores de <span class="math inline">\(I\)</span> cercanos a cero son consistentes con ausencia de autocorrelación espacial residual; valores positivos y estadísticamente significativos indican que segmentos vecinos comparten errores sistemáticos del modelo no capturados por las covariables ni por los efectos aleatorios territoriales incluidos:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="cap-diagnostico.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
-<span id="cb30-2"><a href="cap-diagnostico.html#cb30-2" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="cap-diagnostico.html#cb30-3" tabindex="-1"></a>vecinos <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(segmentos_sf)</span>
-<span id="cb30-4"><a href="cap-diagnostico.html#cb30-4" tabindex="-1"></a>pesos   <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(vecinos, <span class="at">style =</span> <span class="st">&quot;W&quot;</span>, <span class="at">zero.policy =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-5"><a href="cap-diagnostico.html#cb30-5" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="cap-diagnostico.html#cb30-6" tabindex="-1"></a><span class="fu">moran.test</span>(residuos_bayes, <span class="at">listw =</span> pesos, <span class="at">zero.policy =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>Cuando el índice de Moran señala autocorrelación espacial residual relevante, las alternativas de especificación incluyen la incorporación de efectos aleatorios espacialmente estructurados de tipo CAR en el predictor lineal —en lugar de, o adicionalmente a, los efectos aleatorios no estructurados por unidad territorial definidos en la Sección <a href="cap-conteos.html#efectos-aleatorios">4.2.2</a>—, o la inclusión de covariables adicionales capaces de explicar el patrón espacial observado en los residuos.</p>
+<div id="evaluación-de-coherencia-territorial-y-demográfica" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Evaluación de coherencia territorial y demográfica<a href="cap-diagnostico.html#evaluaci%C3%B3n-de-coherencia-territorial-y-demogr%C3%A1fica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las estimaciones de población obtenidas mediante el modelo deben presentar un comportamiento territorial y demográfico coherente con las características conocidas de las áreas estimadas. Esta evaluación no busca imponer una estructura espacial al modelo ni realizar un análisis espacial del proceso poblacional, sino verificar que los patrones obtenidos sean plausibles a la luz del conocimiento disponible sobre el territorio y su dinámica demográfica.</p>
+<p>La revisión debe considerar aspectos como las diferencias esperadas entre áreas urbanas y rurales, los cambios en el tamaño de la población, los procesos de expansión o concentración urbana y los patrones conocidos de movilidad y migración. También resulta relevante identificar cambios abruptos o comportamientos atípicos entre segmentos o áreas que requieran una explicación específica.</p>
+<p>Esta evaluación debe realizarse con participación de expertos de las instituciones estadísticas y demográficas del país, quienes pueden aportar información contextual sobre procesos territoriales, dinámicas migratorias, crecimiento o pérdida de población y transformaciones recientes que no necesariamente están representadas de manera explícita en las fuentes utilizadas por el modelo. La identificación de un patrón espacial particular no constituye, por sí misma, evidencia de un problema de especificación; su interpretación debe considerar el contexto demográfico y operativo del territorio.</p>
+<p>Cuando las estimaciones presenten comportamientos que se aparten de lo esperado, el análisis experto permitirá determinar si estos corresponden a procesos poblacionales plausibles, a características particulares de las fuentes de información o a posibles problemas de especificación del modelo. De esta manera, la revisión territorial y demográfica constituye un componente complementario de la validación estadística y contribuye a sustentar la plausibilidad de las estimaciones antes de su utilización en la producción de resultados de población.</p>
 
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Banerjee2015" class="csl-entry">
-Banerjee, Sudipto, Bradley P. Carlin, y Alan E. Gelfand. 2015. <em>Hierarchical Modeling and Analysis for Spatial Data</em>. 2nd ed. Chapman; Hall/CRC.
-</div>
-<div id="ref-Betancourt2017" class="csl-entry">
-Betancourt, Michael. 2017. <span>«A Conceptual Introduction to <span>Hamiltonian</span> <span>Monte</span> <span>Carlo</span>»</span>. <em>arXiv preprint</em>.
-</div>
-<div id="ref-BryantGraham2013" class="csl-entry">
-Bryant, John R., y Patrick J. Graham. 2013. <span>«Bayesian Demographic Accounts: Subnational Population Estimation Using Multiple Data Sources»</span>. <em>Bayesian Analysis</em> 8 (3): 591-622. <a href="https://doi.org/10.1214/13-BA820">https://doi.org/10.1214/13-BA820</a>.
-</div>
-<div id="ref-BryantZhang2018" class="csl-entry">
-Bryant, John, y Junni L. Zhang. 2018. <em>Bayesian Demographic Estimation and Forecasting</em>. Chapman; Hall/CRC.
-</div>
-<div id="ref-Carpenter2017" class="csl-entry">
-Carpenter, Bob, Andrew Gelman, Matthew D. Hoffman, et al. 2017. <span>«<span>Stan</span>: A Probabilistic Programming Language»</span>. <em>Journal of Statistical Software</em> 76 (1): 1-32. <a href="https://doi.org/10.18637/jss.v076.i01">https://doi.org/10.18637/jss.v076.i01</a>.
-</div>
-<div id="ref-CEPAL2023" class="csl-entry">
-CEPAL. 2023. <em>Recomendaciones para los censos de población y vivienda en <span>América</span> <span>Latina</span>: revisión 2020</em>. LC/CEA.10/3. Comisión Económica para <span>América</span> <span>Latina</span> y el <span>Caribe</span>.
-</div>
-<div id="ref-Duane1987" class="csl-entry">
-Duane, Simon, Anthony D. Kennedy, Brian J. Pendleton, y Duncan Roweth. 1987. <span>«Hybrid <span>Monte</span> <span>Carlo</span>»</span>. <em>Physics Letters B</em> 195 (2): 216-22.
-</div>
-<div id="ref-bayesplot2022" class="csl-entry">
-Gabry, Jonah, y Tristan Mahr. 2022. <em>bayesplot: Plotting for <span>Bayesian</span> Models</em>. <a href="https://mc-stan.org/bayesplot/">https://mc-stan.org/bayesplot/</a>.
-</div>
-<div id="ref-Gabry2019" class="csl-entry">
-Gabry, Jonah, Daniel Simpson, Aki Vehtari, Michael Betancourt, y Andrew Gelman. 2019. <span>«Visualization in <span>Bayesian</span> Workflow»</span>. <em>Journal of the Royal Statistical Society: Series A</em> 182 (2): 389-402. <a href="https://doi.org/10.1111/rssa.12378">https://doi.org/10.1111/rssa.12378</a>.
-</div>
-<div id="ref-Gelman2013" class="csl-entry">
-Gelman, Andrew, John B. Carlin, Hal S. Stern, David B. Dunson, Aki Vehtari, y Donald B. Rubin. 2013. <em>Bayesian Data Analysis</em>. 3rd ed. Chapman; Hall/CRC.
-</div>
-<div id="ref-Gelman1992" class="csl-entry">
-Gelman, Andrew, y Donald B. Rubin. 1992. <span>«Inference from Iterative Simulation Using Multiple Sequences»</span>. <em>Statistical Science</em> 7 (4): 457-72.
-</div>
-<div id="ref-Geweke1992" class="csl-entry">
-Geweke, John. 1992. <em>Evaluating the Accuracy of Sampling-Based Approaches to the Calculation of Posterior Moments</em>. 169-93.
-</div>
-<div id="ref-Gneiting2007" class="csl-entry">
-Gneiting, Tilmann, y Adrian E. Raftery. 2007. <span>«Strictly Proper Scoring Rules, Prediction, and Estimation»</span>. <em>Journal of the American Statistical Association</em> 102 (477): 359-78.
-</div>
-<div id="ref-Gorelick2017" class="csl-entry">
-Gorelick, Noel, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, y Rebecca Moore. 2017. <span>«Google Earth Engine: Planetary-Scale Geospatial Analysis for Everyone»</span>. <em>Remote Sensing of Environment</em> 202: 18-27. <a href="https://doi.org/10.1016/j.rse.2017.06.031">https://doi.org/10.1016/j.rse.2017.06.031</a>.
-</div>
-<div id="ref-Hoffman2014" class="csl-entry">
-Hoffman, Matthew D., y Andrew Gelman. 2014. <span>«The <span>No-U-Turn</span> Sampler: Adaptively Setting Path Lengths in <span>Hamiltonian</span> <span>Monte</span> <span>Carlo</span>»</span>. <em>Journal of Machine Learning Research</em> 15: 1593-623.
-</div>
-<div id="ref-Hogan1993" class="csl-entry">
-Hogan, Howard. 1993. <span>«The 1990 Post-Enumeration Survey: Operations and Results»</span>. <em>Journal of the American Statistical Association</em> 88 (423): 1047-60.
-</div>
-<div id="ref-McElreath2020" class="csl-entry">
-McElreath, Richard. 2020. <em>Statistical Rethinking: A <span>Bayesian</span> Course with Examples in <span>R</span> and <span>Stan</span></em>. 2nd ed. Chapman; Hall/CRC.
-</div>
-<div id="ref-Mercer2015" class="csl-entry">
-Mercer, Laina, Jon Wakefield, Cici Chen, y Thomas Lumley. 2015. <span>«Space–Time Smoothing of Complex Survey Data: Small Area Inclusion Probabilities and Total Population Counts»</span>. <em>The Annals of Applied Statistics</em> 9 (4): 1889-917.
-</div>
-<div id="ref-NacionesUnidas2017" class="csl-entry">
-Naciones Unidas. 2017. <em>Principios y recomendaciones para los censos de poblaci<span>ó</span>n y habitaci<span>ó</span>n, Revisi<span>ó</span>n 3</em>. Departamento de Asuntos Econ<span>ó</span>micos y Sociales, Divisi<span>ó</span>n de Estad<span>í</span>stica.
-</div>
-<div id="ref-Neal2011" class="csl-entry">
-Neal, Radford M. 2011. <em><span>MCMC</span> Using <span>Hamiltonian</span> Dynamics</em>. Editado por Steve Brooks, Andrew Gelman, Galin L. Jones, y Xiao-Li Meng. Chapman; Hall/CRC.
-</div>
-<div id="ref-Piironen2017" class="csl-entry">
-Piironen, Juho, y Aki Vehtari. 2017. <span>«Comparison of <span>Bayesian</span> Predictive Methods for Model Selection»</span>. <em>Statistics and Computing</em> 27 (3): 711-35.
-</div>
-<div id="ref-Preston2001" class="csl-entry">
-Preston, Samuel H., Patrick Heuveline, y Michel Guillot. 2001. <em>Demography: Measuring and Modeling Population Processes</em>. Blackwell Publishing.
-</div>
-<div id="ref-Raftery2012" class="csl-entry">
-Raftery, Adrian E., Nan Li, Hana Ševčíková, Patrick Gerland, y Gerhard K. Heilig. 2012. <span>«Bayesian Probabilistic Population Projections for All Countries»</span>. <em>Proceedings of the National Academy of Sciences</em> 109 (35): 13915-21. <a href="https://doi.org/10.1073/pnas.1211452109">https://doi.org/10.1073/pnas.1211452109</a>.
-</div>
-<div id="ref-Rao2015" class="csl-entry">
-Rao, J. N. K., y Isabel Molina. 2015. <em>Small Area Estimation</em>. 2nd ed. John Wiley &amp; Sons.
-</div>
-<div id="ref-SiegelSwanson2004" class="csl-entry">
-Siegel, Jacob S., y David A. Swanson, eds. 2004. <em>The Methods and Materials of Demography</em>. 2.ª ed. Elsevier Academic Press.
-</div>
-<div id="ref-rstan2023" class="csl-entry">
-Stan Development Team. 2023. <em><span>RStan</span>: the <span>R</span> interface to <span>Stan</span></em>. <a href="https://mc-stan.org/">https://mc-stan.org/</a>.
-</div>
-<div id="ref-Tierney1994" class="csl-entry">
-Tierney, Luke. 1994. <span>«Markov Chains for Exploring Posterior Distributions»</span>. <em>The Annals of Statistics</em> 22 (4): 1701-28.
-</div>
-<div id="ref-Vehtari2017" class="csl-entry">
-Vehtari, Aki, Andrew Gelman, y Jonah Gabry. 2017. <span>«Practical <span>Bayesian</span> Model Evaluation Using Leave-One-Out Cross-Validation and <span>WAIC</span>»</span>. <em>Statistics and Computing</em> 27 (5): 1413-32. <a href="https://doi.org/10.1007/s11222-016-9696-4">https://doi.org/10.1007/s11222-016-9696-4</a>.
-</div>
-<div id="ref-Vehtari2021" class="csl-entry">
-Vehtari, Aki, Andrew Gelman, Daniel Simpson, Bob Carpenter, y Paul-Christian Bürkner. 2021. <span>«Rank-Normalization, Folding, and Localization: An Improved <span><span class="math inline">\(\hat{R}\)</span></span> for Assessing Convergence of <span>MCMC</span>»</span>. <em>Bayesian Analysis</em> 16 (2): 667-718. <a href="https://doi.org/10.1214/20-BA1221">https://doi.org/10.1214/20-BA1221</a>.
-</div>
-<div id="ref-Wakefield2019" class="csl-entry">
-Wakefield, Jon, Taylor Okonek, y Jon Pedersen. 2019. <span>«Estimating Under-Five Mortality in Space and Time in a Developing World Context»</span>. <em>Statistical Science</em> 34 (1): 1-19.
-</div>
-<div id="ref-Watanabe2010" class="csl-entry">
-Watanabe, Sumio. 2010. <span>«Asymptotic Equivalence of <span>Bayes</span> Cross Validation and Widely Applicable Information Criterion in Singular Learning Theory»</span>. <em>Journal of Machine Learning Research</em> 11: 3571-94.
-</div>
-<div id="ref-Wheldon2013" class="csl-entry">
-Wheldon, Mark C., Adrian E. Raftery, Samuel J. Clark, y Patrick Gerland. 2013. <span>«Reconstructing Past Populations with Uncertainty from Fragmentary Data»</span>. <em>Journal of the American Statistical Association</em> 108 (501): 96-110. <a href="https://doi.org/10.1080/01621459.2012.737729">https://doi.org/10.1080/01621459.2012.737729</a>.
 </div>
 </div>
 </div>
-</div>
-</div>
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="cap-inferencia.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="cap-inferencia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cap-calibracion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
