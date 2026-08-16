@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="cap-diagnostico.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="conclusiones-y-recomendaciones-institucionales.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -324,15 +324,21 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#m%C3%A9todos-de-benchmarking"><i class="fa fa-check"></i><b>7.2</b> Métodos de benchmarking</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-proporcional"><i class="fa fa-check"></i><b>7.2.1</b> Benchmarking proporcional</a></li>
-<li class="chapter" data-level="7.2.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-por-razones-de-ajuste"><i class="fa fa-check"></i><b>7.2.2</b> Benchmarking por razones de ajuste</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-ponderado-por-incertidumbre"><i class="fa fa-check"></i><b>7.2.2</b> Benchmarking ponderado por incertidumbre</a></li>
 <li class="chapter" data-level="7.2.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#benchmarking-aditivo-con-restricciones-de-suma"><i class="fa fa-check"></i><b>7.2.3</b> Benchmarking aditivo con restricciones de suma</a></li>
-<li class="chapter" data-level="7.2.4" data-path="cap-calibracion.html"><a href="cap-calibracion.html#aplicaci%C3%B3n-pr%C3%A1ctica-a-distintos-niveles-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>7.2.4</b> Aplicación práctica a distintos niveles geográficos</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="cap-calibracion.html"><a href="cap-calibracion.html#evaluaci%C3%B3n-del-impacto-del-benchmarking"><i class="fa fa-check"></i><b>7.3</b> Evaluación del impacto del benchmarking</a>
 <ul>
 <li class="chapter" data-level="7.3.1" data-path="cap-calibracion.html"><a href="cap-calibracion.html#cambio-en-estimaciones-puntuales"><i class="fa fa-check"></i><b>7.3.1</b> Cambio en estimaciones puntuales</a></li>
-<li class="chapter" data-level="7.3.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#intervalos-de-credibilidad-post-calibraci%C3%B3n"><i class="fa fa-check"></i><b>7.3.2</b> Intervalos de credibilidad post-calibración</a></li>
+<li class="chapter" data-level="7.3.2" data-path="cap-calibracion.html"><a href="cap-calibracion.html#ejemplo-aplicado"><i class="fa fa-check"></i><b>7.3.2</b> Ejemplo aplicado</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="conclusiones-y-recomendaciones-institucionales.html"><a href="conclusiones-y-recomendaciones-institucionales.html"><i class="fa fa-check"></i><b>8</b> Conclusiones y Recomendaciones Institucionales</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="conclusiones-y-recomendaciones-institucionales.html"><a href="conclusiones-y-recomendaciones-institucionales.html#principales-hallazgos-metodol%C3%B3gicos"><i class="fa fa-check"></i><b>8.1</b> Principales hallazgos metodológicos</a></li>
+<li class="chapter" data-level="8.2" data-path="conclusiones-y-recomendaciones-institucionales.html"><a href="conclusiones-y-recomendaciones-institucionales.html#recomendaciones-para-organismos-nacionales-de-estad%C3%ADstica"><i class="fa fa-check"></i><b>8.2</b> Recomendaciones para organismos nacionales de estadística</a></li>
+<li class="chapter" data-level="8.3" data-path="conclusiones-y-recomendaciones-institucionales.html"><a href="conclusiones-y-recomendaciones-institucionales.html#rol-de-organismos-internacionales-en-la-transferencia-metodol%C3%B3gica"><i class="fa fa-check"></i><b>8.3</b> Rol de organismos internacionales en la transferencia metodológica</a></li>
+<li class="chapter" data-level="8.4" data-path="conclusiones-y-recomendaciones-institucionales.html"><a href="conclusiones-y-recomendaciones-institucionales.html#limitaciones-del-enfoque-y-condiciones-para-su-aplicaci%C3%B3n"><i class="fa fa-check"></i><b>8.4</b> Limitaciones del enfoque y condiciones para su aplicación</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -361,149 +367,128 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="cap-calibracion" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Capítulo 7</span> Calibración y Benchmarking Subnacional<a href="cap-calibracion.html#cap-calibracion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>El capítulo anterior estableció los criterios de convergencia, validación predictiva y validación externa que un modelo Poisson-lognormal debe satisfacer antes de que sus estimaciones puedan utilizarse en la producción de estadísticas oficiales de población. Sin embargo, la validación de un modelo no resuelve por sí sola un problema adicional, frecuente en la práctica institucional: los organismos nacionales de estadística suelen requerir que las estimaciones subnacionales, al agregarse, coincidan exactamente con totales de referencia fijados de manera independiente al modelo —un total nacional publicado oficialmente, una cifra departamental proveniente de un recuento preliminar de mayor confiabilidad, o una proyección demográfica considerada autoridad institucional para efectos de asignación presupuestaria—. Este capítulo desarrolla el conjunto de técnicas conocidas como calibración o <em>benchmarking</em>, orientadas a conciliar las estimaciones del modelo con dichos totales de control, preservando en la mayor medida posible la información distribucional aportada por el modelo bayesiano.</p>
-<p>La estructura del capítulo comprende tres secciones. La primera examina por qué surge la necesidad de calibración y distingue formalmente la coherencia jerárquica interna del modelo —ya garantizada por construcción, según se estableció en el capítulo de especificación del modelo— de la coherencia externa frente a totales de control, que no está garantizada y constituye el objeto propio del benchmarking. La segunda presenta los métodos de calibración: el ajuste proporcional clásico, el ajuste ponderado por precisión y su extensión aditiva a la distribución posterior completa, junto con su aplicación práctica en jerarquías territoriales anidadas. La tercera evalúa el impacto de la calibración sobre las estimaciones puntuales y sobre los intervalos de credibilidad.</p>
+<p>El Capítulo <a href="cap-diagnostico.html#cap-diagnostico">6</a> estableció los criterios de convergencia, validación predictiva y validación externa que un modelo Poisson-lognormal debe satisfacer antes de que sus estimaciones puedan utilizarse en la producción de estadísticas oficiales de población. Sin embargo, la validación de un modelo no resuelve por sí sola un problema adicional, frecuente en la práctica institucional: los organismos nacionales de estadística suelen requerir que las estimaciones subnacionales, al agregarse, coincidan exactamente con totales de referencia fijados de manera independiente al modelo —un total nacional publicado oficialmente, una cifra departamental proveniente de un recuento preliminar de mayor confiabilidad, o una proyección demográfica considerada autoridad institucional para efectos de asignación presupuestaria—. Este capítulo desarrolla el conjunto de técnicas conocidas como calibración o <em>benchmarking</em>, orientadas a conciliar las estimaciones del modelo con dichos totales de control, preservando en la mayor medida posible la información distribucional aportada por el modelo bayesiano.</p>
+<p>La estructura del capítulo comprende tres secciones. La primera examina por qué surge la necesidad de calibración y distingue formalmente la coherencia jerárquica interna del modelo —ya garantizada por construcción, según se estableció en el Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a>— de la coherencia externa frente a totales de control, que no está garantizada y constituye el objeto propio del benchmarking. La segunda presenta los métodos de calibración: el ajuste proporcional clásico, el ajuste ponderado por precisión y su extensión aditiva a la distribución posterior completa. La tercera evalúa el impacto de la calibración sobre las estimaciones puntuales, con un ejemplo aplicado sobre las mismas unidades territoriales del Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a>.</p>
 <div id="benchmarking-con-proyecciones-poblacionales" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Benchmarking con proyecciones poblacionales<a href="cap-calibracion.html#benchmarking-con-proyecciones-poblacionales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Esta sección examina la primera de las tres etapas del capítulo: por qué un modelo bayesiano de estimación subnacional puede requerir conciliarse con totales que no provienen del propio modelo, y qué distingue esta necesidad de coherencia externa de la coherencia jerárquica interna que el modelo ya garantiza por construcción. La distinción es importante porque determina qué problema resuelve el benchmarking y cuál no: no corrige errores de especificación del modelo ni sustituye a la validación del Capítulo <a href="cap-diagnostico.html#cap-diagnostico">6</a>, sino que concilia una estimación ya validada con información adicional que el modelo, por diseño, no incorporó directamente en su ajuste.</p>
 <div id="necesidad-de-coherencia-entre-niveles-geográficos" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Necesidad de coherencia entre niveles geográficos<a href="cap-calibracion.html#necesidad-de-coherencia-entre-niveles-geogr%C3%A1ficos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los organismos nacionales de estadística no publican estimaciones de población de manera aislada: cada nueva cifra se inserta en un sistema de referencias previamente establecidas —conteos censales anteriores, proyecciones demográficas oficiales, cifras utilizadas en la asignación de recursos fiscales o en la delimitación de circunscripciones electorales—. Cuando el total nacional o departamental implícito en las estimaciones de un modelo bayesiano de estimación subnacional difiere de estas cifras de referencia, la discrepancia genera un problema que trasciende lo estrictamente estadístico: dos totales distintos y no reconciliados para la misma población generan confusión institucional, erosionan la confianza pública en las estadísticas oficiales y pueden ser incompatibles con compromisos legales o presupuestarios previamente adquiridos sobre la base de la cifra de referencia.</p>
-<p>Esta necesidad de coherencia con totales externos es un problema clásico dentro de la Estimación en Áreas Pequeñas <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>, habitualmente abordado bajo el término <em>benchmarking</em>. La particularidad del enfoque bayesiano desarrollado en este libro es que dicho ajuste debe realizarse preservando la coherencia probabilística de las estimaciones: no solo el valor puntual, sino la distribución posterior completa, incluidos los intervalos de credibilidad, deben ajustarse de manera consistente con el nuevo total exigido.</p>
+<p>Los organismos nacionales de estadística rara vez producen una estimación de población de manera aislada: para un mismo dominio geográfico suele existir, además de las estimaciones del modelo, al menos otra fuente de información sobre el tamaño de la población —un preconteo operativo levantado en una etapa previa del mismo censo, información auxiliar proveniente de registros administrativos con cobertura casi completa, un recuento independiente realizado posteriormente en áreas específicas, o resultados preliminares y proyecciones demográficas construidos a partir de fuentes distintas al operativo censal—. Cuando el total nacional o departamental implícito en las estimaciones del modelo difiere de estas cifras externas, la discrepancia plantea una pregunta metodológica que trasciende el ajuste del modelo: cómo conciliar ambas fuentes sin descartar la información que cada una aporta. Dos totales distintos y no reconciliados para la misma población, obtenidos por procedimientos independientes, generan confusión y erosionan la confianza en las estadísticas oficiales, incluso cuando ambas cifras sean, en principio, estimaciones razonables.</p>
+<p>Esta necesidad de coherencia con totales externos —sean estos información auxiliar, resultados preliminares, recuentos independientes u otras fuentes estadísticamente confiables— es un problema clásico dentro de la Estimación en Áreas Pequeñas <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>, habitualmente abordado bajo el término <em>benchmarking</em>. La particularidad del enfoque bayesiano desarrollado en este libro es que dicho ajuste debe realizarse preservando la coherencia probabilística de las estimaciones: no solo el valor puntual, sino la distribución posterior completa, incluidos los intervalos de credibilidad, deben ajustarse de manera consistente con el nuevo total exigido.</p>
 </div>
 <div id="restricciones-de-consistencia-jerárquica" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Restricciones de consistencia jerárquica<a href="cap-calibracion.html#restricciones-de-consistencia-jer%C3%A1rquica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es necesario distinguir dos nociones de coherencia que, aunque relacionadas, tienen naturaleza distinta. La primera es la <strong>coherencia jerárquica interna</strong> del modelo, definida formalmente en el capítulo de modelo para conteos poblacionales: dado que las predicciones <span class="math inline">\(\tilde{Y}_i^{(t)}\)</span> para cada segmento se generan dentro de la misma muestra posterior <span class="math inline">\(t\)</span>, su agregación es automáticamente consistente entre niveles geográficos para cualquier muestra individual:</p>
+<p>Es necesario distinguir dos nociones de coherencia que, aunque relacionadas, tienen naturaleza distinta. La primera es la <strong>coherencia jerárquica interna</strong> del modelo, definida formalmente en el Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a>: dado que las predicciones <span class="math inline">\(\tilde{Y}_i^{(t)}\)</span> para cada segmento se generan dentro de la misma muestra posterior <span class="math inline">\(t\)</span>, su agregación es automáticamente consistente entre niveles geográficos para cualquier muestra individual:</p>
 <p><span class="math display">\[
-\hat{N}_k^{(3),(t)} = \sum_{i \,\in\, \mathcal{S}_k} \tilde{Y}_i^{(t)}, \qquad \hat{N}_j^{(2),(t)} = \sum_{k \,:\, k \subset j} \hat{N}_k^{(3),(t)}
+\tilde{N}_k^{(3),(t)} = \sum_{i \,\in\, \mathcal{S}_k} \tilde{Y}_i^{(t)}, \qquad \tilde{N}_j^{(2),(t)} = \sum_{k \,:\, k \subset j} \tilde{N}_k^{(3),(t)}
 \]</span></p>
-<p>Esta propiedad no requiere ningún procedimiento adicional: es una consecuencia directa de sumar predicciones generadas conjuntamente a partir del mismo vector de parámetros <span class="math inline">\(\boldsymbol{\theta}^{(t)}\)</span>, y se mantiene exactamente en cada una de las <span class="math inline">\(T\)</span> muestras posteriores.</p>
-<p>La segunda noción es la <strong>coherencia externa</strong> frente a un total de control <span class="math inline">\(N_j^*\)</span> que no proviene del modelo —una cifra oficial, una proyección demográfica institucional o un recuento independiente—. En general, el total implícito en el modelo:</p>
+<p>Se mantiene la tilde, y no un acento circunflejo, sobre ambas cantidades: al igual que <span class="math inline">\(\tilde{Y}_i^{(t)}\)</span>, son réplicas generadas para una muestra posterior específica y no resúmenes puntuales, siguiendo la misma convención empleada más adelante en este capítulo para <span class="math inline">\(\tilde{N}_j^{bench,(t)}\)</span>. Esta propiedad no requiere ningún procedimiento adicional: es una consecuencia directa de sumar predicciones generadas conjuntamente a partir del mismo vector de parámetros <span class="math inline">\(\boldsymbol{\theta}^{(t)}\)</span>, y se mantiene exactamente en cada una de las <span class="math inline">\(T\)</span> muestras posteriores.</p>
+<p>Por ejemplo, supóngase que un municipio <span class="math inline">\(j\)</span> contiene dos áreas <span class="math inline">\(k_1\)</span> y <span class="math inline">\(k_2\)</span>, cada una formada por tres segmentos. Para una muestra posterior <span class="math inline">\(t\)</span>, las predicciones podrían ser <span class="math inline">\(\tilde{N}_{k_1}^{(3),(t)} = 120+85+95=300\)</span> y <span class="math inline">\(\tilde{N}_{k_2}^{(3),(t)} = 110+140+150=400\)</span>, de modo que el total municipal en esa muestra es necesariamente <span class="math inline">\(\tilde{N}_j^{(2),(t)}=300+400=700\)</span>: la misma relación se cumple en cada una de las <span class="math inline">\(T\)</span> muestras, sin ningún procedimiento adicional.</p>
+<p>La segunda noción es la <strong>coherencia externa</strong> frente a un total de control <span class="math inline">\(N_j^*\)</span> que no proviene del modelo —una cifra oficial, una proyección demográfica institucional o un recuento independiente—. En general, el total implícito en el modelo, resumido mediante su media posterior,</p>
 <p><span class="math display">\[
-\hat{N}_{j,+} = \mathbb{E}\!\left[\hat{N}_j^{(2)} \mid \mathbf{Y}_{obs}\right] \approx \frac{1}{T}\sum_{t=1}^{T} \hat{N}_j^{(2),(t)}
+\hat{N}_j = \mathbb{E}\!\left[\tilde{N}_j^{(2)} \mid \mathbf{Y}_{obs}\right] \approx \frac{1}{T}\sum_{t=1}^{T} \tilde{N}_j^{(2),(t)}
 \]</span></p>
-<p>no coincide exactamente con <span class="math inline">\(N_j^*\)</span>, y no existe razón estadística para esperar que lo haga: el modelo y el total de control son, casi siempre, dos estimaciones distintas de la misma cantidad, obtenidas por procedimientos independientes. Es esta segunda forma de incoherencia —y no la primera, que ya está resuelta por construcción— la que constituye el objeto del benchmarking. Un aspecto crítico que se retoma en la sección de aplicación práctica es que la calibración externa, al modificar los totales de un nivel geográfico, puede romper la coherencia jerárquica interna con los niveles adyacentes si no se propaga de manera consistente a través de la jerarquía territorial.</p>
+<p>no coincide exactamente con <span class="math inline">\(N_j^*\)</span>, y no existe razón estadística para esperar que lo haga: el modelo y el total de control son, casi siempre, dos estimaciones distintas de la misma cantidad, obtenidas por procedimientos independientes. Retomando el ejemplo anterior, si el modelo estima <span class="math inline">\(\hat{N}_j = 700\)</span> habitantes para el municipio y una proyección demográfica reporta <span class="math inline">\(N_j^{*}=750\)</span>, la discrepancia es</p>
+<p><span class="math display">\[
+\Delta = N_j^{*}-\hat{N}_j = 750-700=50,
+\]</span></p>
+<p>la misma cantidad que la subsección siguiente formaliza, con esta misma notación, para un conjunto de <span class="math inline">\(K\)</span> unidades geográficas cualesquiera. Esta diferencia no implica por sí misma un error del modelo, ya que ambas cantidades proceden de fuentes y procedimientos distintos; constituye, sin embargo, una señal que debe evaluarse en el proceso de validación. Es esta segunda forma de incoherencia —y no la primera, que ya está resuelta por construcción— la que constituye el objeto del benchmarking.</p>
+<p>Si posteriormente se aplica un procedimiento de benchmarking para conciliar el total municipal con <span class="math inline">\(N_j^*\)</span>, el ajuste debe preservar la consistencia con sus áreas componentes. Con el factor proporcional <span class="math inline">\(\phi\)</span> que la sección de Métodos de benchmarking formaliza más adelante,</p>
+<p><span class="math display">\[
+\phi = \frac{N_j^{*}}{\hat{N}_j} = \frac{750}{700} \approx 1,0714,
+\]</span></p>
+<p>las estimaciones de las dos áreas pasarían de <span class="math inline">\(300\)</span> y <span class="math inline">\(400\)</span> a aproximadamente <span class="math inline">\(321,4\)</span> y <span class="math inline">\(428,6\)</span>, respectivamente, preservando la suma (<span class="math inline">\(321,4+428,6=750\)</span>). Un aspecto crítico, que debe tenerse presente siempre que existan totales de control en más de un nivel geográfico a la vez, es que la calibración externa, al modificar los totales de un nivel, puede romper la coherencia jerárquica interna con los niveles adyacentes si no se propaga de manera consistente a través de la jerarquía territorial: calibrar cada nivel de forma aislada no garantiza que las unidades ya calibradas de un nivel sumen exactamente al total ya calibrado del nivel superior.</p>
 </div>
 <div id="relación-entre-estimaciones-locales-y-totales-conocidos" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> Relación entre estimaciones locales y totales conocidos<a href="cap-calibracion.html#relaci%C3%B3n-entre-estimaciones-locales-y-totales-conocidos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Formalmente, sea <span class="math inline">\(N^{*}\)</span> el total de control conocido para un conjunto de <span class="math inline">\(K\)</span> unidades geográficas de un mismo nivel —departamentos dentro de un país, municipios dentro de un departamento— y sean <span class="math inline">\(\hat{N}_1, \ldots, \hat{N}_K\)</span> las estimaciones puntuales del modelo para cada unidad, con <span class="math inline">\(\hat{N}_{+} = \sum_{j=1}^{K} \hat{N}_j\)</span> su suma —se indexa con <span class="math inline">\(j\)</span>, siguiendo la convención del Capítulo <a href="cap-modelos-poblacion.html#cap-modelos-poblacion">1</a> para unidades de agregación territorial, y no con <span class="math inline">\(k\)</span>, reservado allí para el nivel de municipio y en el Capítulo <a href="cap-conteos.html#cap-conteos">4</a> para el índice de covariables—. La discrepancia de benchmarking se define como:</p>
+<p>Sea <span class="math inline">\(N^{*}\)</span> un total de control conocido para un conjunto de <span class="math inline">\(K\)</span> unidades geográficas de un mismo nivel, y sean <span class="math inline">\(\hat{N}_1,\ldots,\hat{N}_K\)</span> las estimaciones puntuales obtenidas mediante el modelo. Su total implícito es</p>
 <p><span class="math display">\[
-\Delta = N^{*} - \hat{N}_{+}
+\hat{N}_{+}=\sum_{\ell=1}^{K}\hat{N}_{\ell},
 \]</span></p>
-<p>El problema de calibración consiste en construir un conjunto de estimaciones ajustadas <span class="math inline">\(\hat{N}_1^{bench}, \ldots, \hat{N}_K^{bench}\)</span> que satisfagan exactamente la restricción de suma <span class="math inline">\(\sum_{j=1}^{K} \hat{N}_j^{bench} = N^{*}\)</span>, minimizando simultáneamente la distorsión introducida sobre la información distribucional original del modelo. La forma en que se distribuye <span class="math inline">\(\Delta\)</span> entre las <span class="math inline">\(K\)</span> unidades —de manera uniforme, proporcional al tamaño de cada unidad, o proporcional a su incertidumbre— es precisamente lo que distingue a los distintos métodos de benchmarking desarrollados en la sección siguiente.</p>
+<p>y la discrepancia respecto al total de control se define como</p>
+<p><span class="math display">\[
+\Delta=N^{*}-\hat{N}_{+}.
+\]</span></p>
+<p>El <em>benchmarking</em> consiste en obtener estimaciones ajustadas <span class="math inline">\(\hat{N}_1^{bench},\ldots,\hat{N}_K^{bench}\)</span> que satisfagan</p>
+<p><span class="math display">\[
+\sum_{\ell=1}^{K}\hat{N}_{\ell}^{bench}=N^{*},
+\]</span></p>
+<p>procurando modificar lo menos posible las estimaciones originales. La forma en que se distribuye la discrepancia <span class="math inline">\(\Delta\)</span> entre las unidades depende del método de benchmarking utilizado y puede considerar, entre otros criterios, el tamaño de las unidades o la precisión de sus estimaciones.</p>
 </div>
 </div>
 <div id="métodos-de-benchmarking" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Métodos de benchmarking<a href="cap-calibracion.html#m%C3%A9todos-de-benchmarking" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los métodos de <em>benchmarking</em> permiten ajustar las estimaciones locales obtenidas por el modelo para que sean consistentes con uno o más totales de control conocidos. La diferencia entre los métodos radica principalmente en cómo se distribuye el ajuste entre las unidades y cuánto se modifica cada estimación respecto a su valor original.</p>
+<p>En los modelos de población, esta decisión es especialmente relevante porque las unidades pueden diferir considerablemente en la calidad de la información disponible y en la incertidumbre de sus estimaciones. Un método puede distribuir el ajuste de manera proporcional al tamaño de las unidades, mientras que otros pueden asignar una mayor parte de la discrepancia a las estimaciones con mayor incertidumbre. En todos los casos, el método debe preservar la restricción de agregación establecida por el total de control.</p>
 <div id="benchmarking-proporcional" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Benchmarking proporcional<a href="cap-calibracion.html#benchmarking-proporcional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El método más simple y de mayor tradición en la práctica de oficinas de estadística es el ajuste proporcional (<em>ratio benchmarking</em>), que distribuye la discrepancia <span class="math inline">\(\Delta\)</span> en proporción al tamaño relativo de cada unidad. El factor de ajuste se define como:</p>
+<p>El método más simple y de mayor tradición en la práctica de oficinas de estadística es el ajuste proporcional (<em>ratio benchmarking</em>), empleado desde los primeros desarrollos de estimaciones postcensales de población en dominios pequeños <span class="citation">(<a href="references.html#ref-PurcellKish1980">Purcell y Kish 1980</a>)</span> y documentado extensamente en la literatura de Estimación en Áreas Pequeñas <span class="citation">(<a href="references.html#ref-Rao2015">Rao y Molina 2015</a>)</span>, que distribuye la discrepancia <span class="math inline">\(\Delta\)</span> en proporción al tamaño relativo de cada unidad. El factor de ajuste se define como:</p>
 <p><span class="math display">\[
 \phi = \frac{N^{*}}{\hat{N}_{+}}
 \]</span></p>
 <p>y la estimación calibrada de cada unidad es:</p>
 <p><span class="math display">\[
-\hat{N}_j^{bench} = \hat{N}_j \cdot \phi = \hat{N}_j \cdot \frac{N^{*}}{\hat{N}_{+}}
+\hat{N}_\ell^{bench} = \hat{N}_\ell \cdot \phi = \hat{N}_\ell \cdot \frac{N^{*}}{\hat{N}_{+}}
 \]</span></p>
-<p>Por construcción, <span class="math inline">\(\sum_{j=1}^{K} \hat{N}_j^{bench} = \phi \sum_{j=1}^{K} \hat{N}_j = \phi \, \hat{N}_{+} = N^{*}\)</span>, de modo que la restricción de suma se satisface exactamente. El método preserva las proporciones relativas entre unidades —si <span class="math inline">\(\hat{N}_a / \hat{N}_b = 2\)</span> antes del ajuste, la misma razón se mantiene después—, lo que lo hace fácil de comunicar e implementar. Su principal limitación es que aplica el mismo factor multiplicativo <span class="math inline">\(\phi\)</span> a todas las unidades, sin distinguir entre aquellas cuya estimación es precisa —con posterior concentrada y <span class="math inline">\(\text{Var}(\hat{N}_j \mid \mathbf{Y}_{obs})\)</span> pequeña, típicamente unidades con buena cobertura censal directa— y aquellas cuya estimación depende casi enteramente de la estructura jerárquica del modelo, con incertidumbre considerablemente mayor. El ajuste proporcional penaliza a ambos tipos de unidad por igual, en contraste con el principio de que la información más incierta debería absorber una proporción mayor de cualquier corrección externa.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="cap-calibracion.html#cb17-1" tabindex="-1"></a>benchmarking_proporcional <span class="ot">&lt;-</span> <span class="cf">function</span>(N_hat, N_control) {</span>
-<span id="cb17-2"><a href="cap-calibracion.html#cb17-2" tabindex="-1"></a>  phi <span class="ot">&lt;-</span> N_control <span class="sc">/</span> <span class="fu">sum</span>(N_hat)</span>
-<span id="cb17-3"><a href="cap-calibracion.html#cb17-3" tabindex="-1"></a>  N_hat <span class="sc">*</span> phi</span>
-<span id="cb17-4"><a href="cap-calibracion.html#cb17-4" tabindex="-1"></a>}</span>
-<span id="cb17-5"><a href="cap-calibracion.html#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="cap-calibracion.html#cb17-6" tabindex="-1"></a>N_bench_prop <span class="ot">&lt;-</span> <span class="fu">benchmarking_proporcional</span>(</span>
-<span id="cb17-7"><a href="cap-calibracion.html#cb17-7" tabindex="-1"></a>  <span class="at">N_hat     =</span> estimaciones_departamento<span class="sc">$</span>tot_pob_media,</span>
-<span id="cb17-8"><a href="cap-calibracion.html#cb17-8" tabindex="-1"></a>  <span class="at">N_control =</span> total_oficial_pais</span>
-<span id="cb17-9"><a href="cap-calibracion.html#cb17-9" tabindex="-1"></a>)</span></code></pre></div>
+<p>Por construcción, <span class="math inline">\(\sum_{\ell=1}^{K} \hat{N}_\ell^{bench} = \phi \sum_{\ell=1}^{K} \hat{N}_\ell = \phi \, \hat{N}_{+} = N^{*}\)</span>, de modo que la restricción de suma se satisface exactamente. El método preserva las proporciones relativas entre unidades —si <span class="math inline">\(\hat{N}_a / \hat{N}_b = 2\)</span> antes del ajuste, la misma razón se mantiene después—, lo que lo hace fácil de comunicar e implementar. Su principal limitación es que aplica el mismo factor multiplicativo <span class="math inline">\(\phi\)</span> a todas las unidades, sin distinguir entre aquellas cuya estimación es precisa —con posterior concentrada y <span class="math inline">\(\text{Var}(\hat{N}_\ell \mid \mathbf{Y}_{obs})\)</span> pequeña, típicamente unidades con buena cobertura censal directa— y aquellas cuya estimación depende casi enteramente de la estructura jerárquica del modelo, con incertidumbre considerablemente mayor. El ajuste proporcional penaliza a ambos tipos de unidad por igual, en contraste con el principio de que la información más incierta debería absorber una proporción mayor de cualquier corrección externa.</p>
 </div>
-<div id="benchmarking-por-razones-de-ajuste" class="section level3 hasAnchor" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> Benchmarking por razones de ajuste<a href="cap-calibracion.html#benchmarking-por-razones-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El benchmarking ponderado por precisión corrige la limitación anterior distribuyendo la discrepancia <span class="math inline">\(\Delta\)</span> en proporción a la incertidumbre relativa de cada unidad, en lugar de en proporción a su tamaño. Formalmente, la estimación calibrada se obtiene como solución al problema de minimización:</p>
+<div id="benchmarking-ponderado-por-incertidumbre" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Benchmarking ponderado por incertidumbre<a href="cap-calibracion.html#benchmarking-ponderado-por-incertidumbre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El benchmarking ponderado por incertidumbre distribuye la discrepancia <span class="math inline">\(\Delta\)</span> entre las unidades de acuerdo con la incertidumbre de sus estimaciones. La idea es sencilla: si una unidad tiene una estimación muy precisa, debería modificarse poco; si otra presenta mayor incertidumbre, puede absorber una mayor parte del ajuste. Esta característica lo diferencia del benchmarking proporcional, que aplica el mismo factor relativo a todas las unidades <span class="citation">(<a href="references.html#ref-Datta2011">Datta et al. 2011</a>)</span>.</p>
+<p>Las estimaciones ajustadas se obtienen buscando los valores más cercanos a las estimaciones originales que, al mismo tiempo, reproduzcan exactamente el total de control <span class="math inline">\(N^{*}\)</span>. Formalmente:</p>
 <p><span class="math display">\[
-\min_{\hat{N}_1^{bench}, \ldots, \hat{N}_K^{bench}} \; \sum_{j=1}^{K} \frac{\left(\hat{N}_j^{bench} - \hat{N}_j\right)^2}{w_j} \quad \text{sujeto a} \quad \sum_{j=1}^{K} \hat{N}_j^{bench} = N^{*}
+\min_{{\hat{N}_\ell^{bench}}}
+\sum_{\ell=1}^{K}
+\frac{
+\left(\hat{N}_\ell^{bench}-\hat{N}_\ell\right)^2
+}{w_\ell}
+\qquad
+\text{sujeto a}
+\qquad
+\sum_{\ell=1}^{K}\hat{N}_\ell^{bench}=N^{*},
 \]</span></p>
-<p>donde <span class="math inline">\(w_j &gt; 0\)</span> es un peso que refleja la incertidumbre de la estimación de la unidad <span class="math inline">\(j\)</span>. La solución, obtenida mediante multiplicadores de Lagrange, es:</p>
+<p>donde <span class="math inline">\(w_\ell&gt;0\)</span> representa la incertidumbre asociada a la estimación de la unidad <span class="math inline">\(\ell\)</span>. La solución es:</p>
 <p><span class="math display">\[
-\hat{N}_j^{bench} = \hat{N}_j + w_j \cdot \frac{\Delta}{\sum_{j&#39;=1}^{K} w_{j&#39;}}
+\hat{N}_\ell^{bench} = \hat{N}_\ell +
+\frac{w_\ell}
+{\sum_{\ell&#39;=1}^{K}w_{\ell&#39;}}
+\left(N^{*}-\hat{N}_{+}\right),
 \]</span></p>
-<p>En el marco bayesiano desarrollado en este libro, el peso natural es la varianza posterior de la predicción de cada unidad, directamente disponible a partir de las muestras MCMC sin necesidad de aproximaciones asintóticas externas, a diferencia del enfoque frecuentista clásico de SAE:</p>
+<p>donde <span class="math inline">\(\ell&#39;\)</span> es un índice mudo que recorre las mismas <span class="math inline">\(K\)</span> unidades que <span class="math inline">\(\ell\)</span>: se usa una letra distinta únicamente para no confundir la unidad específica <span class="math inline">\(\ell\)</span> que se está calibrando con las unidades sobre las que se suma en el denominador, de modo que <span class="math inline">\(\sum_{\ell&#39;=1}^{K}w_{\ell&#39;} = w_1+\cdots+w_K\)</span> es simplemente la suma de todos los pesos. Además,</p>
 <p><span class="math display">\[
-w_j = \text{Var}\!\left(\hat{N}_j \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{T-1}\sum_{t=1}^{T} \left(\hat{N}_j^{(t)} - \hat{N}_j\right)^2
+\hat{N}_{+}=\sum_{\ell=1}^{K}\hat{N}_\ell.
 \]</span></p>
-<p>Bajo esta especificación, las unidades con mayor incertidumbre posterior —típicamente aquellas con menor cobertura censal directa y mayor dependencia de la estructura jerárquica del modelo— absorben una proporción mayor de la discrepancia <span class="math inline">\(\Delta\)</span>, mientras que las unidades con estimaciones precisas se modifican mínimamente. Dos casos particulares merecen mención: si <span class="math inline">\(w_j \propto \hat{N}_j\)</span>, la fórmula se reduce aproximadamente al ajuste proporcional de la subsección anterior; si <span class="math inline">\(w_j = 1\)</span> para todo <span class="math inline">\(j\)</span>, la discrepancia se distribuye en partes iguales entre las unidades, independientemente de su tamaño o precisión.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap-calibracion.html#cb18-1" tabindex="-1"></a>benchmarking_ponderado <span class="ot">&lt;-</span> <span class="cf">function</span>(N_hat, N_control, pesos) {</span>
-<span id="cb18-2"><a href="cap-calibracion.html#cb18-2" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> N_control <span class="sc">-</span> <span class="fu">sum</span>(N_hat)</span>
-<span id="cb18-3"><a href="cap-calibracion.html#cb18-3" tabindex="-1"></a>  N_hat <span class="sc">+</span> pesos <span class="sc">*</span> (delta <span class="sc">/</span> <span class="fu">sum</span>(pesos))</span>
-<span id="cb18-4"><a href="cap-calibracion.html#cb18-4" tabindex="-1"></a>}</span>
-<span id="cb18-5"><a href="cap-calibracion.html#cb18-5" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="cap-calibracion.html#cb18-6" tabindex="-1"></a><span class="co"># Pesos basados en la varianza posterior de cada unidad</span></span>
-<span id="cb18-7"><a href="cap-calibracion.html#cb18-7" tabindex="-1"></a>varianzas_post <span class="ot">&lt;-</span> <span class="fu">apply</span>(N_hat_samples, <span class="dv">2</span>, var)</span>
-<span id="cb18-8"><a href="cap-calibracion.html#cb18-8" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="cap-calibracion.html#cb18-9" tabindex="-1"></a>N_bench_pond <span class="ot">&lt;-</span> <span class="fu">benchmarking_ponderado</span>(</span>
-<span id="cb18-10"><a href="cap-calibracion.html#cb18-10" tabindex="-1"></a>  <span class="at">N_hat     =</span> estimaciones_departamento<span class="sc">$</span>tot_pob_media,</span>
-<span id="cb18-11"><a href="cap-calibracion.html#cb18-11" tabindex="-1"></a>  <span class="at">N_control =</span> total_oficial_pais,</span>
-<span id="cb18-12"><a href="cap-calibracion.html#cb18-12" tabindex="-1"></a>  <span class="at">pesos     =</span> varianzas_post</span>
-<span id="cb18-13"><a href="cap-calibracion.html#cb18-13" tabindex="-1"></a>)</span></code></pre></div>
+<p>La expresión muestra cómo se distribuye el ajuste. La unidad <span class="math inline">\(\ell\)</span> recibe la fracción</p>
+<p><span class="math display">\[
+\frac{w_\ell}{\sum_{\ell&#39;=1}^{K}w_{\ell&#39;}}
+\]</span></p>
+<p>de la discrepancia total. Por ejemplo, si tres unidades tienen pesos <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span> y <span class="math inline">\(3\)</span>, respectivamente, reciben <span class="math inline">\(1/6\)</span>, <span class="math inline">\(2/6\)</span> y <span class="math inline">\(3/6\)</span> del ajuste. Así, una unidad con el triple de incertidumbre que otra recibe el triple de la corrección.</p>
+<p>En el enfoque bayesiano desarrollado en este libro, una elección natural para <span class="math inline">\(w_\ell\)</span> es la varianza posterior de la población estimada. Si <span class="math inline">\(\hat{N}_\ell\)</span> representa la media posterior, esta se estima a partir de las <span class="math inline">\(T\)</span> muestras posteriores mediante:</p>
+<p><span class="math display">\[
+w_\ell = \operatorname{Var}
+\left( \hat{N}_\ell\mid\mathbf{Y}_{obs} \right)
+\approx
+\frac{1}{T-1} \sum_{t=1}^{T}
+\left(\hat{N}_\ell^{(t)}-\hat{N}_\ell\right)^2.
+\]</span></p>
+<p>Con esta elección, las unidades cuya población estimada presenta mayor incertidumbre posterior absorben una mayor proporción de la discrepancia, mientras que las estimaciones más precisas se modifican en menor medida. En todos los casos, el procedimiento garantiza que:</p>
+<p><span class="math display">\[
+\sum_{\ell=1}^{K}\hat{N}_\ell^{bench}=N^{*}.
+\]</span></p>
 </div>
 <div id="benchmarking-aditivo-con-restricciones-de-suma" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> Benchmarking aditivo con restricciones de suma<a href="cap-calibracion.html#benchmarking-aditivo-con-restricciones-de-suma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los dos métodos anteriores calibran únicamente la estimación puntual, dejando sin ajustar la distribución posterior completa. Esto es insuficiente en un marco bayesiano: si solo se recalibra la media posterior y los intervalos de credibilidad se calculan sobre las muestras originales sin ajustar, la incertidumbre reportada resulta inconsistente con la estimación puntual calibrada. La extensión adecuada consiste en aplicar el ajuste a cada una de las <span class="math inline">\(T\)</span> muestras de la distribución predictiva posterior, de manera que la restricción de suma se satisfaga en cada muestra individual y no solo en la media.</p>
+<p>Los dos métodos anteriores calibran únicamente la estimación puntual, dejando sin ajustar la distribución posterior completa. Esto es insuficiente en un marco bayesiano: si solo se recalibra la media posterior y los intervalos de credibilidad se calculan sobre las muestras originales sin ajustar, la incertidumbre reportada resulta inconsistente con la estimación puntual calibrada. La extensión adecuada, propuesta como benchmarking <em>totalmente bayesiano</em> por <span class="citation">Zhang y Bryant (<a href="references.html#ref-ZhangBryant2020">2020</a>)</span>, consiste en aplicar el ajuste a cada una de las <span class="math inline">\(T\)</span> muestras de la distribución predictiva posterior, de manera que la restricción de suma se satisfaga en cada muestra individual y no solo en la media.</p>
 <p>El ajuste proporcional por muestra se define como:</p>
 <p><span class="math display">\[
-\tilde{N}_j^{bench,(t)} = \tilde{N}_j^{(t)} \cdot \frac{N^{*}}{\sum_{j&#39;=1}^{K} \tilde{N}_{j&#39;}^{(t)}}, \qquad t = 1, \ldots, T
+\tilde{N}_\ell^{bench,(t)} = \tilde{N}_\ell^{(t)} \cdot \frac{N^{*}}{\sum_{\ell&#39;=1}^{K} \tilde{N}_{\ell&#39;}^{(t)}}, \qquad t = 1, \ldots, T
 \]</span></p>
-<p>Nótese que el factor de ajuste <span class="math inline">\(\phi^{(t)} = N^{*} / \sum_{j&#39;} \tilde{N}_{j&#39;}^{(t)}\)</span> varía entre muestras, dado que el total agregado del modelo fluctúa de una muestra posterior a otra como consecuencia del proceso de Poisson subyacente. Esta variación del factor de ajuste entre muestras es precisamente lo que permite que la incertidumbre del proceso de calibración se propague correctamente hacia los intervalos de credibilidad calibrados.</p>
-<p>El ajuste aditivo ponderado por muestra sigue la misma lógica que el benchmarking por razones de ajuste, aplicado ahora sobre cada muestra individual:</p>
+<p>Nótese que el factor de ajuste <span class="math inline">\(\phi^{(t)} = N^{*} / \sum_{\ell&#39;} \tilde{N}_{\ell&#39;}^{(t)}\)</span> varía entre muestras, dado que el total agregado del modelo fluctúa de una muestra posterior a otra como consecuencia del proceso de Poisson subyacente. Esta variación del factor de ajuste entre muestras es precisamente lo que permite que la incertidumbre del proceso de calibración se propague correctamente hacia los intervalos de credibilidad calibrados.</p>
+<p>El ajuste aditivo ponderado por muestra sigue la misma lógica que el benchmarking ponderado por incertidumbre, aplicado ahora sobre cada muestra individual:</p>
 <p><span class="math display">\[
-\tilde{N}_j^{bench,(t)} = \tilde{N}_j^{(t)} + w_j \cdot \frac{N^{*} - \sum_{j&#39;=1}^{K} \tilde{N}_{j&#39;}^{(t)}}{\sum_{j&#39;=1}^{K} w_{j&#39;}}, \qquad t = 1, \ldots, T
+\tilde{N}_\ell^{bench,(t)} = \tilde{N}_\ell^{(t)} + w_\ell \cdot \frac{N^{*} - \sum_{\ell&#39;=1}^{K} \tilde{N}_{\ell&#39;}^{(t)}}{\sum_{\ell&#39;=1}^{K} w_{\ell&#39;}}, \qquad t = 1, \ldots, T
 \]</span></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap-calibracion.html#cb19-1" tabindex="-1"></a><span class="co"># Matriz de muestras posteriores: T filas x K columnas (unidades geográficas)</span></span>
-<span id="cb19-2"><a href="cap-calibracion.html#cb19-2" tabindex="-1"></a>calibrar_muestras_proporcional <span class="ot">&lt;-</span> <span class="cf">function</span>(N_samples, N_control) {</span>
-<span id="cb19-3"><a href="cap-calibracion.html#cb19-3" tabindex="-1"></a>  totales_muestra <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(N_samples)</span>
-<span id="cb19-4"><a href="cap-calibracion.html#cb19-4" tabindex="-1"></a>  phi_t <span class="ot">&lt;-</span> N_control <span class="sc">/</span> totales_muestra</span>
-<span id="cb19-5"><a href="cap-calibracion.html#cb19-5" tabindex="-1"></a>  N_samples <span class="sc">*</span> phi_t</span>
-<span id="cb19-6"><a href="cap-calibracion.html#cb19-6" tabindex="-1"></a>}</span>
-<span id="cb19-7"><a href="cap-calibracion.html#cb19-7" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="cap-calibracion.html#cb19-8" tabindex="-1"></a>calibrar_muestras_aditivo <span class="ot">&lt;-</span> <span class="cf">function</span>(N_samples, N_control, pesos) {</span>
-<span id="cb19-9"><a href="cap-calibracion.html#cb19-9" tabindex="-1"></a>  totales_muestra <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(N_samples)</span>
-<span id="cb19-10"><a href="cap-calibracion.html#cb19-10" tabindex="-1"></a>  delta_t <span class="ot">&lt;-</span> N_control <span class="sc">-</span> totales_muestra</span>
-<span id="cb19-11"><a href="cap-calibracion.html#cb19-11" tabindex="-1"></a>  ajuste_t <span class="ot">&lt;-</span> <span class="fu">outer</span>(delta_t, pesos <span class="sc">/</span> <span class="fu">sum</span>(pesos))</span>
-<span id="cb19-12"><a href="cap-calibracion.html#cb19-12" tabindex="-1"></a>  N_samples <span class="sc">+</span> ajuste_t</span>
-<span id="cb19-13"><a href="cap-calibracion.html#cb19-13" tabindex="-1"></a>}</span>
-<span id="cb19-14"><a href="cap-calibracion.html#cb19-14" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="cap-calibracion.html#cb19-15" tabindex="-1"></a>N_bench_samples <span class="ot">&lt;-</span> <span class="fu">calibrar_muestras_aditivo</span>(</span>
-<span id="cb19-16"><a href="cap-calibracion.html#cb19-16" tabindex="-1"></a>  <span class="at">N_samples =</span> N_hat_samples,</span>
-<span id="cb19-17"><a href="cap-calibracion.html#cb19-17" tabindex="-1"></a>  <span class="at">N_control =</span> total_oficial_pais,</span>
-<span id="cb19-18"><a href="cap-calibracion.html#cb19-18" tabindex="-1"></a>  <span class="at">pesos     =</span> varianzas_post</span>
-<span id="cb19-19"><a href="cap-calibracion.html#cb19-19" tabindex="-1"></a>)</span></code></pre></div>
-</div>
-<div id="aplicación-práctica-a-distintos-niveles-geográficos" class="section level3 hasAnchor" number="7.2.4">
-<h3><span class="header-section-number">7.2.4</span> Aplicación práctica a distintos niveles geográficos<a href="cap-calibracion.html#aplicaci%C3%B3n-pr%C3%A1ctica-a-distintos-niveles-geogr%C3%A1ficos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En aplicaciones reales, los totales de control suelen estar disponibles en más de un nivel geográfico simultáneamente —un total nacional legalmente establecido y, en algunos países, totales departamentales derivados de recuentos preliminares independientes—. Calibrar cada nivel de manera aislada, sin coordinación, reintroduce el problema de incoherencia jerárquica que la agregación conjunta de muestras posteriores había resuelto automáticamente: si los municipios se calibran contra sus propios totales departamentales de control y, por separado, los departamentos se calibran contra el total nacional de control, no hay garantía de que la suma de los municipios calibrados coincida con el departamento ya calibrado.</p>
-<p>La solución consiste en aplicar la calibración de manera secuencial y descendente a través de la jerarquía territorial: primero se calibra el nivel más agregado disponible frente a su total de control —típicamente el nacional—; a continuación, dentro de cada unidad de ese nivel ya calibrada, se calibran sus unidades subordinadas de manera que sumen exactamente al valor recién calibrado del nivel superior, y así sucesivamente hasta el nivel de segmento censal. De esta manera, la coherencia jerárquica interna, temporalmente alterada por la calibración externa del nivel superior, se restablece en cada paso descendente:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap-calibracion.html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb20-2"><a href="cap-calibracion.html#cb20-2" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="cap-calibracion.html#cb20-3" tabindex="-1"></a>calibracion_jerarquica <span class="ot">&lt;-</span> <span class="cf">function</span>(df_segmentos, total_nacional) {</span>
-<span id="cb20-4"><a href="cap-calibracion.html#cb20-4" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="cap-calibracion.html#cb20-5" tabindex="-1"></a>  <span class="co"># Paso 1: calibrar departamentos contra el total nacional</span></span>
-<span id="cb20-6"><a href="cap-calibracion.html#cb20-6" tabindex="-1"></a>  dptos <span class="ot">&lt;-</span> df_segmentos <span class="sc">%&gt;%</span></span>
-<span id="cb20-7"><a href="cap-calibracion.html#cb20-7" tabindex="-1"></a>    <span class="fu">group_by</span>(departamento) <span class="sc">%&gt;%</span></span>
-<span id="cb20-8"><a href="cap-calibracion.html#cb20-8" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N_hat =</span> <span class="fu">sum</span>(pob_media), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-9"><a href="cap-calibracion.html#cb20-9" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb20-10"><a href="cap-calibracion.html#cb20-10" tabindex="-1"></a>      <span class="at">phi_dpto  =</span> total_nacional <span class="sc">/</span> <span class="fu">sum</span>(N_hat),</span>
-<span id="cb20-11"><a href="cap-calibracion.html#cb20-11" tabindex="-1"></a>      <span class="at">N_dpto_bench =</span> N_hat <span class="sc">*</span> phi_dpto</span>
-<span id="cb20-12"><a href="cap-calibracion.html#cb20-12" tabindex="-1"></a>    )</span>
-<span id="cb20-13"><a href="cap-calibracion.html#cb20-13" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="cap-calibracion.html#cb20-14" tabindex="-1"></a>  <span class="co"># Paso 2: calibrar municipios contra el total departamental ya calibrado</span></span>
-<span id="cb20-15"><a href="cap-calibracion.html#cb20-15" tabindex="-1"></a>  df_segmentos <span class="sc">%&gt;%</span></span>
-<span id="cb20-16"><a href="cap-calibracion.html#cb20-16" tabindex="-1"></a>    <span class="fu">left_join</span>(dptos <span class="sc">%&gt;%</span> <span class="fu">select</span>(departamento, N_dpto_bench), <span class="at">by =</span> <span class="st">&quot;departamento&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-17"><a href="cap-calibracion.html#cb20-17" tabindex="-1"></a>    <span class="fu">group_by</span>(departamento, municipio) <span class="sc">%&gt;%</span></span>
-<span id="cb20-18"><a href="cap-calibracion.html#cb20-18" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">N_mun_hat =</span> <span class="fu">sum</span>(pob_media)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-19"><a href="cap-calibracion.html#cb20-19" tabindex="-1"></a>    <span class="fu">group_by</span>(departamento) <span class="sc">%&gt;%</span></span>
-<span id="cb20-20"><a href="cap-calibracion.html#cb20-20" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">phi_mun =</span> N_dpto_bench <span class="sc">/</span> <span class="fu">sum</span>(N_mun_hat)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-21"><a href="cap-calibracion.html#cb20-21" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb20-22"><a href="cap-calibracion.html#cb20-22" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pob_bench =</span> pob_media <span class="sc">*</span> phi_mun)</span>
-<span id="cb20-23"><a href="cap-calibracion.html#cb20-23" tabindex="-1"></a>}</span></code></pre></div>
-<p>Este procedimiento garantiza que, tras la calibración, los conteos de segmento sumen exactamente a sus municipios, los municipios a sus departamentos y los departamentos al total nacional de control, restableciendo la coherencia jerárquica completa del sistema de estimaciones bajo la restricción externa impuesta.</p>
 </div>
 </div>
 <div id="evaluación-del-impacto-del-benchmarking" class="section level2 hasAnchor" number="7.3">
@@ -511,33 +496,1117 @@ w_j = \text{Var}\!\left(\hat{N}_j \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{
 <p>La calibración modifica las estimaciones producidas por un modelo previamente validado, y esta modificación debe documentarse y evaluarse explícitamente, tanto en su efecto sobre las estimaciones puntuales como sobre la incertidumbre reportada.</p>
 <div id="cambio-en-estimaciones-puntuales" class="section level3 hasAnchor" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Cambio en estimaciones puntuales<a href="cap-calibracion.html#cambio-en-estimaciones-puntuales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El cambio relativo introducido por la calibración en la unidad <span class="math inline">\(j\)</span> se define como:</p>
+<p>El cambio relativo introducido por la calibración en la unidad <span class="math inline">\(\ell\)</span> se define como:</p>
 <p><span class="math display">\[
-\eta_j = \frac{\hat{N}_j^{bench} - \hat{N}_j}{\hat{N}_j}
+\eta_\ell = \frac{\hat{N}_\ell^{bench} - \hat{N}_\ell}{\hat{N}_\ell}
 \]</span></p>
-<p>Bajo el ajuste proporcional, <span class="math inline">\(\eta_j = \phi - 1\)</span> es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, <span class="math inline">\(\eta_j\)</span> varía sistemáticamente entre unidades: se espera una relación positiva entre <span class="math inline">\(\eta_j\)</span> y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de <span class="math inline">\(\eta_j\)</span> cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="cap-calibracion.html#cb21-1" tabindex="-1"></a>cambio_relativo <span class="ot">&lt;-</span> estimaciones_departamento <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="cap-calibracion.html#cb21-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb21-3"><a href="cap-calibracion.html#cb21-3" tabindex="-1"></a>    <span class="at">eta_prop =</span> (N_bench_prop <span class="sc">-</span> tot_pob_media) <span class="sc">/</span> tot_pob_media,</span>
-<span id="cb21-4"><a href="cap-calibracion.html#cb21-4" tabindex="-1"></a>    <span class="at">eta_pond =</span> (N_bench_pond <span class="sc">-</span> tot_pob_media) <span class="sc">/</span> tot_pob_media</span>
-<span id="cb21-5"><a href="cap-calibracion.html#cb21-5" tabindex="-1"></a>  )</span>
-<span id="cb21-6"><a href="cap-calibracion.html#cb21-6" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="cap-calibracion.html#cb21-7" tabindex="-1"></a><span class="co"># Relación entre el cambio relativo y la incertidumbre posterior</span></span>
-<span id="cb21-8"><a href="cap-calibracion.html#cb21-8" tabindex="-1"></a><span class="fu">ggplot</span>(cambio_relativo, <span class="fu">aes</span>(<span class="at">x =</span> tot_pob_sd <span class="sc">/</span> tot_pob_media, <span class="at">y =</span> eta_pond)) <span class="sc">+</span></span>
-<span id="cb21-9"><a href="cap-calibracion.html#cb21-9" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb21-10"><a href="cap-calibracion.html#cb21-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Coeficiente de variación posterior&quot;</span>,</span>
-<span id="cb21-11"><a href="cap-calibracion.html#cb21-11" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cambio relativo tras calibración ponderada&quot;</span>)</span></code></pre></div>
-<p>Un patrón en el que las unidades con mayor coeficiente de variación posterior muestran mayores valores de <span class="math inline">\(|\eta_j|\)</span> confirma que el ajuste ponderado está operando de acuerdo con el principio que lo motiva: concentrar la corrección donde la información propia del modelo es más débil. La ausencia de este patrón —o su presencia inversa, con grandes correcciones sobre unidades de alta precisión— señala que los pesos utilizados no reflejan adecuadamente la incertidumbre relativa de las unidades y debe revisarse su especificación.</p>
+<p>Bajo el ajuste proporcional, <span class="math inline">\(\eta_\ell = \phi - 1\)</span> es idéntico para todas las unidades, independientemente de su tamaño o de la precisión de su estimación. Bajo el ajuste ponderado por precisión, <span class="math inline">\(\eta_\ell\)</span> varía sistemáticamente entre unidades: se espera una relación positiva entre <span class="math inline">\(\eta_\ell\)</span> y la incertidumbre posterior relativa de la unidad, de modo que las unidades con estimaciones más precisas —mayor cobertura censal directa— exhiban valores de <span class="math inline">\(\eta_\ell\)</span> cercanos a cero, mientras que las unidades con mayor dependencia de la estructura jerárquica del modelo absorban una proporción mayor del ajuste.</p>
 </div>
-<div id="intervalos-de-credibilidad-post-calibración" class="section level3 hasAnchor" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> Intervalos de credibilidad post-calibración<a href="cap-calibracion.html#intervalos-de-credibilidad-post-calibraci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Cuando la calibración se aplica a cada muestra de la distribución posterior, según el procedimiento descrito en la sección de benchmarking aditivo, los intervalos de credibilidad calibrados se obtienen directamente de los cuantiles empíricos de las muestras ajustadas <span class="math inline">\(\tilde{N}_j^{bench,(t)}\)</span>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="cap-calibracion.html#cb22-1" tabindex="-1"></a>ic_bench <span class="ot">&lt;-</span> <span class="fu">apply</span>(N_bench_samples, <span class="dv">2</span>, quantile, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
-<p>El efecto de la calibración sobre la amplitud de los intervalos depende de la fuente de incertidumbre del total de control. Cuando <span class="math inline">\(N^{*}\)</span> se trata como una constante exactamente conocida y sin incertidumbre propia —el caso más frecuente en la práctica, dado que suele tratarse de una cifra oficial fijada administrativamente—, la calibración desplaza la localización de la distribución de cada unidad sin alterar sustancialmente su dispersión relativa, dado que el factor de ajuste <span class="math inline">\(\phi^{(t)}\)</span> o el término aditivo se aplican de manera común a través de las unidades dentro de cada muestra <span class="math inline">\(t\)</span>, preservando en gran medida la estructura de covarianza entre unidades capturada por el modelo original. La longitud relativa del intervalo calibrado respecto al original constituye un indicador simple de este efecto:</p>
+<div id="ejemplo-aplicado" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Ejemplo aplicado<a href="cap-calibracion.html#ejemplo-aplicado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Este ejemplo retoma las mismas 11 unidades territoriales y las mismas estimaciones agregadas de la Tabla <a href="cap-inferencia.html#tab:ejemplo-agregacion">5.7</a> del Capítulo <a href="cap-inferencia.html#cap-inferencia">5</a>, pero bajo un supuesto distinto al de la sección anterior: en vez de un único total de control agregado que hay que distribuir con pesos, se dispone de una referencia externa propia para cada una de las 11 unidades —por ejemplo, una proyección demográfica calculada independientemente al mismo nivel de agregación—. Cuando la información externa ya está disponible por unidad, la calibración no requiere distribuir nada: se compara directamente cada unidad con su propia referencia, sin necesidad de la fórmula de pesos de la sección anterior. El Código <a href="cap-calibracion.html#exr:cod-benchmarking-ejemplo">7.1</a> agrega las unidades y calcula ese cambio directo:</p>
+<div class="exercise">
+<p><span id="exr:cod-benchmarking-ejemplo" class="exercise"><strong>Código 7.1  (Benchmarking directo contra una referencia externa por unidad) </strong></span></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="cap-calibracion.html#cb17-1" tabindex="-1"></a><span class="co"># Segmentos del ejemplo aplicado (Capítulo 7)</span></span>
+<span id="cb17-2"><a href="cap-calibracion.html#cb17-2" tabindex="-1"></a>pred_area <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/rutinas/Output/Base_input.rds&quot;</span>)</span>
+<span id="cb17-3"><a href="cap-calibracion.html#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="cap-calibracion.html#cb17-4" tabindex="-1"></a>unidades <span class="ot">&lt;-</span> pred_area <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="cap-calibracion.html#cb17-5" tabindex="-1"></a>  <span class="fu">group_by</span>(unidad_value) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="cap-calibracion.html#cb17-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N_hat =</span> <span class="fu">sum</span>(pob_final_media), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="cap-calibracion.html#cb17-7" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(N_hat)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="cap-calibracion.html#cb17-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Unidad territorial</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;Unidad&quot;</span>, <span class="fu">row_number</span>()), <span class="at">.before =</span> <span class="dv">1</span>)</span>
+<span id="cb17-9"><a href="cap-calibracion.html#cb17-9" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="cap-calibracion.html#cb17-10" tabindex="-1"></a><span class="co"># Referencia externa dada por unidad (p. ej., una proyección demográfica</span></span>
+<span id="cb17-11"><a href="cap-calibracion.html#cb17-11" tabindex="-1"></a><span class="co"># calculada de forma independiente al mismo nivel de agregación)</span></span>
+<span id="cb17-12"><a href="cap-calibracion.html#cb17-12" tabindex="-1"></a>referencia_externa <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb17-13"><a href="cap-calibracion.html#cb17-13" tabindex="-1"></a>  <span class="st">`</span><span class="at">Unidad territorial</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;Unidad&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>),</span>
+<span id="cb17-14"><a href="cap-calibracion.html#cb17-14" tabindex="-1"></a>  <span class="at">N_ext =</span> <span class="fu">c</span>(<span class="dv">80636</span>, <span class="dv">59436</span>, <span class="dv">31589</span>, <span class="dv">29764</span>, <span class="dv">25554</span>,</span>
+<span id="cb17-15"><a href="cap-calibracion.html#cb17-15" tabindex="-1"></a>            <span class="dv">17418</span>, <span class="dv">13732</span>, <span class="dv">12187</span>, <span class="dv">11217</span>, <span class="dv">10352</span>, <span class="dv">5719</span>)</span>
+<span id="cb17-16"><a href="cap-calibracion.html#cb17-16" tabindex="-1"></a>)</span>
+<span id="cb17-17"><a href="cap-calibracion.html#cb17-17" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="cap-calibracion.html#cb17-18" tabindex="-1"></a>unidades <span class="ot">&lt;-</span> unidades <span class="sc">%&gt;%</span></span>
+<span id="cb17-19"><a href="cap-calibracion.html#cb17-19" tabindex="-1"></a>  <span class="fu">left_join</span>(referencia_externa, <span class="at">by =</span> <span class="st">&quot;Unidad territorial&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-20"><a href="cap-calibracion.html#cb17-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">eta_directo =</span> (N_ext <span class="sc">-</span> N_hat) <span class="sc">/</span> N_hat)</span></code></pre></div>
+</div>
+<p>El Código <a href="cap-calibracion.html#exr:cod-benchmarking-proporcional-ejemplo">7.2</a> añade el contraste: si solo se conociera el total agregado de esas 11 referencias —sin el detalle por unidad—, <code>benchmarking_proporcional()</code>, ya definida en la Sección “Benchmarking proporcional”, habría aplicado el mismo factor a las 11 unidades:</p>
+<div class="exercise">
+<p><span id="exr:cod-benchmarking-proporcional-ejemplo" class="exercise"><strong>Código 7.2  (Contraste con el benchmarking proporcional sobre el total agregado) </strong></span></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap-calibracion.html#cb18-1" tabindex="-1"></a>benchmarking_proporcional <span class="ot">&lt;-</span> <span class="cf">function</span>(N_hat, N_control) {</span>
+<span id="cb18-2"><a href="cap-calibracion.html#cb18-2" tabindex="-1"></a>  phi <span class="ot">&lt;-</span> N_control <span class="sc">/</span> <span class="fu">sum</span>(N_hat)</span>
+<span id="cb18-3"><a href="cap-calibracion.html#cb18-3" tabindex="-1"></a>  N_hat <span class="sc">*</span> phi</span>
+<span id="cb18-4"><a href="cap-calibracion.html#cb18-4" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="cap-calibracion.html#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="cap-calibracion.html#cb18-6" tabindex="-1"></a>N_star <span class="ot">&lt;-</span> <span class="fu">sum</span>(unidades<span class="sc">$</span>N_ext)</span>
+<span id="cb18-7"><a href="cap-calibracion.html#cb18-7" tabindex="-1"></a>unidades <span class="ot">&lt;-</span> unidades <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="cap-calibracion.html#cb18-8" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb18-9"><a href="cap-calibracion.html#cb18-9" tabindex="-1"></a>    <span class="at">N_bench_prop =</span> <span class="fu">benchmarking_proporcional</span>(N_hat, N_star),</span>
+<span id="cb18-10"><a href="cap-calibracion.html#cb18-10" tabindex="-1"></a>    <span class="at">eta_prop     =</span> N_star <span class="sc">/</span> <span class="fu">sum</span>(N_hat) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb18-11"><a href="cap-calibracion.html#cb18-11" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<p>La Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-unidades">7.1</a> muestra el resultado de calibrar contra esa referencia: la estimación antes de calibrar (<span class="math inline">\(\hat{N}_\ell\)</span>), la referencia externa dada (<span class="math inline">\(N_\ell^{*}\)</span>) y el cambio directo que implica —el <span class="math inline">\(\eta_\ell\)</span> definido en la Sección “Cambio en estimaciones puntuales”—, junto al cambio que habría aplicado el benchmarking proporcional si solo se hubiera conocido el total agregado de esas 11 referencias (<span class="math inline">\(N^{*}=\sum_\ell N_\ell^{*}=297.604\)</span>):</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ejemplo-benchmarking-unidades">Tabla 7.1: </span>Benchmarking directo contra una referencia externa por unidad, comparado con el benchmarking proporcional sobre el total agregado, para las 11 unidades territoriales.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Unidad
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_\ell\)</span> (antes)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(N_\ell^{*}\)</span> (referencia)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\eta_\ell\)</span> (directo)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\eta_\ell\)</span> (prop.)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Unidad 6
+</td>
+<td style="text-align:center;">
+16291
+</td>
+<td style="text-align:center;">
+17418
+</td>
+<td style="text-align:center;">
+0.069
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 8
+</td>
+<td style="text-align:center;">
+11405
+</td>
+<td style="text-align:center;">
+12187
+</td>
+<td style="text-align:center;">
+0.069
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 5
+</td>
+<td style="text-align:center;">
+23949
+</td>
+<td style="text-align:center;">
+25554
+</td>
+<td style="text-align:center;">
+0.067
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 11
+</td>
+<td style="text-align:center;">
+5367
+</td>
+<td style="text-align:center;">
+5719
+</td>
+<td style="text-align:center;">
+0.066
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 10
+</td>
+<td style="text-align:center;">
+9771
+</td>
+<td style="text-align:center;">
+10352
+</td>
+<td style="text-align:center;">
+0.059
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 7
+</td>
+<td style="text-align:center;">
+12974
+</td>
+<td style="text-align:center;">
+13732
+</td>
+<td style="text-align:center;">
+0.058
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 4
+</td>
+<td style="text-align:center;">
+28186
+</td>
+<td style="text-align:center;">
+29764
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 3
+</td>
+<td style="text-align:center;">
+29930
+</td>
+<td style="text-align:center;">
+31589
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 9
+</td>
+<td style="text-align:center;">
+10683
+</td>
+<td style="text-align:center;">
+11217
+</td>
+<td style="text-align:center;">
+0.050
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 2
+</td>
+<td style="text-align:center;">
+56633
+</td>
+<td style="text-align:center;">
+59436
+</td>
+<td style="text-align:center;">
+0.049
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 1
+</td>
+<td style="text-align:center;">
+76966
+</td>
+<td style="text-align:center;">
+80636
+</td>
+<td style="text-align:center;">
+0.048
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+</tbody>
+</table>
+<p>El cambio relativo por unidad se encuentra entre <span class="math inline">\(4,8%\)</span> (Unidad 1) y <span class="math inline">\(6,9%\)</span> (Unidad 6), mientras que el benchmarking proporcional aplica un incremento uniforme de <span class="math inline">\(5,5%\)</span> a todas las unidades. La diferencia entre ambos métodos refleja la forma en que se distribuye la discrepancia respecto al total de control. En el ajuste proporcional, todas las unidades reciben la misma corrección relativa, independientemente de la incertidumbre de sus estimaciones. En el ajuste ponderado, la corrección se distribuye de acuerdo con los pesos definidos para cada unidad, de modo que aquellas con mayor incertidumbre reciben una proporción mayor del ajuste y aquellas con menor incertidumbre una proporción menor. En ambos casos, las estimaciones ajustadas reproducen exactamente el total de control; la diferencia radica en cómo se distribuye la corrección entre las unidades.</p>
+<p><strong>Benchmarking ponderado por incertidumbre.</strong> Si <em>no</em> se hubiera dispuesto de una referencia para cada unidad, sino únicamente del total agregado <span class="math inline">\(N^{*}=297.604\)</span>, el Código <a href="cap-calibracion.html#exr:cod-benchmarking-ponderado-ejemplo">7.3</a> distribuye esa discrepancia utilizando como peso <span class="math inline">\(w_\ell\)</span> la varianza posterior de cada unidad —la suma de la varianza posterior de <code>Y_tot</code> en sus segmentos, cero para los de cobertura censal completa—, de acuerdo con el método descrito en la sección anterior:</p>
+<div class="exercise">
+<p><span id="exr:cod-benchmarking-ponderado-ejemplo" class="exercise"><strong>Código 7.3  (Benchmarking ponderado por incertidumbre sobre el ejemplo aplicado) </strong></span></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap-calibracion.html#cb19-1" tabindex="-1"></a><span class="co"># Varianza posterior de Y_tot por segmento (cero si cobertura completa)</span></span>
+<span id="cb19-2"><a href="cap-calibracion.html#cb19-2" tabindex="-1"></a>stan_summary    <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Data/rutinas/Output/05_stan_summary.rds&quot;</span>)</span>
+<span id="cb19-3"><a href="cap-calibracion.html#cb19-3" tabindex="-1"></a>y_tot_rows      <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;^Y_tot</span><span class="sc">\\</span><span class="st">[&quot;</span>, <span class="fu">rownames</span>(stan_summary), <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-4"><a href="cap-calibracion.html#cb19-4" tabindex="-1"></a>pred_area<span class="sc">$</span>N_var <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb19-5"><a href="cap-calibracion.html#cb19-5" tabindex="-1"></a>  pred_area<span class="sc">$</span>Status <span class="sc">==</span> <span class="st">&quot;Completa&quot;</span>, <span class="dv">0</span>, stan_summary[y_tot_rows, <span class="st">&quot;sd&quot;</span>]<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb19-6"><a href="cap-calibracion.html#cb19-6" tabindex="-1"></a>)</span>
+<span id="cb19-7"><a href="cap-calibracion.html#cb19-7" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="cap-calibracion.html#cb19-8" tabindex="-1"></a><span class="co"># Peso de cada unidad: suma de las varianzas de sus segmentos</span></span>
+<span id="cb19-9"><a href="cap-calibracion.html#cb19-9" tabindex="-1"></a>pesos_unidad <span class="ot">&lt;-</span> pred_area <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="cap-calibracion.html#cb19-10" tabindex="-1"></a>  <span class="fu">group_by</span>(unidad_value) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="cap-calibracion.html#cb19-11" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">w =</span> <span class="fu">sum</span>(N_var), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb19-12"><a href="cap-calibracion.html#cb19-12" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="cap-calibracion.html#cb19-13" tabindex="-1"></a>benchmarking_ponderado <span class="ot">&lt;-</span> <span class="cf">function</span>(N_hat, N_control, pesos) {</span>
+<span id="cb19-14"><a href="cap-calibracion.html#cb19-14" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> N_control <span class="sc">-</span> <span class="fu">sum</span>(N_hat)</span>
+<span id="cb19-15"><a href="cap-calibracion.html#cb19-15" tabindex="-1"></a>  N_hat <span class="sc">+</span> pesos <span class="sc">*</span> (delta <span class="sc">/</span> <span class="fu">sum</span>(pesos))</span>
+<span id="cb19-16"><a href="cap-calibracion.html#cb19-16" tabindex="-1"></a>}</span>
+<span id="cb19-17"><a href="cap-calibracion.html#cb19-17" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="cap-calibracion.html#cb19-18" tabindex="-1"></a>unidades <span class="ot">&lt;-</span> unidades <span class="sc">%&gt;%</span></span>
+<span id="cb19-19"><a href="cap-calibracion.html#cb19-19" tabindex="-1"></a>  <span class="fu">left_join</span>(pesos_unidad, <span class="at">by =</span> <span class="st">&quot;unidad_value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-20"><a href="cap-calibracion.html#cb19-20" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-21"><a href="cap-calibracion.html#cb19-21" tabindex="-1"></a>    <span class="at">N_bench_pond =</span> <span class="fu">benchmarking_ponderado</span>(N_hat, N_star, w),</span>
+<span id="cb19-22"><a href="cap-calibracion.html#cb19-22" tabindex="-1"></a>    <span class="at">eta_pond     =</span> (N_bench_pond <span class="sc">-</span> N_hat) <span class="sc">/</span> N_hat</span>
+<span id="cb19-23"><a href="cap-calibracion.html#cb19-23" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<p>La Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-ponderado">7.2</a> muestra el resultado:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ejemplo-benchmarking-ponderado">Tabla 7.2: </span>Benchmarking ponderado por incertidumbre sobre el total agregado <span class="math inline">\(N^{*}=297.604\)</span>, comparado con el cambio directo de la Tabla anterior.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Unidad
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_\ell\)</span> (antes)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_\ell^{bench}\)</span> (ponder.)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\eta_\ell\)</span> (ponder.)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\eta_\ell\)</span> (directo)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Unidad 6
+</td>
+<td style="text-align:center;">
+16291
+</td>
+<td style="text-align:center;">
+17417
+</td>
+<td style="text-align:center;">
+0.069
+</td>
+<td style="text-align:center;">
+0.069
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 8
+</td>
+<td style="text-align:center;">
+11405
+</td>
+<td style="text-align:center;">
+12188
+</td>
+<td style="text-align:center;">
+0.069
+</td>
+<td style="text-align:center;">
+0.069
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 5
+</td>
+<td style="text-align:center;">
+23949
+</td>
+<td style="text-align:center;">
+25554
+</td>
+<td style="text-align:center;">
+0.067
+</td>
+<td style="text-align:center;">
+0.067
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 11
+</td>
+<td style="text-align:center;">
+5367
+</td>
+<td style="text-align:center;">
+5719
+</td>
+<td style="text-align:center;">
+0.066
+</td>
+<td style="text-align:center;">
+0.066
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 10
+</td>
+<td style="text-align:center;">
+9771
+</td>
+<td style="text-align:center;">
+10352
+</td>
+<td style="text-align:center;">
+0.060
+</td>
+<td style="text-align:center;">
+0.059
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 7
+</td>
+<td style="text-align:center;">
+12974
+</td>
+<td style="text-align:center;">
+13732
+</td>
+<td style="text-align:center;">
+0.058
+</td>
+<td style="text-align:center;">
+0.058
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 4
+</td>
+<td style="text-align:center;">
+28186
+</td>
+<td style="text-align:center;">
+29764
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 3
+</td>
+<td style="text-align:center;">
+29930
+</td>
+<td style="text-align:center;">
+31589
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+<td style="text-align:center;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 9
+</td>
+<td style="text-align:center;">
+10683
+</td>
+<td style="text-align:center;">
+11217
+</td>
+<td style="text-align:center;">
+0.050
+</td>
+<td style="text-align:center;">
+0.050
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 2
+</td>
+<td style="text-align:center;">
+56633
+</td>
+<td style="text-align:center;">
+59436
+</td>
+<td style="text-align:center;">
+0.050
+</td>
+<td style="text-align:center;">
+0.049
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 1
+</td>
+<td style="text-align:center;">
+76966
+</td>
+<td style="text-align:center;">
+80635
+</td>
+<td style="text-align:center;">
+0.048
+</td>
+<td style="text-align:center;">
+0.048
+</td>
+</tr>
+</tbody>
+</table>
+<p>La comparación muestra que los cambios relativos obtenidos mediante el benchmarking ponderado son muy cercanos a los cambios observados en el ajuste directo. La diferencia máxima entre ambos es de apenas <span class="math inline">\(0,0001\)</span> en términos relativos. Por ejemplo, la Unidad 6 recibe un incremento de <span class="math inline">\(6,9%\)</span> bajo ambos procedimientos, mientras que la Unidad 1 recibe aproximadamente <span class="math inline">\(4,8%\)</span>.</p>
+<p>Este resultado muestra que, para este conjunto de unidades, la incertidumbre posterior proporciona una distribución del ajuste muy similar a la obtenida cuando se dispone de información específica para cada unidad. Esto constituye evidencia favorable para el uso de la varianza posterior como mecanismo de ponderación en este ejercicio, aunque no implica que dicha correspondencia deba mantenerse en otros conjuntos de unidades o aplicaciones. Su desempeño debe evaluarse en cada aplicación cuando existan referencias externas que permitan realizar la comparación.</p>
+<p><strong>Benchmarking aditivo por muestra.</strong> El benchmarking aditivo por muestra extiende el ajuste ponderado a la distribución posterior completa. Para cada muestra posterior <span class="math inline">\(t=1,\ldots,T\)</span>, la estimación de cada unidad se ajusta mediante:</p>
 <p><span class="math display">\[
-\text{Longitud relativa}_j = \frac{\text{IC}^{bench}_{97.5\%,j} - \text{IC}^{bench}_{2.5\%,j}}{\text{IC}_{97.5\%,j} - \text{IC}_{2.5\%,j}}
+\tilde{N}_\ell^{bench,(t)} = \tilde{N}_\ell^{(t)} +
+\frac{w_\ell}{\sum_{\ell&#39;=1}^{K}w_{\ell&#39;}}
+\Delta^{(t)},
 \]</span></p>
-<p>Valores cercanos a uno indican que la calibración no distorsiona significativamente la incertidumbre relativa entre unidades; valores sistemáticamente distintos de uno, particularmente si se concentran en unidades específicas, ameritan una revisión de los pesos de calibración utilizados. Es importante notar que la calibración no puede, ni debe, entenderse como un mecanismo para reducir artificialmente la incertidumbre reportada: cualquier intervalo de credibilidad calculado a partir de una recalibración exclusivamente sobre la estimación puntual —sin propagar el ajuste a través de las muestras de la distribución posterior completa, como se advirtió en la sección de benchmarking aditivo— produce una subestimación espuria de la incertidumbre y debe evitarse. La calibración correctamente implementada conserva, en la medida de lo posible, las propiedades de calibración probabilística —cobertura empírica cercana al nivel nominal— evaluadas para el modelo original en el capítulo de diagnóstico y validación, y esta propiedad debe verificarse nuevamente sobre las estimaciones calibradas antes de su publicación.</p>
+<p>donde <span class="math inline">\(\Delta^{(t)}\)</span> representa la discrepancia entre el total de control y el total estimado en la muestra <span class="math inline">\(t\)</span>. De esta forma, el benchmarking se aplica a cada realización posterior y no únicamente a la estimación puntual, permitiendo obtener directamente la distribución posterior ajustada y sus intervalos de credibilidad.</p>
+<p>El intervalo de credibilidad del 95% para cada unidad se obtiene a partir de los cuantiles 2,5% y 97,5% de las muestras posteriores ajustadas:</p>
+<p><span class="math display">\[
+IC_\ell^{bench} = \left[
+Q_{0.025}\left(\tilde{N}_\ell^{bench}\right),
+Q_{0.975}\left(\tilde{N}_\ell^{bench}\right)
+\right].
+\]</span></p>
+<p>Para evaluar el efecto del benchmarking sobre la incertidumbre, puede compararse la longitud del intervalo ajustado con la del intervalo original mediante:</p>
+<p><span class="math display">\[
+\text{L}_\ell = \frac{\text{IC}^{bench}_{97,5\%,\ell} - \text{IC}^{bench}_{2,5\%,\ell}}{\text{IC}_{97,5\%,\ell} - \text{IC}_{2,5\%,\ell}}.
+\]</span></p>
+<p>Valores de <span class="math inline">\(L_\ell\)</span> cercanos a uno indican que el benchmarking modifica principalmente la localización de la distribución posterior, mientras que valores diferentes de uno indican que también modifica la incertidumbre asociada a la estimación.</p>
+<p><strong>Benchmarking aditivo por muestra.</strong> El ajuste aditivo ponderado por muestra, definido en la ecuación de la Sección “Benchmarking aditivo con restricciones de suma”, se aplica aquí a las <span class="math inline">\(K=11\)</span> unidades del ejemplo: cada réplica <span class="math inline">\(\tilde{N}_\ell^{(t)}\)</span>, <span class="math inline">\(t=1,\ldots,T\)</span>, se calibra según <span class="math inline">\(\tilde{N}_\ell^{bench,(t)} = \tilde{N}_\ell^{(t)} + w_\ell \cdot \Delta^{(t)} / \sum_{\ell&#39;} w_{\ell&#39;}\)</span>, de modo que además de la media calibrada se obtiene un intervalo de credibilidad calibrado. Como <code>06_posterior_draws_core.rds</code> no conserva las muestras posteriores de <code>Y_tot</code> por unidad territorial, cada <span class="math inline">\(\tilde{N}_\ell^{(t)}\)</span> se genera a partir de una distribución normal truncada en cero, con la misma media <span class="math inline">\(\hat{N}_\ell\)</span> y varianza <span class="math inline">\(w_\ell\)</span> ya calculadas —una aproximación distribucional que no reemplaza las muestras MCMC genuinas, pero permite ilustrar el procedimiento—.</p>
+<p>El intervalo de credibilidad calibrado de cada unidad se obtiene directamente de los cuantiles 2,5% y 97,5% de <span class="math inline">\(\tilde{N}_\ell^{bench,(t)}\)</span> a lo largo de las <span class="math inline">\(T\)</span> réplicas. Su longitud relativa respecto al intervalo original —un indicador simple de cuánto modifica la calibración la incertidumbre reportada— se define como</p>
+<p><span class="math display">\[
+\text{Longitud relativa}_\ell = \frac{\text{IC}^{bench}_{97,5\%,\ell} - \text{IC}^{bench}_{2,5\%,\ell}}{\text{IC}_{97,5\%,\ell} - \text{IC}_{2,5\%,\ell}}.
+\]</span></p>
+<p>La Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-aditivo">7.3</a> muestra el resultado:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ejemplo-benchmarking-aditivo">Tabla 7.3: </span>Benchmarking aditivo por muestra sobre el total agregado <span class="math inline">\(N^{*}=297.604\)</span>: media e intervalo de credibilidad calibrados, y longitud relativa respecto al intervalo original.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Unidad
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_\ell\)</span> (antes)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_\ell^{bench}\)</span> (media)
+</th>
+<th style="text-align:center;">
+IC 2,5%
+</th>
+<th style="text-align:center;">
+IC 97,5%
+</th>
+<th style="text-align:center;">
+Longitud relativa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Unidad 6
+</td>
+<td style="text-align:center;">
+16291
+</td>
+<td style="text-align:center;">
+17419
+</td>
+<td style="text-align:center;">
+16222
+</td>
+<td style="text-align:center;">
+18609
+</td>
+<td style="text-align:center;">
+0.996
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 5
+</td>
+<td style="text-align:center;">
+23949
+</td>
+<td style="text-align:center;">
+25560
+</td>
+<td style="text-align:center;">
+24212
+</td>
+<td style="text-align:center;">
+27026
+</td>
+<td style="text-align:center;">
+0.968
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 8
+</td>
+<td style="text-align:center;">
+11405
+</td>
+<td style="text-align:center;">
+12166
+</td>
+<td style="text-align:center;">
+11190
+</td>
+<td style="text-align:center;">
+13142
+</td>
+<td style="text-align:center;">
+0.964
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 11
+</td>
+<td style="text-align:center;">
+5367
+</td>
+<td style="text-align:center;">
+5714
+</td>
+<td style="text-align:center;">
+5063
+</td>
+<td style="text-align:center;">
+6360
+</td>
+<td style="text-align:center;">
+0.957
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 7
+</td>
+<td style="text-align:center;">
+12974
+</td>
+<td style="text-align:center;">
+13724
+</td>
+<td style="text-align:center;">
+12750
+</td>
+<td style="text-align:center;">
+14696
+</td>
+<td style="text-align:center;">
+0.967
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 10
+</td>
+<td style="text-align:center;">
+9771
+</td>
+<td style="text-align:center;">
+10335
+</td>
+<td style="text-align:center;">
+9462
+</td>
+<td style="text-align:center;">
+11226
+</td>
+<td style="text-align:center;">
+0.975
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 4
+</td>
+<td style="text-align:center;">
+28186
+</td>
+<td style="text-align:center;">
+29797
+</td>
+<td style="text-align:center;">
+28431
+</td>
+<td style="text-align:center;">
+31181
+</td>
+<td style="text-align:center;">
+0.966
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 3
+</td>
+<td style="text-align:center;">
+29930
+</td>
+<td style="text-align:center;">
+31621
+</td>
+<td style="text-align:center;">
+30307
+</td>
+<td style="text-align:center;">
+33009
+</td>
+<td style="text-align:center;">
+0.964
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 9
+</td>
+<td style="text-align:center;">
+10683
+</td>
+<td style="text-align:center;">
+11233
+</td>
+<td style="text-align:center;">
+10419
+</td>
+<td style="text-align:center;">
+12054
+</td>
+<td style="text-align:center;">
+0.968
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 2
+</td>
+<td style="text-align:center;">
+56633
+</td>
+<td style="text-align:center;">
+59476
+</td>
+<td style="text-align:center;">
+57809
+</td>
+<td style="text-align:center;">
+61132
+</td>
+<td style="text-align:center;">
+0.918
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 1
+</td>
+<td style="text-align:center;">
+76966
+</td>
+<td style="text-align:center;">
+80559
+</td>
+<td style="text-align:center;">
+78628
+</td>
+<td style="text-align:center;">
+82424
+</td>
+<td style="text-align:center;">
+0.827
+</td>
+</tr>
+</tbody>
+</table>
+<p>Las medias calibradas de la Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-aditivo">7.3</a> coinciden, salvo diferencias de simulación, con el ajuste ponderado de la Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-ponderado">7.2</a>; la diferencia es que ahora cada unidad conserva además un intervalo de credibilidad propio, calibrado muestra por muestra y no solo en su media. La longitud relativa se ubica entre <span class="math inline">\(0,83\)</span> (Unidad 1) y <span class="math inline">\(1,00\)</span> (Unidad 6), siempre por debajo o prácticamente igual a uno: la calibración estrecha los intervalos originales en las 11 unidades, de forma más marcada en la Unidad 1 que en la Unidad 6, consistente con tratar <span class="math inline">\(N^{*}\)</span> como una constante sin incertidumbre propia —al no aportar varianza adicional, la calibración solo puede mantener o reducir la dispersión total, nunca aumentarla—.</p>
+<p><strong>Cascada al nivel de segmento censal.</strong> Las tres tablas anteriores calibran el total de cada unidad territorial, pero el modelo se especifica y se estima al nivel de segmento censal (Capítulos <a href="cap-modelos-poblacion.html#cap-modelos-poblacion">1</a>, <a href="cap-insumos.html#cap-insumos">3</a> y <a href="cap-inferencia.html#cap-inferencia">5</a>): publicar solo el total corregido por unidad deja sin resolver cómo se distribuye esa corrección entre los segmentos que la componen, ni qué ocurre con la incertidumbre de cada uno. El Código <a href="cap-calibracion.html#exr:cod-benchmarking-segmento">7.4</a> desciende la calibración directa desde la unidad hasta el segmento —tanto la estimación puntual como su intervalo de credibilidad—: el factor implícito en cada unidad, <span class="math inline">\(\phi_\ell=N_\ell^{*}/\hat{N}_\ell\)</span>, se aplica a todos sus segmentos por igual, preservando el peso relativo de cada segmento dentro de su unidad.</p>
+<div class="exercise">
+<p><span id="exr:cod-benchmarking-segmento" class="exercise"><strong>Código 7.4  (Cascada de la calibración desde la unidad hasta el segmento censal) </strong></span></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap-calibracion.html#cb20-1" tabindex="-1"></a><span class="co"># Factor de calibración de cada unidad, según la referencia externa directa</span></span>
+<span id="cb20-2"><a href="cap-calibracion.html#cb20-2" tabindex="-1"></a>phi_unidad <span class="ot">&lt;-</span> comparacion <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="cap-calibracion.html#cb20-3" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="st">`</span><span class="at">Unidad territorial</span><span class="st">`</span>, <span class="at">phi =</span> N_ext <span class="sc">/</span> N_hat)</span>
+<span id="cb20-4"><a href="cap-calibracion.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="cap-calibracion.html#cb20-5" tabindex="-1"></a><span class="co"># Se aplica a cada uno de los 609 segmentos, según la unidad a la que</span></span>
+<span id="cb20-6"><a href="cap-calibracion.html#cb20-6" tabindex="-1"></a><span class="co"># pertenece -- a la estimación puntual y, por ser una transformación</span></span>
+<span id="cb20-7"><a href="cap-calibracion.html#cb20-7" tabindex="-1"></a><span class="co"># lineal positiva, también a los límites de su intervalo de credibilidad</span></span>
+<span id="cb20-8"><a href="cap-calibracion.html#cb20-8" tabindex="-1"></a><span class="co"># (el intervalo real del ajuste, ic_li_segm/ic_ls_segm, no una</span></span>
+<span id="cb20-9"><a href="cap-calibracion.html#cb20-9" tabindex="-1"></a><span class="co"># aproximación; puntual para los segmentos con cobertura censal completa)</span></span>
+<span id="cb20-10"><a href="cap-calibracion.html#cb20-10" tabindex="-1"></a>segmentos_bench <span class="ot">&lt;-</span> pred_area <span class="sc">%&gt;%</span></span>
+<span id="cb20-11"><a href="cap-calibracion.html#cb20-11" tabindex="-1"></a>  <span class="fu">left_join</span>(mapa_unidad, <span class="at">by =</span> <span class="st">&quot;unidad_value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-12"><a href="cap-calibracion.html#cb20-12" tabindex="-1"></a>  <span class="fu">left_join</span>(phi_unidad, <span class="at">by =</span> <span class="st">&quot;Unidad territorial&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-13"><a href="cap-calibracion.html#cb20-13" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-14"><a href="cap-calibracion.html#cb20-14" tabindex="-1"></a>    <span class="at">pob_bench_segm    =</span> pob_final_media <span class="sc">*</span> phi,</span>
+<span id="cb20-15"><a href="cap-calibracion.html#cb20-15" tabindex="-1"></a>    <span class="at">ic_li_bench_segm  =</span> ic_li_segm <span class="sc">*</span> phi,</span>
+<span id="cb20-16"><a href="cap-calibracion.html#cb20-16" tabindex="-1"></a>    <span class="at">ic_ls_bench_segm  =</span> ic_ls_segm <span class="sc">*</span> phi</span>
+<span id="cb20-17"><a href="cap-calibracion.html#cb20-17" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<p>La Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-segmento">7.4</a> verifica, para cada una de las 11 unidades, que la suma de sus segmentos calibrados reproduce exactamente su referencia externa —sin listar los 609 segmentos de forma individual—:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ejemplo-benchmarking-segmento">Tabla 7.4: </span>Verificación de la cascada al nivel de segmento censal: la suma de los segmentos calibrados de cada unidad reproduce exactamente su referencia externa (609 segmentos en total).
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Unidad
+</th>
+<th style="text-align:center;">
+N.º de segmentos
+</th>
+<th style="text-align:center;">
+Suma segmentos calibrados
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(N_\ell^{*}\)</span> (referencia)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Unidad 6
+</td>
+<td style="text-align:center;">
+30
+</td>
+<td style="text-align:center;">
+17418
+</td>
+<td style="text-align:center;">
+17418
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 8
+</td>
+<td style="text-align:center;">
+21
+</td>
+<td style="text-align:center;">
+12187
+</td>
+<td style="text-align:center;">
+12187
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 5
+</td>
+<td style="text-align:center;">
+44
+</td>
+<td style="text-align:center;">
+25554
+</td>
+<td style="text-align:center;">
+25554
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 11
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+5719
+</td>
+<td style="text-align:center;">
+5719
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 10
+</td>
+<td style="text-align:center;">
+21
+</td>
+<td style="text-align:center;">
+10352
+</td>
+<td style="text-align:center;">
+10352
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 7
+</td>
+<td style="text-align:center;">
+29
+</td>
+<td style="text-align:center;">
+13732
+</td>
+<td style="text-align:center;">
+13732
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 4
+</td>
+<td style="text-align:center;">
+64
+</td>
+<td style="text-align:center;">
+29764
+</td>
+<td style="text-align:center;">
+29764
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 3
+</td>
+<td style="text-align:center;">
+65
+</td>
+<td style="text-align:center;">
+31589
+</td>
+<td style="text-align:center;">
+31589
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 9
+</td>
+<td style="text-align:center;">
+24
+</td>
+<td style="text-align:center;">
+11217
+</td>
+<td style="text-align:center;">
+11217
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 2
+</td>
+<td style="text-align:center;">
+126
+</td>
+<td style="text-align:center;">
+59436
+</td>
+<td style="text-align:center;">
+59436
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Unidad 1
+</td>
+<td style="text-align:center;">
+174
+</td>
+<td style="text-align:center;">
+80636
+</td>
+<td style="text-align:center;">
+80636
+</td>
+</tr>
+</tbody>
+</table>
+<p>La suma de los 609 segmentos calibrados —<span class="math inline">\(297.604\)</span>— coincide exactamente con <span class="math inline">\(N^{*}\)</span>, y la de cada unidad con su propia referencia: la cascada preserva la coherencia jerárquica interna (Sección “Restricciones de consistencia jerárquica”) en cada nivel, no solo en el agregado nacional.</p>
+<p>A nivel individual, la Tabla <a href="cap-calibracion.html#tab:ejemplo-benchmarking-segmento-ic">7.5</a> muestra seis segmentos de ejemplo dentro de la Unidad 1 (<span class="math inline">\(\phi=1,05\)</span>), con su intervalo de credibilidad real —no aproximado— antes y después de calibrar:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ejemplo-benchmarking-segmento-ic">Tabla 7.5: </span>Estimación puntual e intervalo de credibilidad de seis segmentos de ejemplo dentro de la Unidad 1, antes y después de la cascada de calibración.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Segmento
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_i\)</span> (antes)
+</th>
+<th style="text-align:center;">
+IC (antes)
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(\hat{N}_i^{bench}\)</span> (después)
+</th>
+<th style="text-align:center;">
+IC (después)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+1283
+</td>
+<td style="text-align:center;">
+[851, 1861]
+</td>
+<td style="text-align:center;">
+1344
+</td>
+<td style="text-align:center;">
+[892, 1950]
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+71
+</td>
+<td style="text-align:center;">
+829
+</td>
+<td style="text-align:center;">
+[558, 1192]
+</td>
+<td style="text-align:center;">
+868
+</td>
+<td style="text-align:center;">
+[585, 1249]
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+126
+</td>
+<td style="text-align:center;">
+818
+</td>
+<td style="text-align:center;">
+[552, 1165]
+</td>
+<td style="text-align:center;">
+857
+</td>
+<td style="text-align:center;">
+[578, 1221]
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+164
+</td>
+<td style="text-align:center;">
+183
+</td>
+<td style="text-align:center;">
+[183, 183]
+</td>
+<td style="text-align:center;">
+192
+</td>
+<td style="text-align:center;">
+[192, 192]
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+140
+</td>
+<td style="text-align:center;">
+[89, 204]
+</td>
+<td style="text-align:center;">
+147
+</td>
+<td style="text-align:center;">
+[93, 214]
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+32
+</td>
+<td style="text-align:center;">
+119
+</td>
+<td style="text-align:center;">
+[119, 119]
+</td>
+<td style="text-align:center;">
+125
+</td>
+<td style="text-align:center;">
+[125, 125]
+</td>
+</tr>
+</tbody>
+</table>
+<p>El mismo factor <span class="math inline">\(\phi=1,05\)</span> se aplica tanto a la estimación puntual como a los dos límites del intervalo —al ser una transformación lineal positiva, el intervalo se escala exactamente igual, sin necesidad de volver a calcular cuantiles—, de modo que un segmento con <span class="math inline">\(\hat{N}=1.283\)</span> e IC <span class="math inline">\([851,1861]\)</span> pasa a <span class="math inline">\(1.344\)</span> con IC <span class="math inline">\([892,1950]\)</span>. Los dos últimos segmentos de la tabla tienen cobertura censal completa: su conteo es exacto —intervalo de ancho cero antes de calibrar, <span class="math inline">\(119\)</span> en ambos límites— y, aunque el factor de la unidad los desplaza a <span class="math inline">\(125\)</span>, la calibración no introduce ninguna incertidumbre donde el operativo censal ya la había eliminado.</p>
+<p>En síntesis, este ejemplo recorre los cuatro métodos del capítulo sobre el mismo conjunto de 11 unidades, y desciende el resultado hasta el segmento censal. Cuando existe información externa al nivel de la propia unidad territorial, la comparación directa es la más simple y no requiere ningún supuesto adicional. Cuando esa información no está disponible —el caso más frecuente en la práctica— y solo se conoce un total agregado, el benchmarking proporcional ofrece una solución simple pero uniforme, mientras que el ponderado por incertidumbre usa la precisión posterior del modelo para aproximarse al resultado que la referencia directa habría dado, como confirma la coincidencia casi exacta entre ambos en este ejercicio. El benchmarking aditivo por muestra extiende cualquiera de estos principios a la distribución posterior completa, de modo que la incertidumbre reportada tras la calibración —y no solo el valor puntual— sea consistente con la información externa incorporada. Y puesto que el modelo se estima y se publica finalmente a nivel de segmento censal, cualquiera de estos ajustes debe descender hasta ese nivel antes de considerarse completo, como ilustra el Código <a href="cap-calibracion.html#exr:cod-benchmarking-segmento">7.4</a>.</p>
 
 </div>
 </div>
@@ -548,7 +1617,7 @@ w_j = \text{Var}\!\left(\hat{N}_j \mid \mathbf{Y}_{obs}\right) \approx \frac{1}{
         </div>
       </div>
 <a href="cap-diagnostico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conclusiones-y-recomendaciones-institucionales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

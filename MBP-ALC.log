@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.13)  14 AUG 2026 09:44
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.13)  15 AUG 2026 21:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2171,12 +2171,6 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 (./MBP-ALC.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-
-Underfull \vbox (badness 1292) has occurred while \output is active []
-
-
-Underfull \vbox (badness 1292) has occurred while \output is active []
-
 [4])
 \tf@lof=\write6
 \openout6 = `MBP-ALC.lof'.
@@ -2639,98 +2633,145 @@ LaTeX Info: Redefining \% on input line 2710.
 [88]
 File: images/cap_08/01_trace_hmc.png Graphic file (type bmp)
 <images/cap_08/01_trace_hmc.png>
-LaTeX Info: Redefining \. on input line 2727.
-LaTeX Info: Redefining \% on input line 2727.
+LaTeX Info: Redefining \. on input line 2731.
+LaTeX Info: Redefining \% on input line 2731.
 [89]
-Underfull \vbox (badness 1424) has occurred while \output is active []
-
-
-Underfull \vbox (badness 1424) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 2756.
-LaTeX Info: Redefining \% on input line 2756.
+LaTeX Info: Redefining \. on input line 2761.
+LaTeX Info: Redefining \% on input line 2761.
 [90]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 2785.
-LaTeX Info: Redefining \% on input line 2785.
+LaTeX Info: Redefining \. on input line 2790.
+LaTeX Info: Redefining \% on input line 2790.
 [91]
-
-Package natbib Warning: Citation `Vehtari2024' on page 92 undefined on input line 2792.
-
-LaTeX Info: Redefining \. on input line 2817.
-LaTeX Info: Redefining \% on input line 2817.
+LaTeX Info: Redefining \. on input line 2822.
+LaTeX Info: Redefining \% on input line 2822.
 [92]
-Underfull \vbox (badness 6125) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \vbox (badness 6125) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 2841.
-LaTeX Info: Redefining \% on input line 2841.
+LaTeX Info: Redefining \. on input line 2846.
+LaTeX Info: Redefining \% on input line 2846.
 [93]
-LaTeX Info: Redefining \. on input line 2865.
-LaTeX Info: Redefining \% on input line 2865.
+LaTeX Info: Redefining \. on input line 2870.
+LaTeX Info: Redefining \% on input line 2870.
 [94]
-LaTeX Info: Redefining \. on input line 2876.
-LaTeX Info: Redefining \% on input line 2876.
+LaTeX Info: Redefining \. on input line 2881.
+LaTeX Info: Redefining \% on input line 2881.
 [95]
-LaTeX Info: Redefining \. on input line 2876.
-LaTeX Info: Redefining \% on input line 2876.
+LaTeX Info: Redefining \. on input line 2881.
+LaTeX Info: Redefining \% on input line 2881.
 [96
 
 ]
 Capítulo 7.
 [97]
-LaTeX Info: Redefining \. on input line 2920.
-LaTeX Info: Redefining \% on input line 2920.
+LaTeX Info: Redefining \. on input line 2922.
+LaTeX Info: Redefining \% on input line 2922.
 [98]
-LaTeX Info: Redefining \. on input line 2962.
-LaTeX Info: Redefining \% on input line 2962.
+LaTeX Info: Redefining \. on input line 2956.
+LaTeX Info: Redefining \% on input line 2956.
 [99]
-LaTeX Info: Redefining \. on input line 3001.
-LaTeX Info: Redefining \% on input line 3001.
+Underfull \vbox (badness 8019) has occurred while \output is active []
+
+
+Underfull \vbox (badness 8019) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 2991.
+LaTeX Info: Redefining \% on input line 2991.
 [100]
-LaTeX Info: Redefining \. on input line 3038.
-LaTeX Info: Redefining \% on input line 3038.
+LaTeX Info: Redefining \. on input line 3035.
+LaTeX Info: Redefining \% on input line 3035.
 [101]
-LaTeX Info: Redefining \. on input line 3082.
-LaTeX Info: Redefining \% on input line 3082.
+LaTeX Info: Redefining \. on input line 3096.
+LaTeX Info: Redefining \% on input line 3096.
 [102]
-LaTeX Info: Redefining \. on input line 3117.
-LaTeX Info: Redefining \% on input line 3117.
-[103] (./MBP-ALC.bbl
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 3152.
+LaTeX Info: Redefining \% on input line 3152.
+[103]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 3187.
+LaTeX Info: Redefining \% on input line 3187.
+[104]
+LaTeX Info: Redefining \. on input line 3219.
+LaTeX Info: Redefining \% on input line 3219.
+[105]
+LaTeX Info: Redefining \. on input line 3254.
+LaTeX Info: Redefining \% on input line 3254.
+[106]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 3313.
+LaTeX Info: Redefining \% on input line 3313.
+[107]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 3365.
+LaTeX Info: Redefining \% on input line 3365.
+[108]
+LaTeX Info: Redefining \. on input line 3368.
+LaTeX Info: Redefining \% on input line 3368.
+[109]
+LaTeX Info: Redefining \. on input line 3368.
+LaTeX Info: Redefining \% on input line 3368.
+[110
+
+]
+Capítulo 8.
+[111]
+LaTeX Info: Redefining \. on input line 3395.
+LaTeX Info: Redefining \% on input line 3395.
+[112]
+LaTeX Info: Redefining \. on input line 3409.
+LaTeX Info: Redefining \% on input line 3409.
+[113]
+LaTeX Info: Redefining \. on input line 3425.
+LaTeX Info: Redefining \% on input line 3425.
+[114] (./MBP-ALC.bbl
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-[104]
+[115]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+[116
+
+]
 Underfull \hbox (badness 1377) in paragraph at lines 14--18
 []\TU/Cambria(0)/m/n/10 Betancourt, M. (2017).  A conceptual introduction to Hamiltonian Monte Carlo.  \TU/Cambria(0)/m/it/10 arXiv preprint\TU/Cambria(0)/m/n/10 .  ar-
  []
 
-[105
-
-]
-Underfull \hbox (badness 1769) in paragraph at lines 115--119
+[117]
+Underfull \hbox (badness 1769) in paragraph at lines 120--124
 []\TU/Cambria(0)/m/n/10 Naciones Unidas (2017).  \TU/Cambria(0)/m/it/10 Principios y recomendaciones para los censos de población y habitación, Re-
  []
 
 
-Underfull \hbox (badness 4168) in paragraph at lines 115--119
+Underfull \hbox (badness 4168) in paragraph at lines 120--124
 \TU/Cambria(0)/m/it/10 visión 3\TU/Cambria(0)/m/n/10 .  Departamento de Asuntos Económicos y Sociales, División de Estadística, Nueva York.
  []
 
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
-[106])
-
-Package natbib Warning: There were undefined citations.
-
-LaTeX Info: Redefining \. on input line 3121.
-LaTeX Info: Redefining \% on input line 3121.
-[107] (./MBP-ALC.aux
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
+[118])
+LaTeX Info: Redefining \. on input line 3431.
+LaTeX Info: Redefining \% on input line 3431.
+[119] (./MBP-ALC.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -2743,12 +2784,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 46200 strings out of 469757
- 944903 string characters out of 5464945
- 1606682 words of memory out of 5000000
- 74404 multiletter control sequences out of 15000+600000
+ 46230 strings out of 469757
+ 945700 string characters out of 5464945
+ 1612412 words of memory out of 5000000
+ 74434 multiletter control sequences out of 15000+600000
  636770 words of font info for 154 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  106i,15n,117p,1831b,982s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MBP-ALC.pdf (107 pages).
+Output written on MBP-ALC.pdf (119 pages).

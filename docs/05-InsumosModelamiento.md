@@ -195,19 +195,31 @@ resumen_conteos <- tibble(
 
 :::
 
-\begin{table}[!h]
-\centering
-\caption{(\#tab:dist-conteos-tabla)Resumen descriptivo de los conteos observados por segmento}
-\centering
-\fontsize{16}{18}\selectfont
-\begin{tabular}[t]{ccccccc}
-\toprule
-N.º segmentos & Media & Mediana & Desv. estándar & Asimetría & Curtosis & Índice de dispersión\\
-\midrule
-\cellcolor{gray!10}{500} & \cellcolor{gray!10}{54.29} & \cellcolor{gray!10}{51} & \cellcolor{gray!10}{28.9} & \cellcolor{gray!10}{6.92} & \cellcolor{gray!10}{65.11} & \cellcolor{gray!10}{15.38}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:dist-conteos-tabla)Resumen descriptivo de los conteos observados por segmento</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> N.º segmentos </th>
+   <th style="text-align:center;"> Media </th>
+   <th style="text-align:center;"> Mediana </th>
+   <th style="text-align:center;"> Desv. estándar </th>
+   <th style="text-align:center;"> Asimetría </th>
+   <th style="text-align:center;"> Curtosis </th>
+   <th style="text-align:center;"> Índice de dispersión </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 500 </td>
+   <td style="text-align:center;"> 54.29 </td>
+   <td style="text-align:center;"> 51 </td>
+   <td style="text-align:center;"> 28.9 </td>
+   <td style="text-align:center;"> 6.92 </td>
+   <td style="text-align:center;"> 65.11 </td>
+   <td style="text-align:center;"> 15.38 </td>
+  </tr>
+</tbody>
+</table>
 
 La Tabla \@ref(tab:dist-conteos-tabla) resume los estadísticos descriptivos calculados sobre los 500 segmentos. El índice de dispersión es 15.38, muy por encima de 1, lo que confirma la sobredispersión de los conteos y respalda la especificación jerárquica con densidad latente log-normal desarrollada en el Capítulo \@ref(cap-conteos). El coeficiente de asimetría (6.92) señala una distribución con cola derecha pesada, mientras que la curtosis (65.11) evidencia un comportamiento leptocúrtico respecto a la distribución normal ($\text{curtosis}=3$). Este patrón es característico de los conteos poblacionales por segmento, donde la mayoría de las unidades presenta valores moderados y un número reducido de segmentos concentra valores extremos.
 
@@ -220,7 +232,10 @@ tibble(log_Y = log(Y + 1)) %>%
   theme_minimal()
 ```
 
-![(\#fig:dist-conteos-hist)Distribución de log(Y + 1) por segmento](05-InsumosModelamiento_files/figure-latex/dist-conteos-hist-1.pdf) 
+<div class="figure">
+<img src="05-InsumosModelamiento_files/figure-html/dist-conteos-hist-1.svg" alt="Distribución de log(Y + 1) por segmento" width="672" />
+<p class="caption">(\#fig:dist-conteos-hist)Distribución de log(Y + 1) por segmento</p>
+</div>
 
 La visualización de la distribución debe realizarse tanto en escala original como en escala logarítmica. En la escala original, la distribución suele ser fuertemente asimétrica con cola derecha pesada; en la escala logarítmica, la distribución es más simétrica y permite evaluar si la especificación log-lineal es adecuada.
 
@@ -264,7 +279,10 @@ outliers_multivariados <- which(p_valor < 0.025)
 
 :::
 
-![(\#fig:outliers-grafico)Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis](05-InsumosModelamiento_files/figure-latex/outliers-grafico-1.pdf) 
+<div class="figure">
+<img src="05-InsumosModelamiento_files/figure-html/outliers-grafico-1.svg" alt="Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis" width="672" />
+<p class="caption">(\#fig:outliers-grafico)Segmentos atípicos según residuo de Pearson y distancia de Mahalanobis</p>
+</div>
 
 La Figura \@ref(fig:outliers-grafico) ubica a cada uno de los 500 segmentos en el plano definido por el residuo de Pearson del modelo nulo y la distancia de Mahalanobis sobre las covariables auxiliares, con líneas punteadas que marcan los respectivos umbrales de decisión ($|r_i^P| = 3$ y el percentil 97.5 de $\chi^2_p$). De ellos, 48 segmentos superan el umbral del residuo de Pearson (categoría "Residuo de Pearson", en azul), 16 superan el umbral de la distancia de Mahalanobis (categoría "Mahalanobis", en naranja), y 3 son señalados simultáneamente por los dos criterios (categoría "Ambos criterios", en rojo).
 
@@ -304,27 +322,36 @@ tabla_vif  <- tibble(
 
 :::
 
-\begin{table}[!h]
-\centering
-\caption{(\#tab:relacion-variables-vif-tabla)Factores de inflación de varianza (VIF) de las covariables auxiliares}
-\centering
-\fontsize{16}{18}\selectfont
-\begin{tabular}[t]{cc}
-\toprule
-Covariable & VIF\\
-\midrule
-\cellcolor{gray!10}{luminosidad} & \cellcolor{gray!10}{1.01}\\
-area\_construida & 1.01\\
-\cellcolor{gray!10}{dist\_urbano} & \cellcolor{gray!10}{1.00}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table table-striped table-hover table-condensed" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:relacion-variables-vif-tabla)Factores de inflación de varianza (VIF) de las covariables auxiliares</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Covariable </th>
+   <th style="text-align:center;"> VIF </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> luminosidad </td>
+   <td style="text-align:center;"> 1.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> area_construida </td>
+   <td style="text-align:center;"> 1.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> dist_urbano </td>
+   <td style="text-align:center;"> 1.00 </td>
+  </tr>
+</tbody>
+</table>
 
 La Tabla \@ref(tab:relacion-variables-vif-tabla) reporta el VIF de cada covariable. El valor máximo observado es 1.01, muy por debajo del umbral de 10, por lo que no se evidencia multicolinealidad problemática entre las covariables auxiliares.
 
-\begin{figure}
-\includegraphics[width=0.7\linewidth]{05-InsumosModelamiento_files/figure-latex/relacion-variables-heatmap-1} \caption{Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares}(\#fig:relacion-variables-heatmap)
-\end{figure}
+<div class="figure">
+<img src="05-InsumosModelamiento_files/figure-html/relacion-variables-heatmap-1.svg" alt="Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares" width="70%" />
+<p class="caption">(\#fig:relacion-variables-heatmap)Matriz de correlación entre el conteo poblacional (log) y las covariables auxiliares</p>
+</div>
 
 La Figura \@ref(fig:relacion-variables-heatmap) muestra la matriz de correlación entre $\log(Y_i + 1)$ y las covariables estandarizadas, en una escala divergente (rojo = correlación negativa, azul = correlación positiva) que facilita distinguir la dirección y magnitud de cada asociación de un vistazo.
 

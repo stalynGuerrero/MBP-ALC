@@ -15,7 +15,7 @@ rmd_files: [
   "07_1_Ejemplo_Aplicado.Rmd",
   "08-Diagnostico_Validacion.Rmd",
   "09-Calibracion_Benchmarking.Rmd",
-  # "10-Conclusiones.Rmd",
+  "10-Conclusiones.Rmd",
   "11-references.Rmd"
 ]
 

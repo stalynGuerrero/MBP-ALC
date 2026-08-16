@@ -68,11 +68,12 @@ En los modelos de población, este diagnóstico debe evaluarse tanto para los pa
 
 ### Trace plots, autocorrelación y diagnósticos específicos de HMC
 
-La inspección visual de las cadenas complementa los diagnósticos numéricos y permite identificar patrones de no convergencia o mezcla deficiente. El *trace plot* representa los valores muestreados de un parámetro a lo largo de las iteraciones para las distintas cadenas. Un comportamiento adecuado se caracteriza por cadenas que oscilan alrededor de una distribución común, sin tendencias sistemáticas, períodos prolongados de estancamiento o separación persistente entre cadenas. Este patrón suele describirse informalmente como *fat hairy caterpillar*. La Figura \@ref(fig:trace-hmc) muestra este comportamiento para los parámetros $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ en un ajuste del modelo Poisson-lognormal aplicado a datos censales de Barbados (2024).
+La inspección visual de las cadenas complementa los diagnósticos numéricos y permite identificar patrones de no convergencia o mezcla deficiente. El *trace plot* representa los valores muestreados de un parámetro a lo largo de las iteraciones para las distintas cadenas. Un comportamiento adecuado se caracteriza por cadenas que oscilan alrededor de una distribución común, sin tendencias sistemáticas, períodos prolongados de estancamiento o separación persistente entre cadenas. Este patrón suele describirse informalmente como *fat hairy caterpillar*. La Figura \@ref(fig:trace-hmc) muestra este comportamiento para los parámetros $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ en un ajuste real del modelo Poisson-lognormal, del mismo tipo que el presentado en la aplicación del Capítulo \@ref(cap-inferencia) —por confidencialidad, no se identifica el país de procedencia de los datos—.
 
-\begin{figure}
-\includegraphics[width=0.7\linewidth]{images/cap_08/01_trace_hmc} \caption{Trace plot de $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ sobre las cuatro cadenas.}(\#fig:trace-hmc)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="images/cap_08/01_trace_hmc.png" alt="Trace plot de $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ sobre las cuatro cadenas." width="70%" />
+<p class="caption">(\#fig:trace-hmc)Trace plot de $\sigma$, $\sigma_U$, $\beta_1$ y $\beta_2$ sobre las cuatro cadenas.</p>
+</div>
 
 La autocorrelación evalúa la dependencia entre muestras separadas por distintos retrasos (*lags*). Una disminución rápida de la autocorrelación hacia cero indica una mezcla eficiente, mientras que valores elevados durante numerosos retrasos señalan una fuerte dependencia entre muestras y, por tanto, un ESS reducido.
 
@@ -168,7 +169,7 @@ $$
 \text{WAIC} = -2\left(\text{lpd} - p_{WAIC}\right)
 $$
 
-@Piironen2017 muestra que, en presencia de observaciones influyentes —frecuentes en modelos de conteo con segmentos de intensidad extrema, como los que surgen en el modelo Poisson-lognormal—, el LOO-CV mediante PSIS es más robusto que el WAIC, cuya estimación de $p_{WAIC}$ puede ser inestable cuando la varianza posterior de la log-verosimilitud puntual es elevada. En consecuencia, el LOO-CV debe considerarse el criterio principal, reportando el WAIC como verificación complementaria y no como criterio primario de decisión.
+@Vehtari2017 muestra que, en presencia de observaciones influyentes —frecuentes en modelos de conteo con segmentos de intensidad extrema, como los que surgen en el modelo Poisson-lognormal—, el LOO-CV mediante PSIS es más robusto que el WAIC, cuya estimación de $p_{WAIC}$ puede ser inestable cuando la varianza posterior de la log-verosimilitud puntual es elevada. En consecuencia, el LOO-CV debe considerarse el criterio principal, reportando el WAIC como verificación complementaria y no como criterio primario de decisión.
 
 ### Criterio de elección del modelo final
 

@@ -475,5 +475,5 @@ loo::loo_compare(loo_modelo_1, loo_modelo_2)
 
 :::
 
-Valores más altos de elpd-LOO (*expected log predictive density*) indican mejor capacidad predictiva fuera de muestra [@Vehtari2017]. En la comparación entre modelos, una diferencia en elpd superior al doble de su error estándar se interpreta como evidencia de diferencia predictiva sustancial. La comparación entre LOO y WAIC en presencia de observaciones influyentes —frecuentes en segmentos con conteos extremos— se discute en @Piironen2017, que concluye que LOO es más robusto en esos contextos y debe ser el criterio principal para la selección del modelo final.
+Valores más altos de elpd-LOO (*expected log predictive density*) indican mejor capacidad predictiva fuera de muestra [@Vehtari2017]. En la comparación entre modelos, una diferencia en elpd superior al doble de su error estándar se interpreta como evidencia de diferencia predictiva sustancial. La comparación entre LOO y WAIC en presencia de observaciones influyentes —frecuentes en segmentos con conteos extremos— se discute en @Vehtari2017, que concluye que LOO es más robusto en esos contextos y debe ser el criterio principal para la selección del modelo final.
 
